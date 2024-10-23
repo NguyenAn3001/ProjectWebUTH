@@ -1,0 +1,14 @@
+D:\source\MentorBookingProject\MentorBooking.Repository\bin\Debug\net8.0\MentorBooking.Repository.deps.json
+D:\source\MentorBookingProject\MentorBooking.Repository\bin\Debug\net8.0\MentorBooking.Repository.runtimeconfig.json
+D:\source\MentorBookingProject\MentorBooking.Repository\bin\Debug\net8.0\MentorBooking.Repository.dll
+D:\source\MentorBookingProject\MentorBooking.Repository\bin\Debug\net8.0\MentorBooking.Repository.pdb
+D:\source\MentorBookingProject\MentorBooking.Repository\obj\Debug\net8.0\MentorBooking.Repository.csproj.AssemblyReference.cache
+D:\source\MentorBookingProject\MentorBooking.Repository\obj\Debug\net8.0\MentorBooking.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\source\MentorBookingProject\MentorBooking.Repository\obj\Debug\net8.0\MentorBooking.Repository.AssemblyInfoInputs.cache
+D:\source\MentorBookingProject\MentorBooking.Repository\obj\Debug\net8.0\MentorBooking.Repository.AssemblyInfo.cs
+D:\source\MentorBookingProject\MentorBooking.Repository\obj\Debug\net8.0\MentorBooking.Repository.csproj.CoreCompileInputs.cache
+D:\source\MentorBookingProject\MentorBooking.Repository\obj\Debug\net8.0\MentorBooking.Repository.dll
+D:\source\MentorBookingProject\MentorBooking.Repository\obj\Debug\net8.0\refint\MentorBooking.Repository.dll
+D:\source\MentorBookingProject\MentorBooking.Repository\obj\Debug\net8.0\MentorBooking.Repository.pdb
+D:\source\MentorBookingProject\MentorBooking.Repository\obj\Debug\net8.0\MentorBooking.Repository.genruntimeconfig.cache
+D:\source\MentorBookingProject\MentorBooking.Repository\obj\Debug\net8.0\ref\MentorBooking.Repository.dll
