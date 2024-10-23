@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace MentorBooking.Repository.Models;
+
+public partial class MentorSupportSession
+{
+    public Guid SessionId { get; set; }
+
+    public byte SessionCount { get; set; }
+
+    public short PointsPerSession { get; set; }
+
+    public int GroupId { get; set; }
+
+    public Guid MentorId { get; set; }
+
+    public int TotalPoints { get; set; }
+
+    public virtual ProjectGroup Group { get; set; } = null!;
+
+    public virtual GroupFeedback? GroupFeedback { get; set; }
+
+    public virtual Mentor Mentor { get; set; } = null!;
+
+    public virtual ICollection<MentorFeedback> MentorFeedbacks { get; set; } = new List<MentorFeedback>();
+
+    public virtual ICollection<MentorWorkSchedule> MentorWorkSchedules { get; set; } = new List<MentorWorkSchedule>();
+
+    public virtual StudentsPaymentSession? StudentsPaymentSession { get; set; }
+}

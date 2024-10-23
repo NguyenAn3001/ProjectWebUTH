@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "RRH5yyAio5MbcDRj0uVPfKJNAMqpHEpEYh+UEov0om4=",
+  "Source": "MentorBooking.WebAPI",
+  "BasePath": "_content/MentorBooking.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
