@@ -16,8 +16,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthenticateService, AuthenticationHandler>();
 // Add Identity
-builder.Services.AddIdentity<Users, Roles>()
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<Users, Roles>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+}).AddEntityFrameworkStores<ApplicationDbContext>();
 // DI Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
