@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj": {}
+    "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj": {}
   },
   "projects": {
-    "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj": {
+    "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj",
+        "projectUniqueName": "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj",
         "projectName": "MentorBooking.Repository",
-        "projectPath": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj",
+        "projectPath": "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\obj\\",
+        "outputPath": "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",

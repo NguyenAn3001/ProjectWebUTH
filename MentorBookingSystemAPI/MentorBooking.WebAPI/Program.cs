@@ -1,4 +1,7 @@
-using MentorBooking.Repository.Models;
+using MentorBooking.Repository.Data;
+using MentorBooking.Repository.Entities;
+using MentorBooking.Service.Interfaces;
+using MentorBooking.Service.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,15 +14,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+builder.Services.AddScoped<IAuthenticateService, AuthenticationHandler>();
+// Add Identity
+builder.Services.AddIdentity<Users, Roles>()
                     .AddEntityFrameworkStores<ApplicationDbContext>();
+// DI Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerConnection"));
 });
+// Add Jwt Bearer
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
-    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
         ValidateAudience = true,
@@ -45,6 +52,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+// Add Authentication 
 app.UseAuthentication();
 
 app.UseAuthorization();
