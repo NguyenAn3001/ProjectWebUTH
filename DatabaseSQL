@@ -1,0 +1,315 @@
+CREATE TABLE [Roles] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
+);
+GO
+
+CREATE TABLE [Users] (
+    [Id] uniqueidentifier NOT NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [Image] nvarchar(max) NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+);
+GO
+
+CREATE TABLE [RoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] uniqueidentifier NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_RoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_RoleClaims_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE CASCADE
+);
+GO
+
+CREATE TABLE [UserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] uniqueidentifier NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserClaims_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+GO
+
+CREATE TABLE [UserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_UserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_UserLogins_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+GO
+
+CREATE TABLE [UserRoles] (
+    [UserId] uniqueidentifier NOT NULL,
+    [RoleId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_UserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_UserRoles_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserRoles_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+GO
+
+CREATE TABLE [UserTokens] (
+    [UserId] uniqueidentifier NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_UserTokens_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+GO
+
+CREATE TABLE [PointTransactions] (
+	[TransactionId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[PointsChanged] INTEGER,
+	[TransactionType] BIT NOT NULL,
+	[Description] NVARCHAR,
+	[CreateAt] DATETIME DEFAULT GETDATE(),
+	[UserId] UNIQUEIDENTIFIER NOT NULL,
+	PRIMARY KEY([TransactionId])
+);
+GO
+
+CREATE TABLE [UserPoints] (
+	[UserId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[PointsBalance] INTEGER,
+	PRIMARY KEY([UserId])
+);
+GO
+
+CREATE TABLE [Students] (
+	[StudentId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[UserId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[CreateAt] DATETIME NOT NULL DEFAULT GETDATE(),
+	PRIMARY KEY([StudentId])
+);
+GO
+
+CREATE TABLE [ProjectGroups] (
+	[GroupId] INTEGER NOT NULL IDENTITY UNIQUE,
+	[GroupName] NVARCHAR,
+	[Topic] NVARCHAR,
+	[CreateBy] UNIQUEIDENTIFIER NOT NULL,
+	[CreateAt] DATETIME NOT NULL DEFAULT GETDATE(),
+	PRIMARY KEY([GroupId])
+);
+GO
+
+CREATE TABLE [StudentGroups] (
+	[StudentId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[GroupId] INTEGER NOT NULL,
+	[JoinAt] DATETIME NOT NULL DEFAULT GETDATE(),
+	PRIMARY KEY([StudentId], [GroupId])
+);
+GO
+
+CREATE TABLE [ProjectProgress] (
+	[ProgressId] TINYINT NOT NULL IDENTITY UNIQUE,
+	[GroupId] INTEGER NOT NULL,
+	[Description] NVARCHAR,
+	[UpdateAt] DATETIME NOT NULL DEFAULT GETDATE(),
+	PRIMARY KEY([ProgressId])
+);
+GO
+
+CREATE TABLE [Mentors] (
+	[MentorId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[UserId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[ExperienceYears] TINYINT NOT NULL,
+	[MentorDescription] NVARCHAR,
+	[CreateAt] DATETIME NOT NULL DEFAULT GETDATE(),
+	PRIMARY KEY([MentorId])
+);
+GO
+
+CREATE TABLE [Skills] (
+	[SkillId] INTEGER NOT NULL IDENTITY UNIQUE,
+	[Name] NVARCHAR NOT NULL,
+	PRIMARY KEY([SkillId])
+);
+GO
+
+CREATE TABLE [MentorSkills] (
+	[MentorId] UNIQUEIDENTIFIER NOT NULL,
+	[SkillId] INTEGER NOT NULL,
+	PRIMARY KEY([MentorId], [SkillId])
+);
+GO
+
+CREATE TABLE [MentorWorkSchedules] (
+	[ScheduleId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[SessionId] UNIQUEIDENTIFIER NOT NULL,
+	[WorkDate] DATE NOT NULL,
+	[StartTime] TIME NOT NULL,
+	[EndTime] TIME NOT NULL,
+	[UnavailableDate] TINYINT NOT NULL,
+	PRIMARY KEY([ScheduleId])
+);
+GO
+
+CREATE TABLE [MentorSupportSessions] (
+	[SessionId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[SessionCount] TINYINT NOT NULL DEFAULT 0,
+	[PointsPerSession] SMALLINT NOT NULL,
+	[GroupId] INTEGER NOT NULL,
+	[MentorId] UNIQUEIDENTIFIER NOT NULL,
+	-- Tổng số điểm phải trả cho mentor
+	[TotalPoints] INTEGER NOT NULL,
+	PRIMARY KEY([SessionId])
+);
+GO
+
+CREATE TABLE [StudentsPaymentSession] (
+	[SessionId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[StudentId] UNIQUEIDENTIFIER NOT NULL,
+	-- Số Point mỗi Student trong session đó trả cho Mentor
+	[PointsChanged] INTEGER NOT NULL,
+	[PaidAt] DATETIME NOT NULL DEFAULT GETDATE(),
+	PRIMARY KEY([SessionId], [StudentId])
+);
+GO
+
+CREATE TABLE [GroupFeedback] (
+	[FeedbackId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[SessionId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[GroupId] INTEGER NOT NULL,
+	[MentorId] UNIQUEIDENTIFIER NOT NULL,
+	[Rating] TINYINT NOT NULL CHECK(Rating BETWEEN 1 AND 5),
+	[Comment] NVARCHAR,
+	[CreateAt] DATETIME NOT NULL DEFAULT GETDATE(),
+	PRIMARY KEY([FeedbackId])
+);
+GO
+
+CREATE TABLE [MentorFeedback] (
+	[FeedbackId] UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	[SessionId] UNIQUEIDENTIFIER NOT NULL,
+	[StudentId] UNIQUEIDENTIFIER NOT NULL,
+	[MentorId] UNIQUEIDENTIFIER NOT NULL,
+	[Rating] TINYINT NOT NULL CHECK(Rating BETWEEN 1 AND 5),
+	[Comment] NVARCHAR,
+	[CreateAt] DATETIME NOT NULL DEFAULT GETDATE(),
+	PRIMARY KEY([FeedbackId])
+);
+GO
+
+ALTER TABLE [UserPoints]
+ADD FOREIGN KEY([UserId]) REFERENCES [Users]([Id])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [PointTransactions]
+ADD FOREIGN KEY([UserId]) REFERENCES [UserPoints]([UserId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [Students]
+ADD FOREIGN KEY([StudentId]) REFERENCES [Users]([Id])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [StudentGroups]
+ADD FOREIGN KEY([StudentId]) REFERENCES [Students]([StudentId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [StudentGroups]
+ADD FOREIGN KEY([GroupId]) REFERENCES [ProjectGroups]([GroupId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [ProjectProgress]
+ADD FOREIGN KEY([GroupId]) REFERENCES [ProjectGroups]([GroupId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [Mentors]
+ADD FOREIGN KEY([UserId]) REFERENCES [Users]([Id])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [MentorSkills]
+ADD FOREIGN KEY([MentorId]) REFERENCES [Mentors]([MentorId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [MentorSkills]
+ADD FOREIGN KEY([SkillId]) REFERENCES [Skills]([SkillId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [MentorSupportSessions]
+ADD FOREIGN KEY([GroupId]) REFERENCES [ProjectGroups]([GroupId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [MentorSupportSessions]
+ADD FOREIGN KEY([MentorId]) REFERENCES [Mentors]([MentorId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [MentorWorkSchedules]
+ADD FOREIGN KEY([SessionId]) REFERENCES [MentorSupportSessions]([SessionId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [StudentsPaymentSession]
+ADD FOREIGN KEY([SessionId]) REFERENCES [MentorSupportSessions]([SessionId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [StudentsPaymentSession]
+ADD FOREIGN KEY([StudentId]) REFERENCES [Students]([StudentId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [MentorFeedback]
+ADD FOREIGN KEY([MentorId]) REFERENCES [Mentors]([MentorId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [MentorFeedback]
+ADD FOREIGN KEY([SessionId]) REFERENCES [MentorSupportSessions]([SessionId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [MentorFeedback]
+ADD FOREIGN KEY([StudentId]) REFERENCES [Students]([StudentId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [GroupFeedback]
+ADD FOREIGN KEY([GroupId]) REFERENCES [ProjectGroups]([GroupId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [GroupFeedback]
+ADD FOREIGN KEY([MentorId]) REFERENCES [Mentors]([MentorId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+ALTER TABLE [GroupFeedback]
+ADD FOREIGN KEY([SessionId]) REFERENCES [MentorSupportSessions]([SessionId])
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+GO
+CREATE INDEX [IX_RoleClaims_RoleId] ON [RoleClaims] ([RoleId]);
+GO
+
+CREATE UNIQUE INDEX [RoleNameIndex] ON [Roles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+GO
+
+CREATE INDEX [IX_UserClaims_UserId] ON [UserClaims] ([UserId]);
+GO
+
+CREATE INDEX [IX_UserLogins_UserId] ON [UserLogins] ([UserId]);
+GO
+
+CREATE INDEX [IX_UserRoles_RoleId] ON [UserRoles] ([RoleId]);
+GO
+
+CREATE INDEX [EmailIndex] ON [Users] ([NormalizedEmail]);
+GO
+
+CREATE UNIQUE INDEX [UserNameIndex] ON [Users] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+GO
