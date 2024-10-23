@@ -2946,11 +2946,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\source\\MentorBookingProject\\MentorBooking.Service\\MentorBooking.Service.csproj",
+      "projectUniqueName": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\MentorBooking.Service.csproj",
       "projectName": "MentorBooking.Service",
-      "projectPath": "D:\\source\\MentorBookingProject\\MentorBooking.Service\\MentorBooking.Service.csproj",
+      "projectPath": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\MentorBooking.Service.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "D:\\source\\MentorBookingProject\\MentorBooking.Service\\obj\\",
+      "outputPath": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2969,8 +2969,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\source\\MentorBookingProject\\MentorBooking.Repository\\MentorBooking.Repository.csproj": {
-              "projectPath": "D:\\source\\MentorBookingProject\\MentorBooking.Repository\\MentorBooking.Repository.csproj"
+            "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj": {
+              "projectPath": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj"
             }
           }
         }
