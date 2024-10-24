@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "MentorBooking.WebAPI.Controllers.AuthenticationController",
+    "Method": "Login",
+    "RelativePath": "api/Authentication/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginModel",
+        "Type": "MentorBooking.Service.DTOs.Request.LoginModelRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MentorBooking.WebAPI.Controllers.AuthenticationController",
     "Method": "Register",
     "RelativePath": "api/Authentication/Register",
     "HttpMethod": "POST",

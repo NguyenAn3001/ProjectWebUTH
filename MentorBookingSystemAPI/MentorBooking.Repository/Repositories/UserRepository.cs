@@ -17,6 +17,12 @@ namespace MentorBooking.Repository.Repositories
         {
             _userManager = userManager;
         }
+
+        public async Task<bool> CheckPasswordUserAsync(Users user, string password)
+        {
+            return await _userManager.CheckPasswordAsync(user, password);   
+        }
+
         public async Task<IdentityResult> CreateUserAsync(Users user, string password)
         {
             return await _userManager.CreateAsync(user, password);  

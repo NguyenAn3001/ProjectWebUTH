@@ -63,11 +63,25 @@ namespace MentorBooking.WebAPI.Controllers
                 _ => Ok(settingRoleResponse)
             };
         }
-        //[HttpPost("Login")]
-        //public async Task<IActionResult> Login([FromBody] LoginModelRequest loginModel)
-        //{
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginModelRequest loginModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new RegisterModelResponse
+                {
+                    Status = "Error",
+                    Message = "Invalid data provided."
+                });
+            }
+            var loginResponse = await _authenticateService.Login(loginModel);
+            return loginResponse.Status switch
+            {
+                "Unauthorized" => Unauthorized(loginResponse),
+                "ServerError" => StatusCode(StatusCodes.Status500InternalServerError, loginResponse),
+                _ => Ok(loginResponse)  
+            };
+        }
 
-        //    return Ok();
-        //}
     }
 }

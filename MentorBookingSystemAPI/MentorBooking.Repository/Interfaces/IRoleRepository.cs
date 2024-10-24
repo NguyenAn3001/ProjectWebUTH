@@ -14,6 +14,7 @@ namespace MentorBooking.Repository.Interfaces
         Task<bool> RoleExistsAsync(string roleName);
         Task<bool> CreateRoleAsync(string roleName);
         Task<IdentityResult> AddUserToRoleAsync(Users user, string roleName);
+        Task<IList<string>> GetRolesByUserAsync(Users users);
     }
 
 }

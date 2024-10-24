@@ -12,5 +12,6 @@ namespace MentorBooking.Service.Interfaces
     {
         Task<RegisterModelResponse> RegisterUserAsync(RegisterModelRequest registerModel);
         Task<SettingRoleModelResponse> SettingRoleAsync(SettingRoleModelRequest settingRoleModel);
+        Task<LoginModelResponse> Login(LoginModelRequest loginModel);
     }
 }
