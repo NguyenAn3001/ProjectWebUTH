@@ -36,6 +36,11 @@ namespace MentorBooking.Repository.Repositories
             return await _userManager.FindByIdAsync(userId);
         }
 
+        public async Task<IList<string>> GetRolesByUserAsync(Users users)
+        {
+            return await _userManager.GetRolesAsync(users);
+        }
+
         public async Task<bool> RoleExistsAsync(string roleName)
         {
             return await _roleManager.RoleExistsAsync(roleName);
