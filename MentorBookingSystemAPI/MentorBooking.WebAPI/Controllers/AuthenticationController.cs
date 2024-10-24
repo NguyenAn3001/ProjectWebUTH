@@ -16,24 +16,42 @@ namespace MentorBooking.WebAPI.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticateService _authenticateService;
+        private readonly RoleManager<Roles> role;
 
-        public AuthenticationController(IAuthenticateService authenticateService)
+        public AuthenticationController(IAuthenticateService authenticateService, RoleManager<Roles> role)
         {
             this._authenticateService = authenticateService;
+            this.role = role;
         }
+        
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterModelRequest registerModel)
         {
             if (!ModelState.IsValid)
             {
-                return StatusCode(StatusCodes.Status400BadRequest, new RegisterModelResponse { Status = "Error", Message = "Invalid data provided." });
+                return BadRequest(new RegisterModelResponse 
+                { 
+                    Status = "Error", Message = "Invalid data provided." 
+                });
             }
             var registerResponse = await _authenticateService.RegisterUserAsync(registerModel);
-            if (registerResponse.Status == "Error")
+            return registerResponse.Status switch
             {
-                return StatusCode(StatusCodes.Status400BadRequest, registerResponse);
-            }
-            return Ok(registerResponse);
+                "Error" => BadRequest(registerResponse),
+                "ServerError" => StatusCode(StatusCodes.Status500InternalServerError, registerResponse),
+                _ => Ok(registerResponse)
+            };
+            //if (registerResponse.Status == "Error")
+            //    return StatusCode(StatusCodes.Status400BadRequest, registerResponse);
+            //if (registerResponse.Status == "500")
+            //    return StatusCode(StatusCodes.Status500InternalServerError, registerResponse);
+            //return Ok(registerResponse);
         }
+        //[HttpPost("Login")]
+        //public async Task<IActionResult> Login([FromBody] LoginModelRequest loginModel)
+        //{
+
+        //    return Ok();
+        //}
     }
 }

@@ -1,5 +1,7 @@
 using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
+using MentorBooking.Repository.Interfaces;
+using MentorBooking.Repository.Repositories;
 using MentorBooking.Service.Interfaces;
 using MentorBooking.Service.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -15,6 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthenticateService, AuthenticationHandler>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();  
 // Add Identity
 builder.Services.AddIdentity<Users, Roles>(options =>
 {
@@ -40,7 +43,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)),
         RoleClaimType = ClaimTypes.Role
     };
 });
