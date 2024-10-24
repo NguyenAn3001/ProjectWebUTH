@@ -16,12 +16,10 @@ namespace MentorBooking.WebAPI.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticateService _authenticateService;
-        private readonly RoleManager<Roles> role;
 
-        public AuthenticationController(IAuthenticateService authenticateService, RoleManager<Roles> role)
+        public AuthenticationController(IAuthenticateService authenticateService)
         {
-            this._authenticateService = authenticateService;
-            this.role = role;
+            _authenticateService = authenticateService;
         }
         
         [HttpPost("Register")]
@@ -46,6 +44,24 @@ namespace MentorBooking.WebAPI.Controllers
             //if (registerResponse.Status == "500")
             //    return StatusCode(StatusCodes.Status500InternalServerError, registerResponse);
             //return Ok(registerResponse);
+        }
+        [HttpPost("setting-role")]
+        public async Task<IActionResult> SettingRoleForUser([FromBody] SettingRoleModelRequest settingRoleModel)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(new RegisterModelResponse
+                {
+                    Status = "Error",
+                    Message = "Invalid data provided."
+                });
+            var settingRoleResponse = await _authenticateService.SettingRoleAsync(settingRoleModel);
+            return settingRoleResponse.Status switch
+            {
+                "Error" => BadRequest(settingRoleResponse),
+                "Forbidden" => StatusCode(StatusCodes.Status403Forbidden, settingRoleResponse),
+                "ServerError" => StatusCode(StatusCodes.Status500InternalServerError, settingRoleResponse),
+                _ => Ok(settingRoleResponse)
+            };
         }
         //[HttpPost("Login")]
         //public async Task<IActionResult> Login([FromBody] LoginModelRequest loginModel)

@@ -11,5 +11,6 @@ namespace MentorBooking.Service.Interfaces
     public interface IAuthenticateService
     {
         Task<RegisterModelResponse> RegisterUserAsync(RegisterModelRequest registerModel);
+        Task<SettingRoleModelResponse> SettingRoleAsync(SettingRoleModelRequest settingRoleModel);
     }
 }

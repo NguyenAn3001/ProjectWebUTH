@@ -21,14 +21,14 @@ namespace MentorBooking.Service.Services
         private readonly IUserRepository _userRepository;
         private readonly SignInManager<Users> _signInManager;
         private readonly IConfiguration _configuration;
-        private readonly RoleManager<Roles> _roleManager;
+        private readonly IRoleRepository _roleRepository;
 
-        public AuthenticationHandler(IUserRepository userRepository, SignInManager<Users> signInManager, IConfiguration configuration, RoleManager<Roles> roleManager)
+        public AuthenticationHandler(IUserRepository userRepository, SignInManager<Users> signInManager, IConfiguration configuration, IRoleRepository roleRepository)
         {
             _userRepository = userRepository;
             _signInManager = signInManager;
             _configuration = configuration;
-            _roleManager = roleManager;
+            _roleRepository = roleRepository;
         }
         public async Task<RegisterModelResponse> RegisterUserAsync(RegisterModelRequest registerModel)
         {
@@ -58,6 +58,7 @@ namespace MentorBooking.Service.Services
                 }
                 return new RegisterModelResponse
                 {
+                    UserId = users.Id,
                     Status = "Success",
                     Message = "User created successfully!"
                 };
@@ -65,6 +66,58 @@ namespace MentorBooking.Service.Services
             catch (Exception ex)
             {
                 return new RegisterModelResponse()
+                {
+                    Status = "ServerError",
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public async Task<SettingRoleModelResponse> SettingRoleAsync(SettingRoleModelRequest settingRoleModel)
+        {
+            try
+            {
+                var user = await _roleRepository.FindUserByIdAsync(settingRoleModel.UserId);
+                if (user == null)
+                    return new SettingRoleModelResponse
+                    {
+                        Status = "Error",
+                        Message = "User not found"
+                    };
+                if (!await _roleRepository.RoleExistsAsync(settingRoleModel.RoleName))
+                {
+                    if (!await _roleRepository.CreateRoleAsync(settingRoleModel.RoleName))
+                        return new SettingRoleModelResponse
+                        {
+                            Status = "Error",
+                            Message = "Failed to create role"
+                        };
+                }
+                if (settingRoleModel.RoleName.ToLower() == "admin")
+                    return new SettingRoleModelResponse
+                    {
+                        Status = "Forbidden",
+                        Message = "Creating 'Admin' role is not allowed"
+                    };
+                var result = await _roleRepository.AddUserToRoleAsync(user, settingRoleModel.RoleName);
+                if (!result.Succeeded)
+                {
+                    var errors = string.Join("; ", result.Errors.Select(e => e.Description));
+                    return new SettingRoleModelResponse
+                    {
+                        Status = "Error",
+                        Message = $"User creation failed: {errors}"
+                    };
+                }
+                return new SettingRoleModelResponse
+                {
+                    Status = "Success",
+                    Message = "Setting role successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new SettingRoleModelResponse()
                 {
                     Status = "ServerError",
                     Message = ex.Message

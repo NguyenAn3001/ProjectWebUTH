@@ -14,5 +14,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MentorBooking.WebAPI.Controllers.AuthenticationController",
+    "Method": "SettingRoleForUser",
+    "RelativePath": "api/Authentication/setting-role",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "settingRoleModel",
+        "Type": "MentorBooking.Service.DTOs.Request.SettingRoleModelRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
