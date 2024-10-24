@@ -28,9 +28,15 @@ namespace MentorBooking.Repository.Repositories
             return await _userManager.CreateAsync(user, password);  
         }
 
+        public async Task<Users?> FindByIdAsync(string id)
+        {
+            return await _userManager.FindByIdAsync(id);
+        }
+
         public async Task<Users?> FindByUserNameAsync(string userName)
         {
             return await _userManager.FindByNameAsync(userName);    
         }
+
     }
 }

@@ -1,8 +1,10 @@
-﻿using MentorBooking.Repository.Entities;
+﻿using Azure;
+using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
 using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -144,6 +146,7 @@ namespace MentorBooking.Service.Services
                 await _userTokenRepository.SetAuthenticationTokenToTableAsync(user, "Local", "Refresh Token", refreshToken);
                 return new LoginModelResponse
                 {
+                    UserId = user.Id,
                     Status = "Success",
                     Message = "Login successfully.",
                     AccessToken = accessToken,
@@ -159,8 +162,6 @@ namespace MentorBooking.Service.Services
                 };
             }
         }
-
-
         private async Task<string> GenerateAccessToken(Users user)
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]!));
@@ -188,7 +189,6 @@ namespace MentorBooking.Service.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-
         private string GenerateRefreshToken()
         {
             var randomNumber = new byte[32];
@@ -197,6 +197,35 @@ namespace MentorBooking.Service.Services
                 rng.GetBytes(randomNumber);
             }
             return Convert.ToBase64String(randomNumber);
+        }
+
+        public async Task<LogoutModelResponse> Logout(LogoutModelRequest logoutModel)
+        {
+            try
+            {
+                var user = await _userRepository.FindByIdAsync(logoutModel.UserId!);
+                if (user == null)
+                    return new LogoutModelResponse
+                    {
+                        Status = "NotFound",
+                        Message = "User not found."
+                    };
+
+                await _userTokenRepository.RemoveAuthenticationTokenToTableAsync(user, "Local", "Refresh Token");
+                return new LogoutModelResponse
+                {
+                    Status = "Success",
+                    Message = "Logged out successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new LogoutModelResponse()
+                {
+                    Status = "ServerError",
+                    Message = ex.Message
+                };
+            }
         }
     }
 }

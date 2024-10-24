@@ -14,5 +14,6 @@ namespace MentorBooking.Repository.Interfaces
         Task<IdentityResult> CreateUserAsync(Users user, string password);
         Task<Users?> FindByUserNameAsync(string userName);
         Task<bool> CheckPasswordUserAsync(Users user, string password);
+        Task<Users?> FindByIdAsync(string id);
     }
 }

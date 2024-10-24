@@ -17,6 +17,12 @@ namespace MentorBooking.Repository.Repositories
         {
             _userManager = userManager;
         }
+
+        public async Task<IdentityResult> RemoveAuthenticationTokenToTableAsync(Users user, string provider, string nameOfToken)
+        {
+            return await _userManager.RemoveAuthenticationTokenAsync(user, provider, nameOfToken);
+        }
+
         public async Task<IdentityResult> SetAuthenticationTokenToTableAsync(Users users, string provider, string nameOfToken, string valueToken)
         {
             return await _userManager.SetAuthenticationTokenAsync(users, provider, nameOfToken, valueToken);    

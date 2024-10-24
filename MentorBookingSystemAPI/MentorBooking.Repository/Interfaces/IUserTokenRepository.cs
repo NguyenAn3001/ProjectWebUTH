@@ -10,6 +10,7 @@ namespace MentorBooking.Repository.Interfaces
 {
     public interface IUserTokenRepository
     {
-        Task<IdentityResult> SetAuthenticationTokenToTableAsync(Users users, string provider, string nameOfToken, string valueToken);
+        Task<IdentityResult> SetAuthenticationTokenToTableAsync(Users user, string provider, string nameOfToken, string valueToken);
+        Task<IdentityResult> RemoveAuthenticationTokenToTableAsync(Users user, string provider, string nameOfToken);
     }
 }
