@@ -1,4 +1,5 @@
 ﻿using MentorBooking.Repository.Entities;
+using MentorBooking.Repository.Interfaces;
 using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Interfaces;
@@ -17,21 +18,23 @@ namespace MentorBooking.Service.Services
 {
     public class AuthenticationHandler : IAuthenticateService
     {
-        private readonly UserManager<Users> _userManager;
+        private readonly IUserRepository _userRepository;
         private readonly SignInManager<Users> _signInManager;
         private readonly IConfiguration _configuration;
+        private readonly RoleManager<Roles> _roleManager;
 
-        public AuthenticationHandler(UserManager<Users> userManager, SignInManager<Users> signInManager, IConfiguration configuration)
+        public AuthenticationHandler(IUserRepository userRepository, SignInManager<Users> signInManager, IConfiguration configuration, RoleManager<Roles> roleManager)
         {
-            _userManager = userManager;
+            _userRepository = userRepository;
             _signInManager = signInManager;
-            this._configuration = configuration;
+            _configuration = configuration;
+            _roleManager = roleManager;
         }
         public async Task<RegisterModelResponse> RegisterUserAsync(RegisterModelRequest registerModel)
         {
             try
             {
-                Users? user = await _userManager.FindByNameAsync(registerModel.UserName);
+                Users? user = await _userRepository.FindByUserNameAsync(registerModel.UserName);
                 if (user != null)
                 {
                     return new RegisterModelResponse { Status = "Error", Message = "User already exists!" };
@@ -43,7 +46,7 @@ namespace MentorBooking.Service.Services
                     SecurityStamp = Guid.NewGuid().ToString(),
                     UserName = registerModel.UserName
                 };
-                var result = await _userManager.CreateAsync(users, registerModel.Password);
+                var result = await _userRepository.CreateUserAsync(users, registerModel.Password);
                 if (!result.Succeeded)
                 {
                     var errors = string.Join("; ", result.Errors.Select(e => e.Description));
@@ -63,56 +66,53 @@ namespace MentorBooking.Service.Services
             {
                 return new RegisterModelResponse()
                 {
-                    Status = "500",
+                    Status = "ServerError",
                     Message = ex.Message
                 };
             }
         }
 
 
-        private string GenerateAccessToken(Users user)
-        {
-            // Creates a new symmetric security key from the JWT key specified in the app _configuration.
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            // Sets up the signing credentials using the above security key and specifying the HMAC SHA256 algorithm.
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        //private async string GenerateAccessToken(Users user)
+        //{
+        //    // Creates a new symmetric security key from the JWT key specified in the app _configuration.
+        //    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        //    // Sets up the signing credentials using the above security key and specifying the HMAC SHA256 algorithm.
+        //    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            // Defines a set of claims to be included in the token.
-            var claims = new List<Claim>
-            {
-                // Custom claim using the user's ID.
-                new Claim("Myapp_User_Id", user.Id.ToString()),
-                // Standard claim for user identifier, using username.
-                new Claim(ClaimTypes.NameIdentifier, user.Username),
-                // Standard claim for user's email.
-                new Claim(ClaimTypes.Email, user.Email),
-                // Standard JWT claim for subject, using user ID.
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-                new Claim("issAt", DateTime.Now.ToString())
-            };
+        //    // Defines a set of claims to be included in the token.
+        //    var claims = new List<Claim>
+        //    {
+        //        // Custom claim using the user's ID.
+        //        new Claim("Myapp_User_Id", user.Id.ToString()),
+        //        // Standard claim for user identifier, using username.
+        //        new Claim(ClaimTypes.NameIdentifier, user.UserName),
+        //        // Standard claim for user's email.
+        //        new Claim(ClaimTypes.Email, user.Email),
+        //        // Standard JWT claim for subject, using user ID.
+        //        new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+        //        new Claim("issAt", DateTime.Now.ToString())
+        //    };
 
-            // Adds a role claim for each role associated with the user.
-            user.Roles.ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role)));
+        //    // Creates a new JWT token with specified parameters including issuer, audience, claims, expiration time, and signing credentials.
+        //    var token = new JwtSecurityToken(
+        //        issuer: _configuration["Jwt:Issuer"],
+        //        audience: _configuration["Jwt:Audience"],
+        //        claims: claims,
+        //        expires: DateTime.Now.AddHours(1), // Token expiration set to 1 hour from the current time.
+        //        signingCredentials: credentials);
 
-            // Creates a new JWT token with specified parameters including issuer, audience, claims, expiration time, and signing credentials.
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.Now.AddHours(1), // Token expiration set to 1 hour from the current time.
-                signingCredentials: credentials);
-
-            // Serializes the JWT token to a string and returns it.
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-        private string GenerateRefreshToken()
-        {
-            var randomNumber = new byte[32];  // Prepare a buffer to hold the random bytes.
-            using (var rng = System.Security.Cryptography.RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(randomNumber);  // Fill the buffer with cryptographically strong random bytes.
-                return Convert.ToBase64String(randomNumber);  // Convert the bytes to a Base64 string and return.
-            }
-        }
+        //    // Serializes the JWT token to a string and returns it.
+        //    return new JwtSecurityTokenHandler().WriteToken(token);
+        //}
+        //private string GenerateRefreshToken()
+        //{
+        //    var randomNumber = new byte[32];  // Prepare a buffer to hold the random bytes.
+        //    using (var rng = System.Security.Cryptography.RandomNumberGenerator.Create())
+        //    {
+        //        rng.GetBytes(randomNumber);  // Fill the buffer with cryptographically strong random bytes.
+        //        return Convert.ToBase64String(randomNumber);  // Convert the bytes to a Base64 string and return.
+        //    }
+        //}
     }
 }
