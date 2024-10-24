@@ -1139,10 +1139,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10"
         },
         "runtime": {
-          "MentorBooking.Repository.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "MentorBooking.Repository.dll": {}
         }
       },
       "MentorBooking.Service/1.0.0": {
@@ -1152,10 +1149,7 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10"
         },
         "runtime": {
-          "MentorBooking.Service.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "MentorBooking.Service.dll": {}
         }
       }
     }
