@@ -30,9 +30,9 @@ namespace MentorBooking.WebAPI.Controllers
             }
             var registerResponse = await _authenticateService.RegisterUserAsync(registerModel);
             if (registerResponse.Status == "Error")
-            {
                 return StatusCode(StatusCodes.Status400BadRequest, registerResponse);
-            }
+            if (registerResponse.Status == "500")
+                return StatusCode(StatusCodes.Status500InternalServerError, registerResponse);
             return Ok(registerResponse);
         }
     }
