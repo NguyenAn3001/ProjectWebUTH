@@ -27,7 +27,7 @@ namespace MentorBooking.Repository.Repositories
 
         public async Task<bool> CreateRoleAsync(string roleName)
         {
-            var result = await _roleManager.CreateAsync(new Roles { Name = roleName});
+            var result = await _roleManager.CreateAsync(new Roles { Name = roleName });
             return result.Succeeded;
         }
 

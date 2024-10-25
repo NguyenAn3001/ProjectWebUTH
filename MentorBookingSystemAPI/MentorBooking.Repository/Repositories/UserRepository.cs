@@ -20,12 +20,12 @@ namespace MentorBooking.Repository.Repositories
 
         public async Task<bool> CheckPasswordUserAsync(Users user, string password)
         {
-            return await _userManager.CheckPasswordAsync(user, password);   
+            return await _userManager.CheckPasswordAsync(user, password);
         }
 
         public async Task<IdentityResult> CreateUserAsync(Users user, string password)
         {
-            return await _userManager.CreateAsync(user, password);  
+            return await _userManager.CreateAsync(user, password);
         }
 
         public async Task<Users?> FindByIdAsync(string id)
@@ -35,7 +35,7 @@ namespace MentorBooking.Repository.Repositories
 
         public async Task<Users?> FindByUserNameAsync(string userName)
         {
-            return await _userManager.FindByNameAsync(userName);    
+            return await _userManager.FindByNameAsync(userName);
         }
 
     }

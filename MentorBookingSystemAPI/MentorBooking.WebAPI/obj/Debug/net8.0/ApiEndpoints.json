@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "MentorBooking.WebAPI.Controllers.AuthenticationController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/Authentication/refresh-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "refreshTokenModelRequest",
+        "Type": "MentorBooking.Service.DTOs.Request.RefreshTokenModelRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MentorBooking.WebAPI.Controllers.AuthenticationController",
     "Method": "Register",
     "RelativePath": "api/Authentication/register",
     "HttpMethod": "POST",

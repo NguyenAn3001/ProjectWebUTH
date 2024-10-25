@@ -153,7 +153,7 @@ namespace MentorBooking.Service.Services
                 };
             }
         }
-        
+
         public async Task<LogoutModelResponse> Logout(LogoutModelRequest logoutModel)
         {
             try

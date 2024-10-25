@@ -1,4 +1,5 @@
-﻿using MentorBooking.Repository.Data;
+﻿//using MentorBooking.Repository.Data;
+using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -30,7 +31,18 @@ namespace MentorBooking.Repository.Repositories
 
         public async Task<IdentityResult> SetAuthenticationTokenToTableAsync(Users users, string provider, string nameOfToken, string valueToken)
         {
-            return await _userManager.SetAuthenticationTokenAsync(users, provider, nameOfToken, valueToken);    
+            
+            var result = await _userManager.SetAuthenticationTokenAsync(users, provider, nameOfToken, valueToken);
+            if (result.Succeeded)
+            {
+                var userToken = _dbContext.UserTokens.SingleOrDefault(x => x.UserId == users.Id && x.LoginProvider == provider && x.Name == nameOfToken);
+                if (userToken != null)
+                {
+                    userToken.Expired = DateTime.Now.AddDays(1);
+                    _dbContext.SaveChanges();
+                }
+            }
+            return result;  
         }
     }
 }

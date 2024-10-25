@@ -11,4 +11,5 @@ public partial class UserPoint
 
     public virtual ICollection<PointTransaction> PointTransactions { get; set; } = new List<PointTransaction>();
     public virtual Users User { get; set; }
+
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MentorBooking.Repository.Data.Migrations
+namespace MentorBooking.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,284 @@ namespace MentorBooking.Repository.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.ApplicationRole", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.GroupFeedback", b =>
+                {
+                    b.Property<Guid>("FeedbackId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Comment")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("CreateAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("MentorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte>("Rating")
+                        .HasColumnType("tinyint");
+
+                    b.Property<Guid>("SessionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("FeedbackId")
+                        .HasName("PK__GroupFee__6A4BEDD664AAEBB9");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("MentorId");
+
+                    b.HasIndex(new[] { "FeedbackId" }, "UQ__GroupFee__6A4BEDD7FB6AF5B9")
+                        .IsUnique();
+
+                    b.HasIndex(new[] { "SessionId" }, "UQ__GroupFee__C9F4929142F64988")
+                        .IsUnique();
+
+                    b.ToTable("GroupFeedback", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.Mentor", b =>
+                {
+                    b.Property<Guid>("MentorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<byte>("ExperienceYears")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("MentorDescription")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("MentorId")
+                        .HasName("PK__Mentors__053B7E987CAF4940");
+
+                    b.HasIndex(new[] { "MentorId" }, "UQ__Mentors__053B7E997F2CAB59")
+                        .IsUnique();
+
+                    b.HasIndex(new[] { "UserId" }, "UQ__Mentors__1788CC4D929B3EF3")
+                        .IsUnique();
+
+                    b.ToTable("Mentors", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.MentorFeedback", b =>
+                {
+                    b.Property<Guid>("FeedbackId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Comment")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("CreateAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<Guid>("MentorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte>("Rating")
+                        .HasColumnType("tinyint");
+
+                    b.Property<Guid>("SessionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("FeedbackId")
+                        .HasName("PK__MentorFe__6A4BEDD6D5A2F3B9");
+
+                    b.HasIndex("MentorId");
+
+                    b.HasIndex("SessionId");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex(new[] { "FeedbackId" }, "UQ__MentorFe__6A4BEDD73F28FDD6")
+                        .IsUnique();
+
+                    b.ToTable("MentorFeedback", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.MentorSupportSession", b =>
+                {
+                    b.Property<Guid>("SessionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("MentorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<short>("PointsPerSession")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("SessionCount")
+                        .HasColumnType("tinyint");
+
+                    b.Property<int>("TotalPoints")
+                        .HasColumnType("int");
+
+                    b.HasKey("SessionId")
+                        .HasName("PK__MentorSu__C9F49290D96D731E");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("MentorId");
+
+                    b.HasIndex(new[] { "SessionId" }, "UQ__MentorSu__C9F49291CA69CDB4")
+                        .IsUnique();
+
+                    b.ToTable("MentorSupportSessions", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.MentorWorkSchedule", b =>
+                {
+                    b.Property<Guid>("ScheduleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<Guid>("SessionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time");
+
+                    b.Property<byte>("UnavailableDate")
+                        .HasColumnType("tinyint");
+
+                    b.Property<DateOnly>("WorkDate")
+                        .HasColumnType("date");
+
+                    b.HasKey("ScheduleId")
+                        .HasName("PK__MentorWo__9C8A5B495AABC993");
+
+                    b.HasIndex("SessionId");
+
+                    b.HasIndex(new[] { "ScheduleId" }, "UQ__MentorWo__9C8A5B488B70D39C")
+                        .IsUnique();
+
+                    b.ToTable("MentorWorkSchedules", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.PointTransaction", b =>
+                {
+                    b.Property<Guid>("TransactionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreateAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<int?>("PointsChanged")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("TransactionType")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TransactionId")
+                        .HasName("PK__PointTra__55433A6B1712B22E");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex(new[] { "TransactionId" }, "UQ__PointTra__55433A6A38F963BD")
+                        .IsUnique();
+
+                    b.ToTable("PointTransactions", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectGroup", b =>
+                {
+                    b.Property<int>("GroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupId"));
+
+                    b.Property<DateTime>("CreateAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<Guid>("CreateBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("GroupName")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Topic")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.HasKey("GroupId")
+                        .HasName("PK__ProjectG__149AF36A8B4135B9");
+
+                    b.HasIndex(new[] { "GroupId" }, "UQ__ProjectG__149AF36B87B3F194")
+                        .IsUnique();
+
+                    b.ToTable("ProjectGroups", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectProgress", b =>
+                {
+                    b.Property<int>("ProgressId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProgressId"));
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.HasKey("ProgressId")
+                        .HasName("PK__ProjectP__BAE29CA572CF069E");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex(new[] { "ProgressId" }, "UQ__ProjectP__BAE29CA4BF18DE68")
+                        .IsUnique();
+
+                    b.ToTable("ProjectProgress", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.Roles", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +327,144 @@ namespace MentorBooking.Repository.Data.Migrations
                     b.ToTable("Roles", (string)null);
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.ApplicationUser", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.Skill", b =>
+                {
+                    b.Property<int>("SkillId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.HasKey("SkillId")
+                        .HasName("PK__Skills__DFA091877410A8CA");
+
+                    b.HasIndex(new[] { "SkillId" }, "UQ__Skills__DFA09186C47BA9C0")
+                        .IsUnique();
+
+                    b.ToTable("Skills", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.Student", b =>
+                {
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("StudentId")
+                        .HasName("PK__Students__32C52B99C300CB67");
+
+                    b.HasIndex(new[] { "UserId" }, "UQ__Students__1788CC4DCBC7FA15")
+                        .IsUnique();
+
+                    b.HasIndex(new[] { "StudentId" }, "UQ__Students__32C52B9834F7FDAF")
+                        .IsUnique();
+
+                    b.ToTable("Students", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.StudentGroup", b =>
+                {
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("JoinAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.HasKey("StudentId", "GroupId")
+                        .HasName("PK__StudentG__838C84AF1467181E");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex(new[] { "StudentId" }, "UQ__StudentG__32C52B98C2791AFB")
+                        .IsUnique();
+
+                    b.ToTable("StudentGroups", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.StudentsPaymentSession", b =>
+                {
+                    b.Property<Guid>("SessionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("PaidAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<int>("PointsChanged")
+                        .HasColumnType("int");
+
+                    b.HasKey("SessionId", "StudentId")
+                        .HasName("PK__Students__4AD8C02925381DBA");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex(new[] { "SessionId" }, "UQ__Students__C9F49291A5E5E8B8")
+                        .IsUnique();
+
+                    b.ToTable("StudentsPaymentSession", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.UserPoint", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("PointsBalance")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId")
+                        .HasName("PK__UserPoin__1788CC4CA819B7DC");
+
+                    b.HasIndex(new[] { "UserId" }, "UQ__UserPoin__1788CC4D6BA81E59")
+                        .IsUnique();
+
+                    b.ToTable("UserPoints", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.UserTokens", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("Expired")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("UserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.Users", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,367 +539,6 @@ namespace MentorBooking.Repository.Data.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.GroupFeedback", b =>
-                {
-                    b.Property<Guid>("FeedbackId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Comment")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<DateTime>("CreateAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("MentorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<byte>("Rating")
-                        .HasColumnType("tinyint");
-
-                    b.Property<Guid>("SessionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("FeedbackId")
-                        .HasName("PK__GroupFee__6A4BEDD632E261D8");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("MentorId");
-
-                    b.HasIndex(new[] { "FeedbackId" }, "UQ__GroupFee__6A4BEDD718225B07")
-                        .IsUnique();
-
-                    b.HasIndex(new[] { "SessionId" }, "UQ__GroupFee__C9F49291EC2DA840")
-                        .IsUnique();
-
-                    b.ToTable("GroupFeedback", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.Mentor", b =>
-                {
-                    b.Property<Guid>("MentorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreateAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<byte>("ExperienceYears")
-                        .HasColumnType("tinyint");
-
-                    b.Property<string>("MentorDescription")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("MentorId")
-                        .HasName("PK__Mentors__053B7E9843339A2F");
-
-                    b.HasIndex(new[] { "MentorId" }, "UQ__Mentors__053B7E99380E4BF5")
-                        .IsUnique();
-
-                    b.HasIndex(new[] { "UserId" }, "UQ__Mentors__1788CC4DCD90DE59")
-                        .IsUnique();
-
-                    b.ToTable("Mentors", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.MentorFeedback", b =>
-                {
-                    b.Property<Guid>("FeedbackId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Comment")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<DateTime>("CreateAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<Guid>("MentorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<byte>("Rating")
-                        .HasColumnType("tinyint");
-
-                    b.Property<Guid>("SessionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("FeedbackId")
-                        .HasName("PK__MentorFe__6A4BEDD6FFDF27E8");
-
-                    b.HasIndex("MentorId");
-
-                    b.HasIndex("SessionId");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex(new[] { "FeedbackId" }, "UQ__MentorFe__6A4BEDD7EEDD57E4")
-                        .IsUnique();
-
-                    b.ToTable("MentorFeedback", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.MentorSupportSession", b =>
-                {
-                    b.Property<Guid>("SessionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("MentorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("PointsPerSession")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("SessionCount")
-                        .HasColumnType("tinyint");
-
-                    b.Property<int>("TotalPoints")
-                        .HasColumnType("int");
-
-                    b.HasKey("SessionId")
-                        .HasName("PK__MentorSu__C9F49290519072FB");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("MentorId");
-
-                    b.HasIndex(new[] { "SessionId" }, "UQ__MentorSu__C9F492915AA054B2")
-                        .IsUnique();
-
-                    b.ToTable("MentorSupportSessions", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.MentorWorkSchedule", b =>
-                {
-                    b.Property<Guid>("ScheduleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<TimeOnly>("EndTime")
-                        .HasColumnType("time");
-
-                    b.Property<Guid>("SessionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<TimeOnly>("StartTime")
-                        .HasColumnType("time");
-
-                    b.Property<byte>("UnavailableDate")
-                        .HasColumnType("tinyint");
-
-                    b.Property<DateOnly>("WorkDate")
-                        .HasColumnType("date");
-
-                    b.HasKey("ScheduleId")
-                        .HasName("PK__MentorWo__9C8A5B492399C41F");
-
-                    b.HasIndex("SessionId");
-
-                    b.HasIndex(new[] { "ScheduleId" }, "UQ__MentorWo__9C8A5B482E1FDBDE")
-                        .IsUnique();
-
-                    b.ToTable("MentorWorkSchedules", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.PointTransaction", b =>
-                {
-                    b.Property<Guid>("TransactionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreateAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<int?>("PointsChanged")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("TransactionType")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("TransactionId")
-                        .HasName("PK__PointTra__55433A6BA0518C5D");
-
-                    b.HasIndex("UserId");
-
-                    b.HasIndex(new[] { "TransactionId" }, "UQ__PointTra__55433A6A1AC580D8")
-                        .IsUnique();
-
-                    b.ToTable("PointTransactions", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.ProjectGroup", b =>
-                {
-                    b.Property<int>("GroupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupId"));
-
-                    b.Property<DateTime>("CreateAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<Guid>("CreateBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("GroupName")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<string>("Topic")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.HasKey("GroupId")
-                        .HasName("PK__ProjectG__149AF36A6F7109E5");
-
-                    b.HasIndex(new[] { "GroupId" }, "UQ__ProjectG__149AF36BA39FD5B0")
-                        .IsUnique();
-
-                    b.ToTable("ProjectGroups", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.Skill", b =>
-                {
-                    b.Property<int>("SkillId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillId"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.HasKey("SkillId")
-                        .HasName("PK__Skills__DFA09187CCE92901");
-
-                    b.HasIndex(new[] { "SkillId" }, "UQ__Skills__DFA09186BDE3ACF2")
-                        .IsUnique();
-
-                    b.ToTable("Skills", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.Student", b =>
-                {
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreateAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("StudentId")
-                        .HasName("PK__Students__32C52B99CFB61B90");
-
-                    b.HasIndex(new[] { "UserId" }, "UQ__Students__1788CC4DA0F925B6")
-                        .IsUnique();
-
-                    b.HasIndex(new[] { "StudentId" }, "UQ__Students__32C52B9835FD26AF")
-                        .IsUnique();
-
-                    b.ToTable("Students", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.StudentGroup", b =>
-                {
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("JoinAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.HasKey("StudentId", "GroupId")
-                        .HasName("PK__StudentG__838C84AFBF71794B");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex(new[] { "StudentId" }, "UQ__StudentG__32C52B98B6ACEFB9")
-                        .IsUnique();
-
-                    b.ToTable("StudentGroups", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.StudentsPaymentSession", b =>
-                {
-                    b.Property<Guid>("SessionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("PaidAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<int>("PointsChanged")
-                        .HasColumnType("int");
-
-                    b.HasKey("SessionId", "StudentId")
-                        .HasName("PK__Students__4AD8C029A16F13A9");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex(new[] { "SessionId" }, "UQ__Students__C9F492919764073E")
-                        .IsUnique();
-
-                    b.ToTable("StudentsPaymentSession", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.UserPoint", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("PointsBalance")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId")
-                        .HasName("PK__UserPoin__1788CC4C8920074C");
-
-                    b.HasIndex(new[] { "UserId" }, "UQ__UserPoin__1788CC4D6F73A679")
-                        .IsUnique();
-
-                    b.ToTable("UserPoints", (string)null);
-                });
-
             modelBuilder.Entity("MentorSkill", b =>
                 {
                     b.Property<Guid>("MentorId")
@@ -495,7 +548,7 @@ namespace MentorBooking.Repository.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("MentorId", "SkillId")
-                        .HasName("PK__MentorSk__68C17780A4D1C4A1");
+                        .HasName("PK__MentorSk__68C17780A33E19EF");
 
                     b.HasIndex("SkillId");
 
@@ -586,44 +639,25 @@ namespace MentorBooking.Repository.Data.Migrations
                     b.ToTable("UserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.GroupFeedback", b =>
                 {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.ToTable("UserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.GroupFeedback", b =>
-                {
-                    b.HasOne("MentorBooking.Repository.Models.ProjectGroup", "Group")
+                    b.HasOne("MentorBooking.Repository.Entities.ProjectGroup", "Group")
                         .WithMany("GroupFeedbacks")
                         .HasForeignKey("GroupId")
                         .IsRequired()
-                        .HasConstraintName("FK__GroupFeed__Group__7FEAFD3E");
+                        .HasConstraintName("FK__GroupFeed__Group__2882FE7D");
 
-                    b.HasOne("MentorBooking.Repository.Models.Mentor", "Mentor")
+                    b.HasOne("MentorBooking.Repository.Entities.Mentor", "Mentor")
                         .WithMany("GroupFeedbacks")
                         .HasForeignKey("MentorId")
                         .IsRequired()
-                        .HasConstraintName("FK__GroupFeed__Mento__00DF2177");
+                        .HasConstraintName("FK__GroupFeed__Mento__297722B6");
 
-                    b.HasOne("MentorBooking.Repository.Models.MentorSupportSession", "Session")
+                    b.HasOne("MentorBooking.Repository.Entities.MentorSupportSession", "Session")
                         .WithOne("GroupFeedback")
-                        .HasForeignKey("MentorBooking.Repository.Models.GroupFeedback", "SessionId")
+                        .HasForeignKey("MentorBooking.Repository.Entities.GroupFeedback", "SessionId")
                         .IsRequired()
-                        .HasConstraintName("FK__GroupFeed__Sessi__01D345B0");
+                        .HasConstraintName("FK__GroupFeed__Sessi__2A6B46EF");
 
                     b.Navigation("Group");
 
@@ -632,36 +666,36 @@ namespace MentorBooking.Repository.Data.Migrations
                     b.Navigation("Session");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.Mentor", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.Mentor", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.ApplicationUser", "User")
+                    b.HasOne("MentorBooking.Repository.Entities.Users", "User")
                         .WithOne("Mentor")
-                        .HasForeignKey("MentorBooking.Repository.Models.Mentor", "MentorId")
+                        .HasForeignKey("MentorBooking.Repository.Entities.Mentor", "MentorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.MentorFeedback", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.MentorFeedback", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.Mentor", "Mentor")
+                    b.HasOne("MentorBooking.Repository.Entities.Mentor", "Mentor")
                         .WithMany("MentorFeedbacks")
                         .HasForeignKey("MentorId")
                         .IsRequired()
-                        .HasConstraintName("FK__MentorFee__Mento__7D0E9093");
+                        .HasConstraintName("FK__MentorFee__Mento__25A691D2");
 
-                    b.HasOne("MentorBooking.Repository.Models.MentorSupportSession", "Session")
+                    b.HasOne("MentorBooking.Repository.Entities.MentorSupportSession", "Session")
                         .WithMany("MentorFeedbacks")
                         .HasForeignKey("SessionId")
                         .IsRequired()
-                        .HasConstraintName("FK__MentorFee__Sessi__7E02B4CC");
+                        .HasConstraintName("FK__MentorFee__Sessi__269AB60B");
 
-                    b.HasOne("MentorBooking.Repository.Models.Student", "Student")
+                    b.HasOne("MentorBooking.Repository.Entities.Student", "Student")
                         .WithMany("MentorFeedbacks")
                         .HasForeignKey("StudentId")
                         .IsRequired()
-                        .HasConstraintName("FK__MentorFee__Stude__7EF6D905");
+                        .HasConstraintName("FK__MentorFee__Stude__278EDA44");
 
                     b.Navigation("Mentor");
 
@@ -670,125 +704,145 @@ namespace MentorBooking.Repository.Data.Migrations
                     b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.MentorSupportSession", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.MentorSupportSession", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.ProjectGroup", "Group")
+                    b.HasOne("MentorBooking.Repository.Entities.ProjectGroup", "Group")
                         .WithMany("MentorSupportSessions")
                         .HasForeignKey("GroupId")
                         .IsRequired()
-                        .HasConstraintName("FK__MentorSup__Group__7849DB76");
+                        .HasConstraintName("FK__MentorSup__Group__20E1DCB5");
 
-                    b.HasOne("MentorBooking.Repository.Models.Mentor", "Mentor")
+                    b.HasOne("MentorBooking.Repository.Entities.Mentor", "Mentor")
                         .WithMany("MentorSupportSessions")
                         .HasForeignKey("MentorId")
                         .IsRequired()
-                        .HasConstraintName("FK__MentorSup__Mento__793DFFAF");
+                        .HasConstraintName("FK__MentorSup__Mento__21D600EE");
 
                     b.Navigation("Group");
 
                     b.Navigation("Mentor");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.MentorWorkSchedule", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.MentorWorkSchedule", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.MentorSupportSession", "Session")
+                    b.HasOne("MentorBooking.Repository.Entities.MentorSupportSession", "Session")
                         .WithMany("MentorWorkSchedules")
                         .HasForeignKey("SessionId")
                         .IsRequired()
-                        .HasConstraintName("FK__MentorWor__Sessi__7A3223E8");
+                        .HasConstraintName("FK__MentorWor__Sessi__22CA2527");
 
                     b.Navigation("Session");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.PointTransaction", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.PointTransaction", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.UserPoint", "User")
+                    b.HasOne("MentorBooking.Repository.Entities.UserPoint", "User")
                         .WithMany("PointTransactions")
                         .HasForeignKey("UserId")
                         .IsRequired()
-                        .HasConstraintName("FK__PointTran__UserI__70A8B9AE");
+                        .HasConstraintName("FK__PointTran__UserI__1B29035F");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.Student", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectProgress", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.ApplicationUser", "User")
+                    b.HasOne("MentorBooking.Repository.Entities.ProjectGroup", "Group")
+                        .WithMany("ProjectProgresses")
+                        .HasForeignKey("GroupId")
+                        .IsRequired()
+                        .HasConstraintName("FK__ProjectPr__Group__1E05700A");
+
+                    b.Navigation("Group");
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.Student", b =>
+                {
+                    b.HasOne("MentorBooking.Repository.Entities.Users", "User")
                         .WithOne("Student")
-                        .HasForeignKey("MentorBooking.Repository.Models.Student", "StudentId")
+                        .HasForeignKey("MentorBooking.Repository.Entities.Student", "StudentId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.StudentGroup", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.StudentGroup", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.ProjectGroup", "Group")
+                    b.HasOne("MentorBooking.Repository.Entities.ProjectGroup", "Group")
                         .WithMany("StudentGroups")
                         .HasForeignKey("GroupId")
                         .IsRequired()
-                        .HasConstraintName("FK__StudentGr__Group__73852659");
+                        .HasConstraintName("FK__StudentGr__Group__1D114BD1");
 
-                    b.HasOne("MentorBooking.Repository.Models.Student", "Student")
+                    b.HasOne("MentorBooking.Repository.Entities.Student", "Student")
                         .WithOne("StudentGroup")
-                        .HasForeignKey("MentorBooking.Repository.Models.StudentGroup", "StudentId")
+                        .HasForeignKey("MentorBooking.Repository.Entities.StudentGroup", "StudentId")
                         .IsRequired()
-                        .HasConstraintName("FK__StudentGr__Stude__72910220");
+                        .HasConstraintName("FK__StudentGr__Stude__1C1D2798");
 
                     b.Navigation("Group");
 
                     b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.StudentsPaymentSession", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.StudentsPaymentSession", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.MentorSupportSession", "Session")
+                    b.HasOne("MentorBooking.Repository.Entities.MentorSupportSession", "Session")
                         .WithOne("StudentsPaymentSession")
-                        .HasForeignKey("MentorBooking.Repository.Models.StudentsPaymentSession", "SessionId")
+                        .HasForeignKey("MentorBooking.Repository.Entities.StudentsPaymentSession", "SessionId")
                         .IsRequired()
-                        .HasConstraintName("FK__StudentsP__Sessi__7B264821");
+                        .HasConstraintName("FK__StudentsP__Sessi__23BE4960");
 
-                    b.HasOne("MentorBooking.Repository.Models.Student", "Student")
+                    b.HasOne("MentorBooking.Repository.Entities.Student", "Student")
                         .WithMany("StudentsPaymentSessions")
                         .HasForeignKey("StudentId")
                         .IsRequired()
-                        .HasConstraintName("FK__StudentsP__Stude__7C1A6C5A");
+                        .HasConstraintName("FK__StudentsP__Stude__24B26D99");
 
                     b.Navigation("Session");
 
                     b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.UserPoint", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.UserPoint", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.ApplicationUser", "User")
+                    b.HasOne("MentorBooking.Repository.Entities.Users", "User")
                         .WithOne("UserPoint")
-                        .HasForeignKey("MentorBooking.Repository.Models.UserPoint", "UserId")
+                        .HasForeignKey("MentorBooking.Repository.Entities.UserPoint", "UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.UserTokens", b =>
+                {
+                    b.HasOne("MentorBooking.Repository.Entities.Users", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MentorSkill", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.Mentor", null)
+                    b.HasOne("MentorBooking.Repository.Entities.Mentor", null)
                         .WithMany()
                         .HasForeignKey("MentorId")
                         .IsRequired()
-                        .HasConstraintName("FK__MentorSki__Mento__76619304");
+                        .HasConstraintName("FK__MentorSki__Mento__1EF99443");
 
-                    b.HasOne("MentorBooking.Repository.Models.Skill", null)
+                    b.HasOne("MentorBooking.Repository.Entities.Skill", null)
                         .WithMany()
                         .HasForeignKey("SkillId")
                         .IsRequired()
-                        .HasConstraintName("FK__MentorSki__Skill__7755B73D");
+                        .HasConstraintName("FK__MentorSki__Skill__1FEDB87C");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.ApplicationRole", null)
+                    b.HasOne("MentorBooking.Repository.Entities.Roles", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -797,7 +851,7 @@ namespace MentorBooking.Repository.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.ApplicationUser", null)
+                    b.HasOne("MentorBooking.Repository.Entities.Users", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -806,7 +860,7 @@ namespace MentorBooking.Repository.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.ApplicationUser", null)
+                    b.HasOne("MentorBooking.Repository.Entities.Users", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -815,41 +869,20 @@ namespace MentorBooking.Repository.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Models.ApplicationRole", null)
+                    b.HasOne("MentorBooking.Repository.Entities.Roles", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MentorBooking.Repository.Models.ApplicationUser", null)
+                    b.HasOne("MentorBooking.Repository.Entities.Users", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
-                {
-                    b.HasOne("MentorBooking.Repository.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("Mentor")
-                        .IsRequired();
-
-                    b.Navigation("Student")
-                        .IsRequired();
-
-                    b.Navigation("UserPoint")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("MentorBooking.Repository.Models.Mentor", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.Mentor", b =>
                 {
                     b.Navigation("GroupFeedbacks");
 
@@ -858,7 +891,7 @@ namespace MentorBooking.Repository.Data.Migrations
                     b.Navigation("MentorSupportSessions");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.MentorSupportSession", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.MentorSupportSession", b =>
                 {
                     b.Navigation("GroupFeedback");
 
@@ -869,16 +902,18 @@ namespace MentorBooking.Repository.Data.Migrations
                     b.Navigation("StudentsPaymentSession");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.ProjectGroup", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectGroup", b =>
                 {
                     b.Navigation("GroupFeedbacks");
 
                     b.Navigation("MentorSupportSessions");
 
+                    b.Navigation("ProjectProgresses");
+
                     b.Navigation("StudentGroups");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.Student", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.Student", b =>
                 {
                     b.Navigation("MentorFeedbacks");
 
@@ -887,9 +922,21 @@ namespace MentorBooking.Repository.Data.Migrations
                     b.Navigation("StudentsPaymentSessions");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Models.UserPoint", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.UserPoint", b =>
                 {
                     b.Navigation("PointTransactions");
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.Users", b =>
+                {
+                    b.Navigation("Mentor")
+                        .IsRequired();
+
+                    b.Navigation("Student")
+                        .IsRequired();
+
+                    b.Navigation("UserPoint")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

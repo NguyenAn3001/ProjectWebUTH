@@ -14,15 +14,16 @@ namespace MentorBooking.WebAPI.Controllers
         {
             _authenticateService = authenticateService;
         }
-        
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModelRequest registerModel)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(new RegisterModelResponse 
-                { 
-                    Status = "Error", Message = "Invalid data provided." 
+                return BadRequest(new RegisterModelResponse
+                {
+                    Status = "Error",
+                    Message = "Invalid data provided."
                 });
             }
             var registerResponse = await _authenticateService.RegisterUserAsync(registerModel);
@@ -72,7 +73,7 @@ namespace MentorBooking.WebAPI.Controllers
             {
                 "Unauthorized" => Unauthorized(loginResponse),
                 "ServerError" => StatusCode(StatusCodes.Status500InternalServerError, loginResponse),
-                _ => Ok(loginResponse)  
+                _ => Ok(loginResponse)
             };
         }
         [HttpPost("logout")]
