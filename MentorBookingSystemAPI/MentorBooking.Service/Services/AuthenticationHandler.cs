@@ -1,36 +1,27 @@
-﻿using Azure;
-using MentorBooking.Repository.Entities;
+﻿using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
 using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Interfaces;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MentorBooking.Service.Services
 {
     public class AuthenticationHandler : IAuthenticateService
     {
         private readonly IUserRepository _userRepository;
-        private readonly SignInManager<Users> _signInManager;
         private readonly IConfiguration _configuration;
         private readonly IRoleRepository _roleRepository;
         private readonly IUserTokenRepository _userTokenRepository;
 
-        public AuthenticationHandler(IUserRepository userRepository, SignInManager<Users> signInManager, IConfiguration configuration, IRoleRepository roleRepository, IUserTokenRepository userTokenRepository)
+        public AuthenticationHandler(IUserRepository userRepository, IConfiguration configuration, IRoleRepository roleRepository, IUserTokenRepository userTokenRepository)
         {
             _userRepository = userRepository;
-            _signInManager = signInManager;
             _configuration = configuration;
             _roleRepository = roleRepository;
             _userTokenRepository = userTokenRepository;
@@ -162,14 +153,83 @@ namespace MentorBooking.Service.Services
                 };
             }
         }
+        
+        public async Task<LogoutModelResponse> Logout(LogoutModelRequest logoutModel)
+        {
+            try
+            {
+                var user = await _userRepository.FindByIdAsync(logoutModel.UserId!);
+                if (user == null)
+                    return new LogoutModelResponse
+                    {
+                        Status = "NotFound",
+                        Message = "User not found."
+                    };
+
+                await _userTokenRepository.RemoveAuthenticationTokenToTableAsync(user, "Local", "Refresh Token");
+                return new LogoutModelResponse
+                {
+                    Status = "Success",
+                    Message = "Logged out successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new LogoutModelResponse()
+                {
+                    Status = "ServerError",
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public async Task<RefreshTokenModelResponse> RefreshToken(RefreshTokenModelRequest refreshTokenModel)
+        {
+            try
+            {
+                var userIdInUserTokens = await _userTokenRepository.GetUserIdByRefreshToken(refreshTokenModel.RefreshToken!);
+                if (userIdInUserTokens == null)
+                    return new RefreshTokenModelResponse
+                    {
+                        Status = "Unauthorized",
+                        Message = "Invalid refresh token."
+                    };
+                var user = await _userRepository.FindByIdAsync(userIdInUserTokens.ToString()!);
+                if (user == null)
+                    return new RefreshTokenModelResponse
+                    {
+                        Status = "Unauthorized",
+                        Message = "Invalid user."
+                    };
+                var accessToken = await GenerateAccessToken(user);
+                var refreshToken = GenerateRefreshToken();
+                await _userTokenRepository.SetAuthenticationTokenToTableAsync(user, "Local", "Refresh Token", refreshToken);
+                return new RefreshTokenModelResponse
+                {
+                    Status = "Success",
+                    Message = "Refresh token successfully.",
+                    AccessToken = accessToken,
+                    RefreshToken = refreshToken
+                };
+            }
+            catch (Exception ex)
+            {
+                return new RefreshTokenModelResponse()
+                {
+                    Status = "ServerError",
+                    Message = ex.Message
+                };
+            }
+        }
+
         private async Task<string> GenerateAccessToken(Users user)
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]!));
             var userRoles = await _roleRepository.GetRolesByUserAsync(user);
             var authClaims = new List<Claim>
             {
-               new Claim(ClaimTypes.Name, user.UserName!),
-               new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.Name, user.UserName!),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
 
             foreach (var userRole in userRoles)
@@ -199,33 +259,10 @@ namespace MentorBooking.Service.Services
             return Convert.ToBase64String(randomNumber);
         }
 
-        public async Task<LogoutModelResponse> Logout(LogoutModelRequest logoutModel)
+        private async Task<Guid?> RetrieveUsernameByRefreshToken(string refreshToken)
         {
-            try
-            {
-                var user = await _userRepository.FindByIdAsync(logoutModel.UserId!);
-                if (user == null)
-                    return new LogoutModelResponse
-                    {
-                        Status = "NotFound",
-                        Message = "User not found."
-                    };
-
-                await _userTokenRepository.RemoveAuthenticationTokenToTableAsync(user, "Local", "Refresh Token");
-                return new LogoutModelResponse
-                {
-                    Status = "Success",
-                    Message = "Logged out successfully."
-                };
-            }
-            catch (Exception ex)
-            {
-                return new LogoutModelResponse()
-                {
-                    Status = "ServerError",
-                    Message = ex.Message
-                };
-            }
+            var user = await _userTokenRepository.GetUserIdByRefreshToken(refreshToken);
+            return user;
         }
     }
 }

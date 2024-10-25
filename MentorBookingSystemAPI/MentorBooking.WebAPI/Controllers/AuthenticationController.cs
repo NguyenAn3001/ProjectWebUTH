@@ -1,14 +1,7 @@
-﻿using Azure;
-using MentorBooking.Repository.Entities;
-using MentorBooking.Service.DTOs.Request;
+﻿using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Interfaces;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 namespace MentorBooking.WebAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -97,6 +90,24 @@ namespace MentorBooking.WebAPI.Controllers
                 "NotFound" => NotFound(logoutResponse),
                 "ServerError" => StatusCode(StatusCodes.Status500InternalServerError, logoutResponse),
                 _ => Ok(logoutResponse)
+            };
+        }
+
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenModelRequest refreshTokenModelRequest)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(new LoginModelResponse
+                {
+                    Status = "Error",
+                    Message = "Invalid data provided."
+                });
+            var refreshTokenResponse = await _authenticateService.RefreshToken(refreshTokenModelRequest);
+            return refreshTokenResponse.Status switch
+            {
+                "NotFound" => NotFound(refreshTokenResponse),
+                "ServerError" => StatusCode(StatusCodes.Status500InternalServerError, refreshTokenResponse),
+                _ => Ok(refreshTokenResponse)
             };
         }
     }
