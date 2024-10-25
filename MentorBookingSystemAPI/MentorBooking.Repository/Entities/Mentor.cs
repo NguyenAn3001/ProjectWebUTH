@@ -22,5 +22,6 @@ public partial class Mentor
     public virtual ICollection<MentorSupportSession> MentorSupportSessions { get; set; } = new List<MentorSupportSession>();
 
     public virtual ICollection<Skill> Skills { get; set; } = new List<Skill>();
-    public virtual Users User { get; set; }   
+    public virtual Users User { get; set; }
+
 }

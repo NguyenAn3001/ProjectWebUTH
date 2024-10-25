@@ -7,16 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MentorBooking.Repository\MentorBooking.Repository.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="AutoMapper\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MentorBooking.Repository\MentorBooking.Repository.csproj" />
   </ItemGroup>
 
 </Project>

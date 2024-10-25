@@ -19,5 +19,7 @@ public partial class ProjectGroup
 
     public virtual ICollection<MentorSupportSession> MentorSupportSessions { get; set; } = new List<MentorSupportSession>();
 
+    public virtual ICollection<ProjectProgress> ProjectProgresses { get; set; } = new List<ProjectProgress>();
+
     public virtual ICollection<StudentGroup> StudentGroups { get; set; } = new List<StudentGroup>();
 }
