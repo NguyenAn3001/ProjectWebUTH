@@ -11,9 +11,12 @@ namespace MentorBooking.Service.DTOs.Request
     {
         public string? SearchText { get; set; }
 
-        public Users ToUsers()
+        public Mentor ToMentor()
         {
-            return new Users() { FirstName = SearchText, LastName = SearchText };
+            Mentor mentor = new Mentor();
+            mentor.User.FirstName = SearchText;
+            mentor.User.LastName = SearchText;
+            return mentor;
         }
     }
 }

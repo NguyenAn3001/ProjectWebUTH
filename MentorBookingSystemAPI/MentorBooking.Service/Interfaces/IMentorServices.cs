@@ -1,4 +1,5 @@
 ﻿using MentorBooking.Service.DTOs.Response;
+using MentorBooking.Service.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace MentorBooking.Service.Interfaces
     {
         public List<MentorSearchingResponse> GetMentorBySearchText(string? searchText);
         public List<MentorSearchingResponse> GetAllMentors();
+        public List<MentorSearchingResponse> GetSortMentor(List<MentorSearchingResponse> allMentors,SortOptions sortType);
     }
 }

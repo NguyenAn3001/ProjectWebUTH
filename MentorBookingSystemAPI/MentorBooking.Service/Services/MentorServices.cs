@@ -1,6 +1,7 @@
 ﻿using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
 using MentorBooking.Service.DTOs.Response;
+using MentorBooking.Service.Enum;
 using MentorBooking.Service.Interfaces;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using System;
@@ -15,19 +16,26 @@ namespace MentorBooking.Service.Services
     public class MentorServices : IMentorServices
     {
         private readonly ApplicationDbContext _db;
-        public MentorServices(ApplicationDbContext usersDbcontext)
+        public MentorServices(ApplicationDbContext mentorDbcontext)
         {
-            _db = usersDbcontext;
+            _db = mentorDbcontext;
         }
-        private MentorSearchingResponse ConvertMentorToMentorResponse(Mentor mentor)
+        private MentorSearchingResponse ConvertMentorToMentorSearchingResponse(Mentor mentor)
         {
             MentorSearchingResponse searchMentorRespone = mentor.ToMentorSearchingResponse();
+            foreach (var skill in mentor.Skills)
+            {
+                foreach (var skillname in skill.Name)
+                {
+                    searchMentorRespone.SkillName?.Add(skillname.ToString());
+                }
+            }
             return searchMentorRespone;
         }
         public List<MentorSearchingResponse> GetAllMentors()
         {
             return _db.Mentors.ToList()
-                 .Select(temp => ConvertMentorToMentorResponse(temp)).ToList();
+                 .Select(temp => ConvertMentorToMentorSearchingResponse(temp)).ToList();
         }
 
         public List<MentorSearchingResponse> GetMentorBySearchText(string? searchText)
@@ -44,6 +52,18 @@ namespace MentorBooking.Service.Services
                     temp.LastName.Contains(searchText, StringComparison.OrdinalIgnoreCase) : true)).ToList();
 
             return matchingMentors;
+        }
+
+        public List<MentorSearchingResponse> GetSortMentor(List<MentorSearchingResponse> allMentors, SortOptions sortType)
+        {
+            allMentors = GetAllMentors();
+            List<MentorSearchingResponse> sortMentor = (sortType) switch
+            {
+                (SortOptions.ASC) => allMentors.OrderBy(temp => temp.FirstName, StringComparer.OrdinalIgnoreCase).ToList(),
+                (SortOptions.DESC) => allMentors.OrderByDescending(temp => temp.FirstName, StringComparer.OrdinalIgnoreCase).ToList(),
+                _ => allMentors
+            };
+            return sortMentor;
         }
     }
 }

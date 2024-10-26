@@ -15,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthenticateService, AuthenticationHandler>();
+builder.Services.AddScoped<IMentorServices,MentorServices>();
 // Add Identity
 builder.Services.AddIdentity<Users, Roles>(options =>
 {
