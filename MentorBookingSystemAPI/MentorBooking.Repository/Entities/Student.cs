@@ -16,5 +16,6 @@ public partial class Student
     public virtual StudentGroup? StudentGroup { get; set; }
 
     public virtual ICollection<StudentsPaymentSession> StudentsPaymentSessions { get; set; } = new List<StudentsPaymentSession>();
-    public virtual Users User { get; set; }   
+    public virtual Users User { get; set; }
+
 }

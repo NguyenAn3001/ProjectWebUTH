@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hI0U7vK1PGoHG2JL2qWatXzRfkgLyxJ4KJkAfwxOwdL2daac7awUQj3/SW/a1TOo/lBtmXuNoQRqsfTesILJOw==",
+  "dgSpecHash": "cy/TsP5X+YzApxa4LzalCTA92AP2KDB80eB16eMrVkyp1aHfdee2zfNZTDlQaSbULyscCbQfm/gVhfSFwnlEeQ==",
   "success": true,
   "projectFilePath": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\MentorBooking.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -111,5 +111,12 @@
     "C:\\Users\\ASUS\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
