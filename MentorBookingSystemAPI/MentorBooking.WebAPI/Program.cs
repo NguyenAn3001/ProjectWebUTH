@@ -21,13 +21,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthenticateService, AuthenticationHandler>();
-<<<<<<< HEAD
 builder.Services.AddScoped<IMentorServices,MentorServices>();
-=======
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserTokenRepository, UserTokenRepository>();
->>>>>>> master
 // Add Identity
 builder.Services.AddIdentity<Users, Roles>(options =>
 {
