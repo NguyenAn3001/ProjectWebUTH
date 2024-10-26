@@ -151,3 +151,4 @@ D:\sourcewbe\ProjectWebUTH\MentorBookingSystemAPI\MentorBooking.WebAPI\obj\Debug
 D:\sourcewbe\ProjectWebUTH\MentorBookingSystemAPI\MentorBooking.WebAPI\obj\Debug\net8.0\MentorBooking.WebAPI.pdb
 D:\sourcewbe\ProjectWebUTH\MentorBookingSystemAPI\MentorBooking.WebAPI\obj\Debug\net8.0\MentorBooking.WebAPI.genruntimeconfig.cache
 D:\sourcewbe\ProjectWebUTH\MentorBookingSystemAPI\MentorBooking.WebAPI\obj\Debug\net8.0\ref\MentorBooking.WebAPI.dll
+D:\sourcewbe\ProjectWebUTH\MentorBookingSystemAPI\MentorBooking.WebAPI\bin\Debug\net8.0\MentorBooking.WebAPI.staticwebassets.runtime.json

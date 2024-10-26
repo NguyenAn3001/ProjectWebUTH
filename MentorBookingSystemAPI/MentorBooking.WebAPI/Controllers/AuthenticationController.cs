@@ -1,9 +1,11 @@
 ﻿using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace MentorBooking.WebAPI.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
@@ -14,7 +16,7 @@ namespace MentorBooking.WebAPI.Controllers
         {
             _authenticateService = authenticateService;
         }
-
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModelRequest registerModel)
         {
@@ -39,6 +41,7 @@ namespace MentorBooking.WebAPI.Controllers
             //    return StatusCode(StatusCodes.Status500InternalServerError, registerResponse);
             //return Ok(registerResponse);
         }
+        [Authorize]
         [HttpPost("setting-role")]
         public async Task<IActionResult> SettingRoleForUser([FromBody] SettingRoleModelRequest settingRoleModel)
         {
@@ -57,6 +60,7 @@ namespace MentorBooking.WebAPI.Controllers
                 _ => Ok(settingRoleResponse)
             };
         }
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModelRequest loginModel)
         {
@@ -76,6 +80,7 @@ namespace MentorBooking.WebAPI.Controllers
                 _ => Ok(loginResponse)
             };
         }
+        [Authorize(Roles = "Student, Mentor, Admin")]
         [HttpPost("logout")]
         public async Task<IActionResult> Logout([FromBody] LogoutModelRequest logoutRequest)
         {
@@ -93,7 +98,7 @@ namespace MentorBooking.WebAPI.Controllers
                 _ => Ok(logoutResponse)
             };
         }
-
+        [Authorize(Roles = "Student, Mentor, Admin")]
         [HttpPost("refresh-token")]
         public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenModelRequest refreshTokenModelRequest)
         {

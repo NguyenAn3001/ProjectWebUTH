@@ -38,10 +38,23 @@ namespace MentorBooking.Service.Services
                 Users users = new Users()
                 {
                     Email = registerModel.Email,
-                    PhoneNumber = registerModel.PhoneNumber,
                     SecurityStamp = Guid.NewGuid().ToString(),
                     UserName = registerModel.UserName
                 };
+                if (registerModel.RoleName!.ToLower() == "admin")
+                    return new RegisterModelResponse
+                    {
+                        Status = "Forbidden",
+                        Message = "Creating 'Admin' role is not allowed"
+                    };
+                if (registerModel.RoleName!.ToLower() != "student" && registerModel.RoleName!.ToLower() != "mentor")
+                {
+                    return new RegisterModelResponse
+                    {
+                        Status = "Error",
+                        Message = "Creating role is not allowed"
+                    };
+                }
                 var result = await _userRepository.CreateUserAsync(users, registerModel.Password!);
                 if (!result.Succeeded)
                 {
@@ -52,6 +65,17 @@ namespace MentorBooking.Service.Services
                         Message = $"User creation failed: {errors}"
                     };
                 }
+                if (!await _roleRepository.RoleExistsAsync(registerModel.RoleName!))
+                {
+                    if (!await _roleRepository.CreateRoleAsync(registerModel.RoleName!))
+                        return new RegisterModelResponse
+                        {
+                            Status = "Error",
+                            Message = "Failed to create role"
+                        };
+                }
+                
+                var resultRole = await _roleRepository.AddUserToRoleAsync(users, registerModel.RoleName);
                 return new RegisterModelResponse
                 {
                     UserId = users.Id,
