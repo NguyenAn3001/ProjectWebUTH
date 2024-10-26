@@ -21,6 +21,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthenticateService, AuthenticationHandler>();
+builder.Services.AddScoped<IMentorServices,MentorServices>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserTokenRepository, UserTokenRepository>();
