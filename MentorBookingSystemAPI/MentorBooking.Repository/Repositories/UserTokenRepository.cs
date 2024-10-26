@@ -25,7 +25,7 @@ namespace MentorBooking.Repository.Repositories
 
         public async Task<Guid?> GetUserIdByRefreshToken(string refreshToken)
         {
-            var userToken = await _dbContext.UserTokens.SingleOrDefaultAsync(x => x.Value == refreshToken);
+            var userToken = await _dbContext.UserTokens.SingleOrDefaultAsync(x => x.Value == refreshToken && x.Expired > DateTime.Now);
             return userToken?.UserId;
         }
 
