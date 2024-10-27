@@ -12,6 +12,6 @@ namespace MentorBooking.Service.Interfaces
     {
         public List<MentorSearchingResponse> GetMentorBySearchText(string? searchText);
         public List<MentorSearchingResponse> GetAllMentors();
-        public List<MentorSearchingResponse> GetSortMentor(List<MentorSearchingResponse> allMentors,SortOptions sortType);
+        public List<MentorSearchingResponse> GetSortMentor(List<MentorSearchingResponse> allMentors, SortOptions sortType);
     }
 }

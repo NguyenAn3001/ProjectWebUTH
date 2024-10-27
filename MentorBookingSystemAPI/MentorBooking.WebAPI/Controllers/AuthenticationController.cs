@@ -41,7 +41,7 @@ namespace MentorBooking.WebAPI.Controllers
             //    return StatusCode(StatusCodes.Status500InternalServerError, registerResponse);
             //return Ok(registerResponse);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin, Student")]
         [HttpPost("setting-role")]
         public async Task<IActionResult> SettingRoleForUser([FromBody] SettingRoleModelRequest settingRoleModel)
         {
