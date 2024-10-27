@@ -1,11 +1,7 @@
 ﻿using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MentorBooking.Repository.Data;
 
 namespace MentorBooking.Repository.Repositories
 {
@@ -13,15 +9,31 @@ namespace MentorBooking.Repository.Repositories
     {
         private readonly RoleManager<Roles> _roleManager;
         private readonly UserManager<Users> _userManager;
+        private readonly ApplicationDbContext _dbContext;
 
-        public RoleRepository(RoleManager<Roles> roleManager, UserManager<Users> userManager)
+        public RoleRepository(RoleManager<Roles> roleManager, UserManager<Users> userManager, ApplicationDbContext dbContext)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _dbContext = dbContext;
         }
 
         public async Task<IdentityResult> AddUserToRoleAsync(Users user, string roleName)
         {
+            if (roleName.ToLower() == "mentor")
+            {
+                var studentRespone = _dbContext.Students.Where(x => x.StudentId == user.Id).ToList();
+                if (studentRespone.Count > 0)
+                {
+                    _dbContext.Students.RemoveRange(studentRespone);
+                }
+            }
+            var userWithRoles = _dbContext.UserRoles.Where(x => x.UserId == user.Id).ToList();
+            if (userWithRoles.Count() > 0)
+            {
+                _dbContext.RemoveRange(userWithRoles);
+                await _dbContext.SaveChangesAsync();
+            }
             return await _userManager.AddToRoleAsync(user, roleName);
         }
 

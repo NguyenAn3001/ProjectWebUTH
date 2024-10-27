@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MentorBooking.Repository.Entities;  
+namespace MentorBooking.Repository.Entities;
 
 public partial class StudentGroup
 {
