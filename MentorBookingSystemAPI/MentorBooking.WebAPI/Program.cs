@@ -1,11 +1,5 @@
 using MentorBooking.Repository.Data;
-using MentorBooking.Repository.Entities;
-using MentorBooking.Repository.Interfaces;
-using MentorBooking.Repository.Repositories;
-using MentorBooking.Service.Interfaces;
-using MentorBooking.Service.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
@@ -14,6 +8,12 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using MentorBooking.Repository.Entities;
+using MentorBooking.Service.Services;
+using MentorBooking.Service.Interfaces;
+using MentorBooking.Repository.Interfaces;
+using MentorBooking.Repository.Repositories;
+using MentorBooking.Service.DTOs.Request;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,10 +21,23 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthenticateService, AuthenticationHandler>();
+<<<<<<< HEAD
 builder.Services.AddScoped<ISearchAndSortService,SearchAndSortService>();
+=======
+//builder.Services.AddScoped<IMentorServices, MentorServices>();
+>>>>>>> 0264cd834ad4a7f99a5b283804590a90f8f2abe8
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserTokenRepository, UserTokenRepository>();
+builder.Services.AddScoped<IUpdateInformationService, UpdateInformationHandler>();
+builder.Services.AddScoped<IUserInformationFactory, UserInformationFactory>();
+builder.Services.AddScoped<IUserInformationUpdate, MentorInfoUpdateService>();
+builder.Services.AddScoped<IUserInformationUpdate, StudentInfoUpdateService>();
+builder.Services.AddScoped<IMentorRepository, MentorRepository>();
+builder.Services.AddScoped<IMentorSkillRepository, MentorSkillRepository>();
+builder.Services.AddScoped<ISkillRepository, SkillRepository>();
+builder.Services.AddScoped<IUserPointRepository, UserPointRepository>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 // Add Identity
 builder.Services.AddIdentity<Users, Roles>(options =>
 {
@@ -56,34 +69,34 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(setup =>
+builder.Services.AddSwaggerGen(c =>
 {
-    
-    // Include 'SecurityScheme' to use JWT Authentication
-    var jwtSecurityScheme = new OpenApiSecurityScheme
+    c.SwaggerDoc("v1", new OpenApiInfo
     {
-        BearerFormat = "JWT",
-        Name = "JWT Authentication",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.Http,
-        Scheme = JwtBearerDefaults.AuthenticationScheme,
-        Description = "Put **_ONLY_** your JWT Bearer token on textbox below!",
-
-        Reference = new OpenApiReference
-        {
-            Id = JwtBearerDefaults.AuthenticationScheme,
-            Type = ReferenceType.SecurityScheme
-        }
-    };
-
-    setup.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
-
-    setup.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        { jwtSecurityScheme, Array.Empty<string>() }
+        Title = "Auth Demo Api enabled with JWT Bearer",
+        Version = "v1"
     });
-    setup.SwaggerDoc("v1", new OpenApiInfo { Title = "wellship_svc_app", Version = "v1" });
-    AddSwaggerOAuth2Configuration(setup);
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\"",
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+        {
+            new OpenApiSecurityScheme {
+                Reference = new OpenApiReference {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+    AddSwaggerOAuth2Configuration(c);
 
 });
 
