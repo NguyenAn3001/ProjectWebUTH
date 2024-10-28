@@ -49,7 +49,6 @@ public class UpdateInformationHandler : IUpdateInformationService
                     LastName = request.LastName,
                     MentorDescription = request.MentorDescription,
                     ExperienceYears = request.ExperienceYears,
-                    ImageUrl = request.ImageUrl,
                     CreatedAt = request.CreatedAt,
                     Skills = request.Skills,
                     Phone = request.Phone
@@ -97,7 +96,6 @@ public class UpdateInformationHandler : IUpdateInformationService
                     StudentId = user!.Id,
                     FirstName = request.FirstName,
                     LastName = request.LastName,
-                    ImageUrl = request.ImageUrl,
                     CreatedAt = request.CreatedAt,
                     Phone = request.Phone
                 }
