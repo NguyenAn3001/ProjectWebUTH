@@ -1,5 +1,7 @@
-﻿using MentorBooking.Repository.Data;
+﻿using AutoMapper;
+using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
+using MentorBooking.Service.AutoMapper;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Enum;
 using MentorBooking.Service.Interfaces;
@@ -13,24 +15,21 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace MentorBooking.Service.Services
 {
-    public class MentorServices : IMentorServices
+    public class SearchAndSortService : ISearchAndSortService
     {
         private readonly ApplicationDbContext _db;
-        public MentorServices(ApplicationDbContext mentorDbcontext)
+        public SearchAndSortService(ApplicationDbContext mentorDbcontext)
         {
             _db = mentorDbcontext;
         }
         private MentorSearchingResponse ConvertMentorToMentorSearchingResponse(Mentor mentor)
         {
-            MentorSearchingResponse searchMentorRespone = mentor.ToMentorSearchingResponse();
-            foreach (var skill in mentor.Skills)
+            var config = new MapperConfiguration(cfg =>
             {
-                foreach (var skillname in skill.Name)
-                {
-                    searchMentorRespone.SkillName?.Add(skillname.ToString());
-                }
-            }
-            return searchMentorRespone;
+                cfg.AddProfile(new AutoMapperProfiles());
+            });
+            var mapper = config.CreateMapper();
+            return mapper.Map<MentorSearchingResponse>(mentor);
         }
         public List<MentorSearchingResponse> GetAllMentors()
         {
@@ -47,9 +46,10 @@ namespace MentorBooking.Service.Services
             matchingMentors = allMentors
                 .Where(temp => (
                     !string.IsNullOrEmpty(temp.FirstName) ?
-                    temp.FirstName.Contains(searchText, StringComparison.OrdinalIgnoreCase) : true)|| 
+                    temp.FirstName.Contains(searchText, StringComparison.OrdinalIgnoreCase) : 
                     (!string.IsNullOrEmpty(temp.LastName) ?
-                    temp.LastName.Contains(searchText, StringComparison.OrdinalIgnoreCase) : true)).ToList();
+                    temp.LastName.Contains(searchText, StringComparison.OrdinalIgnoreCase) : true))
+                    ).ToList();
 
             return matchingMentors;
         }

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cy/TsP5X+YzApxa4LzalCTA92AP2KDB80eB16eMrVkyp1aHfdee2zfNZTDlQaSbULyscCbQfm/gVhfSFwnlEeQ==",
+  "dgSpecHash": "XwpWjj356xjnfWcPaBcES+vaN4Ykdxqn+00zJ5zn1S6kSlGgfT/WvzAt6QzoXjlgWQuTYfwziFYNtOprVy4Y1Q==",
   "success": true,
   "projectFilePath": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\MentorBooking.WebAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -111,12 +112,5 @@
     "C:\\Users\\ASUS\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

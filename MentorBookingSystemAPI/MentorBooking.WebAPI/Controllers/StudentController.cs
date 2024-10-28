@@ -8,11 +8,11 @@ namespace MentorBooking.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MentorController : ControllerBase
+    public class StudentController : ControllerBase
     {
-        private readonly IMentorServices _mentorServices;
+        private readonly ISearchAndSortService _mentorServices;
 
-        public MentorController(IMentorServices mentorServices)
+        public StudentController(ISearchAndSortService mentorServices)
         {
             _mentorServices = mentorServices;
         }

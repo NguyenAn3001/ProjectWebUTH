@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MentorBooking.Service.Interfaces
 {
-    public interface IMentorServices
+    public interface ISearchAndSortService
     {
         public List<MentorSearchingResponse> GetMentorBySearchText(string? searchText);
         public List<MentorSearchingResponse> GetAllMentors();
