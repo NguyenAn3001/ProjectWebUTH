@@ -74,7 +74,7 @@ namespace MentorBooking.Service.Services
                             Message = "Failed to create role"
                         };
                 }
-                
+
                 var resultRole = await _roleRepository.AddUserToRoleAsync(users, registerModel.RoleName);
                 return new RegisterModelResponse
                 {

@@ -9,5 +9,5 @@ public partial class Skill
 
     public string Name { get; set; } = null!;
 
-    public virtual ICollection<Mentor> Mentors { get; set; } = new List<Mentor>();
+    public virtual ICollection<MentorSkill> MentorSkills { get; set; } = new List<MentorSkill>();
 }

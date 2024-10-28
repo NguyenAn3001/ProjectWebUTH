@@ -11,10 +11,10 @@ namespace MentorBooking.Service.DTOs.Response
     public class MentorProfile
     {
         public Guid? MentorId { get; set; }
-        public string? FirstName {  get; set; }
+        public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public byte? ExperienceYears { get; set; }
-        public string? MentorDescription {  get; set; }
+        public string? MentorDescription { get; set; }
         public DateTime CreatAt { get; set; }
         public List<string>? Skills { get; set; }
         public List<string>? comment { get; set; }
@@ -23,7 +23,7 @@ namespace MentorBooking.Service.DTOs.Response
 
     }
     public static class MentorProfileExtension
-    { 
+    {
         public static MentorProfile mentorProfile(this Mentor mentor)
         {
             return new MentorProfile
