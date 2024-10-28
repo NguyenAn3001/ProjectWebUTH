@@ -34,6 +34,8 @@ builder.Services.AddScoped<IMentorSkillRepository, MentorSkillRepository>();
 builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 builder.Services.AddScoped<IUserPointRepository, UserPointRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IImageUploadService, ImageUploadService>();
+builder.Services.AddTransient<IImageRepository, ImageRepository>();
 // Add Identity
 builder.Services.AddIdentity<Users, Roles>(options =>
 {
@@ -112,6 +114,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 // Add Authentication 
 app.UseAuthentication();
 

@@ -33,7 +33,6 @@ public class MentorInfoUpdateService : IUserInformationUpdate
 
         user.FirstName = mentorInfor?.FirstName;
         user.LastName = mentorInfor?.LastName;
-        user.Image = mentorInfor?.ImageUrl;
         user.PhoneNumber = mentorInfor?.Phone;
 
         var mentor = new Mentor()

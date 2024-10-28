@@ -10,7 +10,6 @@ public class StudentInformationModelRequest
     [Required(ErrorMessage = "Student's last name is required")]
     [Length(1, 100, ErrorMessage = "Student's last name must be between 1 and 100 characters")]
     public string? LastName { get; set; }
-    public string? ImageUrl { get; set; }
     [Required(ErrorMessage = "Student's phone number is required")]
     [Phone(ErrorMessage = "Student's phone number is invalid")]
     [StringLength(10, ErrorMessage = "Student's phone number must be 10 characters")]

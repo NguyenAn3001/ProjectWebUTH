@@ -24,7 +24,6 @@ public class StudentInfoUpdateService : IUserInformationUpdate
         StudentInformationModelRequest? studentRequest = request as StudentInformationModelRequest;
         user.FirstName = studentRequest?.FirstName;
         user.LastName = studentRequest?.LastName;
-        user.Image = studentRequest?.ImageUrl;
         user.PhoneNumber = studentRequest?.Phone;
         Student student = new Student()
         {

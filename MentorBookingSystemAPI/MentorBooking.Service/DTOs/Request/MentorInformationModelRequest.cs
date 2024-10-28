@@ -10,7 +10,6 @@ public class MentorInformationModelRequest
     [Required(ErrorMessage = "Mentor's last name is required")]
     [Length(1, 100, ErrorMessage = "Mentor's last name must be between 1 and 100 characters")]
     public string? LastName { get; set; }
-    public string? ImageUrl { get; set; }
     [Required(ErrorMessage = "Mentor's phone number is required")]
     [Phone(ErrorMessage = "Mentor's phone number is invalid")]
     [StringLength(10, ErrorMessage = "Mentor's phone number must be 10 characters")]
