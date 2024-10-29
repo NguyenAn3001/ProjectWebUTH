@@ -18,10 +18,10 @@ namespace MentorBooking.WebAPI.Controllers
         }
 
         [HttpPost("Search")]
-        public IActionResult SearchMentor(string? searchText, SortOptions sortOptions)
+        public IActionResult SearchMentor(string? searchText,string sortBy)
         {
             List<MentorSearchingResponse> results = _mentorServices.GetMentorBySearchText(searchText);
-            List<MentorSearchingResponse> sortResults = _mentorServices.GetSortMentor(results, sortOptions);
+            List<MentorSearchingResponse> sortResults = _mentorServices.GetSortMentor(results, sortBy);
             return Ok(results);
         }
     }

@@ -1,5 +1,7 @@
-﻿using MentorBooking.Repository.Data;
+﻿using AutoMapper;
+using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
+using MentorBooking.Service.AutoMapper;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Enum;
 using MentorBooking.Service.Interfaces;
@@ -13,24 +15,26 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace MentorBooking.Service.Services
 {
-    public class MentorServices : IMentorServices
+    public class SearchAndSortService : ISearchAndSortService
     {
         private readonly ApplicationDbContext _db;
-        public MentorServices(ApplicationDbContext mentorDbcontext)
+        public SearchAndSortService(ApplicationDbContext mentorDbcontext)
         {
             _db = mentorDbcontext;
         }
         private MentorSearchingResponse ConvertMentorToMentorSearchingResponse(Mentor mentor)
         {
-            MentorSearchingResponse searchMentorRespone = mentor.ToMentorSearchingResponse();
-            foreach (var skill in mentor.Skills)
+            MentorSearchingResponse? results = new MentorSearchingResponse();
             {
-                foreach (var skillname in skill.Name)
-                {
-                    searchMentorRespone.SkillName?.Add(skillname.ToString());
-                }
+                results.FirstName = mentor.User.FirstName;
+                results.LastName = mentor.User.LastName;
+                results.Image= mentor.User.Image;
             }
-            return searchMentorRespone;
+            foreach(var mentorSkill in mentor.MentorSkills)
+            {
+                results.SkillName?.Add(mentorSkill.Skill.Name);
+            }
+            return results;
         }
         public List<MentorSearchingResponse> GetAllMentors()
         {
@@ -47,22 +51,152 @@ namespace MentorBooking.Service.Services
             matchingMentors = allMentors
                 .Where(temp => (
                     !string.IsNullOrEmpty(temp.FirstName) ?
-                    temp.FirstName.Contains(searchText, StringComparison.OrdinalIgnoreCase) : true)|| 
-                    (!string.IsNullOrEmpty(temp.LastName) ?
-                    temp.LastName.Contains(searchText, StringComparison.OrdinalIgnoreCase) : true)).ToList();
-
+                    temp.FirstName.Contains(searchText, StringComparison.OrdinalIgnoreCase) : (!string.IsNullOrEmpty(temp.LastName) ? 
+                    (temp.LastName.Contains(searchText, StringComparison.OrdinalIgnoreCase)) : true)
+                    )).ToList();
             return matchingMentors;
         }
 
-        public List<MentorSearchingResponse> GetSortMentor(List<MentorSearchingResponse> allMentors, SortOptions sortType)
+        public List<MentorSearchingResponse> GetSortMentor(List<MentorSearchingResponse> allMentors,string? sortBy)
         {
             allMentors = GetAllMentors();
-            List<MentorSearchingResponse> sortMentor = (sortType) switch
+            List<MentorSearchingResponse> sortMentor = new List<MentorSearchingResponse>();
+            switch(sortBy)
             {
-                (SortOptions.ASC) => allMentors.OrderBy(temp => temp.FirstName, StringComparer.OrdinalIgnoreCase).ToList(),
-                (SortOptions.DESC) => allMentors.OrderByDescending(temp => temp.FirstName, StringComparer.OrdinalIgnoreCase).ToList(),
-                _ => allMentors
-            };
+                case SkillOptions.php:
+                    foreach(var aMentor in allMentors)
+                    {
+                        foreach(var skill in aMentor.SkillName)
+                        {
+                            foreach(var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }    
+                        }    
+                    }
+                    break;
+                case SkillOptions.python:
+                    foreach (var aMentor in allMentors)
+                    {
+                        foreach (var skill in aMentor.SkillName)
+                        {
+                            foreach (var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }
+                        }
+                    }
+                    break;
+                case SkillOptions.js:
+                    foreach (var aMentor in allMentors)
+                    {
+                        foreach (var skill in aMentor.SkillName)
+                        {
+                            foreach (var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }
+                        }
+                    }
+                    break;
+                case SkillOptions.java:
+                    foreach (var aMentor in allMentors)
+                    {
+                        foreach (var skill in aMentor.SkillName)
+                        {
+                            foreach (var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }
+                        }
+                    }
+                    break;
+                case SkillOptions.fullStack:
+                    foreach (var aMentor in allMentors)
+                    {
+                        foreach (var skill in aMentor.SkillName)
+                        {
+                            foreach (var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }
+                        }
+                    }
+                    break;
+                case SkillOptions.frontend:
+                    foreach (var aMentor in allMentors)
+                    {
+                        foreach (var skill in aMentor.SkillName)
+                        {
+                            foreach (var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }
+                        }
+                    }
+                    break;
+                case SkillOptions.cShape:
+                    foreach (var aMentor in allMentors)
+                    {
+                        foreach (var skill in aMentor.SkillName)
+                        {
+                            foreach (var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }
+                        }
+                    }
+                    break;
+                case SkillOptions.c:
+                    foreach (var aMentor in allMentors)
+                    {
+                        foreach (var skill in aMentor.SkillName)
+                        {
+                            foreach (var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }
+                        }
+                    }
+                    break;
+                case SkillOptions.cPP:
+                    foreach (var aMentor in allMentors)
+                    {
+                        foreach (var skill in aMentor.SkillName)
+                        {
+                            foreach (var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }
+                        }
+                    }
+                    break;
+                case SkillOptions.backend:
+                    foreach (var aMentor in allMentors)
+                    {
+                        foreach (var skill in aMentor.SkillName)
+                        {
+                            foreach (var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }
+                        }
+                    }
+                    break;
+                case SkillOptions.frontEndLanguage:
+                    foreach (var aMentor in allMentors)
+                    {
+                        foreach (var skill in aMentor.SkillName)
+                        {
+                            foreach (var skilname in skill)
+                            {
+                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
+                            }
+                        }
+                    }
+                    break;
+                default: sortMentor = allMentors; break;
+            }    
             return sortMentor;
         }
     }
