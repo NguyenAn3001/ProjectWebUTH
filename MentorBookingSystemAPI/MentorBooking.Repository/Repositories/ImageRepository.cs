@@ -48,7 +48,7 @@ public class ImageRepository : IImageRepository
         try
         {
             var users = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
-            if (users == null) return null;
+            if (users == null || string.IsNullOrEmpty(users.Image)) return null; // fix bug: when image deleted but it get request scheme
             return users.Image;
         }
         catch (Exception e)

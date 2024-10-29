@@ -11,10 +11,12 @@ namespace MentorBooking.WebAPI.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticateService _authenticateService;
+        private readonly ISenderEmail _senderEmail;
 
-        public AuthenticationController(IAuthenticateService authenticateService)
+        public AuthenticationController(IAuthenticateService authenticateService, ISenderEmail senderEmail)
         {
             _authenticateService = authenticateService;
+            _senderEmail = senderEmail;
         }
         [AllowAnonymous]
         [HttpPost("register")]
@@ -40,6 +42,44 @@ namespace MentorBooking.WebAPI.Controllers
             //if (registerResponse.Status == "500")
             //    return StatusCode(StatusCodes.Status500InternalServerError, registerResponse);
             //return Ok(registerResponse);
+        }
+        [AllowAnonymous]
+        [HttpPost("send-confirm-email")]
+        public async Task<IActionResult> SendConfirmEmail([FromBody] ConfirmationEmailModelRequest confirmEmailModel)
+        {
+            var confirmToken = await _authenticateService.GetCofirmTokenAsync(confirmEmailModel);
+            var confirmLink = Url.Action(action: "ConfirmEmail", controller: "Authentication", values: new { UserId = confirmEmailModel.UserId, Token = confirmToken }, protocol: HttpContext.Request.Scheme);
+            await _senderEmail.SendEmailAsync(email: confirmEmailModel.EmailGetConfirmToken!, subject: "Confirm Your Account", message: await _authenticateService.GenerateBodyMessageForConfirmationEmailAsync(confirmEmailModel, confirmLink ?? ""), isBodyHtml: true);
+            return Ok(new ConfirmationEmailModelResponse()
+            {
+                Status = "Success",
+                Message = "Send confirmation email successfully."
+            });
+        }
+        [AllowAnonymous]
+        [HttpGet("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail(string UserId, string Token)
+        {
+            if (string.IsNullOrEmpty(UserId) || string.IsNullOrEmpty(Token))
+            {
+                return BadRequest(new ConfirmationEmailModelResponse()
+                {
+                    Status = "Error",
+                    Message = "The link is Invalid or Expired."
+                });
+            }
+
+            var linkEmailConfirmRequest = new LinkEmailConfirmModelRequest()
+            {
+                UserId = UserId,
+                Token = Token
+            };
+            await _authenticateService.IsEmailConfirmedAsync(linkEmailConfirmRequest);
+            return Ok(new ConfirmationEmailModelResponse()
+            {
+                Status = "Success",
+                Message = "Confirm email success."
+            });
         }
         [Authorize(Roles = "Admin, Student")]
         [HttpPost("setting-role")]

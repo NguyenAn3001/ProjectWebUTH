@@ -31,4 +31,8 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Controllers\EmailController.cs" />
+  </ItemGroup>
+
 </Project>
