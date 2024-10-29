@@ -9,13 +9,8 @@ public partial class MentorWorkSchedule
 
     public Guid SessionId { get; set; }
 
-    public DateOnly WorkDate { get; set; }
-
-    public TimeOnly StartTime { get; set; }
-
-    public TimeOnly EndTime { get; set; }
-
-    public byte UnavailableDate { get; set; }
-
+    public bool UnavailableDate { get; set; }
+    public Guid ScheduleAvailableId { get; set; }
+    public virtual SchedulesAvailable ScheduleAvailable { get; set; }
     public virtual MentorSupportSession Session { get; set; } = null!;
 }

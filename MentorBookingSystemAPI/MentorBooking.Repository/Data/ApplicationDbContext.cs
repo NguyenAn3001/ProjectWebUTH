@@ -162,7 +162,20 @@ public partial class ApplicationDbContext : IdentityDbContext<
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__MentorSup__Mento__1DD065E0");
         });
+        modelBuilder.Entity<SchedulesAvailable>(entity =>
+        {
+            entity.HasKey(e => e.ScheduleAvailableId);
+        
+            entity.Property(e => e.FreeDay)
+                .HasColumnType("date");
+        
+            entity.Property(e => e.StartTime)
+                .HasColumnType("time");
+        
+            entity.Property(e => e.EndTime)
+                .HasColumnType("time");
 
+        });
         modelBuilder.Entity<MentorWorkSchedule>(entity =>
         {
             entity.HasKey(e => e.ScheduleId).HasName("PK__MentorWo__9C8A5B490B6777AE");
@@ -303,7 +316,17 @@ public partial class ApplicationDbContext : IdentityDbContext<
             .WithOne(u => u.Student)
             .HasForeignKey<Student>(s => s.StudentId)
             .OnDelete(DeleteBehavior.Restrict);
-
+        modelBuilder.Entity<SchedulesAvailable>()
+            .HasOne(m => m.Mentor)
+            .WithMany(m => m.SchedulesAvailable)
+            .HasForeignKey(f => f.MentorId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .HasConstraintName("FK_SchedulesAvailable_Mentor");
+        modelBuilder.Entity<MentorWorkSchedule>()
+            .HasOne(m => m.ScheduleAvailable)
+            .WithOne(m => m.MentorWorkSchedule)
+            .HasForeignKey<MentorWorkSchedule>(f => f.ScheduleAvailableId)
+            .HasConstraintName("FK_SchedulesAvailable_MentorWorkSchedule");
         // Thiết lập quan hệ 1-1 giữa Users và UserPoint
         modelBuilder.Entity<UserPoint>()
             .HasOne(up => up.User)
