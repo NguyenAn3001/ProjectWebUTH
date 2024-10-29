@@ -3,6 +3,7 @@ using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Enum;
 using MentorBooking.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing.Printing;
 
 namespace MentorBooking.WebAPI.Controllers
 {
@@ -17,12 +18,24 @@ namespace MentorBooking.WebAPI.Controllers
             _mentorServices = mentorServices;
         }
 
-        [HttpPost("Search")]
-        public IActionResult SearchMentor(string? searchText,string sortBy)
+        [HttpGet("Search")]
+        public IActionResult SearchMentor([FromQuery] int page = 1, [FromQuery] int pageSize=10,[FromQuery]string? searchText="",[FromQuery]string? sortBy="")
         {
-            List<MentorSearchingResponse> results = _mentorServices.GetMentorBySearchText(searchText);
-            List<MentorSearchingResponse> sortResults = _mentorServices.GetSortMentor(results, sortBy);
-            return Ok(results);
+            var query = _mentorServices.GetMentorBySearchText(searchText);
+            var totalCount=query.Count();
+            var totalPages= (int)Math.Ceiling((double)totalCount / pageSize);
+            query = (List<MentorSearchingResponse>)query.Skip((page - 1) * pageSize).Take(pageSize);
+
+            var result = new
+            {
+                TotalCount = totalCount,
+                TotalPages = totalPages,
+                CurrentPage = page,
+                PageSize = pageSize,
+                Articles = query.ToList()
+            };
+            
+            return Ok(result);
         }
     }
 }

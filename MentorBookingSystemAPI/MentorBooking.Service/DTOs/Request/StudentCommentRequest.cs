@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,11 @@ namespace MentorBooking.Service.DTOs.Request
 {
     public class StudentCommentRequest
     {
-        public Guid StudentId { get; set; }
-        public Guid MentorId { get; set; }
+        [Required(ErrorMessage ="Rating can't be blank")]
         public byte Rating { get; set; }
+
+        [Required(ErrorMessage = "Rating can't be blank")]
         public string? Comment { get; set; }
         public DateTime CreateAt { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
     }
 }
