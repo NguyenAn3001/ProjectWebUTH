@@ -14,6 +14,8 @@ using MentorBooking.Service.Interfaces;
 using MentorBooking.Repository.Interfaces;
 using MentorBooking.Repository.Repositories;
 using MentorBooking.Service.DTOs.Request;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +40,10 @@ builder.Services.AddScoped<IMentorSkillRepository, MentorSkillRepository>();
 builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 builder.Services.AddScoped<IUserPointRepository, UserPointRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IImageUploadService, ImageUploadService>();
+builder.Services.AddTransient<IImageRepository, ImageRepository>();
+builder.Services.AddTransient<ISenderEmail, SenderEmail>();
+builder.Services.AddTransient<IConfirmEmailRepository, ConfirmEmailRepository>();
 // Add Identity
 builder.Services.AddIdentity<Users, Roles>(options =>
 {
@@ -46,7 +52,9 @@ builder.Services.AddIdentity<Users, Roles>(options =>
     options.Password.RequireNonAlphanumeric = true;
     options.Password.RequireUppercase = true;
     options.Password.RequireLowercase = true;
-}).AddEntityFrameworkStores<ApplicationDbContext>();
+}).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+builder.Services.AddSingleton<IUrlHelperFactory, UrlHelperFactory>();
+builder.Services.AddHttpContextAccessor();
 // DI Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -116,6 +124,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 // Add Authentication 
 app.UseAuthentication();
 
