@@ -8,7 +8,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
+using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Http;
 
 namespace MentorBooking.Service.Services
 {
@@ -18,13 +21,15 @@ namespace MentorBooking.Service.Services
         private readonly IConfiguration _configuration;
         private readonly IRoleRepository _roleRepository;
         private readonly IUserTokenRepository _userTokenRepository;
+        private readonly IConfirmEmailRepository _confirmEmailRepository;
 
-        public AuthenticationHandler(IUserRepository userRepository, IConfiguration configuration, IRoleRepository roleRepository, IUserTokenRepository userTokenRepository)
+        public AuthenticationHandler(IUserRepository userRepository, IConfiguration configuration, IRoleRepository roleRepository, IUserTokenRepository userTokenRepository, IConfirmEmailRepository confirmEmailRepository)
         {
             _userRepository = userRepository;
             _configuration = configuration;
             _roleRepository = roleRepository;
             _userTokenRepository = userTokenRepository;
+            _confirmEmailRepository = confirmEmailRepository;
         }
         public async Task<RegisterModelResponse> RegisterUserAsync(RegisterModelRequest registerModel)
         {
@@ -92,7 +97,7 @@ namespace MentorBooking.Service.Services
                 };
             }
         }
-
+        
         public async Task<SettingRoleModelResponse> SettingRoleAsync(SettingRoleModelRequest settingRoleModel)
         {
             try
@@ -246,6 +251,28 @@ namespace MentorBooking.Service.Services
             }
         }
 
+        public Task<string?> GetCofirmTokenAsync(ConfirmationEmailModelRequest confirmationEmailModel)
+        {
+            return _confirmEmailRepository.CreateEmailConfirmationTokenAsync(confirmationEmailModel.UserId.ToString());
+        }
+
+        public async Task<string> GenerateBodyMessageForConfirmationEmailAsync(
+            ConfirmationEmailModelRequest confirmationEmailModel, string confirmLink)
+        {
+            var user = await _userRepository.FindByIdAsync(confirmationEmailModel.UserId.ToString());
+            var fullName = $"{user?.LastName} {user?.FirstName}";
+            return BuildConfirmationEmailBody(fullName, confirmLink);
+        }
+
+        public async Task<bool> IsEmailConfirmedAsync(LinkEmailConfirmModelRequest linkEmailConfirm)
+        {
+            var user = await _userRepository.FindByIdAsync(linkEmailConfirm.UserId ?? "");
+            if (user == null)
+                return false;
+            await _confirmEmailRepository.ConfirmationEmailAsync(user);
+            return true;
+        }
+
         private async Task<string> GenerateAccessToken(Users user)
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]!));
@@ -288,5 +315,35 @@ namespace MentorBooking.Service.Services
             var user = await _userTokenRepository.GetUserIdByRefreshToken(refreshToken);
             return user;
         }
+        private string BuildConfirmationEmailBody(string userName, string confirmationLink)
+        {
+            var sb = new StringBuilder();
+            var encodedLink = HtmlEncoder.Default.Encode(confirmationLink!);
+            sb.Append("<div style='font-family: Arial, sans-serif; margin: 20px;'>");
+            sb.Append("<h2 style='color: #4CAF50;'>Welcome to Mentor Booking System, " + userName + "!</h2>");
+            sb.Append("<p>Thank you for registering. Please confirm your email address to activate your account.</p>");
+            sb.Append("<hr style='border-top: 1px solid #ddd;' />");
+
+            sb.Append("<table role='presentation' cellspacing='0' cellpadding='0' border='0' style='margin: 20px 0;'>");
+            sb.Append("<tr>");
+            sb.Append("<td align='center' style='border-radius: 5px;' bgcolor='#4CAF50'>");
+            sb.Append($"<a href='{encodedLink}' target='_blank' style='");
+            sb.Append("font-size: 16px; font-family: Arial, sans-serif; color: white; text-decoration: none;");
+            sb.Append("padding: 10px 20px; display: inline-block;'>");
+            sb.Append("Confirm your email</a>");
+            sb.Append("</td>");
+            sb.Append("</tr>");
+            sb.Append("</table>");
+            sb.Append("<p style='color: gray; font-size: 12px;'>");
+            sb.Append("If you did not create this account, you can ignore this email.</p>");
+
+            sb.Append("<p style='color: gray; font-size: 12px;'>");
+            sb.Append("© 2024 Mentor Booking System. All rights reserved.</p>");
+
+            sb.Append("</div>");
+
+            return sb.ToString();
+        }
+
     }
 }

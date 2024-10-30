@@ -10,11 +10,11 @@ namespace MentorBooking.WebAPI.Controllers;
 [Authorize(AuthenticationSchemes = "Bearer")]
 [ApiController]
 [Route("api/[controller]")]
-public class UpdateInformationUserController : ControllerBase
+public class InformationUserController : ControllerBase
 {
     private readonly IUpdateInformationService _updateInformationService;
 
-    public UpdateInformationUserController(IUpdateInformationService updateInformationService)
+    public InformationUserController(IUpdateInformationService updateInformationService)
     {
         _updateInformationService = updateInformationService;
     }

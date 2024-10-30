@@ -1,10 +1,5 @@
 ﻿using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.DTOs.Response;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MentorBooking.Service.Interfaces
 {
@@ -14,6 +9,10 @@ namespace MentorBooking.Service.Interfaces
         Task<SettingRoleModelResponse> SettingRoleAsync(SettingRoleModelRequest settingRoleModel);
         Task<LoginModelResponse> Login(LoginModelRequest loginModel);
         Task<LogoutModelResponse> Logout(LogoutModelRequest logoutModel);
-        Task<RefreshTokenModelResponse> RefreshToken(RefreshTokenModelRequest refreshTokenModelModel);
+        Task<RefreshTokenModelResponse> RefreshToken(RefreshTokenModelRequest refreshTokenModel);
+        Task<string?> GetCofirmTokenAsync(ConfirmationEmailModelRequest confirmationEmailModel);
+        Task<string> GenerateBodyMessageForConfirmationEmailAsync(
+            ConfirmationEmailModelRequest confirmationEmailModel, string confirmLink);
+        Task<bool> IsEmailConfirmedAsync(LinkEmailConfirmModelRequest linkEmailConfirm);
     }
 }
