@@ -44,6 +44,10 @@ builder.Services.AddTransient<ISenderEmail, SenderEmail>();
 builder.Services.AddTransient<IConfirmEmailRepository, ConfirmEmailRepository>();
 builder.Services.AddScoped<ISchedulesMentor, SchedulesMentor>();
 builder.Services.AddScoped<ISchedulesAvailableRepository, SchedulesAvailableRepository>();
+builder.Services.AddScoped<IProjectGroupRepository, ProjectGroupRepository>();
+builder.Services.AddScoped<IStudentGroupRepository, StudentGroupRepository>();
+builder.Services.AddScoped<IGroupOfStudentService, GroupOfStudentService>();
+
 // builder.Services.AddScoped<IMentorServices, MentorServices>();
 // Add Identity
 builder.Services.AddIdentity<Users, Roles>(options =>

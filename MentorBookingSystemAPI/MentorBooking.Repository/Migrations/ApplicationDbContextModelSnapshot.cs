@@ -93,7 +93,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "UserId" }, "UQ__Mentors__1788CC4D5F137BEE")
                         .IsUnique();
 
-                    b.ToTable("Mentors", (string)null);
+                    b.ToTable("Mentors");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.MentorFeedback", b =>
@@ -149,16 +149,13 @@ namespace MentorBooking.Repository.Migrations
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("MentorSkills", (string)null);
+                    b.ToTable("MentorSkills");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.MentorSupportSession", b =>
                 {
                     b.Property<Guid>("SessionId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("ComfirmSession")
-                        .HasColumnType("bit");
 
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
@@ -185,7 +182,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "SessionId" }, "UQ__MentorSu__C9F4929183F9C51A")
                         .IsUnique();
 
-                    b.ToTable("MentorSupportSessions", (string)null);
+                    b.ToTable("MentorSupportSessions");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.MentorWorkSchedule", b =>
@@ -213,7 +210,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "ScheduleId" }, "UQ__MentorWo__9C8A5B48345AF3A7")
                         .IsUnique();
 
-                    b.ToTable("MentorWorkSchedules", (string)null);
+                    b.ToTable("MentorWorkSchedules");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.PointTransaction", b =>
@@ -247,7 +244,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "TransactionId" }, "UQ__PointTra__55433A6A702A041C")
                         .IsUnique();
 
-                    b.ToTable("PointTransactions", (string)null);
+                    b.ToTable("PointTransactions");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectGroup", b =>
@@ -280,7 +277,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "GroupId" }, "UQ__ProjectG__149AF36B441F56CF")
                         .IsUnique();
 
-                    b.ToTable("ProjectGroups", (string)null);
+                    b.ToTable("ProjectGroups");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectProgress", b =>
@@ -388,8 +385,7 @@ namespace MentorBooking.Repository.Migrations
 
                     b.HasIndex("MentorId");
 
-                    b.ToTable("SchedulesAvailables");
-
+                    b.ToTable("SchedulesAvailable", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.Skill", b =>
@@ -408,7 +404,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasKey("SkillId")
                         .HasName("PK__Skills__B1C89E18A86A1E4B");
 
-                    b.ToTable("Skills", (string)null);
+                    b.ToTable("Skills");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.Student", b =>
@@ -433,7 +429,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "StudentId" }, "UQ__Students__32C52B9871763433")
                         .IsUnique();
 
-                    b.ToTable("Students", (string)null);
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.StudentGroup", b =>
@@ -457,7 +453,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "StudentId" }, "UQ__StudentG__32C52B98BDCB51AE")
                         .IsUnique();
 
-                    b.ToTable("StudentGroups", (string)null);
+                    b.ToTable("StudentGroups");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.StudentsPaymentSession", b =>
@@ -546,7 +542,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "UserId" }, "UQ__UserPoin__1788CC4D87499114")
                         .IsUnique();
 
-                    b.ToTable("UserPoints", (string)null);
+                    b.ToTable("UserPoints");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.UserRoles", b =>

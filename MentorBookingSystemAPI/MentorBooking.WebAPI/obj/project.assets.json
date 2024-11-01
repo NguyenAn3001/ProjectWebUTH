@@ -5220,19 +5220,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
+    "C:\\Users\\Dell\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\MentorBooking.WebAPI.csproj",
+      "projectUniqueName": "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\MentorBooking.WebAPI.csproj",
       "projectName": "MentorBooking.WebAPI",
-      "projectPath": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\MentorBooking.WebAPI.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\obj\\",
+      "projectPath": "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\MentorBooking.WebAPI.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5240,17 +5240,19 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://contoso.com/packages/": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj": {
-              "projectPath": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj"
+            "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj": {
+              "projectPath": "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\MentorBooking.Repository.csproj"
             },
-            "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\MentorBooking.Service.csproj": {
-              "projectPath": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\MentorBooking.Service.csproj"
+            "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\MentorBooking.Service.csproj": {
+              "projectPath": "D:\\sourcewbe\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\MentorBooking.Service.csproj"
             }
           }
         }
@@ -5316,7 +5318,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

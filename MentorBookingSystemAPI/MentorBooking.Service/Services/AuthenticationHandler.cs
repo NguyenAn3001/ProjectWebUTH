@@ -22,14 +22,16 @@ namespace MentorBooking.Service.Services
         private readonly IRoleRepository _roleRepository;
         private readonly IUserTokenRepository _userTokenRepository;
         private readonly IConfirmEmailRepository _confirmEmailRepository;
+        private readonly IStudentRepository _studentRepository;
 
-        public AuthenticationHandler(IUserRepository userRepository, IConfiguration configuration, IRoleRepository roleRepository, IUserTokenRepository userTokenRepository, IConfirmEmailRepository confirmEmailRepository)
+        public AuthenticationHandler(IUserRepository userRepository, IConfiguration configuration, IRoleRepository roleRepository, IUserTokenRepository userTokenRepository, IConfirmEmailRepository confirmEmailRepository, IStudentRepository studentRepository)
         {
             _userRepository = userRepository;
             _configuration = configuration;
             _roleRepository = roleRepository;
             _userTokenRepository = userTokenRepository;
             _confirmEmailRepository = confirmEmailRepository;
+            _studentRepository = studentRepository;
         }
         public async Task<RegisterModelResponse> RegisterUserAsync(RegisterModelRequest registerModel)
         {
