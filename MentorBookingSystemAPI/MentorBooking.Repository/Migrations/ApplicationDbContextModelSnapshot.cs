@@ -4,7 +4,6 @@ using MentorBooking.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentorBooking.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241027050320_addMentorSkills")]
-    partial class addMentorSkills
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,8 +28,8 @@ namespace MentorBooking.Repository.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Comment")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<DateTime>("CreateAt")
                         .ValueGeneratedOnAdd()
@@ -81,8 +78,8 @@ namespace MentorBooking.Repository.Migrations
                         .HasColumnType("tinyint");
 
                     b.Property<string>("MentorDescription")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -105,8 +102,8 @@ namespace MentorBooking.Repository.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Comment")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<DateTime>("CreateAt")
                         .ValueGeneratedOnAdd()
@@ -160,6 +157,9 @@ namespace MentorBooking.Repository.Migrations
                     b.Property<Guid>("SessionId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("ComfirmSession")
+                        .HasColumnType("bit");
+
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
@@ -193,23 +193,20 @@ namespace MentorBooking.Repository.Migrations
                     b.Property<Guid>("ScheduleId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<TimeOnly>("EndTime")
-                        .HasColumnType("time");
+                    b.Property<Guid>("ScheduleAvailableId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("SessionId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<TimeOnly>("StartTime")
-                        .HasColumnType("time");
-
-                    b.Property<byte>("UnavailableDate")
-                        .HasColumnType("tinyint");
-
-                    b.Property<DateOnly>("WorkDate")
-                        .HasColumnType("date");
+                    b.Property<bool>("UnavailableDate")
+                        .HasColumnType("bit");
 
                     b.HasKey("ScheduleId")
                         .HasName("PK__MentorWo__9C8A5B490B6777AE");
+
+                    b.HasIndex("ScheduleAvailableId")
+                        .IsUnique();
 
                     b.HasIndex("SessionId");
 
@@ -230,8 +227,8 @@ namespace MentorBooking.Repository.Migrations
                         .HasDefaultValueSql("(getdate())");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<int?>("PointsChanged")
                         .HasColumnType("int");
@@ -270,12 +267,12 @@ namespace MentorBooking.Repository.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("GroupName")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Topic")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("GroupId")
                         .HasName("PK__ProjectG__149AF36A56A56A19");
@@ -295,8 +292,8 @@ namespace MentorBooking.Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProgressId"));
 
                     b.Property<string>("Description")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
@@ -369,10 +366,38 @@ namespace MentorBooking.Repository.Migrations
                     b.ToTable("Roles", (string)null);
                 });
 
+            modelBuilder.Entity("MentorBooking.Repository.Entities.SchedulesAvailable", b =>
+                {
+                    b.Property<Guid>("ScheduleAvailableId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<DateOnly>("FreeDay")
+                        .HasColumnType("date");
+
+                    b.Property<Guid>("MentorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time");
+
+                    b.HasKey("ScheduleAvailableId");
+
+                    b.HasIndex("MentorId");
+
+                    b.ToTable("SchedulesAvailables");
+                });
+
             modelBuilder.Entity("MentorBooking.Repository.Entities.Skill", b =>
                 {
                     b.Property<int>("SkillId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -666,7 +691,7 @@ namespace MentorBooking.Repository.Migrations
                 {
                     b.HasOne("MentorBooking.Repository.Entities.Users", "User")
                         .WithOne("Mentor")
-                        .HasForeignKey("MentorBooking.Repository.Entities.Mentor", "MentorId")
+                        .HasForeignKey("MentorBooking.Repository.Entities.Mentor", "UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -740,11 +765,20 @@ namespace MentorBooking.Repository.Migrations
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.MentorWorkSchedule", b =>
                 {
+                    b.HasOne("MentorBooking.Repository.Entities.SchedulesAvailable", "ScheduleAvailable")
+                        .WithOne("MentorWorkSchedule")
+                        .HasForeignKey("MentorBooking.Repository.Entities.MentorWorkSchedule", "ScheduleAvailableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_SchedulesAvailable_MentorWorkSchedule");
+
                     b.HasOne("MentorBooking.Repository.Entities.MentorSupportSession", "Session")
                         .WithMany("MentorWorkSchedules")
                         .HasForeignKey("SessionId")
                         .IsRequired()
                         .HasConstraintName("FK__MentorWor__Sessi__1EC48A19");
+
+                    b.Navigation("ScheduleAvailable");
 
                     b.Navigation("Session");
                 });
@@ -778,6 +812,18 @@ namespace MentorBooking.Repository.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.SchedulesAvailable", b =>
+                {
+                    b.HasOne("MentorBooking.Repository.Entities.Mentor", "Mentor")
+                        .WithMany("SchedulesAvailable")
+                        .HasForeignKey("MentorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_SchedulesAvailable_Mentor");
+
+                    b.Navigation("Mentor");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.Student", b =>
@@ -891,6 +937,8 @@ namespace MentorBooking.Repository.Migrations
                     b.Navigation("MentorSkills");
 
                     b.Navigation("MentorSupportSessions");
+
+                    b.Navigation("SchedulesAvailable");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.MentorSupportSession", b =>
@@ -913,6 +961,12 @@ namespace MentorBooking.Repository.Migrations
                     b.Navigation("ProjectProgresses");
 
                     b.Navigation("StudentGroups");
+                });
+
+            modelBuilder.Entity("MentorBooking.Repository.Entities.SchedulesAvailable", b =>
+                {
+                    b.Navigation("MentorWorkSchedule")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.Skill", b =>

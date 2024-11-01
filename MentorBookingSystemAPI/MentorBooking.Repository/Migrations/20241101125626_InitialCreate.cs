@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MentorBooking.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,8 +17,8 @@ namespace MentorBooking.Repository.Migrations
                 {
                     GroupId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GroupName = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: true),
-                    Topic = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: true),
+                    GroupName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Topic = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     CreateBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())")
                 },
@@ -47,11 +47,11 @@ namespace MentorBooking.Repository.Migrations
                 {
                     SkillId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__Skills__DFA0918791FCB829", x => x.SkillId);
+                    table.PrimaryKey("PK__Skills__B1C89E18A86A1E4B", x => x.SkillId);
                 });
 
             migrationBuilder.CreateTable(
@@ -89,7 +89,7 @@ namespace MentorBooking.Repository.Migrations
                     ProgressId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GroupId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     UpdateAt = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())")
                 },
                 constraints: table =>
@@ -130,15 +130,15 @@ namespace MentorBooking.Repository.Migrations
                     MentorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ExperienceYears = table.Column<byte>(type: "tinyint", nullable: false),
-                    MentorDescription = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: true),
+                    MentorDescription = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     CreateAt = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK__Mentors__053B7E98A1D585C9", x => x.MentorId);
                     table.ForeignKey(
-                        name: "FK_Mentors_Users_MentorId",
-                        column: x => x.MentorId,
+                        name: "FK_Mentors_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -276,17 +276,19 @@ namespace MentorBooking.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__MentorSk__68C1778069093006", x => new { x.MentorId, x.SkillId });
+                    table.PrimaryKey("PK_MentorSkills", x => new { x.MentorId, x.SkillId });
                     table.ForeignKey(
-                        name: "FK__MentorSki__Mento__1AF3F935",
+                        name: "FK_MentorSkills_Mentors_MentorId",
                         column: x => x.MentorId,
                         principalTable: "Mentors",
-                        principalColumn: "MentorId");
+                        principalColumn: "MentorId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK__MentorSki__Skill__1BE81D6E",
+                        name: "FK_MentorSkills_Skills_SkillId",
                         column: x => x.SkillId,
                         principalTable: "Skills",
-                        principalColumn: "SkillId");
+                        principalColumn: "SkillId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -298,7 +300,8 @@ namespace MentorBooking.Repository.Migrations
                     PointsPerSession = table.Column<short>(type: "smallint", nullable: false),
                     GroupId = table.Column<int>(type: "int", nullable: false),
                     MentorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TotalPoints = table.Column<int>(type: "int", nullable: false)
+                    TotalPoints = table.Column<int>(type: "int", nullable: false),
+                    ComfirmSession = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -313,6 +316,27 @@ namespace MentorBooking.Repository.Migrations
                         column: x => x.MentorId,
                         principalTable: "Mentors",
                         principalColumn: "MentorId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SchedulesAvailables",
+                columns: table => new
+                {
+                    ScheduleAvailableId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MentorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FreeDay = table.Column<DateOnly>(type: "date", nullable: false),
+                    StartTime = table.Column<TimeOnly>(type: "time", nullable: false),
+                    EndTime = table.Column<TimeOnly>(type: "time", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SchedulesAvailables", x => x.ScheduleAvailableId);
+                    table.ForeignKey(
+                        name: "FK_SchedulesAvailable_Mentor",
+                        column: x => x.MentorId,
+                        principalTable: "Mentors",
+                        principalColumn: "MentorId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -345,7 +369,7 @@ namespace MentorBooking.Repository.Migrations
                     TransactionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PointsChanged = table.Column<int>(type: "int", nullable: true),
                     TransactionType = table.Column<bool>(type: "bit", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     CreateAt = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "(getdate())"),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -368,7 +392,7 @@ namespace MentorBooking.Repository.Migrations
                     GroupId = table.Column<int>(type: "int", nullable: false),
                     MentorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Rating = table.Column<byte>(type: "tinyint", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: true),
+                    Comment = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     CreateAt = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())")
                 },
                 constraints: table =>
@@ -400,7 +424,7 @@ namespace MentorBooking.Repository.Migrations
                     StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MentorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Rating = table.Column<byte>(type: "tinyint", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: true),
+                    Comment = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     CreateAt = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())")
                 },
                 constraints: table =>
@@ -421,27 +445,6 @@ namespace MentorBooking.Repository.Migrations
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "StudentId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MentorWorkSchedules",
-                columns: table => new
-                {
-                    ScheduleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SessionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    WorkDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    StartTime = table.Column<TimeOnly>(type: "time", nullable: false),
-                    EndTime = table.Column<TimeOnly>(type: "time", nullable: false),
-                    UnavailableDate = table.Column<byte>(type: "tinyint", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK__MentorWo__9C8A5B490B6777AE", x => x.ScheduleId);
-                    table.ForeignKey(
-                        name: "FK__MentorWor__Sessi__1EC48A19",
-                        column: x => x.SessionId,
-                        principalTable: "MentorSupportSessions",
-                        principalColumn: "SessionId");
                 });
 
             migrationBuilder.CreateTable(
@@ -466,6 +469,31 @@ namespace MentorBooking.Repository.Migrations
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "StudentId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MentorWorkSchedules",
+                columns: table => new
+                {
+                    ScheduleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SessionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UnavailableDate = table.Column<bool>(type: "bit", nullable: false),
+                    ScheduleAvailableId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK__MentorWo__9C8A5B490B6777AE", x => x.ScheduleId);
+                    table.ForeignKey(
+                        name: "FK_SchedulesAvailable_MentorWorkSchedule",
+                        column: x => x.ScheduleAvailableId,
+                        principalTable: "SchedulesAvailables",
+                        principalColumn: "ScheduleAvailableId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK__MentorWor__Sessi__1EC48A19",
+                        column: x => x.SessionId,
+                        principalTable: "MentorSupportSessions",
+                        principalColumn: "SessionId");
                 });
 
             migrationBuilder.CreateIndex(
@@ -545,6 +573,12 @@ namespace MentorBooking.Repository.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_MentorWorkSchedules_ScheduleAvailableId",
+                table: "MentorWorkSchedules",
+                column: "ScheduleAvailableId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MentorWorkSchedules_SessionId",
                 table: "MentorWorkSchedules",
                 column: "SessionId");
@@ -596,10 +630,9 @@ namespace MentorBooking.Repository.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "UQ__Skills__DFA09186EEFBBC72",
-                table: "Skills",
-                column: "SkillId",
-                unique: true);
+                name: "IX_SchedulesAvailables_MentorId",
+                table: "SchedulesAvailables",
+                column: "MentorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StudentGroups_GroupId",
@@ -713,6 +746,9 @@ namespace MentorBooking.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "Skills");
+
+            migrationBuilder.DropTable(
+                name: "SchedulesAvailables");
 
             migrationBuilder.DropTable(
                 name: "UserPoints");

@@ -23,11 +23,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthenticateService, AuthenticationHandler>();
-<<<<<<< HEAD
 builder.Services.AddScoped<ISearchAndSortService,SearchAndSortService>();
-=======
-//builder.Services.AddScoped<IMentorServices, MentorServices>();
->>>>>>> 0264cd834ad4a7f99a5b283804590a90f8f2abe8
+builder.Services.AddScoped<ISearchAndSortService, SearchAndSortService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserTokenRepository, UserTokenRepository>();
