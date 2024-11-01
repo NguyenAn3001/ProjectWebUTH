@@ -52,6 +52,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
 
     public virtual DbSet<UserPoint> UserPoints { get; set; }
     public virtual DbSet<MentorSkill> MentorSkills { get; set; }
+    public virtual DbSet<SchedulesAvailable> SchedulesAvailable { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -213,7 +214,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
             entity.HasKey(e => e.GroupId).HasName("PK__ProjectG__149AF36A56A56A19");
 
             entity.HasIndex(e => e.GroupId, "UQ__ProjectG__149AF36B441F56CF").IsUnique();
-
+            entity.Property(e => e.GroupId).ValueGeneratedOnAdd();
             entity.Property(e => e.CreateAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");

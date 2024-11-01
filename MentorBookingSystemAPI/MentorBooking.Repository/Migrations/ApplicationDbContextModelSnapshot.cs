@@ -157,9 +157,6 @@ namespace MentorBooking.Repository.Migrations
                     b.Property<Guid>("SessionId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("ComfirmSession")
-                        .HasColumnType("bit");
-
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
@@ -388,7 +385,7 @@ namespace MentorBooking.Repository.Migrations
 
                     b.HasIndex("MentorId");
 
-                    b.ToTable("SchedulesAvailables");
+                    b.ToTable("SchedulesAvailable", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.Skill", b =>

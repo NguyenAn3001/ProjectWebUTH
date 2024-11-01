@@ -22,14 +22,16 @@ namespace MentorBooking.Service.Services
         private readonly IRoleRepository _roleRepository;
         private readonly IUserTokenRepository _userTokenRepository;
         private readonly IConfirmEmailRepository _confirmEmailRepository;
+        private readonly IStudentRepository _studentRepository;
 
-        public AuthenticationHandler(IUserRepository userRepository, IConfiguration configuration, IRoleRepository roleRepository, IUserTokenRepository userTokenRepository, IConfirmEmailRepository confirmEmailRepository)
+        public AuthenticationHandler(IUserRepository userRepository, IConfiguration configuration, IRoleRepository roleRepository, IUserTokenRepository userTokenRepository, IConfirmEmailRepository confirmEmailRepository, IStudentRepository studentRepository)
         {
             _userRepository = userRepository;
             _configuration = configuration;
             _roleRepository = roleRepository;
             _userTokenRepository = userTokenRepository;
             _confirmEmailRepository = confirmEmailRepository;
+            _studentRepository = studentRepository;
         }
         public async Task<RegisterModelResponse> RegisterUserAsync(RegisterModelRequest registerModel)
         {
@@ -279,6 +281,7 @@ namespace MentorBooking.Service.Services
             var userRoles = await _roleRepository.GetRolesByUserAsync(user);
             var authClaims = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.UserName!),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
