@@ -18,13 +18,14 @@ namespace MentorBooking.Service.Services
         {
             _mentorFeedbackRepository = mentorFeedbackRepository;
         }
-        public async Task<ApiResponse> AddMentorFeedbackAsync(Users user, Guid MentorId, StudentCommentRequest studentComment)
+        public async Task<ApiResponse> AddMentorFeedbackAsync(Users user, Guid mentorId, Guid sessionId, StudentCommentRequest studentComment)
         {
             var mentorFeedback = new MentorFeedback()
             {
                 FeedbackId = Guid.NewGuid(),
+                SessionId= sessionId,
                 StudentId = user.Id,
-                MentorId = MentorId,
+                MentorId = mentorId,
                 Rating = studentComment.Rating,
                 Comment = studentComment.Comment,
                 CreateAt = DateTime.Now,

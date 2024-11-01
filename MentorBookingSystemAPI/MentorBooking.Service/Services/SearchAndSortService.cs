@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
-using MentorBooking.Service.AutoMapper;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Enum;
 using MentorBooking.Service.Interfaces;
@@ -47,7 +46,6 @@ namespace MentorBooking.Service.Services
             List<MentorSearchingResponse> allMentors = GetAllMentors();
             List<MentorSearchingResponse> matchingMentors = allMentors;
             if (string.IsNullOrEmpty(searchText)) return matchingMentors;
-
             matchingMentors = allMentors
                 .Where(temp => (
                     !string.IsNullOrEmpty(temp.FirstName) ?

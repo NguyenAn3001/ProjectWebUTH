@@ -3,46 +3,67 @@
   "WorkspaceRootPath": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\mentorfeedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\imentorfeedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\iuserinformationupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\iuserinformationfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\iupdateinformationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\isearchandsortservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\iauthenticateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\updateinformationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\userinformationfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\groupfeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\mentorworkschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\mentorfeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Migrations\\20241101125626_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\mentorsupportsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\mentorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\mentorworkschedulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\mentorsupportsessionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\schedulesavailablerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\ischedulesavailablerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\imentorworkschedulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\imentorsupportsessionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\mentorsupportsessionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\mentorsearchingresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\mentorsupportsessionresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\bookingmentorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\mentorfeedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\searchandsortservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\mentorworkschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\schedulesavailable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Data\\Migrations\\20241101122124_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\skillrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\ibookingmentorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\mentorfeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -51,31 +72,101 @@
       "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\imentorfeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\mentorinfoupdateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\studentcommentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\authenticationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\skillrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\iskillrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\imentorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\searchandsortservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\imentorskillrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\studentinfoupdateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\studentinformationmodelrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\iusertokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\mentorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\mentorskillrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\confirmemailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\imagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\iuserpointrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\iimagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\iconfirmemailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\imentorfeedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\isearchandsortservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\controllers\\informationusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\informationusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\controllers\\avatarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\avatarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\iuserinformationupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\isenderemail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\iimageuploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\iauthenticateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\enum\\sortoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\enum\\skilloptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\studentinformationmodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -84,61 +175,16 @@
       "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\studentcommentresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\settingrolemodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\mentorinformationmodelrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\registermodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\refreshtokenmodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\mentorinformationmodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\loginmodelrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\mentor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\userclaims.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\usertokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\pointtransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\roleclaims.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\iskillrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\imentorskillrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\mentorskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\iusertokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\iuserpointrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\interfaces\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\logoutmodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -147,46 +193,74 @@
       "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\loginmodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\imageuploadmodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\userpointrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\imagegetmodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\confirmationemailmodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\studentinformationmodelrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\settingrolemodelrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\linkemailconfirmmodelrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\automapper\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\usertokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\repositories\\mentorskillrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\usertokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\userroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\controllers\\updateinformationusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\updateinformationusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\userpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\registermodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\userlogins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\registermodelrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\userclaims.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\response\\settingrolemodelresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\studentspaymentsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\refreshtokenmodelrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\studentgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\dtos\\request\\logoutmodelrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\projectprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\skill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\pointtransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebapi\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\mentorskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\UpdateInformationUserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Controllers\\UpdateInformationUserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -196,8 +270,139 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 9,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MentorSupportSession.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorSupportSession.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\MentorSupportSession.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorSupportSession.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\MentorSupportSession.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAkwA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T10:47:49.698Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MentorSupportSessionRequest.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\MentorSupportSessionRequest.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\MentorSupportSessionRequest.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\MentorSupportSessionRequest.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\MentorSupportSessionRequest.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBYAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T11:55:01Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MentorWorkSchedule.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T14:55:36.526Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SchedulesAvailable.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\SchedulesAvailable.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\SchedulesAvailable.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\SchedulesAvailable.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\SchedulesAvailable.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwAoAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:39:09.187Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Student.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Student.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\Student.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Student.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\Student.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T11:14:43.358Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MentorSupportSessionResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\MentorSupportSessionResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\MentorSupportSessionResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\MentorSupportSessionResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\MentorSupportSessionResponse.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T15:06:59.353Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MentorFeedbackService.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\MentorFeedbackService.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\MentorFeedbackService.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\MentorFeedbackService.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\MentorFeedbackService.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T15:54:04.694Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BookingMentorService.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\BookingMentorService.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\BookingMentorService.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\BookingMentorService.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\BookingMentorService.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAQwB0AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T15:53:16.278Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IBookingMentorService.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IBookingMentorService.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IBookingMentorService.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IBookingMentorService.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IBookingMentorService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T15:51:17.414Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20241101125626_InitialCreate.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Migrations\\20241101125626_InitialCreate.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Migrations\\20241101125626_InitialCreate.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Migrations\\20241101125626_InitialCreate.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Migrations\\20241101125626_InitialCreate.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T12:56:27.092Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -205,10 +410,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
               "$type": "Bookmark",
@@ -224,161 +425,151 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IMentorFeedbackService.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IMentorFeedbackService.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IMentorFeedbackService.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IMentorFeedbackService.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IMentorFeedbackService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABwAAAA",
+              "DocumentIndex": 5,
+              "Title": "ISchedulesAvailableRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\ISchedulesAvailableRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\ISchedulesAvailableRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\ISchedulesAvailableRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\ISchedulesAvailableRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T11:48:38.29Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-01T12:35:00.967Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "IUpdateInformationService.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IUpdateInformationService.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IUpdateInformationService.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IUpdateInformationService.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IUpdateInformationService.cs",
+              "Title": "SchedulesAvailableRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\SchedulesAvailableRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\SchedulesAvailableRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\SchedulesAvailableRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\SchedulesAvailableRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T10:59:34.641Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IUserInformationFactory.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IUserInformationFactory.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IUserInformationFactory.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IUserInformationFactory.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IUserInformationFactory.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T11:47:48.123Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-01T12:32:54.218Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IUserInformationUpdate.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IUserInformationUpdate.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IUserInformationUpdate.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IUserInformationUpdate.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IUserInformationUpdate.cs",
+              "Title": "MentorWorkScheduleRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorWorkScheduleRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\MentorWorkScheduleRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorWorkScheduleRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\MentorWorkScheduleRepository.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAYwC4AAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T12:32:59.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MentorSupportSessionRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorSupportSessionRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\MentorSupportSessionRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorSupportSessionRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\MentorSupportSessionRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T11:47:42.243Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MentorFeedbackService.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\MentorFeedbackService.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\MentorFeedbackService.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\MentorFeedbackService.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\MentorFeedbackService.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAowEYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T12:10:18.772Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ISearchAndSortService.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\ISearchAndSortService.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\ISearchAndSortService.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\ISearchAndSortService.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\ISearchAndSortService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAB0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T09:16:39.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-01T12:33:01.041Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "IAuthenticateService.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IAuthenticateService.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IAuthenticateService.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IAuthenticateService.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IAuthenticateService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAEYBAAAAAAAAAAAAwCIAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T07:03:11.474Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T00:34:04.018Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "UpdateInformationHandler.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\UpdateInformationHandler.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\UpdateInformationHandler.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\UpdateInformationHandler.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\UpdateInformationHandler.cs",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAYwGoAAAAJAAAA",
+              "Title": "IMentorWorkScheduleRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IMentorWorkScheduleRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IMentorWorkScheduleRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IMentorWorkScheduleRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IMentorWorkScheduleRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T14:50:21.219Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-01T12:35:04.249Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "UserInformationFactory.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\UserInformationFactory.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\UserInformationFactory.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\UserInformationFactory.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\UserInformationFactory.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "Title": "IMentorSupportSessionRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IMentorSupportSessionRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IMentorSupportSessionRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IMentorSupportSessionRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IMentorSupportSessionRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T14:50:12.299Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T13:32:09.172Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GroupFeedback.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\GroupFeedback.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\GroupFeedback.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\GroupFeedback.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\GroupFeedback.cs",
+              "DocumentIndex": 10,
+              "Title": "MentorSearchingResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\MentorSearchingResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\MentorSearchingResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\MentorSearchingResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\MentorSearchingResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T10:48:23.156Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "MentorRepository.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorRepository.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\MentorRepository.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorRepository.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\MentorRepository.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBQAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T14:49:00.069Z"
+              "WhenOpened": "2024-11-01T12:32:46.658Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
+              "Title": "SearchAndSortService.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\SearchAndSortService.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\SearchAndSortService.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\SearchAndSortService.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\SearchAndSortService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T12:32:09.587Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20241101122124_InitialCreate.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Data\\Migrations\\20241101122124_InitialCreate.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Data\\Migrations\\20241101122124_InitialCreate.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Data\\Migrations\\20241101122124_InitialCreate.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Data\\Migrations\\20241101122124_InitialCreate.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T12:21:25.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SkillRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\SkillRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\SkillRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\SkillRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\SkillRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T06:47:40.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "MentorFeedbackRepository.cs",
               "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorFeedbackRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\MentorFeedbackRepository.cs",
               "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorFeedbackRepository.cs",
               "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\MentorFeedbackRepository.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAB0AAAARAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwBwAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-29T11:28:08.95Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 22,
               "Title": "IMentorFeedbackRepository.cs",
               "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IMentorFeedbackRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IMentorFeedbackRepository.cs",
@@ -390,307 +581,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MentorFeedback.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorFeedback.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\MentorFeedback.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorFeedback.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\MentorFeedback.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAA/wAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T10:46:34.455Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "MentorWorkSchedule.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T14:55:36.526Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MentorSupportSession.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorSupportSession.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\MentorSupportSession.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorSupportSession.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\MentorSupportSession.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T10:47:49.698Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "MentorInfoUpdateService.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\MentorInfoUpdateService.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\MentorInfoUpdateService.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\MentorInfoUpdateService.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\MentorInfoUpdateService.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAAwD0AAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T07:23:41.493Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "StudentCommentRequest.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\StudentCommentRequest.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\StudentCommentRequest.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\StudentCommentRequest.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\StudentCommentRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T14:49:51.579Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "AuthenticationHandler.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\AuthenticationHandler.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\AuthenticationHandler.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\AuthenticationHandler.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\AuthenticationHandler.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAUwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T14:54:27.012Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "StudentRepository.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\StudentRepository.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\StudentRepository.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\StudentRepository.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\StudentRepository.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAuwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:49:21.955Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "SkillRepository.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\SkillRepository.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\SkillRepository.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\SkillRepository.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\SkillRepository.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:47:40.809Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "IMentorRepository.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IMentorRepository.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IMentorRepository.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IMentorRepository.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IMentorRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAYAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:24:29.029Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "SearchAndSortService.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\SearchAndSortService.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\SearchAndSortService.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\SearchAndSortService.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\SearchAndSortService.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACAAAAA7AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T07:25:52.329Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 23,
-              "Title": "StudentInfoUpdateService.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\StudentInfoUpdateService.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\StudentInfoUpdateService.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\StudentInfoUpdateService.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\StudentInfoUpdateService.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAA8wBUAAABNAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T07:24:47.598Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "StudentInformationModelRequest.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\StudentInformationModelRequest.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\StudentInformationModelRequest.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\StudentInformationModelRequest.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\StudentInformationModelRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T12:07:13.889Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "StudentInformationModelResponse.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\StudentInformationModelResponse.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\StudentInformationModelResponse.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\StudentInformationModelResponse.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\StudentInformationModelResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T10:56:39.4Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "StudentCommentResponse.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\StudentCommentResponse.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\StudentCommentResponse.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\StudentCommentResponse.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\StudentCommentResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T09:00:13.979Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "ApiResponse.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\ApiResponse.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\ApiResponse.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\ApiResponse.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\ApiResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:58:33.361Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "MentorInformationModelRequest.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\MentorInformationModelRequest.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\MentorInformationModelRequest.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\MentorInformationModelRequest.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\MentorInformationModelRequest.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:58:25.09Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "MentorInformationModelResponse.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\MentorInformationModelResponse.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\MentorInformationModelResponse.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\MentorInformationModelResponse.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\MentorInformationModelResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T07:29:34.249Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "LoginModelRequest.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\LoginModelRequest.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\LoginModelRequest.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\LoginModelRequest.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\LoginModelRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:58:10.463Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "Mentor.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Mentor.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\Mentor.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Mentor.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\Mentor.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAxwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T11:43:02.417Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "UserClaims.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserClaims.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\UserClaims.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserClaims.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\UserClaims.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T11:54:52.134Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "UserTokens.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserTokens.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\UserTokens.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserTokens.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\UserTokens.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T11:54:47.592Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "PointTransaction.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\PointTransaction.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\PointTransaction.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\PointTransaction.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\PointTransaction.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T11:54:39.251Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "RoleClaims.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\RoleClaims.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\RoleClaims.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\RoleClaims.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\RoleClaims.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T11:54:31.591Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Student.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Student.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\Student.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Student.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\Student.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T11:14:43.358Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "Users.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Users.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\Users.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Users.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\Users.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T07:07:05.53Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
               "Title": "ISkillRepository.cs",
               "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\ISkillRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\ISkillRepository.cs",
@@ -702,31 +593,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "IRoleRepository.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IRoleRepository.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IRoleRepository.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IRoleRepository.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IRoleRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 24,
+              "Title": "IMentorRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IMentorRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IMentorRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IMentorRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IMentorRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:24:36.206Z"
+              "WhenOpened": "2024-10-29T06:24:29.029Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "MentorSkill.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorSkill.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\MentorSkill.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorSkill.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\MentorSkill.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T11:23:30.855Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 25,
               "Title": "IMentorSkillRepository.cs",
               "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IMentorSkillRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IMentorSkillRepository.cs",
@@ -738,19 +617,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IUserRepository.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IUserRepository.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IUserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 26,
+              "Title": "StudentRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\StudentRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\StudentRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\StudentRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\StudentRepository.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAuwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:25:08.822Z"
+              "WhenOpened": "2024-10-29T06:49:21.955Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 27,
               "Title": "IUserTokenRepository.cs",
               "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IUserTokenRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IUserTokenRepository.cs",
@@ -762,19 +641,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "IUserPointRepository.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IUserPointRepository.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IUserPointRepository.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IUserPointRepository.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IUserPointRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:25:03.252Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 28,
               "Title": "IStudentRepository.cs",
               "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IStudentRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IStudentRepository.cs",
@@ -786,139 +653,307 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "LogoutModelResponse.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\LogoutModelResponse.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\LogoutModelResponse.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\LogoutModelResponse.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\LogoutModelResponse.cs",
+              "DocumentIndex": 29,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IUserRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:58:36.366Z"
+              "WhenOpened": "2024-10-29T06:25:08.822Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "LoginModelResponse.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\LoginModelResponse.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\LoginModelResponse.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\LoginModelResponse.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\LoginModelResponse.cs",
+              "DocumentIndex": 30,
+              "Title": "IRoleRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IRoleRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IRoleRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IRoleRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IRoleRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:58:34.806Z"
+              "WhenOpened": "2024-10-29T06:24:36.206Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserRepository.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\UserRepository.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserRepository.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\UserRepository.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "DocumentIndex": 31,
+              "Title": "MentorRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\MentorRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\MentorRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T14:49:26.659Z"
+              "WhenOpened": "2024-10-28T14:49:00.069Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "UserPointRepository.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserPointRepository.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\UserPointRepository.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserPointRepository.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\UserPointRepository.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:53:36.354Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "RoleRepository.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\RoleRepository.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\RoleRepository.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\RoleRepository.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\RoleRepository.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAQwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:42:45.397Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 32,
               "Title": "MentorSkillRepository.cs",
               "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorSkillRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\MentorSkillRepository.cs",
               "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\MentorSkillRepository.cs",
               "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\MentorSkillRepository.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwB4AAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:39:15.528Z"
+              "WhenOpened": "2024-10-31T12:41:00.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAIkAAAAAAAAAAAAAwKEAAABDAAAA",
+              "DocumentIndex": 33,
+              "Title": "ConfirmEmailRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\ConfirmEmailRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\ConfirmEmailRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\ConfirmEmailRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\ConfirmEmailRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T09:41:23.625Z"
+              "WhenOpened": "2024-10-30T13:28:24.26Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
-              "Title": "UpdateInformationUserController.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\UpdateInformationUserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UpdateInformationUserController.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\UpdateInformationUserController.cs",
-              "RelativeToolTip": "Controllers\\UpdateInformationUserController.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAzwAAAAAAAAAAA",
+              "DocumentIndex": 34,
+              "Title": "ImageRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\ImageRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\ImageRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\ImageRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\ImageRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T09:08:46.565Z"
+              "WhenOpened": "2024-10-30T13:28:29.828Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 35,
+              "Title": "IUserPointRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IUserPointRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IUserPointRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IUserPointRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IUserPointRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T06:25:03.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "IImageRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IImageRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IImageRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IImageRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IImageRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T13:15:47.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "IConfirmEmailRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IConfirmEmailRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Interfaces\\IConfirmEmailRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Interfaces\\IConfirmEmailRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Interfaces\\IConfirmEmailRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T13:16:10.213Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
               "Title": "StudentController.cs",
               "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\StudentController.cs",
               "RelativeDocumentMoniker": "Controllers\\StudentController.cs",
               "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\StudentController.cs",
               "RelativeToolTip": "Controllers\\StudentController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAjAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAcwBcAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-28T16:44:05.461Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "RegisterModelResponse.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\RegisterModelResponse.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\RegisterModelResponse.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\RegisterModelResponse.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\RegisterModelResponse.cs",
+              "DocumentIndex": 39,
+              "Title": "IMentorFeedbackService.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IMentorFeedbackService.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IMentorFeedbackService.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IMentorFeedbackService.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IMentorFeedbackService.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T11:48:38.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "ISearchAndSortService.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\ISearchAndSortService.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\ISearchAndSortService.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\ISearchAndSortService.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\ISearchAndSortService.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAiwAwAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T09:16:39.533Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "AvatarController.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\AvatarController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AvatarController.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\AvatarController.cs",
+              "RelativeToolTip": "Controllers\\AvatarController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T07:03:43.18Z"
+              "WhenOpened": "2024-10-31T00:43:10.493Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "RegisterModelRequest.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\RegisterModelRequest.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\RegisterModelRequest.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\RegisterModelRequest.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\RegisterModelRequest.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 44,
+              "Title": "InformationUserController.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\InformationUserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\InformationUserController.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\InformationUserController.cs",
+              "RelativeToolTip": "Controllers\\InformationUserController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T07:04:00.086Z"
+              "WhenOpened": "2024-10-31T00:43:12.453Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 41,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-31T00:52:15.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-31T00:36:12.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAKsAAAAAAAAAAAAAAKEAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T09:41:23.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthenticationController.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "Controllers\\AuthenticationController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:43:08.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "IUserInformationUpdate.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IUserInformationUpdate.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IUserInformationUpdate.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IUserInformationUpdate.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IUserInformationUpdate.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T11:47:42.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "ISenderEmail.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\ISenderEmail.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\ISenderEmail.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\ISenderEmail.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\ISenderEmail.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:42:18.914Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "IImageUploadService.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IImageUploadService.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IImageUploadService.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IImageUploadService.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IImageUploadService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T14:40:16.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "IAuthenticateService.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IAuthenticateService.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IAuthenticateService.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IAuthenticateService.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IAuthenticateService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T07:03:11.474Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "SortOptions.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Enum\\SortOptions.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Enum\\SortOptions.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Enum\\SortOptions.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Enum\\SortOptions.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:42:09.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "SkillOptions.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Enum\\SkillOptions.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Enum\\SkillOptions.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Enum\\SkillOptions.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Enum\\SkillOptions.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:42:08.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "StudentCommentResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\StudentCommentResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\StudentCommentResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\StudentCommentResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\StudentCommentResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T09:00:13.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
               "Title": "SettingRoleModelResponse.cs",
               "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\SettingRoleModelResponse.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\SettingRoleModelResponse.cs",
@@ -930,39 +965,351 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
-              "Title": "RefreshTokenModelRequest.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\RefreshTokenModelRequest.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\RefreshTokenModelRequest.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\RefreshTokenModelRequest.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\RefreshTokenModelRequest.cs",
+              "DocumentIndex": 56,
+              "Title": "RegisterModelResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\RegisterModelResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\RegisterModelResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\RegisterModelResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\RegisterModelResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:58:30.051Z"
+              "WhenOpened": "2024-10-29T07:03:43.18Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
-              "Title": "LogoutModelRequest.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\LogoutModelRequest.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\LogoutModelRequest.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\LogoutModelRequest.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\LogoutModelRequest.cs",
+              "DocumentIndex": 53,
+              "Title": "StudentInformationModelResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\StudentInformationModelResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\StudentInformationModelResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\StudentInformationModelResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\StudentInformationModelResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:58:16.718Z"
+              "WhenOpened": "2024-10-29T10:56:39.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "RefreshTokenModelResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\RefreshTokenModelResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\RefreshTokenModelResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\RefreshTokenModelResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\RefreshTokenModelResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:41:57.675Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 60,
-              "Title": "Skill.cs",
-              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Skill.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\Skill.cs",
-              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Skill.cs",
-              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\Skill.cs",
+              "Title": "LoginModelResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\LoginModelResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\LoginModelResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\LoginModelResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\LoginModelResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T06:49:27.811Z"
+              "WhenOpened": "2024-10-29T06:58:34.806Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "ImageUploadModelResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\ImageUploadModelResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\ImageUploadModelResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\ImageUploadModelResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\ImageUploadModelResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:41:47.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "LogoutModelResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\LogoutModelResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\LogoutModelResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\LogoutModelResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\LogoutModelResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T06:58:36.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "MentorInformationModelResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\MentorInformationModelResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\MentorInformationModelResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\MentorInformationModelResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\MentorInformationModelResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T07:29:34.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "ImageGetModelResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\ImageGetModelResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\ImageGetModelResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\ImageGetModelResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\ImageGetModelResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:41:45.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "ConfirmationEmailModelResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\ConfirmationEmailModelResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\ConfirmationEmailModelResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\ConfirmationEmailModelResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\ConfirmationEmailModelResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:41:40.303Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "SettingRoleModelRequest.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\SettingRoleModelRequest.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\SettingRoleModelRequest.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\SettingRoleModelRequest.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\SettingRoleModelRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:41:31.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "StudentInformationModelRequest.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\StudentInformationModelRequest.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\StudentInformationModelRequest.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\StudentInformationModelRequest.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\StudentInformationModelRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T12:07:13.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Response\\ApiResponse.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Response\\ApiResponse.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Response\\ApiResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T06:58:33.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "LinkEmailConfirmModelRequest.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\LinkEmailConfirmModelRequest.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\DTOs\\Request\\LinkEmailConfirmModelRequest.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\DTOs\\Request\\LinkEmailConfirmModelRequest.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\DTOs\\Request\\LinkEmailConfirmModelRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:41:21.873Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "AutoMapperProfiles.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\AutoMapper\\AutoMapperProfiles.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\AutoMapper\\AutoMapperProfiles.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\AutoMapper\\AutoMapperProfiles.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\AutoMapper\\AutoMapperProfiles.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAUwBkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:40:09.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "UserTokenRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserTokenRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\UserTokenRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserTokenRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\UserTokenRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:40:06.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "RoleRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\RoleRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\RoleRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\RoleRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\RoleRepository.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T06:42:45.397Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\UserRepository.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Repositories\\UserRepository.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T14:49:26.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "UserTokens.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserTokens.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\UserTokens.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserTokens.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\UserTokens.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T11:54:47.592Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "Users.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Users.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\Users.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\Users.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\Users.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T07:07:05.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "UserRoles.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserRoles.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\UserRoles.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserRoles.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\UserRoles.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:39:19.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "UserPoint.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserPoint.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\UserPoint.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserPoint.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\UserPoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:39:18.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "UserLogins.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserLogins.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\UserLogins.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserLogins.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\UserLogins.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:39:16.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "StudentsPaymentSession.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\StudentsPaymentSession.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\StudentsPaymentSession.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\StudentsPaymentSession.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\StudentsPaymentSession.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:39:14.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "StudentGroup.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\StudentGroup.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\StudentGroup.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\StudentGroup.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\StudentGroup.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T00:39:13.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "PointTransaction.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\PointTransaction.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\PointTransaction.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\PointTransaction.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\PointTransaction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T11:54:39.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "UserClaims.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserClaims.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\UserClaims.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\UserClaims.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\UserClaims.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T11:54:52.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "ProjectProgress.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\ProjectProgress.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\ProjectProgress.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\ProjectProgress.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\ProjectProgress.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T14:30:23.546Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "MentorSkill.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorSkill.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\MentorSkill.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorSkill.cs",
+              "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\MentorSkill.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T11:23:30.855Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "UpdateInformationUserController.cs",
+              "DocumentMoniker": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\UpdateInformationUserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UpdateInformationUserController.cs",
+              "ToolTip": "E:\\ProjectWebApi\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\UpdateInformationUserController.cs",
+              "RelativeToolTip": "Controllers\\UpdateInformationUserController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAzwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T09:08:46.565Z"
             }
           ]
         }

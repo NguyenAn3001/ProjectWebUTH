@@ -12,6 +12,6 @@ namespace MentorBooking.Service.DTOs.Response
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Image { get; set; }
-        public List<string> SkillName { get; set; }
+        public List<string>? SkillName { get; set; }
     }
 }

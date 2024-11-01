@@ -4,6 +4,7 @@ using MentorBooking.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentorBooking.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241101125626_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -156,6 +159,9 @@ namespace MentorBooking.Repository.Migrations
                 {
                     b.Property<Guid>("SessionId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("ComfirmSession")
+                        .HasColumnType("bit");
 
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
@@ -385,7 +391,7 @@ namespace MentorBooking.Repository.Migrations
 
                     b.HasIndex("MentorId");
 
-                    b.ToTable("SchedulesAvailable");
+                    b.ToTable("SchedulesAvailables");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.Skill", b =>
