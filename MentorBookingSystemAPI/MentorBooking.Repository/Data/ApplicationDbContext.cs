@@ -52,6 +52,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
 
     public virtual DbSet<UserPoint> UserPoints { get; set; }
     public virtual DbSet<MentorSkill> MentorSkills { get; set; }
+    public virtual DbSet<SchedulesAvailable> SchedulesAvailable { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

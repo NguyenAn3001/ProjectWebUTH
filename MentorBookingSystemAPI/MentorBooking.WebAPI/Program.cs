@@ -13,6 +13,7 @@ using MentorBooking.Service.Services;
 using MentorBooking.Service.Interfaces;
 using MentorBooking.Repository.Interfaces;
 using MentorBooking.Repository.Repositories;
+using MentorBooking.Service.AutoMapper;
 using MentorBooking.Service.DTOs.Request;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -41,6 +42,9 @@ builder.Services.AddScoped<IImageUploadService, ImageUploadService>();
 builder.Services.AddTransient<IImageRepository, ImageRepository>();
 builder.Services.AddTransient<ISenderEmail, SenderEmail>();
 builder.Services.AddTransient<IConfirmEmailRepository, ConfirmEmailRepository>();
+builder.Services.AddScoped<ISchedulesMentor, SchedulesMentor>();
+builder.Services.AddScoped<ISchedulesAvailableRepository, SchedulesAvailableRepository>();
+// builder.Services.AddScoped<IMentorServices, MentorServices>();
 // Add Identity
 builder.Services.AddIdentity<Users, Roles>(options =>
 {
@@ -52,6 +56,7 @@ builder.Services.AddIdentity<Users, Roles>(options =>
 }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 builder.Services.AddSingleton<IUrlHelperFactory, UrlHelperFactory>();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 // DI Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
