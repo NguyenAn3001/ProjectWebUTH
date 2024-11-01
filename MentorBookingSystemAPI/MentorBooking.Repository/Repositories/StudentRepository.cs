@@ -35,4 +35,9 @@ public class StudentRepository : IStudentRepository
             return false;
         }
     }
+
+    public async Task<Student?> GetStudentByIdAsync(Guid studentId)
+    {
+        return await _dbContext.Students.SingleOrDefaultAsync(s => s.StudentId == studentId);
+    }
 }

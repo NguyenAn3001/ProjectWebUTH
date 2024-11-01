@@ -9,7 +9,7 @@ public partial class ProjectGroup
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int GroupId { get; set; }
+    public Guid GroupId { get; set; }
 
     public string? GroupName { get; set; }
 

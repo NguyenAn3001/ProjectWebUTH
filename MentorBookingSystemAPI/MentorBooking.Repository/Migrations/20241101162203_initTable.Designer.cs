@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentorBooking.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241101125626_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241101162203_initTable")]
+    partial class initTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,8 +39,8 @@ namespace MentorBooking.Repository.Migrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("MentorId")
                         .HasColumnType("uniqueidentifier");
@@ -163,8 +163,8 @@ namespace MentorBooking.Repository.Migrations
                     b.Property<bool>("ComfirmSession")
                         .HasColumnType("bit");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("MentorId")
                         .HasColumnType("uniqueidentifier");
@@ -255,11 +255,9 @@ namespace MentorBooking.Repository.Migrations
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectGroup", b =>
                 {
-                    b.Property<int>("GroupId")
+                    b.Property<Guid>("GroupId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreateAt")
                         .ValueGeneratedOnAdd()
@@ -288,18 +286,16 @@ namespace MentorBooking.Repository.Migrations
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectProgress", b =>
                 {
-                    b.Property<int>("ProgressId")
+                    b.Property<Guid>("ProgressId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProgressId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdateAt")
                         .ValueGeneratedOnAdd()
@@ -391,7 +387,7 @@ namespace MentorBooking.Repository.Migrations
 
                     b.HasIndex("MentorId");
 
-                    b.ToTable("SchedulesAvailables");
+                    b.ToTable("SchedulesAvailable");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.Skill", b =>
@@ -443,8 +439,8 @@ namespace MentorBooking.Repository.Migrations
                     b.Property<Guid>("StudentId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("JoinAt")
                         .ValueGeneratedOnAdd()

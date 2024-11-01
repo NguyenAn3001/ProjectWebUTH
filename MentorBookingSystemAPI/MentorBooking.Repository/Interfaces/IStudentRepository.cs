@@ -5,4 +5,5 @@ namespace MentorBooking.Repository.Interfaces;
 public interface IStudentRepository
 {
     Task<bool> AddInformationStudentAsync(Student student);
+    Task<Student?> GetStudentByIdAsync(Guid studentId);
 }

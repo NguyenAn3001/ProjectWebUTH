@@ -36,8 +36,8 @@ namespace MentorBooking.Repository.Migrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("MentorId")
                         .HasColumnType("uniqueidentifier");
@@ -93,7 +93,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "UserId" }, "UQ__Mentors__1788CC4D5F137BEE")
                         .IsUnique();
 
-                    b.ToTable("Mentors");
+                    b.ToTable("Mentors", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.MentorFeedback", b =>
@@ -149,7 +149,7 @@ namespace MentorBooking.Repository.Migrations
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("MentorSkills");
+                    b.ToTable("MentorSkills", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.MentorSupportSession", b =>
@@ -157,8 +157,11 @@ namespace MentorBooking.Repository.Migrations
                     b.Property<Guid>("SessionId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                    b.Property<bool>("ComfirmSession")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("MentorId")
                         .HasColumnType("uniqueidentifier");
@@ -182,7 +185,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "SessionId" }, "UQ__MentorSu__C9F4929183F9C51A")
                         .IsUnique();
 
-                    b.ToTable("MentorSupportSessions");
+                    b.ToTable("MentorSupportSessions", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.MentorWorkSchedule", b =>
@@ -210,7 +213,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "ScheduleId" }, "UQ__MentorWo__9C8A5B48345AF3A7")
                         .IsUnique();
 
-                    b.ToTable("MentorWorkSchedules");
+                    b.ToTable("MentorWorkSchedules", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.PointTransaction", b =>
@@ -244,16 +247,14 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "TransactionId" }, "UQ__PointTra__55433A6A702A041C")
                         .IsUnique();
 
-                    b.ToTable("PointTransactions");
+                    b.ToTable("PointTransactions", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectGroup", b =>
                 {
-                    b.Property<int>("GroupId")
+                    b.Property<Guid>("GroupId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreateAt")
                         .ValueGeneratedOnAdd()
@@ -277,23 +278,21 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "GroupId" }, "UQ__ProjectG__149AF36B441F56CF")
                         .IsUnique();
 
-                    b.ToTable("ProjectGroups");
+                    b.ToTable("ProjectGroups", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectProgress", b =>
                 {
-                    b.Property<int>("ProgressId")
+                    b.Property<Guid>("ProgressId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProgressId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdateAt")
                         .ValueGeneratedOnAdd()
@@ -404,7 +403,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasKey("SkillId")
                         .HasName("PK__Skills__B1C89E18A86A1E4B");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skills", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.Student", b =>
@@ -429,7 +428,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "StudentId" }, "UQ__Students__32C52B9871763433")
                         .IsUnique();
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.StudentGroup", b =>
@@ -437,8 +436,8 @@ namespace MentorBooking.Repository.Migrations
                     b.Property<Guid>("StudentId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("JoinAt")
                         .ValueGeneratedOnAdd()
@@ -453,7 +452,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "StudentId" }, "UQ__StudentG__32C52B98BDCB51AE")
                         .IsUnique();
 
-                    b.ToTable("StudentGroups");
+                    b.ToTable("StudentGroups", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.StudentsPaymentSession", b =>
@@ -542,7 +541,7 @@ namespace MentorBooking.Repository.Migrations
                     b.HasIndex(new[] { "UserId" }, "UQ__UserPoin__1788CC4D87499114")
                         .IsUnique();
 
-                    b.ToTable("UserPoints");
+                    b.ToTable("UserPoints", (string)null);
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.UserRoles", b =>

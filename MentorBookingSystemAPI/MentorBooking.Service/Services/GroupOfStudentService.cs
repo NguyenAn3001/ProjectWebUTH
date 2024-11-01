@@ -11,12 +11,14 @@ public class GroupOfStudentService : IGroupOfStudentService
     private readonly IProjectGroupRepository _projectGroupRepository;
     private readonly IUserRepository _userRepository;
     private readonly IStudentGroupRepository _studentGroupRepository;
+    private readonly IStudentRepository _studentRepository;
 
-    public GroupOfStudentService(IProjectGroupRepository projectGroupRepository, IUserRepository userRepository, IStudentGroupRepository studentGroupRepository)
+    public GroupOfStudentService(IProjectGroupRepository projectGroupRepository, IUserRepository userRepository, IStudentGroupRepository studentGroupRepository, IStudentRepository studentRepository)
     {
         _projectGroupRepository = projectGroupRepository;
         _userRepository = userRepository;
         _studentGroupRepository = studentGroupRepository;
+        _studentRepository = studentRepository;
     }
     
     public async Task<ApiResponse> CreateGroupAsync(Guid studentId, CreateGroupModelRequest createGroupRequest)
@@ -44,7 +46,7 @@ public class GroupOfStudentService : IGroupOfStudentService
         };
     }
 
-    public async Task<ApiResponse> AddStudentToGroupAsync(Guid studentId, int groupId, List<StudentToAddGroupModelRequest> students)
+    public async Task<ApiResponse> AddStudentToGroupAsync(Guid studentId, Guid groupId, List<StudentToAddGroupModelRequest> students)
     {
         var groupsCreated = _projectGroupRepository.GetProjectGroupsCreatedByStudentId(studentId);
         if (groupsCreated.Count == 0)
@@ -66,6 +68,16 @@ public class GroupOfStudentService : IGroupOfStudentService
         List<StudentGroup> studentGroups = new List<StudentGroup>();
         foreach (var student in students)
         {
+            var studentExist = await _studentRepository.GetStudentByIdAsync(student.StudentId);
+            if (studentExist == null)
+            {
+                return new ApiResponse()
+                {
+                    Status = "Error",
+                    Message = $"Unable to find student with id: {student.StudentId}. Please try again."
+                };
+            }
+                
             studentGroups.Add(new StudentGroup()
             {
                 GroupId = groupToAdd.GroupId,
@@ -88,7 +100,7 @@ public class GroupOfStudentService : IGroupOfStudentService
             var user = await _userRepository.FindByIdAsync(student.StudentId.ToString());
             studentsResponse.Add(new StudentGroupModelResponse()
             {
-                GroupId = student.GroupId,
+                GroupId = groupId,
                 StudentName = user?.LastName + " " + user?.FirstName,
                 JoinAt = student.JoinAt
             });

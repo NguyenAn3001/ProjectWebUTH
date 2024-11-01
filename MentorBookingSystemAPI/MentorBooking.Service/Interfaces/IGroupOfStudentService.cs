@@ -14,5 +14,5 @@ public interface IGroupOfStudentService
     // Task<List<Group>> GetGroupsAsync(List<Group> groups);
     // Task<Group> GetGroupByIdAsync(Group group);
     // Task<List<StudentGroupResponse>> GetStudentGroupResponses(Group group);
-    Task<ApiResponse> AddStudentToGroupAsync(Guid studentId, int groupId, List<StudentToAddGroupModelRequest> students);
+    Task<ApiResponse> AddStudentToGroupAsync(Guid studentId, Guid groupId, List<StudentToAddGroupModelRequest> students);
 }

@@ -36,7 +36,7 @@ public class GroupController : ControllerBase
     }
     [Authorize(Roles = "Student")]
     [HttpPost("add-member-group/{groupId}")]
-    public async Task<IActionResult> AddMemberToGroup(int groupId, List<StudentToAddGroupModelRequest> students)
+    public async Task<IActionResult> AddMemberToGroup(Guid groupId, List<StudentToAddGroupModelRequest> students)
     {
         var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
         if (!ModelState.IsValid)

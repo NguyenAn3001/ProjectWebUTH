@@ -9,7 +9,7 @@ public partial class GroupFeedback
 
     public Guid SessionId { get; set; }
 
-    public int GroupId { get; set; }
+    public Guid GroupId { get; set; }
 
     public Guid MentorId { get; set; }
 

@@ -7,7 +7,7 @@ public partial class StudentGroup
 {
     public Guid StudentId { get; set; }
 
-    public int GroupId { get; set; }
+    public Guid GroupId { get; set; }
 
     public DateTime JoinAt { get; set; }
 

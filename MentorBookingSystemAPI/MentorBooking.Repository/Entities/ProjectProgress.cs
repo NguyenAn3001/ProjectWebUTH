@@ -5,9 +5,9 @@ namespace MentorBooking.Repository.Entities;
 
 public partial class ProjectProgress
 {
-    public int ProgressId { get; set; }
+    public Guid ProgressId { get; set; }
 
-    public int GroupId { get; set; }
+    public Guid GroupId { get; set; }
 
     public string? Description { get; set; }
 

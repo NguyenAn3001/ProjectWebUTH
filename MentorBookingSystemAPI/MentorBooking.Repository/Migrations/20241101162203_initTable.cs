@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MentorBooking.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,8 +15,7 @@ namespace MentorBooking.Repository.Migrations
                 name: "ProjectGroups",
                 columns: table => new
                 {
-                    GroupId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     GroupName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Topic = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     CreateBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -86,9 +85,8 @@ namespace MentorBooking.Repository.Migrations
                 name: "ProjectProgress",
                 columns: table => new
                 {
-                    ProgressId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    GroupId = table.Column<int>(type: "int", nullable: false),
+                    ProgressId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    GroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     UpdateAt = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())")
                 },
@@ -298,7 +296,7 @@ namespace MentorBooking.Repository.Migrations
                     SessionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SessionCount = table.Column<byte>(type: "tinyint", nullable: false),
                     PointsPerSession = table.Column<short>(type: "smallint", nullable: false),
-                    GroupId = table.Column<int>(type: "int", nullable: false),
+                    GroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MentorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TotalPoints = table.Column<int>(type: "int", nullable: false),
                     ComfirmSession = table.Column<bool>(type: "bit", nullable: false)
@@ -319,7 +317,7 @@ namespace MentorBooking.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SchedulesAvailables",
+                name: "SchedulesAvailable",
                 columns: table => new
                 {
                     ScheduleAvailableId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -330,7 +328,7 @@ namespace MentorBooking.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SchedulesAvailables", x => x.ScheduleAvailableId);
+                    table.PrimaryKey("PK_SchedulesAvailable", x => x.ScheduleAvailableId);
                     table.ForeignKey(
                         name: "FK_SchedulesAvailable_Mentor",
                         column: x => x.MentorId,
@@ -344,7 +342,7 @@ namespace MentorBooking.Repository.Migrations
                 columns: table => new
                 {
                     StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    GroupId = table.Column<int>(type: "int", nullable: false),
+                    GroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     JoinAt = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())")
                 },
                 constraints: table =>
@@ -389,7 +387,7 @@ namespace MentorBooking.Repository.Migrations
                 {
                     FeedbackId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SessionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    GroupId = table.Column<int>(type: "int", nullable: false),
+                    GroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MentorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Rating = table.Column<byte>(type: "tinyint", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
@@ -486,7 +484,7 @@ namespace MentorBooking.Repository.Migrations
                     table.ForeignKey(
                         name: "FK_SchedulesAvailable_MentorWorkSchedule",
                         column: x => x.ScheduleAvailableId,
-                        principalTable: "SchedulesAvailables",
+                        principalTable: "SchedulesAvailable",
                         principalColumn: "ScheduleAvailableId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -630,8 +628,8 @@ namespace MentorBooking.Repository.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SchedulesAvailables_MentorId",
-                table: "SchedulesAvailables",
+                name: "IX_SchedulesAvailable_MentorId",
+                table: "SchedulesAvailable",
                 column: "MentorId");
 
             migrationBuilder.CreateIndex(
@@ -748,7 +746,7 @@ namespace MentorBooking.Repository.Migrations
                 name: "Skills");
 
             migrationBuilder.DropTable(
-                name: "SchedulesAvailables");
+                name: "SchedulesAvailable");
 
             migrationBuilder.DropTable(
                 name: "UserPoints");
