@@ -8,11 +8,11 @@ namespace MentorBooking.Service.Interfaces;
 public interface IGroupOfStudentService
 {
     Task<ApiResponse> CreateGroupAsync(Guid studentId, CreateGroupModelRequest createGroupRequest);
+    Task<ApiResponse> AddStudentToGroupAsync(Guid studentId, int groupId, List<StudentToAddGroupModelRequest> students);
     // Task<Group> UpdateGroupAsync(Group group);
     // Task DeleteGroupAsync(Group group);
-    // Task<Group> GetGroupAsync(Group group);
-    // Task<List<Group>> GetGroupsAsync(List<Group> groups);
+    Task<List<GetManyGroupModelResponse>> GetAllGroupsAsync(Guid studentId);
+    Task<List<GetManyGroupModelResponse>> GetYourCreatedGroupAsync(Guid studentId);
     // Task<Group> GetGroupByIdAsync(Group group);
     // Task<List<StudentGroupResponse>> GetStudentGroupResponses(Group group);
-    Task<ApiResponse> AddStudentToGroupAsync(Guid studentId, int groupId, List<StudentToAddGroupModelRequest> students);
 }

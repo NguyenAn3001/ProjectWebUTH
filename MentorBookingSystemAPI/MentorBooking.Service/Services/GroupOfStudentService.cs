@@ -44,6 +44,16 @@ public class GroupOfStudentService : IGroupOfStudentService
         };
     }
 
+    public async Task<List<GetManyGroupModelResponse>> GetAllGroupsAsync(Guid studentId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<GetManyGroupModelResponse>> GetYourCreatedGroupAsync(Guid studentId)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<ApiResponse> AddStudentToGroupAsync(Guid studentId, int groupId, List<StudentToAddGroupModelRequest> students)
     {
         var groupsCreated = _projectGroupRepository.GetProjectGroupsCreatedByStudentId(studentId);
