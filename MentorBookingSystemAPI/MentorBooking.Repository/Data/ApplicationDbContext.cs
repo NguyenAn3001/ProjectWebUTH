@@ -25,7 +25,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
         : base(options)
     {
     }
-    public virtual DbSet<SchedulesAvailable> SchedulesAvailables { get; set; }
+    // public virtual DbSet<SchedulesAvailable> SchedulesAvailables { get; set; }
     public virtual DbSet<GroupFeedback> GroupFeedbacks { get; set; }
 
     public virtual DbSet<Mentor> Mentors { get; set; }
@@ -99,12 +99,12 @@ public partial class ApplicationDbContext : IdentityDbContext<
 
             entity.HasOne(d => d.Group).WithMany(p => p.GroupFeedbacks)
                 .HasForeignKey(d => d.GroupId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__GroupFeed__Group__247D636F");
 
             entity.HasOne(d => d.Mentor).WithMany(p => p.GroupFeedbacks)
                 .HasForeignKey(d => d.MentorId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__GroupFeed__Mento__257187A8");
 
             entity.HasOne(d => d.Session).WithOne(p => p.GroupFeedback)
@@ -155,12 +155,12 @@ public partial class ApplicationDbContext : IdentityDbContext<
 
             entity.HasOne(d => d.Group).WithMany(p => p.MentorSupportSessions)
                 .HasForeignKey(d => d.GroupId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__MentorSup__Group__1CDC41A7");
 
             entity.HasOne(d => d.Mentor).WithMany(p => p.MentorSupportSessions)
                 .HasForeignKey(d => d.MentorId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__MentorSup__Mento__1DD065E0");
         });
         modelBuilder.Entity<SchedulesAvailable>(entity =>
@@ -237,7 +237,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
 
             entity.HasOne(d => d.Group).WithMany(p => p.ProjectProgresses)
                 .HasForeignKey(d => d.GroupId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__ProjectPr__Group__19FFD4FC");
         });
 
@@ -260,7 +260,6 @@ public partial class ApplicationDbContext : IdentityDbContext<
         {
             entity.HasKey(e => new { e.StudentId, e.GroupId }).HasName("PK__StudentG__838C84AFD966A83D");
 
-            entity.HasIndex(e => e.StudentId, "UQ__StudentG__32C52B98BDCB51AE").IsUnique();
 
             entity.Property(e => e.JoinAt)
                 .HasDefaultValueSql("(getdate())")
@@ -268,12 +267,12 @@ public partial class ApplicationDbContext : IdentityDbContext<
 
             entity.HasOne(d => d.Group).WithMany(p => p.StudentGroups)
                 .HasForeignKey(d => d.GroupId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__StudentGr__Group__190BB0C3");
 
             entity.HasOne(d => d.Student).WithOne(p => p.StudentGroup)
                 .HasForeignKey<StudentGroup>(d => d.StudentId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__StudentGr__Stude__18178C8A");
         });
 
