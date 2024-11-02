@@ -52,4 +52,67 @@ public class GroupController : ControllerBase
             _ => Ok(addStudentToGroupResponse)
         };
     }
+    [Authorize(Roles = "Student")]
+    [HttpGet("groups")]
+    public async Task<IActionResult> GetAllGroups()
+    {
+        var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+        var getGroupsResponse = await _groupOfStudentService.GetAllGroupsAsync(Guid.Parse(studentId!));
+        return getGroupsResponse.Status switch
+        {
+            "Error" => BadRequest(new { status = getGroupsResponse.Status, message = getGroupsResponse.Message }),
+            _ => Ok(getGroupsResponse)
+        };
+    }
+    [Authorize(Roles = "Student")]
+    [HttpGet("your-groups")]
+    public async Task<IActionResult> GetYourCreatedGroups()
+    {
+        var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+        var getGroupsResponse = await _groupOfStudentService.GetYourCreatedGroupAsync(Guid.Parse(studentId!));
+        return getGroupsResponse.Status switch
+        {
+            "Error" => BadRequest(new { status = getGroupsResponse.Status, message = getGroupsResponse.Message }),
+            "NotFound" => NotFound(new {status = getGroupsResponse.Status, message = getGroupsResponse.Message }),
+            _ => Ok(getGroupsResponse)
+        };
+    }
+    [Authorize(Roles = "Student")]
+    [HttpDelete("your-groups/delete-group/{groupId}")]
+    public async Task<IActionResult> DeleteGroup(Guid groupId)
+    {
+        var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+        var deleteGroupResponse = await _groupOfStudentService.DeleteGroupAsync(Guid.Parse(studentId!), groupId);
+        return deleteGroupResponse.Status switch
+        {
+            "Error" => BadRequest(new { status = deleteGroupResponse.Status, message = deleteGroupResponse.Message }),
+            _ => Ok(new { status = deleteGroupResponse.Status, message = deleteGroupResponse.Message })
+        };
+    }
+    [Authorize(Roles = "Student")]
+    [HttpPut("your-groups/update-information-group/{groupId}")]
+    public async Task<IActionResult> UpdateGroup(Guid groupId, [FromBody] CreateGroupModelRequest updateGroupModelRequest)
+    {
+        var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+        var updateGroupResponse = await _groupOfStudentService.UpdateGroupAsync(Guid.Parse(studentId!), groupId, updateGroupModelRequest);
+        return updateGroupResponse.Status switch
+        {
+            "Error" => BadRequest(new { status = updateGroupResponse.Status, message = updateGroupResponse.Message }),
+            "NotFound" => NotFound(new { status = updateGroupResponse.Status, message = updateGroupResponse.Message }),
+            _ => Ok(new { status = updateGroupResponse.Status, message = updateGroupResponse.Message })
+        };
+    }
+    [Authorize(Roles = "Student")]
+    [HttpDelete("your-groups/delete-member")]
+    public async Task<IActionResult> DeleteMemberGroup(Guid groupId, Guid memberId)
+    {
+        var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+        var deleteMemberResponse = await _groupOfStudentService.DeleteStudentMemberAsync(Guid.Parse(studentId!), groupId, memberId);
+        return deleteMemberResponse.Status switch
+        {
+            "Error" => BadRequest(new { status = deleteMemberResponse.Status, message = deleteMemberResponse.Message }),
+            "Unauthorized" => Unauthorized(new { status = deleteMemberResponse.Status, message = deleteMemberResponse.Message }),
+            _ => Ok(new { status = deleteMemberResponse.Status, message = deleteMemberResponse.Message })
+        };
+    }
 }

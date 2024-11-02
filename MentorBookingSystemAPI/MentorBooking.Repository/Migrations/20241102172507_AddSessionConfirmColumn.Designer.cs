@@ -4,6 +4,7 @@ using MentorBooking.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentorBooking.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241102172507_AddSessionConfirmColumn")]
+    partial class AddSessionConfirmColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -661,14 +664,12 @@ namespace MentorBooking.Repository.Migrations
                     b.HasOne("MentorBooking.Repository.Entities.ProjectGroup", "Group")
                         .WithMany("GroupFeedbacks")
                         .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK__GroupFeed__Group__247D636F");
 
                     b.HasOne("MentorBooking.Repository.Entities.Mentor", "Mentor")
                         .WithMany("GroupFeedbacks")
                         .HasForeignKey("MentorId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK__GroupFeed__Mento__257187A8");
 
@@ -747,14 +748,12 @@ namespace MentorBooking.Repository.Migrations
                     b.HasOne("MentorBooking.Repository.Entities.ProjectGroup", "Group")
                         .WithMany("MentorSupportSessions")
                         .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK__MentorSup__Group__1CDC41A7");
 
                     b.HasOne("MentorBooking.Repository.Entities.Mentor", "Mentor")
                         .WithMany("MentorSupportSessions")
                         .HasForeignKey("MentorId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK__MentorSup__Mento__1DD065E0");
 
@@ -799,7 +798,6 @@ namespace MentorBooking.Repository.Migrations
                     b.HasOne("MentorBooking.Repository.Entities.ProjectGroup", "Group")
                         .WithMany("ProjectProgresses")
                         .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK__ProjectPr__Group__19FFD4FC");
 
@@ -843,14 +841,12 @@ namespace MentorBooking.Repository.Migrations
                     b.HasOne("MentorBooking.Repository.Entities.ProjectGroup", "Group")
                         .WithMany("StudentGroups")
                         .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK__StudentGr__Group__190BB0C3");
 
                     b.HasOne("MentorBooking.Repository.Entities.Student", "Student")
                         .WithOne("StudentGroup")
                         .HasForeignKey("MentorBooking.Repository.Entities.StudentGroup", "StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK__StudentGr__Stude__18178C8A");
 
