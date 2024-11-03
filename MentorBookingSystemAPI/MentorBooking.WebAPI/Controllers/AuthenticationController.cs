@@ -88,14 +88,13 @@ namespace MentorBooking.WebAPI.Controllers
         [HttpPost("setting-role")]
         public async Task<IActionResult> SettingRoleForUser([FromBody] SettingRoleModelRequest settingRoleModel)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
             if (!ModelState.IsValid)
                 return BadRequest(new RegisterModelResponse
                 {
                     Status = "Error",
                     Message = "Invalid data provided."
                 });
-            var settingRoleResponse = await _authenticateService.SettingRoleAsync(Guid.Parse(userId), settingRoleModel);
+            var settingRoleResponse = await _authenticateService.SettingRoleAsync(settingRoleModel);
             return settingRoleResponse.Status switch
             {
                 "Error" => BadRequest(settingRoleResponse),

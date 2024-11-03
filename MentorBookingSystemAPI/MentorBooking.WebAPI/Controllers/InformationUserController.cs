@@ -21,9 +21,8 @@ public class InformationUserController : ControllerBase
     }
     [Authorize(Roles = "Admin, Mentor")]
     [HttpPost("mentor-info")]
-    public async Task<IActionResult> MentorInformationUpdate([FromBody] MentorInformationModelRequest mentorInformationModel)
+    public async Task<IActionResult> MentorInformationUpdate(Guid mentorId, [FromBody] MentorInformationModelRequest mentorInformationModel)
     {
-        var mentorId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
         if (!ModelState.IsValid)
         {
             return BadRequest(new ApiResponse
@@ -32,7 +31,7 @@ public class InformationUserController : ControllerBase
                 Message = "Model state is invalid"
             });
         }
-        var updateInfoResponse = await _updateInformationService.UpdateMentorInformationAsync(Guid.Parse(mentorId), mentorInformationModel);
+        var updateInfoResponse = await _updateInformationService.UpdateMentorInformationAsync(mentorId, mentorInformationModel);
         return updateInfoResponse.Status switch
         {
             "Error" => BadRequest(updateInfoResponse),
@@ -42,9 +41,8 @@ public class InformationUserController : ControllerBase
     }
     [Authorize(Roles = "Admin, Student")]
     [HttpPost("student-info")]
-    public async Task<IActionResult> StudentInformationUpdate([FromBody] StudentInformationModelRequest studentInformationModel)
+    public async Task<IActionResult> StudentInformationUpdate(Guid studentId, [FromBody] StudentInformationModelRequest studentInformationModel)
     {
-        var studentId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
         if (!ModelState.IsValid)
         {
             return BadRequest(new ApiResponse
@@ -53,7 +51,7 @@ public class InformationUserController : ControllerBase
                 Message = "Model state is invalid"
             });
         }
-        var updateInfoResponse = await _updateInformationService.UpdateStudentInformationAsync(Guid.Parse(studentId), studentInformationModel);
+        var updateInfoResponse = await _updateInformationService.UpdateStudentInformationAsync(studentId, studentInformationModel);
         return updateInfoResponse.Status switch
         {
             "Error" => BadRequest(updateInfoResponse),

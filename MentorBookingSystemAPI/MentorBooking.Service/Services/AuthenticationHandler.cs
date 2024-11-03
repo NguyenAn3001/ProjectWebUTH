@@ -98,11 +98,11 @@ namespace MentorBooking.Service.Services
             }
         }
         
-        public async Task<SettingRoleModelResponse> SettingRoleAsync(Guid userId, SettingRoleModelRequest settingRoleModel)
+        public async Task<SettingRoleModelResponse> SettingRoleAsync(SettingRoleModelRequest settingRoleModel)
         {
             try
             {
-                var user = await _roleRepository.FindUserByIdAsync(userId.ToString());
+                var user = await _roleRepository.FindUserByIdAsync(settingRoleModel.UserId!);
                 if (user == null)
                     return new SettingRoleModelResponse
                     {
