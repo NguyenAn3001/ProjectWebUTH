@@ -1,6 +1,7 @@
 ﻿using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace MentorBooking.Repository.Repositories
         {
             try
             {
-                var feedbackResponse = _dbContext.MentorFeedbacks.Where(x => x.MentorId==mentorFeedback.MentorId && x.StudentId==mentorFeedback.StudentId).ToList();
+                var feedbackResponse = _dbContext.MentorFeedbacks.Where(x => x.SessionId==mentorFeedback.SessionId && x.StudentId==mentorFeedback.StudentId).ToList();
                 if(feedbackResponse.Count > 0)
                 {
                     _dbContext.RemoveRange(feedbackResponse);
@@ -37,6 +38,39 @@ namespace MentorBooking.Repository.Repositories
                 Console.WriteLine(e.Message);
                 return false;
             }
+        }
+
+        public async Task<bool> DeleteMentorFeedbackAsync(Guid FeedbackId)
+        {
+            try
+            {
+                var deleteMentorFeedback = await _dbContext.MentorFeedbacks.SingleOrDefaultAsync(temp => temp.FeedbackId==FeedbackId);
+                if(deleteMentorFeedback == null)
+                {
+                    return false;
+                }
+                _dbContext.MentorFeedbacks.Remove(deleteMentorFeedback);
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        public List<MentorFeedback>? GetAllMentorFeedbacksAsync(Guid MentorId)
+        {
+            var allMentorFeedback = _dbContext.MentorFeedbacks.Where(temp=>temp.MentorId == MentorId).ToList();
+            if (allMentorFeedback.Count() == 0) return null;
+            return allMentorFeedback;
+        }
+
+        public async Task<MentorFeedback?> GetMentorFeedbackAsync(Guid FeedbackId)
+        {
+            var getMentorFeedback = await _dbContext.MentorFeedbacks.SingleOrDefaultAsync(temp => temp.FeedbackId==FeedbackId);
+            return getMentorFeedback;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,39 @@ namespace MentorBooking.Repository.Repositories
                 return false;
             }
         }
-            
+
+        public async Task<bool> DeleteMentorSupportSessionAsync(Guid SessionId)
+        {
+            try
+            {
+                var deleteSession = await _dbContext.MentorSupportSessions.SingleOrDefaultAsync(temp => temp.SessionId == SessionId);
+                if (deleteSession==null)
+                {
+                    return false;
+                }
+                _dbContext.MentorSupportSessions.Remove(deleteSession);
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+        }
+
+        public List<MentorSupportSession>? GetAllMentorSupportSessionAsync(Guid MentorId)
+        {
+           var allMentorSupportSession= _dbContext.MentorSupportSessions.Where(temp=>temp.MentorId==MentorId).ToList();
+            if (allMentorSupportSession.Count() == 0) return null;
+            return allMentorSupportSession;
+        }
+
+        public async Task<MentorSupportSession?> GetMentorSupportSessionAsync(Guid SessionId)
+        {
+            var getSession = await _dbContext.MentorSupportSessions.SingleOrDefaultAsync(temp => temp.SessionId == SessionId);
+            return getSession;
+        }
     }
 }

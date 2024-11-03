@@ -18,15 +18,9 @@ namespace MentorBooking.Service.DTOs.Request
         public byte SessionCount { get; set; }
         [Required(ErrorMessage = "PointPerSession is required for booking")]
         public short PointPerSession { get; set; }
-        [Required(ErrorMessage = "ScheduleAvailableId is required for booking")]
-        public Guid ScheduleAvailableId { get; set; }
-        [Required(ErrorMessage = "ScheduleId is required for booking")]
-        public Guid ScheduleId { get; set; }
-        [DataType(DataType.Date)]
-        public DateOnly FreeDay { get; set; }
-        [DataType(DataType.Time)]
-        public TimeOnly StartTime { get; set; }
-        [DataType(DataType.Time)]
-        public TimeOnly EndTime { get; set; }
+        [Required(ErrorMessage ="Date booking is required for booking")]
+        public List<Guid> dateBookings { get; set; }
+        [Required(ErrorMessage = "Group id is required for booking")]
+        public int GroupId {  get; set; }
     }
 }

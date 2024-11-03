@@ -10,5 +10,8 @@ namespace MentorBooking.Repository.Interfaces
     public interface IMentorSupportSessionRepository
     {
         Task<bool> AddMentorSupportSessionAsync(MentorSupportSession mentorSupportSession);
+        Task<MentorSupportSession?> GetMentorSupportSessionAsync(Guid SessionId);
+        Task<bool> DeleteMentorSupportSessionAsync(Guid SessionId);
+        List<MentorSupportSession>? GetAllMentorSupportSessionAsync(Guid MentorId);
     }
 }

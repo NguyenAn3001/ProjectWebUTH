@@ -301,7 +301,7 @@ namespace MentorBooking.Repository.Migrations
                     GroupId = table.Column<int>(type: "int", nullable: false),
                     MentorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TotalPoints = table.Column<int>(type: "int", nullable: false),
-                    ComfirmSession = table.Column<bool>(type: "bit", nullable: false)
+                    SessionConfirm = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -319,7 +319,7 @@ namespace MentorBooking.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SchedulesAvailables",
+                name: "SchedulesAvailable",
                 columns: table => new
                 {
                     ScheduleAvailableId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -330,7 +330,7 @@ namespace MentorBooking.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SchedulesAvailables", x => x.ScheduleAvailableId);
+                    table.PrimaryKey("PK_SchedulesAvailable", x => x.ScheduleAvailableId);
                     table.ForeignKey(
                         name: "FK_SchedulesAvailable_Mentor",
                         column: x => x.MentorId,
@@ -486,7 +486,7 @@ namespace MentorBooking.Repository.Migrations
                     table.ForeignKey(
                         name: "FK_SchedulesAvailable_MentorWorkSchedule",
                         column: x => x.ScheduleAvailableId,
-                        principalTable: "SchedulesAvailables",
+                        principalTable: "SchedulesAvailable",
                         principalColumn: "ScheduleAvailableId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -630,8 +630,8 @@ namespace MentorBooking.Repository.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SchedulesAvailables_MentorId",
-                table: "SchedulesAvailables",
+                name: "IX_SchedulesAvailable_MentorId",
+                table: "SchedulesAvailable",
                 column: "MentorId");
 
             migrationBuilder.CreateIndex(
@@ -748,7 +748,7 @@ namespace MentorBooking.Repository.Migrations
                 name: "Skills");
 
             migrationBuilder.DropTable(
-                name: "SchedulesAvailables");
+                name: "SchedulesAvailable");
 
             migrationBuilder.DropTable(
                 name: "UserPoints");

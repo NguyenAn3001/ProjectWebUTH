@@ -22,7 +22,36 @@ namespace MentorBooking.Service.Services
         }
         public async Task<ApiResponse> BookingMentor(MentorSupportSessionRequest request)
         {
-            if(await _workScheduleRepository.CheckWordScheduleAsync(request.ScheduleAvailableId))
+            if(request.dateBookings.Count()>request.SessionCount)
+            {
+                return new ApiResponse
+                {
+                    Status = "Error",
+                    Message = "Numbers of session cant not over Session count"
+                };
+            }    
+            foreach(var unavailable in request.dateBookings)
+            {
+                if (await _workScheduleRepository.CheckWorkScheduleAsync(unavailable))
+                {
+                    return new ApiResponse
+                    {
+                        Status = "Error",
+                        Message = "This Schedule is not availabe"
+                    };
+                }
+            }
+            var mentorSupportSession = new MentorSupportSession()
+            {
+                SessionId = Guid.NewGuid(),
+                MentorId = request.MentorId,
+                SessionCount = request.SessionCount,
+                PointsPerSession = request.PointPerSession,
+                GroupId = request.GroupId,
+                TotalPoints = request.SessionCount * request.PointPerSession,
+                SessionConfirm = false
+            };
+            if (!await _sessionRepository.AddMentorSupportSessionAsync(mentorSupportSession))
             {
                 return new ApiResponse
                 {
@@ -30,45 +59,107 @@ namespace MentorBooking.Service.Services
                     Message = "This Schedule is not availabe"
                 };
             }
-            var mentorSupportSession = new MentorSupportSession()
+            foreach (var dateBooking in request.dateBookings)
             {
-                SessionId = Guid.NewGuid(),
-                SessionCount = request.SessionCount,
-                PointsPerSession = request.PointPerSession,
-                TotalPoints = request.SessionCount * request.PointPerSession,
-                MentorId=request.MentorId,
-                //why noi guid
-                //GroupId=Guid.NewGuid()
-            };
-            var mentorWorkSchedule = new MentorWorkSchedule()
-            {
-                ScheduleAvailableId = request.ScheduleAvailableId,
-                SessionId = mentorSupportSession.SessionId,
-                UnavailableDate = true,
-                ScheduleId = request.ScheduleId,
-            };
-            if (await _sessionRepository.AddMentorSupportSessionAsync(mentorSupportSession) && await _workScheduleRepository.AddMentorWordScheduleAsync(mentorWorkSchedule))
-            {
-                return new ApiResponse
+                var mentorWorkSchedule = new MentorWorkSchedule()
                 {
-                    Status = "Success",
-                    Message = "Booking success",
-                    Data = new MentorSupportSessionResponse
+                    SessionId = mentorSupportSession.SessionId,
+                    UnavailableDate = true,
+                    ScheduleId = Guid.NewGuid(),
+                    ScheduleAvailableId=dateBooking
+                };
+                if(!await _workScheduleRepository.AddMentorWordScheduleAsync(mentorWorkSchedule))
+                {
+                    return new ApiResponse
                     {
-                        StudentId = request.StudentId,
-                        SessionCount = request.SessionCount,
-                        PointPerSession = request.PointPerSession,
-                        TotalPoint = request.SessionCount * request.PointPerSession,
-                        FreeDay = request.FreeDay,
-                        StartTime = request.StartTime,
-                        EndTime = request.EndTime,
-                    }
+                        Status = "Error",
+                        Message = "This Schedule is not availabe"
+                    };
+                }    
+            }
+            return new ApiResponse()
+            {
+                Status="Success",
+                Message="Booking is success",
+                Data= new MentorSupportSessionResponse()
+                {
+                    StudentId=request.StudentId,
+                    GroupId=request.GroupId,
+                    SessionCount=request.SessionCount,
+                    PointPerSession=request.PointPerSession,
+                    TotalPoint=request.SessionCount * request.PointPerSession,
+                }
+            };
+        }
+
+        public async Task<ApiResponse> DeleteMentorSupportSessionAsync(Guid SessionId)
+        {
+            var existMentorSession = await _sessionRepository.GetMentorSupportSessionAsync(SessionId);
+            var existWorkSchedule = _workScheduleRepository.GetMentorWorkSchedule(SessionId).ToList();
+            if(existMentorSession==null)
+            {
+                return new ApiResponse()
+                {
+                    Status = "Error",
+                    Message = "Mentor support session is not found"
                 };
             }
-            else return new ApiResponse
+            if(existWorkSchedule.Count()==0)
             {
-                Status = "Error",
-                Message = "Booking failed"
+                return new ApiResponse()
+                { 
+                    Status="Error",
+                    Message="Work Schedule session is not found"
+                };
+            }
+            var deleteWorkSChedule = await _workScheduleRepository.DeleteMentorWorkScheduleAsync(SessionId);
+            var deleteMentorSession = await _sessionRepository.DeleteMentorSupportSessionAsync(SessionId);
+            if(!deleteMentorSession)
+            {
+                return new ApiResponse()
+                {
+                    Status = "Error",
+                    Message = "Mentor support session is deleted or missing"
+                };
+            }
+           if(!deleteWorkSChedule)
+            {
+                return new ApiResponse()
+                { 
+                    Status = "Error",
+                    Message="Work Schedule session is deleted or missing"
+                };
+
+            }
+            return new ApiResponse()
+            {
+                Status = "Success",
+                Message = "Mentor support session and Work schedule session is deleted"
+            };
+
+
+        }
+
+        public List<ApiResponse>? GetAllMentorSupportSessionAsync(Guid MentorId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ApiResponse> GetMentorSupportSessionAsync(Guid SessionId)
+        {
+            var existMentorSession = await _sessionRepository.GetMentorSupportSessionAsync(SessionId);
+            if (existMentorSession == null)
+            {
+                return new ApiResponse()
+                {
+                    Status = "Error",
+                    Message = "Mentor support session is not found"
+                };
+            }
+            return new ApiResponse()
+            {
+                Status = "Success",
+                Message = "Mentor support session is found"
             };
         }
     }

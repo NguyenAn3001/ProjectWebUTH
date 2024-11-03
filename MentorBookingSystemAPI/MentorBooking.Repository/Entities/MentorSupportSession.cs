@@ -16,7 +16,7 @@ public partial class MentorSupportSession
     public Guid MentorId { get; set; }
 
     public int TotalPoints { get; set; }
-    public bool ComfirmSession {  get; set; }
+    public bool SessionConfirm {  get; set; }
 
     public virtual ProjectGroup Group { get; set; } = null!;
 

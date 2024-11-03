@@ -166,6 +166,9 @@ namespace MentorBooking.Repository.Migrations
                     b.Property<short>("PointsPerSession")
                         .HasColumnType("smallint");
 
+                    b.Property<bool>("SessionConfirm")
+                        .HasColumnType("bit");
+
                     b.Property<byte>("SessionCount")
                         .HasColumnType("tinyint");
 
@@ -363,7 +366,7 @@ namespace MentorBooking.Repository.Migrations
                     b.ToTable("Roles", (string)null);
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Entities.SchedulesAvailable", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.SchedulesAvailables", b =>
                 {
                     b.Property<Guid>("ScheduleAvailableId")
                         .ValueGeneratedOnAdd()
@@ -385,7 +388,7 @@ namespace MentorBooking.Repository.Migrations
 
                     b.HasIndex("MentorId");
 
-                    b.ToTable("SchedulesAvailable", (string)null);
+                    b.ToTable("SchedulesAvailable");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.Skill", b =>
@@ -762,7 +765,7 @@ namespace MentorBooking.Repository.Migrations
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.MentorWorkSchedule", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Entities.SchedulesAvailable", "ScheduleAvailable")
+                    b.HasOne("MentorBooking.Repository.Entities.SchedulesAvailables", "ScheduleAvailable")
                         .WithOne("MentorWorkSchedule")
                         .HasForeignKey("MentorBooking.Repository.Entities.MentorWorkSchedule", "ScheduleAvailableId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -811,7 +814,7 @@ namespace MentorBooking.Repository.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Entities.SchedulesAvailable", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.SchedulesAvailables", b =>
                 {
                     b.HasOne("MentorBooking.Repository.Entities.Mentor", "Mentor")
                         .WithMany("SchedulesAvailable")
@@ -960,7 +963,7 @@ namespace MentorBooking.Repository.Migrations
                     b.Navigation("StudentGroups");
                 });
 
-            modelBuilder.Entity("MentorBooking.Repository.Entities.SchedulesAvailable", b =>
+            modelBuilder.Entity("MentorBooking.Repository.Entities.SchedulesAvailables", b =>
                 {
                     b.Navigation("MentorWorkSchedule")
                         .IsRequired();

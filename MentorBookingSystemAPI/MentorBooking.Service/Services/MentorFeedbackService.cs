@@ -18,14 +18,14 @@ namespace MentorBooking.Service.Services
         {
             _mentorFeedbackRepository = mentorFeedbackRepository;
         }
-        public async Task<ApiResponse> AddMentorFeedbackAsync(Users user, Guid mentorId, Guid sessionId, StudentCommentRequest studentComment)
+        public async Task<ApiResponse> AddStudentCommentAsync(StudentCommentRequest studentComment)
         {
             var mentorFeedback = new MentorFeedback()
             {
                 FeedbackId = Guid.NewGuid(),
-                SessionId= sessionId,
-                StudentId = user.Id,
-                MentorId = mentorId,
+                SessionId= studentComment.SessionId,
+                StudentId =studentComment.UserId,
+                MentorId = studentComment.MentorId,
                 Rating = studentComment.Rating,
                 Comment = studentComment.Comment,
                 CreateAt = DateTime.Now,
@@ -38,12 +38,12 @@ namespace MentorBooking.Service.Services
                     Message = "New comment has been created",
                     Data = new StudentCommentResponse()
                     {
-                        StudentId = user.Id,
+                        StudentId = mentorFeedback.StudentId,
                         Comment = mentorFeedback.Comment,
                         Rating = mentorFeedback.Rating,
                         CreateAt = mentorFeedback.CreateAt,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
+                        FirstName = studentComment.FirstName,
+                        LastName = studentComment.LastName,
                     }
                 };
             }
@@ -51,6 +51,56 @@ namespace MentorBooking.Service.Services
             {
                 Status = "Error",
                 Message = "New comment hasn't been created",
+            };
+        }
+
+        public async Task<ApiResponse> DeleteMentorFeedbackAsync(Guid MentorFeedbackId)
+        {
+            var existMentorFeedback = await _mentorFeedbackRepository.GetMentorFeedbackAsync(MentorFeedbackId);
+            if(existMentorFeedback==null)
+            {
+                return new ApiResponse()
+                {
+                    Status = "Error",
+                    Message = "Not Found"
+                };
+            }
+            var deleteMentorFeedback = await _mentorFeedbackRepository.DeleteMentorFeedbackAsync(MentorFeedbackId);
+            if(!deleteMentorFeedback)
+            {
+                return new ApiResponse()
+                {
+                    Status = "Error",
+                    Message = "Mentor Feedback is missing or deleted"
+                };
+            }
+            return new ApiResponse()
+            {
+                Status = "Success",
+                Message = "Mentor Feedback is deleted"
+            };
+        }
+
+        public List<ApiResponse> GetAllMentorFeedback(Guid MentorId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ApiResponse> GetMentorFeedback(Guid MentorFeedbackId)
+        {
+            var existMentorFeedback = await _mentorFeedbackRepository.GetMentorFeedbackAsync(MentorFeedbackId);
+            if (existMentorFeedback == null)
+            {
+                return new ApiResponse()
+                {
+                    Status = "Error",
+                    Message = "Not Found"
+                };
+            }
+            return new ApiResponse()
+            {
+                Status = "Success",
+                Message = "Mentor Feedback is found",
             };
         }
 
