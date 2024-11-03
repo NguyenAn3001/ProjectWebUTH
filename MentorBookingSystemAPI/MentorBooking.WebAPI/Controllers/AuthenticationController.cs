@@ -1,4 +1,6 @@
-﻿using MentorBooking.Service.DTOs.Request;
+﻿using System.Security.Claims;
+using Azure.Messaging;
+using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -43,20 +45,21 @@ namespace MentorBooking.WebAPI.Controllers
             //    return StatusCode(StatusCodes.Status500InternalServerError, registerResponse);
             //return Ok(registerResponse);
         }
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost("send-confirm-email")]
         public async Task<IActionResult> SendConfirmEmail([FromBody] ConfirmationEmailModelRequest confirmEmailModel)
         {
-            var confirmToken = await _authenticateService.GetCofirmTokenAsync(confirmEmailModel);
-            var confirmLink = Url.Action(action: "ConfirmEmail", controller: "Authentication", values: new { UserId = confirmEmailModel.UserId, Token = confirmToken }, protocol: HttpContext.Request.Scheme);
-            await _senderEmail.SendEmailAsync(email: confirmEmailModel.EmailGetConfirmToken!, subject: "Confirm Your Account", message: await _authenticateService.GenerateBodyMessageForConfirmationEmailAsync(confirmEmailModel, confirmLink ?? ""), isBodyHtml: true);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+            var confirmToken = await _authenticateService.GetConfirmTokenAsync(Guid.Parse(userId));
+            var confirmLink = Url.Action(action: "ConfirmEmail", controller: "Authentication", values: new { UserId = userId, Token = confirmToken }, protocol: HttpContext.Request.Scheme);
+            await _senderEmail.SendEmailAsync(email: confirmEmailModel.EmailGetConfirmToken!, subject: "Confirm Your Account", message: await _authenticateService.GenerateBodyMessageForConfirmationEmailAsync(Guid.Parse(userId), confirmLink ?? ""), isBodyHtml: true);
             return Ok(new ConfirmationEmailModelResponse()
             {
                 Status = "Success",
                 Message = "Send confirmation email successfully."
             });
         }
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet("confirm-email")]
         public async Task<IActionResult> ConfirmEmail(string UserId, string Token)
         {
@@ -81,17 +84,18 @@ namespace MentorBooking.WebAPI.Controllers
                 Message = "Confirm email success."
             });
         }
-        [Authorize(Roles = "Admin, Student")]
+        [Authorize(Roles = "Student")]
         [HttpPost("setting-role")]
         public async Task<IActionResult> SettingRoleForUser([FromBody] SettingRoleModelRequest settingRoleModel)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
             if (!ModelState.IsValid)
                 return BadRequest(new RegisterModelResponse
                 {
                     Status = "Error",
                     Message = "Invalid data provided."
                 });
-            var settingRoleResponse = await _authenticateService.SettingRoleAsync(settingRoleModel);
+            var settingRoleResponse = await _authenticateService.SettingRoleAsync(Guid.Parse(userId), settingRoleModel);
             return settingRoleResponse.Status switch
             {
                 "Error" => BadRequest(settingRoleResponse),
@@ -122,15 +126,16 @@ namespace MentorBooking.WebAPI.Controllers
         }
         [Authorize(Roles = "Student, Mentor, Admin")]
         [HttpPost("logout")]
-        public async Task<IActionResult> Logout([FromBody] LogoutModelRequest logoutRequest)
+        public async Task<IActionResult> Logout()
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
             if (!ModelState.IsValid)
                 return BadRequest(new LoginModelResponse
                 {
                     Status = "Error",
                     Message = "Invalid data provided."
                 });
-            var logoutResponse = await _authenticateService.Logout(logoutRequest);
+            var logoutResponse = await _authenticateService.Logout(Guid.Parse(userId));
             return logoutResponse.Status switch
             {
                 "NotFound" => NotFound(logoutResponse),

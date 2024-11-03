@@ -6,13 +6,13 @@ namespace MentorBooking.Service.Interfaces
     public interface IAuthenticateService
     {
         Task<RegisterModelResponse> RegisterUserAsync(RegisterModelRequest registerModel);
-        Task<SettingRoleModelResponse> SettingRoleAsync(SettingRoleModelRequest settingRoleModel);
+        Task<SettingRoleModelResponse> SettingRoleAsync(Guid userId, SettingRoleModelRequest settingRoleModel);
         Task<LoginModelResponse> Login(LoginModelRequest loginModel);
-        Task<LogoutModelResponse> Logout(LogoutModelRequest logoutModel);
+        Task<LogoutModelResponse> Logout(Guid userId);
         Task<RefreshTokenModelResponse> RefreshToken(RefreshTokenModelRequest refreshTokenModel);
-        Task<string?> GetCofirmTokenAsync(ConfirmationEmailModelRequest confirmationEmailModel);
+        Task<string?> GetConfirmTokenAsync(Guid userId);
         Task<string> GenerateBodyMessageForConfirmationEmailAsync(
-            ConfirmationEmailModelRequest confirmationEmailModel, string confirmLink);
+            Guid userId, string confirmLink);
         Task<bool> IsEmailConfirmedAsync(LinkEmailConfirmModelRequest linkEmailConfirm);
     }
 }

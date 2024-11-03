@@ -8,10 +8,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text;
 using System.Text.Encodings.Web;
-using Microsoft.AspNetCore.Http;
 
 namespace MentorBooking.Service.Services
 {
@@ -100,11 +98,11 @@ namespace MentorBooking.Service.Services
             }
         }
         
-        public async Task<SettingRoleModelResponse> SettingRoleAsync(SettingRoleModelRequest settingRoleModel)
+        public async Task<SettingRoleModelResponse> SettingRoleAsync(Guid userId, SettingRoleModelRequest settingRoleModel)
         {
             try
             {
-                var user = await _roleRepository.FindUserByIdAsync(settingRoleModel.UserId!);
+                var user = await _roleRepository.FindUserByIdAsync(userId.ToString());
                 if (user == null)
                     return new SettingRoleModelResponse
                     {
@@ -185,11 +183,11 @@ namespace MentorBooking.Service.Services
             }
         }
 
-        public async Task<LogoutModelResponse> Logout(LogoutModelRequest logoutModel)
+        public async Task<LogoutModelResponse> Logout(Guid userId)
         {
             try
             {
-                var user = await _userRepository.FindByIdAsync(logoutModel.UserId!);
+                var user = await _userRepository.FindByIdAsync(userId.ToString());
                 if (user == null)
                     return new LogoutModelResponse
                     {
@@ -253,15 +251,15 @@ namespace MentorBooking.Service.Services
             }
         }
 
-        public Task<string?> GetCofirmTokenAsync(ConfirmationEmailModelRequest confirmationEmailModel)
+        public Task<string?> GetConfirmTokenAsync(Guid userId)
         {
-            return _confirmEmailRepository.CreateEmailConfirmationTokenAsync(confirmationEmailModel.UserId.ToString());
+            return _confirmEmailRepository.CreateEmailConfirmationTokenAsync(userId.ToString());
         }
 
         public async Task<string> GenerateBodyMessageForConfirmationEmailAsync(
-            ConfirmationEmailModelRequest confirmationEmailModel, string confirmLink)
+            Guid userId, string confirmLink)
         {
-            var user = await _userRepository.FindByIdAsync(confirmationEmailModel.UserId.ToString());
+            var user = await _userRepository.FindByIdAsync(userId.ToString());
             var fullName = $"{user?.LastName} {user?.FirstName}";
             return BuildConfirmationEmailBody(fullName, confirmLink);
         }

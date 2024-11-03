@@ -17,10 +17,10 @@ public class ImageUploadService : IImageUploadService
         _imageRepository = imageRepository;
     }
 
-    public async Task<ImageUploadModelResponse> UploadImageAsync(string serverPath, ImageUploadModelRequest request)
+    public async Task<ImageUploadModelResponse> UploadImageAsync(Guid userId, ImageUploadModelRequest request)
     {
         // var userUpdateImage = await _dbContext.Users.SingleOrDefaultAsync(user => user.Id == request.UserId);
-        var userUpdateImage = await _userRepository.FindByIdAsync(request.UserId.ToString());
+        var userUpdateImage = await _userRepository.FindByIdAsync(userId.ToString());
         if (userUpdateImage == null)
             return new ImageUploadModelResponse()
             {
@@ -42,7 +42,7 @@ public class ImageUploadService : IImageUploadService
                 Status = "Error",
                 Message = "Please provide a file format is image."
             };
-        var fileName = Path.GetFileNameWithoutExtension(fileImage.FileName) + $"_{request.UserId}.{fileExtension}";
+        var fileName = Path.GetFileNameWithoutExtension(fileImage.FileName) + $"_{userId}.{fileExtension}";
         var imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images");
         if (!Directory.Exists(imagesDirectory))
         {

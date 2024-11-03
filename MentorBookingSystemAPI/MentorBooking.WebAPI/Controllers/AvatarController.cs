@@ -1,4 +1,5 @@
-﻿using MentorBooking.Service.DTOs.Request;
+﻿using System.Security.Claims;
+using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -20,12 +21,13 @@ public class AvatarController : ControllerBase
     [HttpPost("upload-avatar")]
     public async Task<IActionResult> UploadAvatar([FromForm] ImageUploadModelRequest request)
     {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
         var baseUrl = $"{Request.Scheme}://{Request.Host.Value}{Request.PathBase.Value}";
         if (!ModelState.IsValid)
         {
             return BadRequest(new { errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
         }
-        var uploadResponse = await _imageUploadService.UploadImageAsync(baseUrl, request);
+        var uploadResponse = await _imageUploadService.UploadImageAsync(Guid.Parse(userId), request);
         return uploadResponse.Status switch
         {
             "Error" => BadRequest(uploadResponse),
@@ -64,9 +66,10 @@ public class AvatarController : ControllerBase
     }
     [Authorize]
     [HttpDelete("delete-avatar")]
-    public async Task<IActionResult> DeleteAvatar([FromQuery] Guid userId)
+    public async Task<IActionResult> DeleteAvatar()
     {
-        if (string.IsNullOrEmpty(userId.ToString()))
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+        if (string.IsNullOrEmpty(userId))
         {
             return BadRequest(new ImageGetModelResponse()
             {
@@ -74,7 +77,7 @@ public class AvatarController : ControllerBase
                 Message = "Please provide user id."
             });
         }
-        ImageDeleteModelRequest request = new ImageDeleteModelRequest(){UserId = userId};
+        ImageDeleteModelRequest request = new ImageDeleteModelRequest(){UserId = Guid.Parse(userId)};
         var imageDeleteModelResponse = await _imageUploadService.DeleteImageAsync(request);
         return imageDeleteModelResponse.Status switch
         {
