@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MentorBooking.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+908251b252911488e84073b465094dfbeecd04ae")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1101656736b4ee1e40ea2b6a23507da0d02b0dbd")]
 [assembly: System.Reflection.AssemblyProductAttribute("MentorBooking.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MentorBooking.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
