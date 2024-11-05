@@ -25,7 +25,11 @@ public partial class ApplicationDbContext : IdentityDbContext<
         : base(options)
     {
     }
+<<<<<<< HEAD
     // public virtual DbSet<SchedulesAvailable> SchedulesAvailables { get; set; }
+=======
+    //public virtual DbSet<SchedulesAvailable> SchedulesAvailables { get; set; }
+>>>>>>> b5703bed503e2988db721df0e5f0f77df6051c9d
     public virtual DbSet<GroupFeedback> GroupFeedbacks { get; set; }
 
     public virtual DbSet<Mentor> Mentors { get; set; }
@@ -52,7 +56,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
 
     public virtual DbSet<UserPoint> UserPoints { get; set; }
     public virtual DbSet<MentorSkill> MentorSkills { get; set; }
-    public virtual DbSet<SchedulesAvailable> SchedulesAvailable { get; set; }
+    public virtual DbSet<SchedulesAvailables> SchedulesAvailable { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -163,7 +167,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__MentorSup__Mento__1DD065E0");
         });
-        modelBuilder.Entity<SchedulesAvailable>(entity =>
+        modelBuilder.Entity<SchedulesAvailables>(entity =>
         {
             entity.HasKey(e => e.ScheduleAvailableId);
         
@@ -316,7 +320,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
             .WithOne(u => u.Student)
             .HasForeignKey<Student>(s => s.StudentId)
             .OnDelete(DeleteBehavior.Restrict);
-        modelBuilder.Entity<SchedulesAvailable>()
+        modelBuilder.Entity<SchedulesAvailables>()
             .HasOne(m => m.Mentor)
             .WithMany(m => m.SchedulesAvailable)
             .HasForeignKey(f => f.MentorId)

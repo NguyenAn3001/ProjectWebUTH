@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.Marshalling;
 
 namespace MentorBooking.Repository.Entities
 {
-    public class SchedulesAvailable
+    public class SchedulesAvailables
     {
         [Key]
         public Guid ScheduleAvailableId { get; set; }

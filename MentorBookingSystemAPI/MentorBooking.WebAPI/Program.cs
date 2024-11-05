@@ -23,8 +23,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IAcceptBookingSession, AcceptBookingSession>();
+builder.Services.AddScoped<IMentorFeedbackRepository,MentorFeedbackRepository>();
+builder.Services.AddScoped<IMentorSupportSessionRepository,MentorSupportSessionRepository>();
+builder.Services.AddScoped<IMentorWorkScheduleRepository,MentorWorkScheduleRepository>();
+builder.Services.AddScoped<IBookingMentorService, BookingMentorService>();
+builder.Services.AddScoped<IMentorFeedbackService, MentorFeedbackService>();
 builder.Services.AddScoped<IAuthenticateService, AuthenticationHandler>();
-builder.Services.AddScoped<ISearchAndSortService,SearchAndSortService>();
 builder.Services.AddScoped<ISearchAndSortService, SearchAndSortService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();

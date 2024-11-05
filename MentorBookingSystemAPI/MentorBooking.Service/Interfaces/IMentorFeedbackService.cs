@@ -11,7 +11,10 @@ namespace MentorBooking.Service.Interfaces
 {
     public interface IMentorFeedbackService
     {
-        Task<ApiResponse> AddMentorFeedbackAsync(Users user,Guid mentorId,Guid sessionId ,StudentCommentRequest studentComment);
-        Task<bool> UpdateMentorFeedbackAsync(MentorFeedback OldMentorFeedback, StudentCommentRequest studentComment);
+        Task<ApiResponse> AddStudentCommentAsync(StudentCommentRequest studentComment);
+        Task<ApiResponse> UpdateMentorFeedbackAsync(StudentCommentRequest studentComment);
+        Task<ApiResponse> DeleteMentorFeedbackAsync(Guid MentorFeedbackId);
+        Task<List<ApiResponse>> GetAllMentorFeedback(Guid MentorId);
+        Task<ApiResponse> GetMentorFeedback(Guid MentorFeedbackId);
     }
 }
