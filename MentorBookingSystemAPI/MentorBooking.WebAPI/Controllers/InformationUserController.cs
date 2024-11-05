@@ -10,7 +10,7 @@ namespace MentorBooking.WebAPI.Controllers;
 
 [Authorize(AuthenticationSchemes = "Bearer")]
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/info")]
 public class InformationUserController : ControllerBase
 {
     private readonly IUpdateInformationService _updateInformationService;
@@ -20,7 +20,7 @@ public class InformationUserController : ControllerBase
         _updateInformationService = updateInformationService;
     }
     [Authorize(Roles = "Admin, Mentor")]
-    [HttpPost("mentor-info")]
+    [HttpPost("mentor")]
     public async Task<IActionResult> MentorInformationUpdate(Guid mentorId, [FromBody] MentorInformationModelRequest mentorInformationModel)
     {
         if (!ModelState.IsValid)
@@ -40,7 +40,7 @@ public class InformationUserController : ControllerBase
         };
     }
     [Authorize(Roles = "Admin, Student")]
-    [HttpPost("student-info")]
+    [HttpPost("student")]
     public async Task<IActionResult> StudentInformationUpdate(Guid studentId, [FromBody] StudentInformationModelRequest studentInformationModel)
     {
         if (!ModelState.IsValid)

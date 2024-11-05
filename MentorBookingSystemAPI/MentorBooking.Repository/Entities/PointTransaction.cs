@@ -17,5 +17,5 @@ public partial class PointTransaction
 
     public Guid UserId { get; set; }
 
-    public virtual UserPoint User { get; set; } = null!;
+    public virtual UserPoint UserPoint { get; set; } = null!;
 }

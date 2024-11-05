@@ -217,6 +217,7 @@ public class GroupOfStudentService : IGroupOfStudentService
     {
         ProjectGroup projectGroup = new ProjectGroup()
         {
+            GroupId = Guid.NewGuid(),
             GroupName = createGroupRequest.GroupName,
             Topic = createGroupRequest.Topic,
             CreateBy = studentId,

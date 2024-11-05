@@ -20,7 +20,7 @@ public class StudentRepository : IStudentRepository
             var studentResponse = _dbContext.Students.Where(x => x.StudentId == student.StudentId).ToList();
             if (studentResponse.Count > 0)
             {
-                _dbContext.RemoveRange(student);
+                _dbContext.RemoveRange(studentResponse);
                 await _dbContext.Students.AddAsync(student);
                 await _dbContext.SaveChangesAsync();
                 return true;

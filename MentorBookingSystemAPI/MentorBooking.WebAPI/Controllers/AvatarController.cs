@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MentorBooking.WebAPI.Controllers;
 [Authorize(AuthenticationSchemes = "Bearer")]
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/avatar")]
 public class AvatarController : ControllerBase
 {
     private readonly IImageUploadService _imageUploadService;
@@ -18,7 +18,7 @@ public class AvatarController : ControllerBase
         _imageUploadService = imageUploadService;
     }
     [Authorize]
-    [HttpPost("upload-avatar")]
+    [HttpPost("upload")]
     public async Task<IActionResult> UploadAvatar([FromForm] ImageUploadModelRequest request)
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
@@ -36,7 +36,7 @@ public class AvatarController : ControllerBase
         };
     }
     [Authorize]
-    [HttpGet("get-avatar")]
+    [HttpGet]
     public async Task<IActionResult> GetAvatar([FromQuery] Guid userId)
     {
         var baseUrl = $"{Request.Scheme}://{Request.Host.Value}{Request.PathBase.Value}";
@@ -65,7 +65,7 @@ public class AvatarController : ControllerBase
         };
     }
     [Authorize]
-    [HttpDelete("delete-avatar")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAvatar()
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
