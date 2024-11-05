@@ -17,7 +17,6 @@ public partial class MentorSupportSession
 
     public int TotalPoints { get; set; }
     public bool SessionConfirm { get; set; } = false;
-
     public virtual ProjectGroup Group { get; set; } = null!;
 
     public virtual GroupFeedback? GroupFeedback { get; set; }

@@ -9,7 +9,7 @@ public class AutoMapperProfile : Profile
 {
     public AutoMapperProfile()
     {
-        CreateMap<SchedulesAvailable, SchedulesAvailableModelResponse>()
+        CreateMap<SchedulesAvailables, SchedulesAvailableModelResponse>()
             .ForMember(x => x.ScheduleAvailableId, option => option.MapFrom(src => src.ScheduleAvailableId))
             .ForMember(x => x.MentorId, option => option.MapFrom(src => src.MentorId))
             .ForMember(x => x.FreeDay, option => option.MapFrom(src => src.FreeDay))

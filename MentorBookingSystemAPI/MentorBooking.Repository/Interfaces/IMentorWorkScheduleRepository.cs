@@ -5,6 +5,9 @@ namespace MentorBooking.Repository.Interfaces
     public interface IMentorWorkScheduleRepository
     {
         Task<bool> AddMentorWordScheduleAsync(MentorWorkSchedule mentorWorkSchedule);
-        Task<bool> CheckWordScheduleAsync(Guid mentorWorkScheduleId);
+        Task<bool> CheckWorkScheduleAsync(Guid mentorWorkScheduleId);
+        Task<bool> DeleteMentorWorkScheduleAsync(Guid SessionId);
+        List<MentorWorkSchedule> GetMentorWorkSchedule(Guid SessionId);
+        Task<bool> UpdateMentorWorkSchedule(MentorWorkSchedule mentorWorkSchedule);
     }
 }

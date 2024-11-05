@@ -1,6 +1,7 @@
 ﻿using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace MentorBooking.Repository.Repositories
         {
             try
             {
-                var workSchedule = _dbContext.MentorWorkSchedules.Where(temp => temp.ScheduleId == mentorWorkSchedule.ScheduleId).ToList();
+                var workSchedule = _dbContext.MentorWorkSchedules.Where(temp =>temp.ScheduleAvailableId==mentorWorkSchedule.ScheduleAvailableId).ToList();
                 if(workSchedule.Count>0)
                 {
                     _dbContext.MentorWorkSchedules.RemoveRange(workSchedule);
@@ -39,14 +40,56 @@ namespace MentorBooking.Repository.Repositories
             }
         }
 
-        public async Task<bool> CheckWordScheduleAsync(Guid mentorWorkScheduleId)
+        public async Task<bool> CheckWorkScheduleAsync(Guid mentorWorkScheduleId)
         {
-            var check=_dbContext.MentorWorkSchedules.FirstOrDefault(temp=>temp.ScheduleAvailableId==mentorWorkScheduleId);
+            var check= await _dbContext.MentorWorkSchedules.SingleOrDefaultAsync(temp=>temp.ScheduleAvailableId==mentorWorkScheduleId);
             if(check != null)
             {
                 if (check.UnavailableDate) return true;
             }
             return false;
+        }
+
+        public async Task<bool> DeleteMentorWorkScheduleAsync(Guid SessionId)
+        {
+            try
+            {
+                var deleteWorkSchedule = _dbContext.MentorWorkSchedules.Where(temp => temp.SessionId == SessionId).ToList();
+                if (deleteWorkSchedule == null) 
+                {
+                    return false;
+                }
+                _dbContext.MentorWorkSchedules.RemoveRange(deleteWorkSchedule);
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+        public List<MentorWorkSchedule> GetMentorWorkSchedule(Guid SessionId)
+        {
+            var getWorkSchedule = _dbContext.MentorWorkSchedules.Where(temp => temp.SessionId == SessionId).ToList();
+            return getWorkSchedule;
+        }
+
+        public async Task<bool> UpdateMentorWorkSchedule(MentorWorkSchedule mentorWorkSchedule)
+        {
+            try
+            {
+                var existMentorSupportSession = await _dbContext.MentorWorkSchedules.SingleOrDefaultAsync(temp => temp.ScheduleId == mentorWorkSchedule.ScheduleId);
+                if (existMentorSupportSession == null) return false;
+                existMentorSupportSession.UnavailableDate = mentorWorkSchedule.UnavailableDate;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
     }
 }

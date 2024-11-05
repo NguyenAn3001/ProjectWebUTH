@@ -14,7 +14,7 @@ public class SchedulesAvailableRepository : ISchedulesAvailableRepository
     {
         _dbContext = dbContext;
     }
-    public async Task<bool> AddSchedulesAvailableAsync(List<SchedulesAvailable> schedulesAvailable)
+    public async Task<bool> AddSchedulesAvailableAsync(List<SchedulesAvailables> schedulesAvailable)
     {
         try
         {
@@ -36,7 +36,7 @@ public class SchedulesAvailableRepository : ISchedulesAvailableRepository
         }
     }
 
-    public List<SchedulesAvailable>? GetAllSchedulesAvailable(Guid mentorId)
+    public List<SchedulesAvailables>? GetAllSchedulesAvailable(Guid mentorId)
     {
         var schedulesAvailable =  _dbContext.SchedulesAvailable.Where(x => x.MentorId == mentorId).ToList();
         if (schedulesAvailable.Count == 0)
@@ -44,7 +44,7 @@ public class SchedulesAvailableRepository : ISchedulesAvailableRepository
         return schedulesAvailable;
     }
 
-    public async Task<bool> UpdateSchedulesAvailableAsync(Guid scheduleAvailableId, SchedulesAvailable schedulesAvailable)
+    public async Task<bool> UpdateSchedulesAvailableAsync(Guid scheduleAvailableId, SchedulesAvailables schedulesAvailable)
     {
         try
         {
@@ -82,7 +82,7 @@ public class SchedulesAvailableRepository : ISchedulesAvailableRepository
         }
     }
 
-    public async Task<SchedulesAvailable?> GetSchedulesAvailableAsync(Guid schedulesAvailableId)
+    public async Task<SchedulesAvailables?> GetSchedulesAvailableAsync(Guid schedulesAvailableId)
     {
         var schedule = await _dbContext.SchedulesAvailable.SingleOrDefaultAsync(x => x.ScheduleAvailableId == schedulesAvailableId);
         return schedule;
