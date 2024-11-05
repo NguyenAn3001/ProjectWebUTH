@@ -25,11 +25,6 @@ public partial class ApplicationDbContext : IdentityDbContext<
         : base(options)
     {
     }
-<<<<<<< HEAD
-    // public virtual DbSet<SchedulesAvailable> SchedulesAvailables { get; set; }
-=======
-    //public virtual DbSet<SchedulesAvailable> SchedulesAvailables { get; set; }
->>>>>>> b5703bed503e2988db721df0e5f0f77df6051c9d
     public virtual DbSet<GroupFeedback> GroupFeedbacks { get; set; }
 
     public virtual DbSet<Mentor> Mentors { get; set; }

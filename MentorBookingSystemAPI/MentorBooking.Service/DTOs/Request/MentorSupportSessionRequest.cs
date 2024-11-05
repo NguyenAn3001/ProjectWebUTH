@@ -19,6 +19,6 @@ namespace MentorBooking.Service.DTOs.Request
         [Required(ErrorMessage ="Date booking is required for booking")]
         public List<Guid> dateBookings { get; set; }
         [Required(ErrorMessage = "Group id is required for booking")]
-        public int GroupId {  get; set; }
+        public Guid GroupId {  get; set; }
     }
 }

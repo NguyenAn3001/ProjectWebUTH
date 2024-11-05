@@ -9,7 +9,7 @@ namespace MentorBooking.Service.DTOs.Response
 {
     public class MentorSupportSessionResponse
     {
-        public int GroupId {  get; set; }
+        public Guid GroupId {  get; set; }
         public byte SessionCount { get; set; }
         public short PointPerSession { get; set; }
         public int TotalPoint {  get; set; }
