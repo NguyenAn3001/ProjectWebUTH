@@ -10,4 +10,5 @@ public interface IProjectProgressRepository
     Task<ProjectProgress?> GetProjectProgressAsync(Guid progressId);
     Task<List<ProjectProgress>?> GetAllProjectProgressAsync(Guid sessionId);
     Task<string> GetMentorIdProjectProgressesAsync(Guid sessionId);
+    Task<ProjectGroup> GetGroupAsync(Guid progressId);
 }

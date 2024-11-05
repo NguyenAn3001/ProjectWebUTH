@@ -10,16 +10,27 @@ public class ProjectProgressService : IProjectProgressService
 {
     private readonly IProjectProgressRepository _projectProgressRepository;
     private readonly IUserRepository _userRepository;
+    private readonly IMentorSupportSessionRepository _mentorSupportSessionRepository;
 
-    public ProjectProgressService(IProjectProgressRepository projectProgressRepository, IUserRepository userRepository)
+    public ProjectProgressService(IProjectProgressRepository projectProgressRepository, IUserRepository userRepository, IMentorSupportSessionRepository mentorSupportSessionRepository)
     {
         _projectProgressRepository = projectProgressRepository;
         _userRepository = userRepository;
+        _mentorSupportSessionRepository = mentorSupportSessionRepository;
     }
 
     public async Task<ApiResponse> CreateProjectProgressAsync(CreateProjectProgressModelRequest createProjectProgressRequest)
     {
         //if session id not found => fail to create (note modify after)
+        if (await _mentorSupportSessionRepository.GetMentorSupportSessionAsync(createProjectProgressRequest.SessionId!
+                .Value) is null)
+        {
+            return new ApiResponse()
+            {
+                Status = "Error",
+                Message = "Session doesn't exist."
+            };
+        }
         var projectProgress = new ProjectProgress
         {
             ProgressId = new Guid(),
@@ -145,13 +156,16 @@ public class ProjectProgressService : IProjectProgressService
     }
     private async Task<ProjectProgressModelResponse> GetProjectProgressResponse(string mentorId, ProjectProgress projectProgress)
     {
-        
+         
         var user = await _userRepository.FindByIdAsync(mentorId);
+        var group = await _projectProgressRepository.GetGroupAsync(projectProgress.ProgressId);
         var projectProgressResponse = new ProjectProgressModelResponse()
         {
+            ProgressId = projectProgress.ProgressId,
             SessionId = projectProgress.SessionId,
             MentorName = $"{user?.FirstName} {user?.LastName}",
             MentorEmail = user?.Email,
+            GroupName = group?.GroupName,
             Image = user?.Image,
             Description = projectProgress.Description,
             CreatAt = projectProgress.UpdateAt

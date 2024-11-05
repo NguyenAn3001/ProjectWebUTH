@@ -86,7 +86,11 @@ public class ProjectProgressController : ControllerBase
                 status = deleteProgressResponse.Status,
                 message = deleteProgressResponse.Message
             }),
-            _ => Ok(deleteProgressResponse)
+            _ => Ok(new
+            {
+                status = deleteProgressResponse.Status,
+                message = deleteProgressResponse.Message
+            })
         };
     }
     [Authorize]

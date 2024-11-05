@@ -100,4 +100,13 @@ public class ProjectProgressRepository : IProjectProgressRepository
             .FirstOrDefaultAsync(x => x.MentorSupportSession.SessionId == sessionId);
         return x!.MentorSupportSession.MentorId.ToString();
     }
+
+    public Task<ProjectGroup> GetGroupAsync(Guid progressId)
+    {
+        var groupId = _dbContext.ProjectProgresses.Include(x => x.MentorSupportSession)
+            .FirstOrDefault(x => x.ProgressId == progressId)?.MentorSupportSession.GroupId;
+        if (groupId == null)
+            return Task.FromResult<ProjectGroup>(null!);
+        return _dbContext.ProjectGroups.FirstOrDefaultAsync(g => g.GroupId == groupId)!;
+    }
 }

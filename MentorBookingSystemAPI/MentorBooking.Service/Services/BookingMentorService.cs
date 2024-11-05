@@ -22,7 +22,7 @@ namespace MentorBooking.Service.Services
         }
         public async Task<ApiResponse> BookingMentor(MentorSupportSessionRequest request)
         {
-            if(request.dateBookings.Count()>request.SessionCount)
+            if(request.dateBookings.Count() != request.SessionCount)
             {
                 return new ApiResponse
                 {

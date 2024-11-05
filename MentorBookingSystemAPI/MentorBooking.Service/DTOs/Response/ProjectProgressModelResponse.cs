@@ -2,6 +2,7 @@
 
 public class ProjectProgressModelResponse
 {
+    public Guid ProgressId { get; set; }
     public Guid? SessionId { get; set; }
     public string? Image { get; set; }
     public string? MentorName { get; set; }
