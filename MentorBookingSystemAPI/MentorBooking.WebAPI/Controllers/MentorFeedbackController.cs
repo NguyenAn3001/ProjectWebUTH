@@ -9,15 +9,15 @@ namespace MentorBooking.WebAPI.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class CommentController : ControllerBase
+    public class MentorFeedbackController : ControllerBase
     {
         private readonly IMentorFeedbackService _feedbackService;
-        public CommentController(IMentorFeedbackService feedbackService)
+        public MentorFeedbackController(IMentorFeedbackService feedbackService)
         {
             _feedbackService = feedbackService;
         }
         [HttpPost("add-comment")]
-        public async Task<IActionResult> CommentStudent([FromBody]StudentCommentRequest studentComment)
+        public async Task<IActionResult> AddMentorFeedBack([FromBody]StudentCommentRequest studentComment)
         {
             if (!ModelState.IsValid)
             {
@@ -30,8 +30,8 @@ namespace MentorBooking.WebAPI.Controllers
                 _ => Ok(new { status = CommentResponse.Status, message = CommentResponse.Message })
             };
         }
-        [HttpPost("delete-comment")]
-        public async Task<IActionResult> DeleteCommentStudent([FromBody] Guid MentorFeedbackId)
+        [HttpDelete("delete-comment")]
+        public async Task<IActionResult> DeleteMentorFeedBack([FromQuery] Guid MentorFeedbackId)
         {
             if (MentorFeedbackId == Guid.Empty)
                 return BadRequest(new { message = "MentorFeedbackId is required" });
@@ -50,8 +50,8 @@ namespace MentorBooking.WebAPI.Controllers
                 })
             };
         }
-        [HttpPost("get-feedback")]
-        public async Task<IActionResult> GetFeedback([FromBody] Guid MentorFeedbackId)
+        [HttpGet("get-feedback")]
+        public async Task<IActionResult> GetMentorFeedback([FromQuery] Guid MentorFeedbackId)
         {
             if (MentorFeedbackId == Guid.Empty)
                 return BadRequest(new { message = "MentorFeedbackId is required" });
@@ -66,8 +66,31 @@ namespace MentorBooking.WebAPI.Controllers
                 _ => Ok(new
                 {
                     Status = getFeedBackResponse.Status,
-                    Message = getFeedBackResponse.Message
+                    Message = getFeedBackResponse.Message,
+                    Data=getFeedBackResponse.Data
                 })
+            };
+        }
+        [HttpGet("list-feedback")]
+        public async Task<IActionResult> GetALlMentorFeedBack([FromQuery] Guid MentorId)
+        {
+            if (MentorId == Guid.Empty)
+                return BadRequest(new { message = "MentorId is required" });
+            var listMentorFeedback = await _feedbackService.GetAllMentorFeedback(MentorId);
+            return Ok(listMentorFeedback);
+        }
+        [HttpPut("update-feedback")]
+        public async Task<IActionResult> UpdateMentorFeedBack([FromBody] StudentCommentRequest studentComment)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { message = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
+            }
+            var updateResponse = await _feedbackService.UpdateMentorFeedbackAsync(studentComment);
+            return updateResponse.Status switch
+            {
+                "Error" => BadRequest(new { status = updateResponse.Status, message = updateResponse.Message }),
+                _ => Ok(new { status = updateResponse.Status, message = updateResponse.Message })
             };
         }
     }

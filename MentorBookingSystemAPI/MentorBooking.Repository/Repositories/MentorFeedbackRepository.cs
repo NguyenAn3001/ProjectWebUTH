@@ -21,14 +21,6 @@ namespace MentorBooking.Repository.Repositories
         {
             try
             {
-                var feedbackResponse = _dbContext.MentorFeedbacks.Where(x => x.SessionId==mentorFeedback.SessionId && x.StudentId==mentorFeedback.StudentId).ToList();
-                if(feedbackResponse.Count > 0)
-                {
-                    _dbContext.RemoveRange(feedbackResponse);
-                    await _dbContext.MentorFeedbacks.AddAsync(mentorFeedback);
-                    await _dbContext.SaveChangesAsync();
-                    return true;
-                }
                 await _dbContext.MentorFeedbacks.AddAsync(mentorFeedback);
                 await _dbContext.SaveChangesAsync();
                 return true;
@@ -71,6 +63,27 @@ namespace MentorBooking.Repository.Repositories
         {
             var getMentorFeedback = await _dbContext.MentorFeedbacks.SingleOrDefaultAsync(temp => temp.FeedbackId==FeedbackId);
             return getMentorFeedback;
+        }
+
+        public async Task<bool> UpdateMentorFeedbackAsync(MentorFeedback mentorFeedback)
+        {
+            try
+            {
+                var feedbackResponse = _dbContext.MentorFeedbacks.Where(x => x.SessionId == mentorFeedback.SessionId && x.StudentId == mentorFeedback.StudentId).ToList();
+                if (feedbackResponse.Count > 0)
+                {
+                    _dbContext.RemoveRange(feedbackResponse);
+                    await _dbContext.MentorFeedbacks.AddAsync(mentorFeedback);
+                    await _dbContext.SaveChangesAsync();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
     }
 }

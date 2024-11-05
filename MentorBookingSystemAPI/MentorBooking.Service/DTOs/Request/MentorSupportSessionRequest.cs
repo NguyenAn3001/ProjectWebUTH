@@ -10,8 +10,6 @@ namespace MentorBooking.Service.DTOs.Request
 {
     public class MentorSupportSessionRequest
     {
-        [Required(ErrorMessage = "Student id is required for booking")]
-        public Guid StudentId { get; set; }
         [Required(ErrorMessage = "Mentor id is required for booking")]
         public Guid MentorId { get; set; }
         [Required(ErrorMessage = "SessionCount is required for booking")]

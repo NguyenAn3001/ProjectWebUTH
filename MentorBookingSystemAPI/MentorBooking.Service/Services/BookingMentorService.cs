@@ -64,7 +64,7 @@ namespace MentorBooking.Service.Services
                 var mentorWorkSchedule = new MentorWorkSchedule()
                 {
                     SessionId = mentorSupportSession.SessionId,
-                    UnavailableDate = true,
+                    UnavailableDate = false,
                     ScheduleId = Guid.NewGuid(),
                     ScheduleAvailableId=dateBooking
                 };
@@ -83,7 +83,6 @@ namespace MentorBooking.Service.Services
                 Message="Booking is success",
                 Data= new MentorSupportSessionResponse()
                 {
-                    StudentId=request.StudentId,
                     GroupId=request.GroupId,
                     SessionCount=request.SessionCount,
                     PointPerSession=request.PointPerSession,
@@ -142,7 +141,35 @@ namespace MentorBooking.Service.Services
 
         public List<ApiResponse>? GetAllMentorSupportSessionAsync(Guid MentorId)
         {
-            throw new NotImplementedException();
+            List<ApiResponse>? result = new List<ApiResponse>();
+            var listSession = _sessionRepository.GetAllMentorSupportSessionAsync(MentorId);
+            if(listSession==null)
+            {
+                var response = new ApiResponse()
+                {
+                    Status = "Error",
+                    Message = "Mentor support session is not found"
+                };
+                result.Add(response);
+                return result;
+            }
+            foreach( var item in listSession)
+            {
+                var mentorSession = new ApiResponse()
+                {
+                    Status = "Success",
+                    Message = "Mentor support session is found",
+                    Data = new MentorSupportSessionResponse()
+                    {
+                        GroupId = item.GroupId,
+                        PointPerSession = item.PointsPerSession,
+                        SessionCount = item.SessionCount,
+                        TotalPoint = item.TotalPoints
+                    }
+                };
+                result.Add(mentorSession);
+            }
+            return result;
         }
 
         public async Task<ApiResponse> GetMentorSupportSessionAsync(Guid SessionId)
@@ -159,7 +186,14 @@ namespace MentorBooking.Service.Services
             return new ApiResponse()
             {
                 Status = "Success",
-                Message = "Mentor support session is found"
+                Message = "Mentor support session is found",
+                Data= new MentorSupportSessionResponse()
+                {
+                    GroupId=existMentorSession.GroupId,
+                    PointPerSession=existMentorSession.PointsPerSession,
+                    SessionCount=existMentorSession.SessionCount,
+                    TotalPoint=existMentorSession.TotalPoints
+                }
             };
         }
     }

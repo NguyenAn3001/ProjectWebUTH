@@ -23,12 +23,11 @@ namespace MentorBooking.Repository.Repositories
             try
             {
                 var sessionResponse = _dbContext.MentorSupportSessions.Where(temp => temp.SessionId == mentorSupportSession.SessionId).ToList();
-                if(sessionResponse.Count>0)
+                if (sessionResponse.Count()>0)
                 {
-                    _dbContext.RemoveRange(sessionResponse);
+                    _dbContext.MentorSupportSessions.RemoveRange(sessionResponse);
                     await _dbContext.MentorSupportSessions.AddAsync(mentorSupportSession);
                     await _dbContext.SaveChangesAsync();
-                    return true;
                 }
                 await _dbContext.MentorSupportSessions.AddAsync(mentorSupportSession);
                 await _dbContext.SaveChangesAsync();
@@ -73,6 +72,23 @@ namespace MentorBooking.Repository.Repositories
         {
             var getSession = await _dbContext.MentorSupportSessions.SingleOrDefaultAsync(temp => temp.SessionId == SessionId);
             return getSession;
+        }
+
+        public async Task<bool> UpdateMentorSupportSessionAsync(MentorSupportSession mentorSupportSession)
+        {
+            try
+            {
+                var existMentorSupportSession = await _dbContext.MentorSupportSessions.SingleOrDefaultAsync(temp => temp.SessionId == mentorSupportSession.SessionId);
+                if (existMentorSupportSession == null) return false;
+                existMentorSupportSession.SessionConfirm = mentorSupportSession.SessionConfirm;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
     }
 }

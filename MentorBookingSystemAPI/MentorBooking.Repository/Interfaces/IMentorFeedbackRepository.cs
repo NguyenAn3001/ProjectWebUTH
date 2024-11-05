@@ -10,6 +10,7 @@ namespace MentorBooking.Repository.Interfaces
     public interface IMentorFeedbackRepository
     {
         Task<bool> AddMentorFeedbackAsync(MentorFeedback mentorFeedback);
+        Task<bool> UpdateMentorFeedbackAsync(MentorFeedback mentorFeedback);
         Task<bool> DeleteMentorFeedbackAsync(Guid FeedbackId);
         Task<MentorFeedback?> GetMentorFeedbackAsync(Guid FeedbackId);
         List<MentorFeedback>? GetAllMentorFeedbacksAsync(Guid MentorId);

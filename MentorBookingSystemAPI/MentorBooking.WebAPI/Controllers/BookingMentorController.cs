@@ -11,9 +11,11 @@ namespace MentorBooking.WebAPI.Controllers
     public class BookingMentorController : Controller
     {
         private readonly IBookingMentorService _bookingMentorService;
-        public BookingMentorController(IBookingMentorService bookingMentorService)
+        private readonly IAcceptBookingSession _acceptBookingSession;
+        public BookingMentorController(IBookingMentorService bookingMentorService,IAcceptBookingSession acceptBookingSession)
         {
             _bookingMentorService = bookingMentorService;
+            _acceptBookingSession = acceptBookingSession;
         }
         [HttpPost("booking-mentor")]
         public async Task<IActionResult> BookingMentor([FromBody] MentorSupportSessionRequest request)
@@ -49,8 +51,8 @@ namespace MentorBooking.WebAPI.Controllers
                 })
             };
         }
-        [HttpPost("get-booking-mentor-session")]
-        public async Task<IActionResult> getBookingMentorSession([FromBody] Guid SessionId)
+        [HttpGet("get-booking-mentor-session")]
+        public async Task<IActionResult> getBookingMentorSession([FromQuery] Guid SessionId)
         {
             if (SessionId == Guid.Empty)
                 return BadRequest(new { message = "SessionId is required" });
@@ -68,6 +70,22 @@ namespace MentorBooking.WebAPI.Controllers
                     Message = getSessionResponse.Message
                 })
             };
+        }
+        [HttpGet("get-unaccept-booking")]
+        public async Task<IActionResult> getAllUnacceptBooking([FromQuery] Guid MentorId)
+        {
+            if(MentorId==Guid.Empty)
+                return BadRequest(new { message = "SessionId is required" });
+            var getSessionResponse = await _acceptBookingSession.GetAllSessionUnAccept(MentorId);
+            return Ok(getSessionResponse);
+        }
+        [HttpPut("accept-booking")]
+        public async Task<IActionResult> AcceptBooking([FromQuery] Guid SessionId, bool accept )
+        {
+            if (SessionId == Guid.Empty || accept==null)
+                return BadRequest(new { message = "SessionId is required" });
+            var getSessionResponse = await _acceptBookingSession.AcceptSession(SessionId,accept);
+            return Ok(getSessionResponse);
         }
     }
 }

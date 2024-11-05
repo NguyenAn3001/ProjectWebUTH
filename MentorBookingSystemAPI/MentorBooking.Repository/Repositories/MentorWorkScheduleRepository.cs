@@ -74,5 +74,22 @@ namespace MentorBooking.Repository.Repositories
             var getWorkSchedule = _dbContext.MentorWorkSchedules.Where(temp => temp.SessionId == SessionId).ToList();
             return getWorkSchedule;
         }
+
+        public async Task<bool> UpdateMentorWorkSchedule(MentorWorkSchedule mentorWorkSchedule)
+        {
+            try
+            {
+                var existMentorSupportSession = await _dbContext.MentorWorkSchedules.SingleOrDefaultAsync(temp => temp.ScheduleId == mentorWorkSchedule.ScheduleId);
+                if (existMentorSupportSession == null) return false;
+                existMentorSupportSession.UnavailableDate = mentorWorkSchedule.UnavailableDate;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
     }
 }
