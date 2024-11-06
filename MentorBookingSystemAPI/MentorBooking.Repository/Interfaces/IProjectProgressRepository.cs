@@ -11,4 +11,6 @@ public interface IProjectProgressRepository
     Task<List<ProjectProgress>?> GetAllProjectProgressAsync(Guid sessionId);
     Task<string> GetMentorIdProjectProgressesAsync(Guid sessionId);
     Task<ProjectGroup> GetGroupAsync(Guid progressId);
+    Task<int> GetMaxIndexBySessionIdAsync(Guid sessionId);
+    Task UpdateIndexAfterDeleteAsync(Guid sessionId);
 }

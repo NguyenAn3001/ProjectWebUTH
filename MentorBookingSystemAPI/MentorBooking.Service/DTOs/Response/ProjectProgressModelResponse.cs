@@ -9,5 +9,7 @@ public class ProjectProgressModelResponse
     public string? MentorEmail { get; set; }
     public string? GroupName { get; set; }
     public string? Description { get; set; }
+    public int ProgressIndex { get; set; }
+    public int ProgressCount { get; set; }
     public DateTime CreatAt { get; set; }
 }

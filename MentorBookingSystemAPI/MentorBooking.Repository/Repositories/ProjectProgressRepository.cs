@@ -109,4 +109,21 @@ public class ProjectProgressRepository : IProjectProgressRepository
             return Task.FromResult<ProjectGroup>(null!);
         return _dbContext.ProjectGroups.FirstOrDefaultAsync(g => g.GroupId == groupId)!;
     }
+
+    public async Task<int> GetMaxIndexBySessionIdAsync(Guid sessionId)
+    {
+        var pr = await _dbContext.ProjectProgresses.Where(pg => pg.SessionId == sessionId).ToListAsync();
+        if (pr.Count == 0) return 0;
+        return pr.Select(x => x.ProgressIndex).Max();
+    }
+
+    public async Task UpdateIndexAfterDeleteAsync(Guid sessionId)
+    {
+        var pr = await _dbContext.ProjectProgresses.Where(pg => pg.SessionId == sessionId).OrderBy(x => x.ProgressIndex).ToListAsync();
+        for (int i = 0; i < pr.Count; ++i)
+        {
+            pr[i].ProgressIndex = i;
+        }
+        await _dbContext.SaveChangesAsync();
+    }
 }

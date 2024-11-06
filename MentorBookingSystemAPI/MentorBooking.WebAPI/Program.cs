@@ -53,6 +53,7 @@ builder.Services.AddScoped<IProjectGroupRepository, ProjectGroupRepository>();
 builder.Services.AddScoped<IStudentGroupRepository, StudentGroupRepository>();
 builder.Services.AddScoped<IGroupOfStudentService, GroupOfStudentService>();
 builder.Services.AddScoped<IProjectProgressRepository, ProjectProgressRepository>();
+builder.Services.AddSingleton<Dictionary<Guid, List<Guid>>>();
 builder.Services.AddScoped<IProjectProgressService, ProjectProgressService>();
 builder.Services.AddScoped<IUserPointRepository, UserPointRepository>();
 builder.Services.AddScoped<IPointService, PointService>();

@@ -31,13 +31,24 @@ public class ProjectProgressService : IProjectProgressService
                 Message = "Session doesn't exist."
             };
         }
+        var maxIndex = await _projectProgressRepository.GetMaxIndexBySessionIdAsync(createProjectProgressRequest.SessionId!.Value);
         var projectProgress = new ProjectProgress
         {
-            ProgressId = new Guid(),
+            ProgressId = Guid.NewGuid(),
             SessionId = createProjectProgressRequest.SessionId!.Value,
             Description = createProjectProgressRequest.Description,
+            ProgressIndex = maxIndex + 1,
             UpdateAt = DateTime.Now
         };
+        var session = await _mentorSupportSessionRepository.GetMentorSupportSessionAsync(projectProgress.SessionId);
+        if (projectProgress.ProgressIndex > session?.SessionCount)
+        {
+            return new ApiResponse()
+            {
+                Status = "Error",
+                Message = "Session is already finished."
+            };
+        }
         var createResponse = await _projectProgressRepository.CreateProjectProgressAsync(projectProgress);
         if (!createResponse)
             return new ApiResponse()
@@ -45,6 +56,7 @@ public class ProjectProgressService : IProjectProgressService
                 Status = "Error",
                 Message = "Error creating project progress, please try again later."
             };
+        
         var mentorExist = await _projectProgressRepository.GetMentorIdProjectProgressesAsync(projectProgress.SessionId);
         var projectProgressResponse = await GetProjectProgressResponse(mentorExist, projectProgress);
         return new ApiResponse()
@@ -104,6 +116,7 @@ public class ProjectProgressService : IProjectProgressService
                 Status = "Error",
                 Message = "Error deleting project progress, please try again later."
             };
+        await _projectProgressRepository.UpdateIndexAfterDeleteAsync(projectProgress.SessionId);
         return new ApiResponse()
         {
             Status = "Success",
@@ -159,6 +172,8 @@ public class ProjectProgressService : IProjectProgressService
          
         var user = await _userRepository.FindByIdAsync(mentorId);
         var group = await _projectProgressRepository.GetGroupAsync(projectProgress.ProgressId);
+        var session = await _mentorSupportSessionRepository.GetMentorSupportSessionAsync(projectProgress.SessionId);
+        var progressCount = session?.SessionCount ?? 1;
         var projectProgressResponse = new ProjectProgressModelResponse()
         {
             ProgressId = projectProgress.ProgressId,
@@ -168,6 +183,8 @@ public class ProjectProgressService : IProjectProgressService
             GroupName = group?.GroupName,
             Image = user?.Image,
             Description = projectProgress.Description,
+            ProgressIndex = projectProgress.ProgressIndex,
+            ProgressCount = progressCount,
             CreatAt = projectProgress.UpdateAt
         };
         return projectProgressResponse;
