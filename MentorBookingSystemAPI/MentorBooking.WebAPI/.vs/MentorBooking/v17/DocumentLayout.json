@@ -7,6 +7,24 @@
       "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\scheduleviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebuth\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\controllers\\bookingmentorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\bookingmentorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebuth\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\controllers\\avatarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\avatarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|e:\\projectwebuth\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebuth\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\bookingmentorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebuth\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\interfaces\\ibookingmentorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebuth\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\workschedulesview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -23,9 +41,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{9CDF8A65-7CA3-43D1-8B25-22DC48BE7F94}|..\\MentorBooking.Repository\\MentorBooking.Repository.csproj|e:\\projectwebuth\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.repository\\entities\\schedulesavailables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|e:\\projectwebuth\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\bookingmentorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -59,22 +74,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "dbo.SchedulesAvailable [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_D5K7SV8Q/MentorBookingSystemDatabase/True/SqlTable/dbo.SchedulesAvailable.sql",
-              "ToolTip": "dbo.SchedulesAvailable [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-11-06T22:19:16.46Z",
+              "DocumentIndex": 3,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthenticationController.cs",
+              "ToolTip": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "Controllers\\AuthenticationController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T00:15:43.716Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "dbo.MentorWorkSchedules [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_D5K7SV8Q/MentorBookingSystemDatabase/True/SqlTable/dbo.MentorWorkSchedules.sql",
-              "ToolTip": "dbo.MentorWorkSchedules [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-11-06T22:18:08.066Z",
+              "DocumentIndex": 2,
+              "Title": "AvatarController.cs",
+              "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\AvatarController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AvatarController.cs",
+              "ToolTip": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\AvatarController.cs",
+              "RelativeToolTip": "Controllers\\AvatarController.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAgwEkAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T00:14:21.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IBookingMentorService.cs",
+              "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IBookingMentorService.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Interfaces\\IBookingMentorService.cs",
+              "ToolTip": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Interfaces\\IBookingMentorService.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Interfaces\\IBookingMentorService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA0AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T00:09:39.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BookingMentorController.cs",
+              "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\BookingMentorController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookingMentorController.cs",
+              "ToolTip": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\BookingMentorController.cs",
+              "RelativeToolTip": "Controllers\\BookingMentorController.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAwBcAAABdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T00:08:35.378Z",
               "EditorCaption": ""
             },
             {
@@ -85,14 +132,45 @@
               "RelativeDocumentMoniker": "Controllers\\ScheduleViewsController.cs",
               "ToolTip": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\ScheduleViewsController.cs",
               "RelativeToolTip": "Controllers\\ScheduleViewsController.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAzwB4AAAAMAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAzwBoAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T22:10:31.267Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
+              "Title": "dbo.MentorWorkSchedules [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_D5K7SV8Q/MentorBookingSystemDatabase/True/SqlTable/dbo.MentorWorkSchedules.sql",
+              "ToolTip": "dbo.MentorWorkSchedules [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-11-06T22:18:08.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BookingMentorService.cs",
+              "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\BookingMentorService.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\BookingMentorService.cs",
+              "ToolTip": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\BookingMentorService.cs",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\BookingMentorService.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwCQAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T21:15:47.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "dbo.SchedulesAvailable [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_D5K7SV8Q/MentorBookingSystemDatabase/True/SqlTable/dbo.SchedulesAvailable.sql",
+              "ToolTip": "dbo.SchedulesAvailable [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-11-06T22:19:16.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "WorkSchedulesView.cs",
               "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\WorkSchedulesView.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\WorkSchedulesView.cs",
@@ -100,12 +178,11 @@
               "RelativeToolTip": "..\\MentorBooking.Service\\Services\\WorkSchedulesView.cs",
               "ViewState": "AQIAAF8AAAAAAAAAAAAjwHYAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T22:07:33.422Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T22:07:33.422Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "MentorWorkSchedule.cs",
               "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
@@ -113,22 +190,20 @@
               "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\MentorWorkSchedule.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T22:14:57.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T22:14:57.083Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "dbo.MentorSupportSessions [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_D5K7SV8Q/MentorBookingSystemDatabase/True/SqlTable/dbo.MentorSupportSessions.sql",
               "ToolTip": "dbo.MentorSupportSessions [Data]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-11-06T21:13:27.97Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T21:13:27.97Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "SchedulesAvailables.cs",
               "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Entities\\SchedulesAvailables.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Entities\\SchedulesAvailables.cs",
@@ -136,21 +211,7 @@
               "RelativeToolTip": "..\\MentorBooking.Repository\\Entities\\SchedulesAvailables.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T22:15:29.073Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BookingMentorService.cs",
-              "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\BookingMentorService.cs",
-              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\BookingMentorService.cs",
-              "ToolTip": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\BookingMentorService.cs",
-              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\BookingMentorService.cs",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAYwDMAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T21:15:47.271Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T22:15:29.073Z"
             }
           ]
         }

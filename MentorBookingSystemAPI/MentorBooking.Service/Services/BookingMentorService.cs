@@ -20,7 +20,7 @@ namespace MentorBooking.Service.Services
             _sessionRepository = sessionRepository;
             _workScheduleRepository = workScheduleRepository;
         }
-        public async Task<ApiResponse> BookingMentor(MentorSupportSessionRequest request)
+        public async Task<ApiResponse> BookingMentor(MentorSupportSessionRequest request, string userId)
         {
             if(request.dateBookings.Count()!=request.SessionCount)
             {

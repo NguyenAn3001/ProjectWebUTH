@@ -2,10 +2,13 @@
 using MentorBooking.Repository.Interfaces;
 using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace MentorBooking.WebAPI.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class BookingMentorController : Controller
@@ -20,11 +23,13 @@ namespace MentorBooking.WebAPI.Controllers
         [HttpPost("booking-mentor")]
         public async Task<IActionResult> BookingMentor([FromBody] MentorSupportSessionRequest request)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(new { errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             }
-            var bookingResponse= await _bookingMentorService.BookingMentor(request);
+            var studentId =User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+            var bookingResponse= await _bookingMentorService.BookingMentor(request,studentId);
             return bookingResponse.Status switch
             {
                 "Error" => BadRequest(new { status = bookingResponse.Status, message = bookingResponse.Message }),
