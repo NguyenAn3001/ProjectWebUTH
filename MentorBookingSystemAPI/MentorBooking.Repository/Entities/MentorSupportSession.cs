@@ -28,4 +28,5 @@ public partial class MentorSupportSession
     public virtual ICollection<MentorWorkSchedule> MentorWorkSchedules { get; set; } = new List<MentorWorkSchedule>();
 
     public virtual StudentsPaymentSession? StudentsPaymentSession { get; set; }
+    public virtual ICollection<ProjectProgress> ProjectProgresses { get; set; } = new List<ProjectProgress>();
 }

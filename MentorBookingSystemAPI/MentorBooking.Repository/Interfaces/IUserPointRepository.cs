@@ -1,6 +1,9 @@
-﻿namespace MentorBooking.Repository.Interfaces;
+﻿using MentorBooking.Repository.Entities;
+
+namespace MentorBooking.Repository.Interfaces;
 
 public interface IUserPointRepository
 {
-    Task<bool> SetUserPoint(Guid userId, int point);
+    Task<bool> SetUserPoint(Guid userId, int point, string descriptionTransaction = "Initial point.");
+    Task<UserPoint> GetUserPoint(Guid userId);
 }
