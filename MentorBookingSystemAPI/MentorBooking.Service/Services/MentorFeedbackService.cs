@@ -15,14 +15,24 @@ namespace MentorBooking.Service.Services
     public class MentorFeedbackService : IMentorFeedbackService
     {
         private readonly IMentorFeedbackRepository _mentorFeedbackRepository;
+        private readonly IMentorSupportSessionRepository _mentorSupportSessionRepository;
         private readonly IUserRepository _userRepository;
-        public MentorFeedbackService(IMentorFeedbackRepository mentorFeedbackRepository,IUserRepository userRepository)
+        public MentorFeedbackService(IMentorFeedbackRepository mentorFeedbackRepository,IUserRepository userRepository, IMentorSupportSessionRepository mentorSupportSessionRepository)
         {
             _mentorFeedbackRepository = mentorFeedbackRepository;
-           _userRepository = userRepository;
+            _userRepository = userRepository;
+            _mentorSupportSessionRepository = mentorSupportSessionRepository;
         }
         public async Task<ApiResponse> AddStudentCommentAsync(StudentCommentRequest studentComment)
         {
+            if(!await _mentorSupportSessionRepository.CheckMentorSessionAsync(studentComment.SessionId))
+            {
+                return new ApiResponse()
+                {
+                    Status="Error",
+                    Message="Your session is unaccepted by mentor"
+                };
+            }    
             var mentorFeedback = new MentorFeedback()
             {
                 FeedbackId = Guid.NewGuid(),
@@ -41,12 +51,13 @@ namespace MentorBooking.Service.Services
                     Message = "New comment has been created",
                     Data = new StudentCommentResponse()
                     {
+                        FeedbackId=mentorFeedback.FeedbackId,
+                        SessionId=mentorFeedback.SessionId,
+                        MentorId=mentorFeedback.MentorId,
                         StudentId = mentorFeedback.StudentId,
                         Comment = mentorFeedback.Comment,
                         Rating = mentorFeedback.Rating,
                         CreateAt = mentorFeedback.CreateAt,
-                        FirstName = studentComment.FirstName,
-                        LastName = studentComment.LastName,
                     }
                 };
             }
@@ -112,9 +123,10 @@ namespace MentorBooking.Service.Services
                     Message = "It is ok",
                     Data= new StudentCommentResponse()
                     {
+                        FeedbackId=item.FeedbackId,
+                        SessionId = item.SessionId,
+                        MentorId = item.StudentId,
                         StudentId = item.StudentId,
-                        FirstName = student.FirstName,
-                        LastName = student.LastName,
                         Rating = item.Rating,
                         Comment = item.Comment,
                         CreateAt = item.CreateAt,
@@ -136,24 +148,16 @@ namespace MentorBooking.Service.Services
                     Message = "Not Found"
                 };
             }
-            var student = await _userRepository.FindByIdAsync(existMentorFeedback.StudentId.ToString());
-            if(student == null)
-            {
-                return new ApiResponse()
-                {
-                    Status = "Error",
-                    Message = "Not Found"
-                };
-            }    
             return new ApiResponse()
             {
                 Status = "Success",
                 Message = "Mentor Feedback is found",
                 Data = new StudentCommentResponse()
                 {
+                    FeedbackId = existMentorFeedback.StudentId,
+                    SessionId=existMentorFeedback.SessionId,
+                    MentorId=existMentorFeedback.StudentId,
                     StudentId = existMentorFeedback.StudentId,
-                    FirstName = student.FirstName,
-                    LastName = student.LastName,
                     Rating=existMentorFeedback.Rating,
                     Comment=existMentorFeedback.Comment,
                     CreateAt=existMentorFeedback.CreateAt,
@@ -161,7 +165,6 @@ namespace MentorBooking.Service.Services
                 }
             };
         }
-
         public async Task<ApiResponse> UpdateMentorFeedbackAsync(StudentCommentRequest studentComment)
         {
             var mentorUpdateFeedback = new MentorFeedback()

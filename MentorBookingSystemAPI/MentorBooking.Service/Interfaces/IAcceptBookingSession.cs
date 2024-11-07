@@ -9,7 +9,7 @@ namespace MentorBooking.Service.Interfaces
 {
     public interface IAcceptBookingSession
     {
-        Task<List<ApiResponse>> GetAllSessionUnAccept(Guid MentorId);
+        List<ApiResponse> GetAllSessionUnAccept(Guid MentorId);
         Task<ApiResponse> AcceptSession(Guid SessionId,bool acceptSession);
     }
 }

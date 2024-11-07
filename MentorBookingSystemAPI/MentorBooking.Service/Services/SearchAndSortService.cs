@@ -27,8 +27,9 @@ namespace MentorBooking.Service.Services
                 .FirstOrDefault(temp => temp.Id == mentor.UserId);
             var mentorSkill=_db.MentorSkills
                 .Where(temp=>temp.MentorId== mentor.UserId).ToList();
-            MentorSearchingResponse? results = new MentorSearchingResponse();
+            MentorSearchingResponse results = new MentorSearchingResponse();
             {
+                results.MentorId = mentor.MentorId;
                 results.FirstName = Query.FirstName;
                 results.LastName = Query.LastName;
                 results.Image= Query.Image;
@@ -74,10 +75,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach(var skill in aMentor.SkillName)
                         {
-                            foreach(var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }    
+                            if (string.Compare(skill,sortBy,true)==0) sortMentor.Add(aMentor);
                         }    
                     }
                     break;
@@ -86,10 +84,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach (var skill in aMentor.SkillName)
                         {
-                            foreach (var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }
+                            if (string.Compare(skill, sortBy, true) == 0) sortMentor.Add(aMentor);
                         }
                     }
                     break;
@@ -98,10 +93,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach (var skill in aMentor.SkillName)
                         {
-                            foreach (var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }
+                            if (string.Compare(skill, sortBy, true) == 0) sortMentor.Add(aMentor);
                         }
                     }
                     break;
@@ -110,10 +102,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach (var skill in aMentor.SkillName)
                         {
-                            foreach (var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }
+                            if (string.Compare(skill, sortBy, true) == 0) sortMentor.Add(aMentor);
                         }
                     }
                     break;
@@ -122,10 +111,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach (var skill in aMentor.SkillName)
                         {
-                            foreach (var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }
+                            if (string.Compare(skill, sortBy, true) == 0) sortMentor.Add(aMentor);
                         }
                     }
                     break;
@@ -134,10 +120,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach (var skill in aMentor.SkillName)
                         {
-                            foreach (var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }
+                            if (string.Compare(skill, sortBy, true) == 0) sortMentor.Add(aMentor);
                         }
                     }
                     break;
@@ -146,10 +129,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach (var skill in aMentor.SkillName)
                         {
-                            foreach (var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }
+                            if (string.Compare(skill, sortBy, true) == 0) sortMentor.Add(aMentor);
                         }
                     }
                     break;
@@ -158,10 +138,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach (var skill in aMentor.SkillName)
                         {
-                            foreach (var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }
+                            if (string.Compare(skill, sortBy, true) == 0) sortMentor.Add(aMentor);
                         }
                     }
                     break;
@@ -170,10 +147,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach (var skill in aMentor.SkillName)
                         {
-                            foreach (var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }
+                            if (string.Compare(skill, sortBy, true) == 0) sortMentor.Add(aMentor);
                         }
                     }
                     break;
@@ -182,10 +156,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach (var skill in aMentor.SkillName)
                         {
-                            foreach (var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }
+                            if (string.Compare(skill, sortBy, true) == 0) sortMentor.Add(aMentor);
                         }
                     }
                     break;
@@ -194,10 +165,7 @@ namespace MentorBooking.Service.Services
                     {
                         foreach (var skill in aMentor.SkillName)
                         {
-                            foreach (var skilname in skill)
-                            {
-                                if (skilname.Equals(sortBy)) sortMentor.Add(aMentor);
-                            }
+                            if (string.Compare(skill, sortBy, true) == 0) sortMentor.Add(aMentor);
                         }
                     }
                     break;
