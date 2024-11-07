@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet"  href="../../css/home.css" />
+    <link rel="icon" href="../../assets/favicon-32x32.png" type="image/x-icon">
+    <title>Mentor Booking | System</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+          <div class="nav__logo"><a href="#">Mentor Booking</a></div>
+          <ul class="nav__links" id="nav-links">
+              <li class="link"><a href="#home">Home</a></li>
+              <li class="link"><a href="#services">Services</a></li>
+              <li class="link"><a href="#contact">Contact</a></li>
+              <li class="link"><a href="#about">About</a></li>
+          </ul>
+          <div class="nav__menu__btn" id="menu-btn">
+              <span><i class="ri-menu-line"></i></span>
+          </div>
+          <div class="icon">
+          <div class="notiNav">
+            <div class="notification">
+                <i class="ri-notification-2-fill"></i>
+            </div>
+          </div>
+          <div class="calendarNav">
+            <div class="calendar">
+                <i class="ri-calendar-line"></i>
+            </div>
+          </div>
+          <div class="walletNav">
+            <div class="wallet">
+              <i class="ri-wallet-line"></i>
+            </div>
+          </div>
+        </div>
+          <div class="action">
+            <div class="profile">
+              <img src="../../assets/avt.jpg" alt="User Avatar">
+            </div>
+            <div class="menu">
+              <h3 id="username-display">
+                <!-- <img src="../../assets/avt.jpg" alt="user avt"> -->
+                Tran Hil<br><span>Student</span>
+              </h3>
+              <ul>
+                <li class="registerMentor"><img src="../../assets/dropdown/rMentor.svg"><a href="../registMentor/registMentor.html">Register as a mentor</a></li>
+                <li><img src="../../assets/dropdown/profile.svg"><a href="../../page/userProfile/userProfile.html">My Profile</a></li>
+                <li class="support"><img src="../../assets/dropdown/help.svg" ><a href="#">Help & Support</a></li>
+                <li><img src="../../assets/dropdown/logout.svg"><a href="../../index.html">Log Out</a></li>
+              </ul>
+            </div>
+          </div>
+      </nav>
+      <div class="section__container header__container" id="home">
+          <h1>Book a mentor,<br> unlock your potential</h1>
+          <p>
+              Connect with experienced mentors to unlock your potential, boost personal growth, and enhance teamwork skills.
+          </p>
+          <!-- Nút Sign up now -->
+          <!-- <div class="sign">
+              <a href="../page/signup.html">
+                  <button class="btn-hover btn-signup">Sign up now</button>
+              </a>
+          </div> -->
+          <form action="/">
+              <input type="text" placeholder="Search mentor's skills" />
+              <button><i class="ri-search-line"></i></button>
+          </form>
+          <a href="#choose"><i class="ri-arrow-down-double-line"></i></a>
+      </div>
+  </header>
+    <section class="section__container choose__container" id="choose">
+      <img class="choose__bg" src="../../assets/dot-bg.png" alt="bg" />
+      <div class="choose__content">
+        <h2 class="section__header">How Effective Are We?</h2>
+        <p class="section__subheader">
+          Mentor Booking connects you with top experts, helping you unlock potential and 
+          reach your goals more effectively and efficiently
+        </p>
+        <div class="choose__grid">
+          <div class="choose__card">
+            <span><i class="ri-presentation-line"></i></span>
+            <h4>200+ mentors</h4>
+            <p>
+              in diverse fields
+            </p>
+          </div>
+          <div class="choose__card">
+            <span><i class="ri-time-line"></i></span>
+            <h4>24-hours mentor matching</h4>
+            <p>
+              find your mentor quickly! 
+            </p>
+          </div>
+          <div class="choose__card">
+            <span><i class="ri-customer-service-2-line"></i></span>
+            <h4>24/7 Support</h4>
+            <p>
+              Experience peace of mind knowing that our dedicated team is
+              available round the clock
+            </p>
+          </div>
+          <div class="choose__card">
+            <span><i class="ri-line-chart-line"></i></span>
+            <h4>85%</h4>
+            <p>
+              improved skills and reached goals in 3 months.            
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="choose__image">
+        <img src="../../assets/p1.jpg" alt="choose" />
+      </div>
+    </section>
+    
+    <!-- best metor -->
+    <div id="card-area">
+      <div class="titleMentor">
+        <h2>Most Sought-After Mentors</h2>
+      </div>
+      <div class="wrapper">
+        <div class="box-area">
+          <div class="box">
+            
+            <img alt="" src="../../assets/mentor1.jpg">
+            <div class="overlay">
+              <h3>Dong Hil</h3>
+              <p>Skill</p>
+              <ul>
+                <li>Software Development</li>
+                <li>Project Management</li>
+                <li>Programming Languages: Python, Java, JavaScript</li>
+              </ul>
+              <a href="#">Book Now</a>
+            </div>
+          </div>
+          <div class="box">
+            <img alt="" src="../../assets/mentor2.jpg">
+            <div class="overlay">
+              <h3>Dong Hil</h3>
+              <p>Skill</p>
+              <ul>
+                <li>Software Development</li>
+                <li>Project Management</li>
+                <li>Programming Languages: Python, Java, JavaScript</li>
+              </ul>
+              <a href="#">Book Now</a>
+            </div>
+          </div>
+          <div class="box">
+            <img alt="" src="../../assets/mentor3.jpg">
+            <div class="overlay">
+              <h3>Dong Hil</h3>
+              <p>Skill:</p>
+              <ul>
+                <li>Software Development</li>
+                <li>Project Management</li>
+                <li>Programming Languages: Python, Java, JavaScript</li>
+              </ul>
+              <a href="#">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="section__container footer__container">
+        <div class="footer__content">
+          <h4>STAY CONNECTED WITH OUR MENTOR COMMUNITY</h4>
+          <p>
+            Subscribe to receive valuable insights, tips, and the latest news on mentorship programs.
+            Enter your email to stay updated!
+          </p>
+        </div>
+        <div class="footer__form">
+          <form action="/">
+            <input type="text" placeholder="Enter your email" />
+            <button>Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="section__container footer__bar">
+        <div class="footer__logo">
+          <h4><a href="#">MentorHub</a></h4>
+          <p>Copyright © 2024 MentorHub</p>
+        </div>
+        <ul class="footer__nav">
+          <li class="footer__link"><a href="#">About Us</a></li>
+          <li class="footer__link"><a href="#">Become A Mentor</a></li>
+          <li class="footer__link"><a href="#">Contact Support</a></li>
+          <li class="footer__link"><a href="#">Privacy Policy</a></li>
+        </ul>
+        <ul class="footer_social">
+          <li class="footer__link"><a href="#"><i class="ri-instagram-line"></i></a></li>
+          <li class="footer__link"><a href="#"><i class="ri-facebook-fill"></i></a></li>
+          <li class="footer__link"><a href="#"><i class="ri-linkedin-fill"></i></a></li>
+        </ul>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/userMenu.js"></script>
+    <script src="../../js/dropdownprofile.js"></script>
+  </body>
+</html>
