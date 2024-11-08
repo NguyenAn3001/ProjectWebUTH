@@ -40,6 +40,14 @@ namespace MentorBooking.Repository.Repositories
             }
         }
 
+        public async Task<bool> CheckMentorSessionAsync(Guid SessionId)
+        {
+            var existSession = await _dbContext.MentorSupportSessions.SingleOrDefaultAsync(temp=>temp.SessionId==SessionId);
+            if (existSession == null) return false;
+            if(!existSession.SessionConfirm) return false;
+            return true;
+        }
+
         public async Task<bool> DeleteMentorSupportSessionAsync(Guid SessionId)
         {
             try
@@ -71,6 +79,12 @@ namespace MentorBooking.Repository.Repositories
         public async Task<MentorSupportSession?> GetMentorSupportSessionAsync(Guid SessionId)
         {
             var getSession = await _dbContext.MentorSupportSessions.Include(m => m.Group).SingleOrDefaultAsync(temp => temp.SessionId == SessionId);
+            return getSession;
+        }
+
+        public async Task<MentorSupportSession?> GetMentorSupportSessionByGroupIdAsync(Guid GroupId)
+        {
+            var getSession = await _dbContext.MentorSupportSessions.SingleOrDefaultAsync(temp => temp.GroupId==GroupId);
             return getSession;
         }
 

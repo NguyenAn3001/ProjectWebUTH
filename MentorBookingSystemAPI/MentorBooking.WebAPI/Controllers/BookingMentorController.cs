@@ -6,6 +6,7 @@ using MentorBooking.Service.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace MentorBooking.WebAPI.Controllers
 {
@@ -25,16 +26,17 @@ namespace MentorBooking.WebAPI.Controllers
         [HttpPost("booking-mentor")]
         public async Task<IActionResult> BookingMentor([FromBody] MentorSupportSessionRequest request)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(new { errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             }
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var bookingResponse= await _bookingMentorService.BookingMentor(userId!, request);
+            var studentId =User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+            var bookingResponse= await _bookingMentorService.BookingMentor(request,studentId);
             return bookingResponse.Status switch
             {
                 "Error" => BadRequest(new { status = bookingResponse.Status, message = bookingResponse.Message }),
-                _ => Ok(new { status = bookingResponse.Status, message = bookingResponse.Message })
+                _ => Ok(new { status = bookingResponse.Status, message = bookingResponse.Message,Data=bookingResponse.Data })
             };
         }
         [HttpPost("delete-booking-mentor-session")]
@@ -53,7 +55,8 @@ namespace MentorBooking.WebAPI.Controllers
                 _ => Ok(new
                 {
                     Status = deleteSessionResponse.Status,
-                    Message = deleteSessionResponse.Message
+                    Message = deleteSessionResponse.Message,
+                    Data=deleteSessionResponse.Data
                 })
             };
         }
@@ -70,11 +73,7 @@ namespace MentorBooking.WebAPI.Controllers
                     Status = getSessionResponse.Status,
                     Message = getSessionResponse.Message
                 }),
-                _ => Ok(new
-                {
-                    Status = getSessionResponse.Status,
-                    Message = getSessionResponse.Message
-                })
+                _ => Ok(new { Status = getSessionResponse.Status, Message = getSessionResponse.Message, Data = getSessionResponse.Data })
             };
         }
         [HttpGet("get-unaccept-booking")]
@@ -82,7 +81,7 @@ namespace MentorBooking.WebAPI.Controllers
         {
             if(MentorId==Guid.Empty)
                 return BadRequest(new { message = "SessionId is required" });
-            var getSessionResponse = await _acceptBookingSession.GetAllSessionUnAccept(MentorId);
+            var getSessionResponse =_acceptBookingSession.GetAllSessionUnAccept(MentorId);
             return Ok(getSessionResponse);
         }
         // [Authorize(Roles = "Mentor")]

@@ -4,6 +4,7 @@ using MentorBooking.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentorBooking.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241105120512_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -282,37 +285,33 @@ namespace MentorBooking.Repository.Migrations
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectProgress", b =>
-            {
-                b.Property<Guid>("ProgressId")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("uniqueidentifier");
+                {
+                    b.Property<Guid>("ProgressId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                b.Property<string>("Description")
-                    .HasMaxLength(10000)
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
-                b.Property<int>("ProgressIndex")
-                    .HasColumnType("int");
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier");
 
-                b.Property<Guid>("SessionId")
-                    .HasColumnType("uniqueidentifier");
+                    b.Property<DateTime>("UpdateAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
 
-                b.Property<DateTime>("UpdateAt")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
+                    b.HasKey("ProgressId")
+                        .HasName("PK__ProjectP__BAE29CA59712E6FC");
 
-                b.HasKey("ProgressId")
-                    .HasName("PK__ProjectP__BAE29CA59712E6FC");
+                    b.HasIndex("GroupId");
 
-                b.HasIndex("SessionId");
+                    b.HasIndex(new[] { "ProgressId" }, "UQ__ProjectP__BAE29CA42BD6879C")
+                        .IsUnique();
 
-                b.HasIndex(new[] { "ProgressId" }, "UQ__ProjectP__BAE29CA42BD6879C")
-                    .IsUnique();
-
-                b.ToTable("ProjectProgress", (string)null);
-            });
-
+                    b.ToTable("ProjectProgress", (string)null);
+                });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.RoleClaims", b =>
                 {
@@ -789,25 +788,25 @@ namespace MentorBooking.Repository.Migrations
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.PointTransaction", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Entities.UserPoint", "UserPoint")
+                    b.HasOne("MentorBooking.Repository.Entities.UserPoint", "User")
                         .WithMany("PointTransactions")
                         .HasForeignKey("UserId")
                         .IsRequired()
                         .HasConstraintName("FK__PointTran__UserI__17236851");
 
-                    b.Navigation("UserPoint");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.ProjectProgress", b =>
                 {
-                    b.HasOne("MentorBooking.Repository.Entities.MentorSupportSession", "MentorSupportSession")
+                    b.HasOne("MentorBooking.Repository.Entities.ProjectGroup", "Group")
                         .WithMany("ProjectProgresses")
-                        .HasForeignKey("SessionId")
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK__ProjectPr__Group__19FFD4FC");
 
-                    b.Navigation("MentorSupportSession");
+                    b.Navigation("Group");
                 });
 
             modelBuilder.Entity("MentorBooking.Repository.Entities.RoleClaims", b =>
@@ -955,7 +954,7 @@ namespace MentorBooking.Repository.Migrations
                     b.Navigation("MentorFeedbacks");
 
                     b.Navigation("MentorWorkSchedules");
-                    b.Navigation("ProjectProgresses");
+
                     b.Navigation("StudentsPaymentSession");
                 });
 
@@ -964,7 +963,9 @@ namespace MentorBooking.Repository.Migrations
                     b.Navigation("GroupFeedbacks");
 
                     b.Navigation("MentorSupportSessions");
+
                     b.Navigation("ProjectProgresses");
+
                     b.Navigation("StudentGroups");
                 });
 

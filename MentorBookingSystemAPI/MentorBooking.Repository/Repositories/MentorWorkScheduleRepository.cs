@@ -45,7 +45,7 @@ namespace MentorBooking.Repository.Repositories
             var check= await _dbContext.MentorWorkSchedules.SingleOrDefaultAsync(temp=>temp.ScheduleAvailableId==mentorWorkScheduleId);
             if(check != null)
             {
-                if (check.UnavailableDate) return true;
+                 return true;
             }
             return false;
         }
@@ -71,7 +71,14 @@ namespace MentorBooking.Repository.Repositories
         }
         public List<MentorWorkSchedule> GetMentorWorkSchedule(Guid SessionId)
         {
-            var getWorkSchedule = _dbContext.MentorWorkSchedules.Where(temp => temp.SessionId == SessionId).ToList();
+            var getWorkSchedule = _dbContext.MentorWorkSchedules.Where(temp => temp.SessionId==SessionId).ToList();
+            return getWorkSchedule;
+        }
+
+        public MentorWorkSchedule? GetMentorWorkSchedulesView(Guid SchedulesId)
+        {
+            var getWorkSchedule = _dbContext.MentorWorkSchedules.SingleOrDefault(temp => temp.ScheduleAvailableId==SchedulesId);
+            if (getWorkSchedule == null) return null;
             return getWorkSchedule;
         }
 

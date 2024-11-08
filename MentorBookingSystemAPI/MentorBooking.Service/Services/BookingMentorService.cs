@@ -31,15 +31,14 @@ namespace MentorBooking.Service.Services
             _userRepository = userRepository;
             _senderEmail = senderEmail;
         }
-
-        public async Task<ApiResponse> BookingMentor(string userId, MentorSupportSessionRequest request)
+        public async Task<ApiResponse> BookingMentor(MentorSupportSessionRequest request, string userId)
         {
             if (request.dateBookings.Count() != request.SessionCount)
             {
                 return new ApiResponse
                 {
                     Status = "Error",
-                    Message = "Numbers of session cant not over Session count"
+                    Message = "Numbers of session cant different Session count"
                 };
             }
 
@@ -54,7 +53,15 @@ namespace MentorBooking.Service.Services
                     };
                 }
             }
-
+            var checkGroupId = await _sessionRepository.GetMentorSupportSessionByGroupIdAsync(request.GroupId);
+            if(checkGroupId!=null)
+            {
+                return new ApiResponse
+                {
+                    Status = "Error",
+                    Message = "Your group is joined a session"
+                };
+            }    
             var mentorSupportSession = new MentorSupportSession()
             {
                 SessionId = Guid.NewGuid(),
@@ -70,7 +77,7 @@ namespace MentorBooking.Service.Services
                 return new ApiResponse
                 {
                     Status = "Error",
-                    Message = "This Schedule is not availabe"
+                    Message = "This is some wrong in support session"
                 };
             }
 
@@ -88,7 +95,7 @@ namespace MentorBooking.Service.Services
                     return new ApiResponse
                     {
                         Status = "Error",
-                        Message = "This Schedule is not availabe"
+                        Message = "This is some wrong in mentor work schedule"
                     };
                 }
             }
@@ -108,10 +115,13 @@ namespace MentorBooking.Service.Services
                 Message = "Booking is success",
                 Data = new MentorSupportSessionResponse()
                 {
-                    GroupId = request.GroupId,
-                    SessionCount = request.SessionCount,
-                    PointPerSession = request.PointPerSession,
-                    TotalPoint = request.SessionCount * request.PointPerSession,
+                    SessionId=mentorSupportSession.SessionId,
+                    MentorId=mentorSupportSession.MentorId,
+                    GroupId=mentorSupportSession.GroupId,
+                    SessionCount=mentorSupportSession.SessionCount,
+                    PointPerSession=mentorSupportSession.PointsPerSession,
+                    TotalPoint=mentorSupportSession.TotalPoints,
+                    SessionConfirm=mentorSupportSession.SessionConfirm
                 }
             };
         }
@@ -149,8 +159,7 @@ namespace MentorBooking.Service.Services
                     Message = "Mentor support session is deleted or missing"
                 };
             }
-
-            if (!deleteWorkSChedule)
+            if(!deleteWorkSChedule)
             {
                 return new ApiResponse()
                 {
@@ -165,7 +174,6 @@ namespace MentorBooking.Service.Services
                 Message = "Mentor support session and Work schedule session is deleted"
             };
         }
-
         public List<ApiResponse>? GetAllMentorSupportSessionAsync(Guid MentorId)
         {
             List<ApiResponse>? result = new List<ApiResponse>();
@@ -189,10 +197,13 @@ namespace MentorBooking.Service.Services
                     Message = "Mentor support session is found",
                     Data = new MentorSupportSessionResponse()
                     {
+                        SessionId = item.SessionId,
+                        MentorId = item.MentorId,
                         GroupId = item.GroupId,
                         PointPerSession = item.PointsPerSession,
                         SessionCount = item.SessionCount,
-                        TotalPoint = item.TotalPoints
+                        TotalPoint = item.TotalPoints,
+                        SessionConfirm = item.SessionConfirm
                     }
                 };
                 result.Add(mentorSession);
@@ -200,7 +211,6 @@ namespace MentorBooking.Service.Services
 
             return result;
         }
-
         public async Task<ApiResponse> GetMentorSupportSessionAsync(Guid SessionId)
         {
             var existMentorSession = await _sessionRepository.GetMentorSupportSessionAsync(SessionId);
@@ -219,10 +229,13 @@ namespace MentorBooking.Service.Services
                 Message = "Mentor support session is found",
                 Data = new MentorSupportSessionResponse()
                 {
-                    GroupId = existMentorSession.GroupId,
-                    PointPerSession = existMentorSession.PointsPerSession,
-                    SessionCount = existMentorSession.SessionCount,
-                    TotalPoint = existMentorSession.TotalPoints
+                    SessionId= existMentorSession.SessionId,
+                    MentorId= existMentorSession.MentorId,
+                    GroupId=existMentorSession.GroupId,
+                    PointPerSession=existMentorSession.PointsPerSession,
+                    SessionCount=existMentorSession.SessionCount,
+                    TotalPoint=existMentorSession.TotalPoints,
+                    SessionConfirm=existMentorSession.SessionConfirm
                 }
             };
         }

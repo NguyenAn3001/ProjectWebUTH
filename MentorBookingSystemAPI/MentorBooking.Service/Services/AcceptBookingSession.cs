@@ -14,16 +14,20 @@ namespace MentorBooking.Service.Services
         private readonly IMentorSupportSessionRepository _mentorSupportSession;
         private readonly IMentorWorkScheduleRepository _workScheduleRepository;
         private readonly ISchedulesAvailableRepository _schedulesAvailableRepository;
+        private readonly IUserPointRepository _userPointRepository;
+        private readonly IStudentGroupRepository _studentGroupRepository;
         private readonly IUserRepository _userRepository;
         private readonly ISenderEmail _senderEmail;
 
         public AcceptBookingSession(IMentorSupportSessionRepository mentorSupportSession,
             IMentorWorkScheduleRepository workScheduleRepository,
-            ISchedulesAvailableRepository schedulesAvailableRepository, IUserRepository userRepository,
+            ISchedulesAvailableRepository schedulesAvailableRepository, IUserPointRepository userPointRepository, IStudentGroupRepository studentGroupRepository, IUserRepository userRepository,
             ISenderEmail senderEmail)
         {
             _mentorSupportSession = mentorSupportSession;
             _workScheduleRepository = workScheduleRepository;
+            _userPointRepository = userPointRepository;
+            _studentGroupRepository = studentGroupRepository;
             _schedulesAvailableRepository = schedulesAvailableRepository;
             _userRepository = userRepository;
             _senderEmail = senderEmail;
@@ -65,7 +69,24 @@ namespace MentorBooking.Service.Services
                         Message = "Something wrong",
                     };
                 }
-
+                else
+                {
+                    var students = _studentGroupRepository.GetAllStudentInGroup(accept.GroupId);
+                    if (students == null)
+                    {
+                        return new ApiResponse()
+                        {
+                            Status = "Error",
+                            Message = "Error Payment",
+                        };
+                    }
+                    foreach (var item in students)
+                    {
+                        var pointPayment = accept.TotalPoints;
+                        await _userPointRepository.SetUserPoint(item.StudentId, pointPayment);
+                    }
+                    await _userPointRepository.SetUserPoint(accept.MentorId, accept.TotalPoints * students.Count());
+                }
                 await _senderEmail.SendEmailAsync(student?.Email!,
                     $"Booking Confirmed: Your Session with {mentor?.FirstName} {mentor?.LastName} is Accepted!",
                     BuildStudentBookingAcceptedEmailBody(availableSchedulesId,
@@ -76,10 +97,13 @@ namespace MentorBooking.Service.Services
                     Message = "Accept session",
                     Data = new MentorSupportSessionResponse()
                     {
+                        SessionId = accept.SessionId,
+                        MentorId = accept.MentorId,
                         GroupId = accept.GroupId,
                         SessionCount = accept.SessionCount,
                         PointPerSession = accept.PointsPerSession,
-                        TotalPoint = accept.TotalPoints
+                        TotalPoint = accept.TotalPoints,
+                        SessionConfirm = accept.SessionConfirm,
                     }
                 };
             }
@@ -99,10 +123,13 @@ namespace MentorBooking.Service.Services
                     Message = "Unaccept session success",
                     Data = new MentorSupportSessionResponse()
                     {
+                        SessionId = accept.SessionId,
+                        MentorId = accept.MentorId,
                         GroupId = accept.GroupId,
                         SessionCount = accept.SessionCount,
                         PointPerSession = accept.PointsPerSession,
-                        TotalPoint = accept.TotalPoints
+                        TotalPoint = accept.TotalPoints,
+                        SessionConfirm = accept.SessionConfirm,
                     }
                 };
             }
@@ -113,22 +140,24 @@ namespace MentorBooking.Service.Services
                 Message = "Unaccept session fail",
                 Data = new MentorSupportSessionResponse()
                 {
+                    SessionId= accept.SessionId,
+                    MentorId= accept.MentorId,
                     GroupId = accept.GroupId,
                     SessionCount = accept.SessionCount,
                     PointPerSession = accept.PointsPerSession,
-                    TotalPoint = accept.TotalPoints
+                    TotalPoint = accept.TotalPoints,
+                    SessionConfirm = accept.SessionConfirm,
                 }
             };
         }
-
-        public async Task<List<ApiResponse>> GetAllSessionUnAccept(Guid MentorId)
+        public List<ApiResponse> GetAllSessionUnAccept(Guid MentorId)
         {
             var listApiResponse = new List<ApiResponse>();
             var listSession = _mentorSupportSession.GetAllMentorSupportSessionAsync(MentorId);
             var errorApiResponse = new ApiResponse()
             {
-                Status = "Error",
-                Message = "Session is not Found"
+                Status = "Success",
+                Message = "No unaccept session"
             };
             if (listSession == null)
             {
@@ -146,10 +175,13 @@ namespace MentorBooking.Service.Services
                         Message = "Session is found",
                         Data = new MentorSupportSessionResponse()
                         {
+                            SessionId = item.SessionId,
+                            MentorId = item.MentorId,
                             GroupId = item.GroupId,
                             SessionCount = item.SessionCount,
                             PointPerSession = item.PointsPerSession,
-                            TotalPoint = item.TotalPoints
+                            TotalPoint = item.TotalPoints,
+                            SessionConfirm=item.SessionConfirm,
                         }
                     };
                     listApiResponse.Add(session);

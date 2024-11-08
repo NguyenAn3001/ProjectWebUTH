@@ -9,9 +9,10 @@ namespace MentorBooking.Service.DTOs.Response
 {
     public class MentorSearchingResponse
     {
+        public Guid MentorId { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Image { get; set; }
-        public List<string>? SkillName { get; set; }= new List<string>();
+        public List<string> SkillName { get; set; }= new List<string>();
     }
 }
