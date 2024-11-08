@@ -70,7 +70,7 @@ namespace MentorBooking.Repository.Repositories
 
         public async Task<MentorSupportSession?> GetMentorSupportSessionAsync(Guid SessionId)
         {
-            var getSession = await _dbContext.MentorSupportSessions.SingleOrDefaultAsync(temp => temp.SessionId == SessionId);
+            var getSession = await _dbContext.MentorSupportSessions.Include(m => m.Group).SingleOrDefaultAsync(temp => temp.SessionId == SessionId);
             return getSession;
         }
 

@@ -11,7 +11,7 @@ namespace MentorBooking.Service.Interfaces
 {
     public interface IBookingMentorService
     {
-        Task<ApiResponse> BookingMentor(MentorSupportSessionRequest request);
+        Task<ApiResponse> BookingMentor(string userId, MentorSupportSessionRequest request);
         Task<ApiResponse> GetMentorSupportSessionAsync(Guid SessionId);
         Task<ApiResponse> DeleteMentorSupportSessionAsync(Guid SessionId);
         List<ApiResponse>? GetAllMentorSupportSessionAsync(Guid MentorId);

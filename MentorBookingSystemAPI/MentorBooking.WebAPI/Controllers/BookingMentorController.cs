@@ -1,11 +1,15 @@
-﻿using MentorBooking.Repository.Entities;
+﻿using System.Security.Claims;
+using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
 using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MentorBooking.WebAPI.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class BookingMentorController : Controller
@@ -17,6 +21,7 @@ namespace MentorBooking.WebAPI.Controllers
             _bookingMentorService = bookingMentorService;
             _acceptBookingSession = acceptBookingSession;
         }
+        [Authorize(Roles = "Student")]
         [HttpPost("booking-mentor")]
         public async Task<IActionResult> BookingMentor([FromBody] MentorSupportSessionRequest request)
         {
@@ -24,7 +29,8 @@ namespace MentorBooking.WebAPI.Controllers
             {
                 return BadRequest(new { errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             }
-            var bookingResponse= await _bookingMentorService.BookingMentor(request);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var bookingResponse= await _bookingMentorService.BookingMentor(userId!, request);
             return bookingResponse.Status switch
             {
                 "Error" => BadRequest(new { status = bookingResponse.Status, message = bookingResponse.Message }),
@@ -79,10 +85,12 @@ namespace MentorBooking.WebAPI.Controllers
             var getSessionResponse = await _acceptBookingSession.GetAllSessionUnAccept(MentorId);
             return Ok(getSessionResponse);
         }
-        [HttpPut("accept-booking")]
-        public async Task<IActionResult> AcceptBooking([FromQuery] Guid SessionId, bool accept )
+        // [Authorize(Roles = "Mentor")]
+        [AllowAnonymous]
+        [HttpGet("accept-booking")]
+        public async Task<IActionResult> AcceptBooking([FromQuery] Guid SessionId, bool accept)
         {
-            if (SessionId == Guid.Empty || accept==null)
+            if (SessionId == Guid.Empty)
                 return BadRequest(new { message = "SessionId is required" });
             var getSessionResponse = await _acceptBookingSession.AcceptSession(SessionId,accept);
             return Ok(getSessionResponse);
