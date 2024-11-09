@@ -23,8 +23,9 @@ namespace MentorBooking.Service.Services
             _userRepository = userRepository;
             _mentorSupportSessionRepository = mentorSupportSessionRepository;
         }
-        public async Task<ApiResponse> AddStudentCommentAsync(StudentCommentRequest studentComment)
+        public async Task<ApiResponse> AddStudentCommentAsync(StudentCommentRequest studentComment,Guid studentId)
         {
+            var student = await _userRepository.FindByIdAsync(studentId.ToString());
             if(!await _mentorSupportSessionRepository.CheckMentorSessionAsync(studentComment.SessionId))
             {
                 return new ApiResponse()
@@ -37,7 +38,7 @@ namespace MentorBooking.Service.Services
             {
                 FeedbackId = Guid.NewGuid(),
                 SessionId= studentComment.SessionId,
-                StudentId =studentComment.UserId,
+                StudentId =studentId,
                 MentorId = studentComment.MentorId,
                 Rating = studentComment.Rating,
                 Comment = studentComment.Comment,
@@ -55,6 +56,7 @@ namespace MentorBooking.Service.Services
                         SessionId=mentorFeedback.SessionId,
                         MentorId=mentorFeedback.MentorId,
                         StudentId = mentorFeedback.StudentId,
+                        StudentName = student.FirstName + " " + student.LastName,
                         Comment = mentorFeedback.Comment,
                         Rating = mentorFeedback.Rating,
                         CreateAt = mentorFeedback.CreateAt,
@@ -121,12 +123,13 @@ namespace MentorBooking.Service.Services
                 {
                     Status = "Success",
                     Message = "It is ok",
-                    Data= new StudentCommentResponse()
+                    Data = new StudentCommentResponse()
                     {
-                        FeedbackId=item.FeedbackId,
+                        FeedbackId = item.FeedbackId,
                         SessionId = item.SessionId,
                         MentorId = item.StudentId,
                         StudentId = item.StudentId,
+                        StudentName = student.FirstName + " " + student.LastName,
                         Rating = item.Rating,
                         Comment = item.Comment,
                         CreateAt = item.CreateAt,
@@ -148,30 +151,32 @@ namespace MentorBooking.Service.Services
                     Message = "Not Found"
                 };
             }
+            var student = await _userRepository.FindByIdAsync(existMentorFeedback.StudentId.ToString());
             return new ApiResponse()
             {
                 Status = "Success",
                 Message = "Mentor Feedback is found",
                 Data = new StudentCommentResponse()
                 {
-                    FeedbackId = existMentorFeedback.StudentId,
+                    FeedbackId = existMentorFeedback.FeedbackId,
                     SessionId=existMentorFeedback.SessionId,
-                    MentorId=existMentorFeedback.StudentId,
+                    MentorId=existMentorFeedback.MentorId,
                     StudentId = existMentorFeedback.StudentId,
-                    Rating=existMentorFeedback.Rating,
+                    StudentName = student.FirstName + " " + student.LastName,
+                    Rating =existMentorFeedback.Rating,
                     Comment=existMentorFeedback.Comment,
                     CreateAt=existMentorFeedback.CreateAt,
 
                 }
             };
         }
-        public async Task<ApiResponse> UpdateMentorFeedbackAsync(StudentCommentRequest studentComment)
+        public async Task<ApiResponse> UpdateMentorFeedbackAsync(StudentCommentRequest studentComment,Guid studentId)
         {
             var mentorUpdateFeedback = new MentorFeedback()
             {
                 FeedbackId = Guid.NewGuid(),
                 SessionId = studentComment.SessionId,
-                StudentId = studentComment.UserId,
+                StudentId = studentId,
                 MentorId = studentComment.MentorId,
                 Rating = studentComment.Rating,
                 Comment = studentComment.Comment,

@@ -1,6 +1,9 @@
-﻿using MentorBooking.Repository.Entities;
+﻿using MentorBooking.Repository.Data;
+using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
+using MentorBooking.Repository.Migrations;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +15,12 @@ namespace MentorBooking.Repository.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly UserManager<Users> _userManager;
+        private readonly ApplicationDbContext _dbContext;
 
-        public UserRepository(UserManager<Users> userManager)
+        public UserRepository(UserManager<Users> userManager,ApplicationDbContext dbContext)
         {
             _userManager = userManager;
+            _dbContext = dbContext;
         }
 
         public async Task<bool> CheckPasswordUserAsync(Users user, string password)
@@ -38,5 +43,11 @@ namespace MentorBooking.Repository.Repositories
             return await _userManager.FindByNameAsync(userName);
         }
 
+        public List<Users>? GetAllUser()
+        {
+            var listUser = _dbContext.Users.ToList();
+            if(listUser == null) { return null; }
+            return listUser;
+        }
     }
 }

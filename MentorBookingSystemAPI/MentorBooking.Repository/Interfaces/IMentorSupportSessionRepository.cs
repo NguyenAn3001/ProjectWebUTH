@@ -16,5 +16,6 @@ namespace MentorBooking.Repository.Interfaces
         List<MentorSupportSession>? GetAllMentorSupportSessionAsync(Guid MentorId);
         Task<bool> UpdateMentorSupportSessionAsync(MentorSupportSession mentorSupportSession);
         Task<bool> CheckMentorSessionAsync (Guid SessionId);
+        List<MentorSupportSession> GetALlSession();
     }
 }

@@ -20,6 +20,7 @@ namespace MentorBooking.WebAPI.Controllers
             _bookingMentorService = bookingMentorService;
             _acceptBookingSession = acceptBookingSession;
         }
+        [Authorize(Roles = "Student")]
         [HttpPost("booking-mentor")]
         public async Task<IActionResult> BookingMentor([FromBody] MentorSupportSessionRequest request)
         {
@@ -36,6 +37,7 @@ namespace MentorBooking.WebAPI.Controllers
                 _ => Ok(new { status = bookingResponse.Status, message = bookingResponse.Message,Data=bookingResponse.Data })
             };
         }
+        [Authorize(Roles = "Student")]
         [HttpPost("delete-booking-mentor-session")]
         public async Task<IActionResult> deleteBookingMentorSession([FromBody] Guid SessionId)
         {
@@ -57,6 +59,7 @@ namespace MentorBooking.WebAPI.Controllers
                 })
             };
         }
+        [Authorize(Roles = "Student,Mentor")]
         [HttpGet("get-booking-mentor-session")]
         public async Task<IActionResult> getBookingMentorSession([FromQuery] Guid SessionId)
         {
@@ -73,14 +76,15 @@ namespace MentorBooking.WebAPI.Controllers
                 _ => Ok(new { Status = getSessionResponse.Status, Message = getSessionResponse.Message, Data = getSessionResponse.Data })
             };
         }
+        [Authorize(Roles = "Mentor")]
         [HttpGet("get-unaccept-booking")]
-        public async Task<IActionResult> getAllUnacceptBooking([FromQuery] Guid MentorId)
+        public async Task<IActionResult> getAllUnacceptBooking()
         {
-            if(MentorId==Guid.Empty)
-                return BadRequest(new { message = "SessionId is required" });
-            var getSessionResponse =_acceptBookingSession.GetAllSessionUnAccept(MentorId);
+            var MentorId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+            var getSessionResponse =_acceptBookingSession.GetAllSessionUnAccept(Guid.Parse(MentorId!));
             return Ok(getSessionResponse);
         }
+        [Authorize(Roles = "Mentor")]
         [HttpPut("accept-booking")]
         public async Task<IActionResult> AcceptBooking([FromQuery] Guid SessionId, bool accept )
         {

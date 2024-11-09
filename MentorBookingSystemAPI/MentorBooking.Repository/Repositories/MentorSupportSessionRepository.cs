@@ -47,7 +47,6 @@ namespace MentorBooking.Repository.Repositories
             if(!existSession.SessionConfirm) return false;
             return true;
         }
-
         public async Task<bool> DeleteMentorSupportSessionAsync(Guid SessionId)
         {
             try
@@ -74,6 +73,12 @@ namespace MentorBooking.Repository.Repositories
            var allMentorSupportSession= _dbContext.MentorSupportSessions.Where(temp=>temp.MentorId==MentorId).ToList();
             if (allMentorSupportSession.Count() == 0) return null;
             return allMentorSupportSession;
+        }
+
+        public List<MentorSupportSession> GetALlSession()
+        {
+            var listSession = _dbContext.MentorSupportSessions.ToList();
+            return listSession;
         }
 
         public async Task<MentorSupportSession?> GetMentorSupportSessionAsync(Guid SessionId)

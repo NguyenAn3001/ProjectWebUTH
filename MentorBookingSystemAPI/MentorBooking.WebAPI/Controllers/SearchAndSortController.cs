@@ -2,23 +2,25 @@
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Enum;
 using MentorBooking.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 
 namespace MentorBooking.WebAPI.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentController : ControllerBase
+    public class SearchAndSortController : ControllerBase
     {
         private readonly ISearchAndSortService _mentorServices;
 
-        public StudentController(ISearchAndSortService mentorServices)
+        public SearchAndSortController(ISearchAndSortService mentorServices)
         {
             _mentorServices = mentorServices;
         }
-
+        [Authorize]
         [HttpGet("Search")]
         public IActionResult SearchMentor([FromQuery] int page = 1, [FromQuery] int pageSize=10,[FromQuery]string? searchText="",[FromQuery]string? sortBy="")
         {

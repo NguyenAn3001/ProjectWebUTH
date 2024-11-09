@@ -33,7 +33,15 @@ namespace MentorBooking.Service.Services
                     Status = "Error",
                     Message = "Session is not found"
                 };
-            }    
+            }
+            if (accept.SessionConfirm)
+            {
+                return new ApiResponse()
+                {
+                    Status = "Error",
+                    Message = "This session was accepted"
+                };
+            }
             accept.SessionConfirm= acceptSession;
             if(acceptSession)
             {
@@ -48,7 +56,7 @@ namespace MentorBooking.Service.Services
                     return new ApiResponse()
                     {
                         Status = "Error",
-                        Message = "Something wrong",
+                        Message = "Update work schedule wrong",
                     };
                 }
                 else
@@ -64,10 +72,13 @@ namespace MentorBooking.Service.Services
                     }
                     foreach (var item in students)
                     {
-                        var pointPayment = accept.TotalPoints;
-                        await _userPointRepository.SetUserPoint(item.StudentId, pointPayment);
+                        var studentPoint = await _userPointRepository.GetUserPoint(item.StudentId);
+                        var studentPayment =studentPoint.PointsBalance - accept.TotalPoints;
+                        await _userPointRepository.SetUserPoint(item.StudentId, (int)studentPayment);
                     }
-                    await _userPointRepository.SetUserPoint(accept.MentorId, accept.TotalPoints * students.Count());
+                    var mentorPoint = await _userPointRepository.GetUserPoint(accept.MentorId);
+                    var mentorPayment = mentorPoint.PointsBalance + accept.TotalPoints*students.Count();
+                    await _userPointRepository.SetUserPoint(accept.MentorId, (int)mentorPayment );
                 }
                 return new ApiResponse()
                 {

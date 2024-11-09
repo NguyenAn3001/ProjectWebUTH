@@ -11,8 +11,8 @@ namespace MentorBooking.Service.Interfaces
 {
     public interface IMentorFeedbackService
     {
-        Task<ApiResponse> AddStudentCommentAsync(StudentCommentRequest studentComment);
-        Task<ApiResponse> UpdateMentorFeedbackAsync(StudentCommentRequest studentComment);
+        Task<ApiResponse> AddStudentCommentAsync(StudentCommentRequest studentComment, Guid StudentId);
+        Task<ApiResponse> UpdateMentorFeedbackAsync(StudentCommentRequest studentComment,Guid StudentId);
         Task<ApiResponse> DeleteMentorFeedbackAsync(Guid MentorFeedbackId);
         Task<List<ApiResponse>> GetAllMentorFeedback(Guid MentorId);
         Task<ApiResponse> GetMentorFeedback(Guid MentorFeedbackId);

@@ -1,6 +1,7 @@
 ﻿using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace MentorBooking.Repository.Repositories;
 
@@ -33,5 +34,10 @@ public class MentorRepository : IMentorRepository
             Console.WriteLine(e.Message);
             return false;
         }
+    }
+
+    public async Task<Mentor?> GetMentorByIdAsync(Guid MentorId)
+    {
+        return await _dbContext.Mentors.SingleOrDefaultAsync(s => s.MentorId == MentorId);
     }
 }
