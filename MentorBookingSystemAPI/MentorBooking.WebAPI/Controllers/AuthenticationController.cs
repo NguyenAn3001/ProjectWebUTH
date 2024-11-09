@@ -59,7 +59,7 @@ namespace MentorBooking.WebAPI.Controllers
                 Message = "Send confirmation email successfully."
             });
         }
-        [Authorize]
+        [AllowAnonymous]
         [HttpGet("confirm-email")]
         public async Task<IActionResult> ConfirmEmail(string UserId, string Token)
         {

@@ -1,7 +1,9 @@
-﻿using MentorBooking.Repository.Entities;
+﻿using System.Security.Claims;
+using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
 using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -84,9 +86,9 @@ namespace MentorBooking.WebAPI.Controllers
             var getSessionResponse =_acceptBookingSession.GetAllSessionUnAccept(Guid.Parse(MentorId!));
             return Ok(getSessionResponse);
         }
-        [Authorize(Roles = "Mentor")]
-        [HttpPut("accept-booking")]
-        public async Task<IActionResult> AcceptBooking([FromQuery] Guid SessionId, bool accept )
+        [AllowAnonymous]
+        [HttpGet("accept-booking")]
+        public async Task<IActionResult> AcceptBooking([FromQuery] Guid SessionId, bool accept)
         {
             if (SessionId == Guid.Empty)
                 return BadRequest(new { message = "SessionId is required" });
