@@ -9,7 +9,7 @@ namespace MentorBooking.WebAPI.Controllers;
 
 [Authorize(AuthenticationSchemes = "Bearer")]
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/group")]
 public class GroupController : ControllerBase
 {
     private readonly IGroupOfStudentService _groupOfStudentService;
@@ -19,7 +19,7 @@ public class GroupController : ControllerBase
         _groupOfStudentService = groupOfStudentService;
     }
     [Authorize(Roles = "Student")]
-    [HttpPost("create-new-group")]
+    [HttpPost("new-group")]
     public async Task<IActionResult> CreateNewGroup([FromBody] CreateGroupModelRequest createGroupModelRequest)
     {
         var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -35,7 +35,7 @@ public class GroupController : ControllerBase
         };
     }
     [Authorize(Roles = "Student")]
-    [HttpPost("add-member-group/{groupId}")]
+    [HttpPost("add-member/{groupId}")]
     public async Task<IActionResult> AddMemberToGroup(Guid groupId, List<StudentToAddGroupModelRequest> students)
     {
         var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -53,7 +53,7 @@ public class GroupController : ControllerBase
         };
     }
     [Authorize(Roles = "Student")]
-    [HttpGet("groups")]
+    [HttpGet]
     public async Task<IActionResult> GetAllGroups()
     {
         var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -78,7 +78,7 @@ public class GroupController : ControllerBase
         };
     }
     [Authorize(Roles = "Student")]
-    [HttpDelete("your-groups/delete-group/{groupId}")]
+    [HttpDelete("your-groups/{groupId}")]
     public async Task<IActionResult> DeleteGroup(Guid groupId)
     {
         var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -90,7 +90,7 @@ public class GroupController : ControllerBase
         };
     }
     [Authorize(Roles = "Student")]
-    [HttpPut("your-groups/update-information-group/{groupId}")]
+    [HttpPut("your-groups/{groupId}")]
     public async Task<IActionResult> UpdateGroup(Guid groupId, [FromBody] CreateGroupModelRequest updateGroupModelRequest)
     {
         var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -103,8 +103,8 @@ public class GroupController : ControllerBase
         };
     }
     [Authorize(Roles = "Student")]
-    [HttpDelete("your-groups/delete-member")]
-    public async Task<IActionResult> DeleteMemberGroup(Guid groupId, Guid memberId)
+    [HttpDelete("your-groups")]
+    public async Task<IActionResult> DeleteMemberGroup([FromQuery]Guid groupId,[FromQuery]Guid memberId)
     {
         var studentId = User.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
         var deleteMemberResponse = await _groupOfStudentService.DeleteStudentMemberAsync(Guid.Parse(studentId!), groupId, memberId);

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MentorBooking.WebAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = "Bearer")]
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
@@ -59,7 +59,7 @@ namespace MentorBooking.WebAPI.Controllers
                 Message = "Send confirmation email successfully."
             });
         }
-        [Authorize]
+        [AllowAnonymous]
         [HttpGet("confirm-email")]
         public async Task<IActionResult> ConfirmEmail(string UserId, string Token)
         {

@@ -23,8 +23,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IMentorProfilesService, MentorProfilesService>();
+builder.Services.AddScoped<IStudentProfilesServices,StudentProfilesServices>();
+builder.Services.AddScoped<IWorkSchedulesView, WorkSchedulesView>();
+builder.Services.AddScoped<IAcceptBookingSession, AcceptBookingSession>();
+builder.Services.AddScoped<IMentorFeedbackRepository,MentorFeedbackRepository>();
+builder.Services.AddScoped<IMentorSupportSessionRepository,MentorSupportSessionRepository>();
+builder.Services.AddScoped<IMentorWorkScheduleRepository,MentorWorkScheduleRepository>();
+builder.Services.AddScoped<IBookingMentorService, BookingMentorService>();
+builder.Services.AddScoped<IMentorFeedbackService, MentorFeedbackService>();
 builder.Services.AddScoped<IAuthenticateService, AuthenticationHandler>();
-builder.Services.AddScoped<ISearchAndSortService,SearchAndSortService>();
 builder.Services.AddScoped<ISearchAndSortService, SearchAndSortService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
@@ -47,7 +56,11 @@ builder.Services.AddScoped<ISchedulesAvailableRepository, SchedulesAvailableRepo
 builder.Services.AddScoped<IProjectGroupRepository, ProjectGroupRepository>();
 builder.Services.AddScoped<IStudentGroupRepository, StudentGroupRepository>();
 builder.Services.AddScoped<IGroupOfStudentService, GroupOfStudentService>();
-
+builder.Services.AddScoped<IProjectProgressRepository, ProjectProgressRepository>();
+builder.Services.AddSingleton<Dictionary<Guid, List<Guid>>>();
+builder.Services.AddScoped<IProjectProgressService, ProjectProgressService>();
+builder.Services.AddScoped<IUserPointRepository, UserPointRepository>();
+builder.Services.AddScoped<IPointService, PointService>();
 // builder.Services.AddScoped<IMentorServices, MentorServices>();
 // Add Identity
 builder.Services.AddIdentity<Users, Roles>(options =>

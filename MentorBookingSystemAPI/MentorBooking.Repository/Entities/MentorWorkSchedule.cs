@@ -11,6 +11,6 @@ public partial class MentorWorkSchedule
 
     public bool UnavailableDate { get; set; }
     public Guid ScheduleAvailableId { get; set; }
-    public virtual SchedulesAvailable ScheduleAvailable { get; set; }
+    public virtual SchedulesAvailables ScheduleAvailable { get; set; }
     public virtual MentorSupportSession Session { get; set; } = null!;
 }

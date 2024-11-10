@@ -6,4 +6,5 @@ public interface ISkillRepository
 {
     // Task<List<Skill>> GetAllAsync();
     Task<int> AddSkillAsync(string skillName);
+    Task<Skill?> GetSkillByIdAsync(int skillId);
 }

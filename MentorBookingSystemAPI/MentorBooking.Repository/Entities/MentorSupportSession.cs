@@ -17,7 +17,6 @@ public partial class MentorSupportSession
 
     public int TotalPoints { get; set; }
     public bool SessionConfirm { get; set; } = false;
-
     public virtual ProjectGroup Group { get; set; } = null!;
 
     public virtual GroupFeedback? GroupFeedback { get; set; }
@@ -29,4 +28,5 @@ public partial class MentorSupportSession
     public virtual ICollection<MentorWorkSchedule> MentorWorkSchedules { get; set; } = new List<MentorWorkSchedule>();
 
     public virtual StudentsPaymentSession? StudentsPaymentSession { get; set; }
+    public virtual ICollection<ProjectProgress> ProjectProgresses { get; set; } = new List<ProjectProgress>();
 }

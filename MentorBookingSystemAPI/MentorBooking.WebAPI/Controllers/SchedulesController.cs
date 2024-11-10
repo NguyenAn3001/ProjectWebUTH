@@ -8,7 +8,7 @@ namespace MentorBooking.WebAPI.Controllers;
 
 [Authorize(AuthenticationSchemes = "Bearer")]
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/schedules")]
 public class SchedulesController : ControllerBase
 {
     private readonly ISchedulesMentor _schedulesMentor;
@@ -19,7 +19,7 @@ public class SchedulesController : ControllerBase
     }
     
     [Authorize(Roles = "Mentor")]
-    [HttpPost("add-schedules")]
+    [HttpPost("add")]
     public async Task<IActionResult> AddSchedulesAvailable(
         [FromBody] List<SchedulesAvailableModelRequest> schedulesAvailableRequests)
     {
@@ -45,7 +45,7 @@ public class SchedulesController : ControllerBase
         };
     }
     [Authorize(Roles = "Mentor")]
-    [HttpPut("update-schedules")]
+    [HttpPut("{scheduleAvailableId}")]
     public async Task<IActionResult> UpdateMentorSchedule(Guid scheduleAvailableId,
         [FromBody] SchedulesAvailableModelRequest updateMentorScheduleRequest)
     {
@@ -63,9 +63,9 @@ public class SchedulesController : ControllerBase
             _ => Ok(updateScheduleResponse)
         };
     }
-
-    [HttpDelete("delete-schedules")]
-    public async Task<IActionResult> DeleteMentorSchedule(Guid scheduleAvailableId)
+    [Authorize(Roles = "Mentor")]
+    [HttpDelete]
+    public async Task<IActionResult> DeleteMentorSchedule([FromQuery]Guid scheduleAvailableId)
     {
         if (scheduleAvailableId == Guid.Empty)
             return BadRequest(new { message = "Available schedules is required" });
@@ -85,8 +85,8 @@ public class SchedulesController : ControllerBase
         };
     }
     [Authorize(Roles = "Mentor, Student")]
-    [HttpGet("get-schedules-mentor")]
-    public IActionResult GetSchedulesMentor(Guid mentorId)
+    [HttpGet("schedules-mentor")]
+    public IActionResult GetSchedulesMentor([FromQuery]Guid mentorId)
     {
         if (mentorId == Guid.Empty)
             return BadRequest(new { message = "Invalid mentor" });
