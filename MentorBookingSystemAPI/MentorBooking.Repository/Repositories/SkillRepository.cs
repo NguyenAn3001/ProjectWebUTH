@@ -1,6 +1,7 @@
 ﻿using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace MentorBooking.Repository.Repositories;
 
@@ -33,5 +34,10 @@ public class SkillRepository : ISkillRepository
             Console.WriteLine($"Error: {ex.Message}");
             return -1;
         }
+    }
+
+    public async Task<Skill?> GetSkillByIdAsync(int skillId)
+    {
+        return await _dbContext.Skills.SingleOrDefaultAsync(temp=>temp.SkillId == skillId);
     }
 }

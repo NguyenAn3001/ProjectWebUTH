@@ -25,7 +25,6 @@ public partial class ApplicationDbContext : IdentityDbContext<
         : base(options)
     {
     }
-    // public virtual DbSet<SchedulesAvailable> SchedulesAvailables { get; set; }
     public virtual DbSet<GroupFeedback> GroupFeedbacks { get; set; }
 
     public virtual DbSet<Mentor> Mentors { get; set; }
@@ -52,8 +51,8 @@ public partial class ApplicationDbContext : IdentityDbContext<
 
     public virtual DbSet<UserPoint> UserPoints { get; set; }
     public virtual DbSet<MentorSkill> MentorSkills { get; set; }
-    public virtual DbSet<SchedulesAvailable> SchedulesAvailable { get; set; }
-
+    public virtual DbSet<SchedulesAvailables> SchedulesAvailable { get; set; }
+    public virtual DbSet<Users> User { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -163,7 +162,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__MentorSup__Mento__1DD065E0");
         });
-        modelBuilder.Entity<SchedulesAvailable>(entity =>
+        modelBuilder.Entity<SchedulesAvailables>(entity =>
         {
             entity.HasKey(e => e.ScheduleAvailableId);
         
@@ -203,7 +202,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
                 .HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(1000);
 
-            entity.HasOne(d => d.User).WithMany(p => p.PointTransactions)
+            entity.HasOne(d => d.UserPoint).WithMany(p => p.PointTransactions)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__PointTran__UserI__17236851");
@@ -230,13 +229,13 @@ public partial class ApplicationDbContext : IdentityDbContext<
 
             entity.HasIndex(e => e.ProgressId, "UQ__ProjectP__BAE29CA42BD6879C").IsUnique();
 
-            entity.Property(e => e.Description).HasMaxLength(1000);
+            entity.Property(e => e.Description).HasMaxLength(10000);
             entity.Property(e => e.UpdateAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
 
-            entity.HasOne(d => d.Group).WithMany(p => p.ProjectProgresses)
-                .HasForeignKey(d => d.GroupId)
+            entity.HasOne(d => d.MentorSupportSession).WithMany(p => p.ProjectProgresses)
+                .HasForeignKey(d => d.SessionId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__ProjectPr__Group__19FFD4FC");
         });
@@ -316,7 +315,7 @@ public partial class ApplicationDbContext : IdentityDbContext<
             .WithOne(u => u.Student)
             .HasForeignKey<Student>(s => s.StudentId)
             .OnDelete(DeleteBehavior.Restrict);
-        modelBuilder.Entity<SchedulesAvailable>()
+        modelBuilder.Entity<SchedulesAvailables>()
             .HasOne(m => m.Mentor)
             .WithMany(m => m.SchedulesAvailable)
             .HasForeignKey(f => f.MentorId)

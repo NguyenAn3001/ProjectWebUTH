@@ -41,4 +41,23 @@ public class StudentGroupRepository : IStudentGroupRepository
             return false;
         }
     }
+    public List<StudentGroup>? GetAllStudentInGroup(Guid GroupId)
+    {
+        var listStudent = _dbContext.StudentGroups.Where(temp=>temp.GroupId==GroupId).ToList();
+        if(listStudent.Count()==0)
+        {
+            return null;
+        }
+        return listStudent;
+    }
+
+    public List<StudentGroup>? GetListStudentInGroup(Guid StudentId)
+    {
+        var listGroup=_dbContext.StudentGroups.Where(temp=>temp.StudentId==StudentId).ToList();
+        if (listGroup.Count()==0)
+        {
+            return null;
+        }
+        return listGroup;
+    }
 }

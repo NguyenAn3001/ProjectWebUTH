@@ -19,7 +19,7 @@ public class SchedulesMentor : ISchedulesMentor
     }
     public async Task<ApiResponse> AddSchedulesAsync(Guid mentorId, List<SchedulesAvailableModelRequest> schedulesModels)
     {
-        var schedules = new List<SchedulesAvailable>();
+        var schedules = new List<SchedulesAvailables>();
         foreach (SchedulesAvailableModelRequest schedulesModel in schedulesModels)
         {
             if (TimeOnly.Parse(schedulesModel.StartTime) >= TimeOnly.Parse(schedulesModel.EndTime))
@@ -31,7 +31,7 @@ public class SchedulesMentor : ISchedulesMentor
                 };
             }
 
-            schedules.Add(new SchedulesAvailable()
+            schedules.Add(new SchedulesAvailables()
             {
                 ScheduleAvailableId = Guid.NewGuid(),
                 MentorId = mentorId,
@@ -76,7 +76,7 @@ public class SchedulesMentor : ISchedulesMentor
 
     public async Task<ApiResponse> UpdateScheduleAsync(Guid mentorId, Guid scheduleAvailableId, SchedulesAvailableModelRequest scheduleModels)
     {
-        var scheduleToUpdate = new SchedulesAvailable()
+        var scheduleToUpdate = new SchedulesAvailables()
         {
             ScheduleAvailableId = scheduleAvailableId,
             MentorId = mentorId,
