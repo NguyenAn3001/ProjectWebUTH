@@ -10,12 +10,6 @@ namespace MentorBooking.Service.DTOs.Request
 {
     public class StudentCommentRequest
     {
-        [Required(ErrorMessage = "User Id can't be blank")]
-        public Guid UserId { get; set; }
-        [Required(ErrorMessage = "FirstName can't be blank")]
-        public string FirstName { get; set; }
-        [Required(ErrorMessage = "LastName can't be blank")]
-        public string LastName { get; set; }
         [Required(ErrorMessage = "Mentor Id can't be blank")]
         public Guid MentorId {  get; set; }
         [Required(ErrorMessage = "Session Id can't be blank")]

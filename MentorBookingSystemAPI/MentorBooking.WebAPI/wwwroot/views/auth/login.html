@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="../../css/sign-up/login.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="../../assets/svg/mb-favicon.svg">
+</head>
+<body>
+    <div class="section">
+        <div class="container">
+            <div class="row full-height justify-content-center">
+                <div class="col-12 text-center align-self-center py-5">
+                    <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                        <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+                        <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                        <label for="reg-log">
+                            <i class="ri-arrow-left-up-line"></i>
+                        </label>
+                        <div class="card-3d-wrap mx-auto">
+                            <div class="card-3d-wrapper">
+                                <!-- Log In Form -->
+                                <div class="card-front">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <h4 class="mb-4 pb-3">Log In</h4>
+                                            <div class="form-group">
+                                                <input type="email" name="logusername" class="form-style" placeholder="Your username" id="logusernameLogin" autocomplete="off">
+                                                <i class="input-icon ri-mail-line"></i>
+                                            </div>  
+                                            <div class="form-group mt-2">
+                                                <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpassLogin" autocomplete="off">
+                                                <i class="input-icon ri-lock-line"></i>
+                                            </div>
+                                            <a href="#" class="btn mt-4" onclick="validateLogin()">Login</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sign Up Form -->
+                                <div class="card-back">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <h4 class="mb-4 pb-3">Sign Up</h4>
+                                            <div class="form-group">
+                                                <input type="text" name="username" class="form-style" placeholder="Your Username" id="username" autocomplete="off">
+                                                <i class="input-icon ri-user-line"></i>
+                                            </div>  
+                                            <div class="form-group mt-2">
+                                                <input type="email" name="signupemail" class="form-style" placeholder="Your Email" id="logemailSignup" autocomplete="off">
+                                                <i class="input-icon ri-mail-line"></i>
+                                            </div>  
+                                            <div class="form-group mt-2">
+                                                <input type="password" name="signuppass" class="form-style" placeholder="Your Password" id="logpassSignup" autocomplete="off">
+                                                <i class="input-icon ri-lock-line"></i>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input type="password" name="confirmPass" class="form-style" placeholder="Confirm Password" id="confirmPass" autocomplete="off">
+                                                <i class="input-icon ri-lock-line"></i>
+                                            </div>
+                                            <a href="#" class="btn mt-4" onclick="validateSignup()">Sign up</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mentor Modal -->
+<div id="mentorModal" class="modal">
+    <div class="modal-content">
+        <h4 class="modal-title">Register to be a Mentor</h4>
+        <p style="text-align: center;">Do you want to become a Mentor to share your knowledge and experience?</p>
+        <div class="modal-buttons">
+            <a href="../student/profile/personal-info.html"><button class="modal-btn modal-btn-secondary" onclick="closeModal()">No, thanks</button></a>
+            <button class="modal-btn modal-btn-primary" onclick="showMentorForm()">Yes, I want to be a Mentor</button>
+        </div>
+    </div>
+</div>
+
+    <script src="../../js/sign-up/login.js"></script>
+</body>
+</html>
+
+
+

@@ -23,6 +23,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IMentorProfilesService, MentorProfilesService>();
+builder.Services.AddScoped<IStudentProfilesServices,StudentProfilesServices>();
 builder.Services.AddScoped<IWorkSchedulesView, WorkSchedulesView>();
 builder.Services.AddScoped<IAcceptBookingSession, AcceptBookingSession>();
 builder.Services.AddScoped<IMentorFeedbackRepository,MentorFeedbackRepository>();

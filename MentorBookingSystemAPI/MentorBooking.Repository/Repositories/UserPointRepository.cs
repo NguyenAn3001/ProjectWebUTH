@@ -81,4 +81,31 @@ public class UserPointRepository : IUserPointRepository
             return null!;
         }
     }
+
+    public List<PointTransaction> GetAllPointTransaction()
+    {
+        var listPointTransaction = _dbContext.PointTransactions.ToList();
+        return listPointTransaction;
+    }
+
+    public async Task<bool> DeletePointTransaction(Guid PointTransactionId)
+    {
+        try
+        {
+            var pointTrans = await _dbContext.PointTransactions.SingleOrDefaultAsync(temp => temp.TransactionId == PointTransactionId);
+            if (pointTrans == null)
+            {
+                return false;
+            }
+            _dbContext.PointTransactions.Remove(pointTrans);
+            await _dbContext.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return false;
+        }
+        
+    }
 }

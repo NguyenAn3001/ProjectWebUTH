@@ -1,5 +1,6 @@
 ﻿using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
+using MentorBooking.Repository.Repositories;
 using MentorBooking.Service.DTOs.Request;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Interfaces;
@@ -17,19 +18,21 @@ namespace MentorBooking.Service.Services
         private readonly IMentorSupportSessionRepository _sessionRepository;
         private readonly IMentorWorkScheduleRepository _workScheduleRepository;
         private readonly ISchedulesAvailableRepository _schedulesAvailableRepository;
+        private readonly IStudentGroupRepository _studentGroupRepository;
         private readonly IUserRepository _userRepository;
         private readonly ISenderEmail _senderEmail;
 
         public BookingMentorService(IMentorSupportSessionRepository sessionRepository,
             IMentorWorkScheduleRepository workScheduleRepository,
             ISchedulesAvailableRepository schedulesAvailableRepository, IUserRepository userRepository,
-            ISenderEmail senderEmail)
+            ISenderEmail senderEmail,IStudentGroupRepository studentGroupRepository)
         {
             _sessionRepository = sessionRepository;
             _workScheduleRepository = workScheduleRepository;
             _schedulesAvailableRepository = schedulesAvailableRepository;
             _userRepository = userRepository;
             _senderEmail = senderEmail;
+            _studentGroupRepository = studentGroupRepository;
         }
         public async Task<ApiResponse> BookingMentor(MentorSupportSessionRequest request, string userId)
         {
@@ -41,7 +44,6 @@ namespace MentorBooking.Service.Services
                     Message = "Numbers of session cant different Session count"
                 };
             }
-
             foreach (var unavailable in request.dateBookings)
             {
                 if (await _workScheduleRepository.CheckWorkScheduleAsync(unavailable))
@@ -61,6 +63,65 @@ namespace MentorBooking.Service.Services
                     Status = "Error",
                     Message = "Your group is joined a session"
                 };
+            }
+            var ListStudent = _studentGroupRepository.GetAllStudentInGroup(request.GroupId);
+            foreach(var aStudent in ListStudent)
+            {
+                var listGroup = _studentGroupRepository.GetListStudentInGroup(aStudent.StudentId);
+                var listStudentWork = new List<MentorWorkSchedule>();
+                var listSession = new List<MentorSupportSession>();
+                foreach (var item in listGroup)
+                {
+                    var result = await _sessionRepository.GetMentorSupportSessionByGroupIdAsync(item.GroupId);
+                    if (result != null)
+                    {
+                        listSession.Add(result);
+                    }
+                }
+                foreach (var item in listSession)
+                {
+                    var result = _workScheduleRepository.GetMentorWorkSchedule(item.SessionId);
+                    foreach (var workschedule in result)
+                    {
+                        if (workschedule != null)
+                        {
+                            listStudentWork.Add(workschedule);
+                        }
+                    }
+                }
+                foreach (var item in listStudentWork)
+                {
+                    var existWorkSchedule = await _schedulesAvailableRepository.GetSchedulesAvailableAsync(item.ScheduleAvailableId);
+                    if (existWorkSchedule != null)
+                    {
+                        foreach (var workschedule in request.dateBookings)
+                        {
+                            var availabeSchedule = await _schedulesAvailableRepository.GetSchedulesAvailableAsync(workschedule);
+                            if (availabeSchedule != null)
+                            {
+                                if (existWorkSchedule.FreeDay == availabeSchedule.FreeDay)
+                                {
+                                    if (existWorkSchedule.StartTime <= availabeSchedule.StartTime && existWorkSchedule.EndTime >= availabeSchedule.StartTime)
+                                    {
+                                        return new ApiResponse()
+                                        {
+                                            Status = "Error",
+                                            Message="Work schedules is not over date booking"
+                                        };
+                                    }    
+                                    if (existWorkSchedule.EndTime >= availabeSchedule.EndTime && existWorkSchedule.StartTime <= availabeSchedule.EndTime)
+                                    {
+                                        return new ApiResponse()
+                                        {
+                                            Status = "Error",
+                                            Message = "Work schedules is not over date booking"
+                                        };
+                                    }    
+                                }
+                            }
+                        }
+                    }
+                }
             }    
             var mentorSupportSession = new MentorSupportSession()
             {

@@ -31,4 +31,10 @@ public class MentorSkillRepository : IMentorSkillRepository
             return false;
         }
     }
+
+    public List<MentorSkill> GetMentorSkillByIdAsync(Guid MentorId)
+    {
+        var listMentorskill = _dbContext.MentorSkills.Where(temp=>temp.MentorId==MentorId).ToList();
+        return listMentorskill;
+    }
 }
