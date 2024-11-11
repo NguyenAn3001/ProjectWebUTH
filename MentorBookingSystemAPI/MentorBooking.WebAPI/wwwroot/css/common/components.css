@@ -6,7 +6,7 @@
   --text-light: #71717a;
   --white: #ffffff;
   --max-width: 1200px;
-  --header-font: "Lora", serif;
+  --header-font: "Poppins", serif;
 }
 
 * {
@@ -14,15 +14,19 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.icon a{
+  /* padding: 10px 20px; */
+  color:var(--white);
+}
+
 .section__container {
-  max-width: var(--max-width);
-  margin: auto;
   padding: 5rem 1rem;
 }
 
 .section__header {
   margin-bottom: 1rem;
-  font-size: 2.5rem;
+  font-size: 1.5em;
   font-weight: 700;
   font-family: var(--header-font);
   color: var(--text-dark);
@@ -144,17 +148,6 @@ nav{
 {
   margin-left:15px;
 }
-
-.notiNav,
-.calendarNav,
-.walletNav
-{
-  font-size: 20px;;
-  color: #fff;
-   cursor: pointer; 
-
-}
-
 
 .header__container {
   text-align: left;
@@ -537,22 +530,21 @@ nav{
 }
 
 .btn-hover {
-  width: 200px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 12px 24px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
   font-size: 16px;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 500;
   cursor: pointer;
-  margin: 20px 0; /* Đặt lề trên và dưới để tạo khoảng cách */
-  height: 55px;
-  text-align: center;
-  border: none;
-  background-size: 300% 100%;
-  border-radius:10px;
-  transition: all .4s ease-in-out;
+  transition: all 0.3s ease;
 }
 
 .btn-hover:hover {
-  background-position: 100% 0;
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
 }
 
 .btn-hover:focus {
