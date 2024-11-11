@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap");
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 30px;
+    font-size: 36px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button.available {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button.available:hover {
+    background-color: #3e8e41;
+}
+
+button.unavailable {
+    background-color: #f44336;
+    color: white;
+}
+
+button.unavailable:hover {
+    background-color: #c62828;
+}
