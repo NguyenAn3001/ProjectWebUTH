@@ -22,7 +22,7 @@ function validateSignup() {
       
       showModal(); 
   } else {
-      alert('Vui lòng nhập đầy đủ và chính xác');
+      alert('Vui lòng nhập đầy đủ thông tin.');
   }
 }
 
@@ -32,7 +32,7 @@ function validateLogin() {
   if (logUsername && password) {
       alert('Đăng nhập thành công!');
   } else {
-      alert('Vui lòng nhập đầy đủ và chính xác.');
+      alert('Vui lòng nhập đầy đủ thông tin.');
   }
 }
 
