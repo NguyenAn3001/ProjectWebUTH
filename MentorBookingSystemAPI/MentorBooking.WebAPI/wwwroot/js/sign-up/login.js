@@ -19,7 +19,7 @@ modal.style.display = "none";
 
 function validateSignup() {
   if (validateUsername() && validatePassword() && validateConfirmPassword()) {
-      
+      alert('Đăng kí thành công!');
       showModal(); 
   } else {
       alert('Vui lòng nhập đầy đủ thông tin.');
@@ -31,6 +31,7 @@ function validateLogin() {
   const password = document.getElementById("logpassLogin").value.trim();
   if (logUsername && password) {
       alert('Đăng nhập thành công!');
+      showModal();
   } else {
       alert('Vui lòng nhập đầy đủ thông tin.');
   }
