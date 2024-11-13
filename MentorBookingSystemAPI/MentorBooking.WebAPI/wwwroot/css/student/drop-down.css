@@ -395,3 +395,48 @@
   left: 0;
   color: var(--primary-color);
 }
+
+.group__contain{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+  align-items: flex-start; 
+  
+}
+
+.group__contain label {
+  font-weight: bold;
+}
+
+.group__form,
+.group__info{
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list__group{
+  margin-bottom: 1.5rem;
+
+}
+
+
+
+.list__group span,
+.form__group input{
+  font-family: "Poppins", sans-serif;
+  display: inline-block;
+  width: 100%;
+  font-size: 14px;
+  min-height: 60px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.group__btn{
+  display: flex;
+  max-width: 75%;
+  justify-content: space-between;
+}
