@@ -5,6 +5,7 @@ namespace MentorBooking.Service.Interfaces;
 
 public interface IPointService
 {
+    Task<ApiResponse> ExistingPointAsync(Guid userId);
     Task<ApiResponse> AddPointAsync(Guid userId, PointChangedModelRequest pointAdd);
     Task<ApiResponse> CashPointAsync(Guid userId, PointCashModelRequest pointCash);
 }

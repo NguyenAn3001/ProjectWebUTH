@@ -63,6 +63,12 @@ builder.Services.AddScoped<IUserPointRepository, UserPointRepository>();
 builder.Services.AddScoped<IPointService, PointService>();
 // builder.Services.AddScoped<IMentorServices, MentorServices>();
 // Add Identity
+builder.Services.AddCors(o => o.AddPolicy("MyCors", builder =>
+ {
+    builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+}));
 builder.Services.AddIdentity<Users, Roles>(options =>
 {
     options.Password.RequireDigit = true;
@@ -141,7 +147,7 @@ if (app.Environment.IsDevelopment())
         c.InjectJavascript("swagger.js");
     });
 }
-
+app.UseCors("MyCors");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 // Add Authentication 

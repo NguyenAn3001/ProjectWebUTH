@@ -18,6 +18,13 @@ public class AddOrCashPointController : ControllerBase
     {
         _pointService = pointService;
     }
+
+    [Authorize]
+    [HttpGet("check-balances")]
+    public async Task<IActionResult> CheckBalances(Guid userId)
+    {
+        return Ok(await _pointService.ExistingPointAsync(userId));
+    }
     [Authorize]
     [HttpPost("add-point")]
     public async Task<IActionResult> AddPointToWallet(PointChangedModelRequest pointAddedRequest)
