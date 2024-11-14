@@ -131,6 +131,17 @@ nav{
   padding:15px ;
 }
 
+.nav__logo-nonavlinks {
+  flex: 2;
+}
+
+.nav__logo-nonavlinks a{
+  color: var(--white); /* Màu logo */
+  font-size: 1.5em; /* Kích thước chữ logo */
+  font-weight: bold;
+  margin-left: 10px;
+}
+
 .icon {
   display: flex; /* Giúp các  iconxếp theo hàng ngang */
   align-items: center;
