@@ -539,6 +539,7 @@ nav{
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .btn-hover:hover {
@@ -555,8 +556,6 @@ nav{
   background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
-
-
 
 .wrapper{
   padding: 10px 10%;

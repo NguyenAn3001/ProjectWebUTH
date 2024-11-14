@@ -56,7 +56,7 @@
               <ul>
                 <li class="registerMentor"><img src="../../../assets/svg/drop-down/r-mentor.svg"><a href="../../../views/auth/register.html">Register as a mentor</a></li>
                 <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="../profile/edit-sinfo.html">My Profile</a></li>
-                <li class="support"><img src="../../../assets/svg/drop-down/help.svg" ><a href="contact.html">Help & Support</a></li>
+                <li class="group"><img src="../../../assets/svg/drop-down/group.svg" ><a >Group</a></li>
                 <li><img src="../../../assets/svg/drop-down/log-out.svg"><a href="../../../index.html">Log Out</a></li>
               </ul>
             </div>
@@ -64,37 +64,55 @@
         </nav>
     </header>  
     <section class="section__container about__container">
-      <div class="group__contain">
-        <div class="group__form">
-          <h2 class="section__header">Create group</h2>
-          <div class="form__group">
-            <label for="groupname">Group name:</label>
-            <input type="text" name="groupname" id="groupname">
-          </div>
-          <div class="form__group">
-            <label for="email">Member name:</label>
-            <input type="email" name="email" id="email">
-          </div>
-          <div class="group__btn">
-            <button type="button" class="btn-hover">Add menber</button>
-            <button type="button" class="btn-hover btn-delete">Delete menber</button>
-            <button type="button" class="btn-hover complete">Complete</button>
-          </div>
-          
+      
+        <div class="group__contain">
+        
+            <div class="group__form">
+            
+                <h2 class="section__header">Create group</h2>
+            
+                <div class="form__group">
+                    <label for="groupname">Group name:</label>
+                    <input type="text" name="groupname" id="groupname">
+                </div>
+                
+                <div class="form__group">
+                    <label for="email">Member name:</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                
+                <div class="group__btn">
+                    <button type="button" class="btn-hover">Add menber</button>
+                    <button type="button" class="btn-hover complete">Complete</button>
+                </div>
 
-        </div>
-        <div class="group__info">
-          <h2 class="section__header">Group information</h2>
-          <div class="list__group">
-            <p><strong>Group Name:</strong> <span id="displayGroupName"></span></p>
-          </div>
-          <div class="list__group">
-            <p><strong>Member:</strong> <span id="memberList"></span></p>
-          </div>
-        </div>
+            </div>
+            
+            <div class="group__info">
+                
+                <h2 class="section__header">Group information</h2>
+                
+                <div class="list__group">
+                    <p>
+                        <strong>Group Name:</strong> 
+                        <span id="displayGroupName"></span>
+                    </p>
+                </div>
+                
+                <div class="list__group">
+                    <p>
+                        <strong>Member:</strong>
+                        <span id="memberList">
+                            
+                        </span>
+                    </p>
+                </div>
+            
+            </div>
       </div>
     </section> 
     <script src="../../../js/student/create-group.js"></script>
+    <script src="../../../js/student/drop-down.js"></script>
 
 </body>
 </html>
