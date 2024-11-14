@@ -441,3 +441,21 @@
   flex: 1;
 }
 
+
+.member-item{
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 24px;
+  justify-content: space-between;
+  
+}
+
+.member-item p{
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+

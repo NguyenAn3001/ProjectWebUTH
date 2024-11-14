@@ -9,7 +9,6 @@
     />
     <link rel="stylesheet" href="../../../css/common/components.css">
     <link rel="stylesheet" href="../../../css/student/drop-down.css">
-    <link rel="stylesheet" href="../../../css/student/create-group.css">
     <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
     <title>Tạo nhóm dự án</title>
 </head>
@@ -70,16 +69,21 @@
         
             <div class="group__form">
             
-                <h2 class="section__header">Create group</h2>
+                <h2 class="section__header">Create progject group</h2>
             
                 <div class="form__group">
                     <label for="groupname">Group name:</label>
-                    <input type="text" name="groupname" id="groupname">
+                    <input type="text" placeholder="Enter group name" id="groupname">
                 </div>
                 
                 <div class="form__group">
-                    <label for="email">Member name:</label>
-                    <input type="email" name="email" id="email">
+                  <label for="project-topic">Project topic:</label>
+                  <input type="text" id="project-topic" placeholder="Enter project topic">
+                </div>
+
+                <div class="form__group">
+                    <label for="email">Member email:</label>
+                    <input type="email" placeholder="Enter student email" id="email">
                 </div>
                 
                 <div class="group__btn">
@@ -91,72 +95,18 @@
             
             <div class="group__info">
                 
-                <h2 class="section__header">Group information</h2>
-                
-                <div class="list__group">
-                    <p>
-                        <strong>Group Name:</strong> 
-                        <span id="displayGroupName"></span>
-                    </p>
-                </div>
-                
-                <div class="list__group">
-                    <p>
-                        <strong>Member:</strong>
-                        <span id="memberList">
-                            
-                        </span>
-                    </p>
-                </div>
+                <h2 class="section__header">List menber</h2>
+                  <p>
+                      <span id="member__List">
+                          
+                      </span>
+                  </p>
             
             </div>
       </div>
     </section> 
     <script src="../../../js/student/create-group.js"></script>
     <script src="../../../js/student/drop-down.js"></script>
-
-<div class="container">
-    <h2>Create Project Group</h2>
-
-    <!-- Group name -->
-    <label for="group-name">Group Name</label>
-    <input type="text" id="group-name" placeholder="Enter group name">
-
-    <!-- Project topic -->
-    <label for="project-topic">Project Topic</label>
-    <input type="text" id="project-topic" placeholder="Enter project topic">
-
-    <!-- Group members -->
-    <label>Group Members</label>
-    <div class="member-list" id="member-list">
-        <div class="member-item">
-            <input type="text" placeholder="Enter student id">
-            <button type="button" class="add-member-btn" onclick="addMember()">Add</button>
-        </div>
-    </div>
-
-    <!-- Submit button -->
-    <button type="button" class="submit-btn">Create Group</button>
-</div>
-
-<script>
-    // Function to add a new member
-    function addMember() {
-        const memberList = document.getElementById('member-list');
-        const newMemberItem = document.createElement('div');
-        newMemberItem.className = 'member-item';
-        newMemberItem.innerHTML = `
-            <input type="text" placeholder="Enter student id" required>
-            <button type="button" class="remove-member-btn" onclick="removeMember(this)">Remove</button>
-        `;
-        memberList.appendChild(newMemberItem);
-    }
-
-    // Function to remove a member
-    function removeMember(button) {
-        button.parentElement.remove();
-    }
-</script>
-
+    
 </body>
 </html>
