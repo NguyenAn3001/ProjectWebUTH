@@ -18,6 +18,22 @@ public class PointService : IPointService
         _userRepository = userRepository;
         _senderEmail = senderEmail;
     }
+
+    public async Task<ApiResponse> ExistingPointAsync(Guid userId)
+    {
+        var points = await _userPointRepository.GetUserPoint(userId);
+        return new ApiResponse()
+        {
+            Status = "Success",
+            Message = "Getting point success.",
+            Data = new
+            {
+                Points = points.PointsBalance
+            }
+        };
+        
+    }
+
     public async Task<ApiResponse> AddPointAsync(Guid userId, PointChangedModelRequest pointAdd)
     {
         var pointExisting = await _userPointRepository.GetUserPoint(userId);
