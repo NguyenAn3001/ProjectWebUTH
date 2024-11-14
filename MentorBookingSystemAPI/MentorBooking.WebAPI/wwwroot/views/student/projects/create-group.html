@@ -9,6 +9,7 @@
     />
     <link rel="stylesheet" href="../../../css/common/components.css">
     <link rel="stylesheet" href="../../../css/student/drop-down.css">
+    <link rel="stylesheet" href="../../../css/student/create-group.css">
     <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
     <title>Tạo nhóm dự án</title>
 </head>
@@ -113,6 +114,49 @@
     </section> 
     <script src="../../../js/student/create-group.js"></script>
     <script src="../../../js/student/drop-down.js"></script>
+
+<div class="container">
+    <h2>Create Project Group</h2>
+
+    <!-- Group name -->
+    <label for="group-name">Group Name</label>
+    <input type="text" id="group-name" placeholder="Enter group name">
+
+    <!-- Project topic -->
+    <label for="project-topic">Project Topic</label>
+    <input type="text" id="project-topic" placeholder="Enter project topic">
+
+    <!-- Group members -->
+    <label>Group Members</label>
+    <div class="member-list" id="member-list">
+        <div class="member-item">
+            <input type="text" placeholder="Enter student id">
+            <button type="button" class="add-member-btn" onclick="addMember()">Add</button>
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button type="button" class="submit-btn">Create Group</button>
+</div>
+
+<script>
+    // Function to add a new member
+    function addMember() {
+        const memberList = document.getElementById('member-list');
+        const newMemberItem = document.createElement('div');
+        newMemberItem.className = 'member-item';
+        newMemberItem.innerHTML = `
+            <input type="text" placeholder="Enter student id" required>
+            <button type="button" class="remove-member-btn" onclick="removeMember(this)">Remove</button>
+        `;
+        memberList.appendChild(newMemberItem);
+    }
+
+    // Function to remove a member
+    function removeMember(button) {
+        button.parentElement.remove();
+    }
+</script>
 
 </body>
 </html>
