@@ -1,77 +1,97 @@
-// Get references to the input fields and buttons
+// Lấy tham chiếu đến các phần tử HTML
 const groupNameInput = document.getElementById('groupname');
 const projectTopicInput = document.getElementById('project-topic');
 const emailInput = document.getElementById('email');
-const addMemberBtn = document.querySelector('.group__btn button[type="button"]:first-child');
-const completeBtn = document.querySelector('.group__btn button[type="button"]:last-child');
-const memberList = document.getElementById('member__List');
+const memberListContainer = document.getElementById('member__List');
 
-// Create an array to store members (emails only)
+// Mảng lưu các thành viên
 let members = [];
 
-// Add event listener to the "Add member" button
-addMemberBtn.addEventListener('click', function() {
-    const groupName = groupNameInput.value.trim();
-    const projectTopic = projectTopicInput.value.trim();
+// Thêm thành viên vào danh sách
+function addMember() {
     const email = emailInput.value.trim();
-
-    if (groupName && projectTopic && email) {
-        // Add the new member's email to the members array
+    if (email && groupNameInput.value.trim() && projectTopicInput.value.trim()) {
         members.push(email);
-        
-        // Update the member list display
         updateMemberList();
-
-        // Clear the email input field after adding the member
-        emailInput.value = '';
+        emailInput.value = '';  // Xóa trường email
     } else {
-        alert('Please fill in all fields');
+        alert('Vui lòng nhập đầy đủ thông tin!');
     }
-});
+}
 
-// Update the member list to show emails with a remove button
+// Cập nhật danh sách thành viên hiển thị
 function updateMemberList() {
-    memberList.innerHTML = ''; // Clear existing list
+    memberListContainer.innerHTML = '';  // Xóa danh sách hiện tại
     members.forEach((email, index) => {
         const memberItem = document.createElement('div');
         memberItem.classList.add('member-item');
-        
-        // Create the email text node
-        const emailText = document.createElement('p');
-        emailText.textContent = email;
-
-        // Create the remove button
-        const removeButton = document.createElement('button');
-        removeButton.type = 'button';
-        removeButton.classList.add('btn-hover');
-        removeButton.textContent = 'Remove';
-        removeButton.onclick = function() {
-            removeMember(index); // Remove member by index
-        };
-
-        // Append the email and remove button to the member item
-        memberItem.appendChild(emailText);
-        memberItem.appendChild(removeButton);
-
-        // Append the member item to the member list
-        memberList.appendChild(memberItem);
+        memberItem.innerHTML = `
+            <p>${email}</p>
+            <button type="button" class="btn-hover" onclick="removeMember(${index})">Remove</button>
+        `;
+        memberListContainer.appendChild(memberItem);
     });
 }
 
-// Remove member by index
+// Xóa thành viên
 function removeMember(index) {
-    // Remove the member from the members array
     members.splice(index, 1);
-    
-    // Update the member list display after removal
     updateMemberList();
 }
 
-// Add event listener to the "Complete" button
-completeBtn.addEventListener('click', function() {
-    if (members.length > 0) {
-        alert('Group creation completed successfully!');
+// Lưu thông tin nhóm vào LocalStorage
+function saveGroup() {
+    const groupName = groupNameInput.value.trim();
+    const projectTopic = projectTopicInput.value.trim();
+    if (groupName && projectTopic && members.length > 0) {
+        const groupData = { name: groupName, topic: projectTopic, members };
+        const existingGroups = JSON.parse(localStorage.getItem('projectGroups')) || [];
+        existingGroups.push(groupData);
+        localStorage.setItem('projectGroups', JSON.stringify(existingGroups));
+        alert('Tạo nhóm thành công!');
+        window.location.href = 'group-details.html';
     } else {
-        alert('Please add at least one member');
+        alert('Vui lòng nhập đầy đủ thông tin!');
     }
-});
+}
+
+// Điền thông tin vào form nếu đang chỉnh sửa nhóm
+function populateEditForm(index) {
+    const group = JSON.parse(localStorage.getItem('projectGroups'))[index];
+    groupNameInput.value = group.name;
+    projectTopicInput.value = group.topic;
+    emailInput.value = '';  // Không cần email khi chỉnh sửa
+    members = [...group.members];
+    updateMemberList();
+}
+
+// Kiểm tra xem có thông tin chỉnh sửa từ localStorage không
+window.onload = function() {
+    const editGroupIndex = localStorage.getItem('editGroupIndex');
+    if (editGroupIndex !== null) {
+        populateEditForm(editGroupIndex);
+    }
+};
+
+// Lưu hoặc cập nhật nhóm
+function saveGroup() {
+    const groupName = groupNameInput.value.trim();
+    const projectTopic = projectTopicInput.value.trim();
+    if (!groupName || !projectTopic || members.length === 0) {
+        alert('Vui lòng điền đầy đủ thông tin!');
+        return;
+    }
+
+    const groups = JSON.parse(localStorage.getItem('projectGroups')) || [];
+    const editGroupIndex = localStorage.getItem('editGroupIndex');
+
+    if (editGroupIndex !== null) {
+        groups[editGroupIndex] = { name: groupName, topic: projectTopic, members };
+        localStorage.removeItem('editGroupIndex');
+    } else {
+        groups.push({ name: groupName, topic: projectTopic, members });
+    }
+
+    localStorage.setItem('projectGroups', JSON.stringify(groups));
+    window.location.href = 'group-details.html';
+}

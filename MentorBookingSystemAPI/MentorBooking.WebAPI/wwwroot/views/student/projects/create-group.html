@@ -50,6 +50,7 @@
               </h3>
               <ul>
                 <li class="registerMentor"><img src="../../../assets/svg/drop-down/r-mentor.svg"><a href="../../../views/auth/register.html">Register as a mentor</a></li>
+                <li><img src="../../../assets/svg/drop-down/home.svg"><a href="../profile/personal-info.html">Home</a></li>
                 <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="../profile/edit-info.html">My Profile</a></li>
                 <li class="group"><img src="../../../assets/svg/drop-down/group.svg" ><a href="group-details.html">Group</a></li>
                 <li><img src="../../../assets/svg/drop-down/log-out.svg"><a href="../../../index.html">Log Out</a></li>
@@ -82,8 +83,8 @@
                 </div>
                 
                 <div class="group__btn">
-                    <button type="button" class="btn-hover">Add menber</button>
-                    <button type="button" class="btn-hover complete">Complete</button>
+                    <button type="button" class="btn-hover" onclick="addMember()">Add menber</button>
+                    <button type="button" class="btn-hover complete" onclick="saveGroup()">Complete</button>
                 </div>
 
             </div>

@@ -28,14 +28,10 @@ function saveUserInfo(event) {
    document.getElementById("firstName-display").textContent = firstName;
    document.getElementById("lastName-display").textContent = lastName;
    document.getElementById("dob-display").textContent = dob;
-   document.getElementById("profile-details").style.display = "block";
+   document.getElementById("profile-details").style.display = "grid";
    document.getElementById("add-profile").style.display = "none";
  } else {
    // Nếu không có dữ liệu, hiển thị nút Add Profile
    document.getElementById("profile-details").style.display = "none";
-   document.getElementById("add-profile").style.display = "block";
+   document.getElementById("add-profile").style.display = "grid";
  }
-
- window.onload = function() {
-  localStorage.clear();
-};
