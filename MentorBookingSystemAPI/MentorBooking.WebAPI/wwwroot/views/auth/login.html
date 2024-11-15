@@ -34,7 +34,7 @@
                                                 <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpassLogin" autocomplete="off">
                                                 <i class="input-icon ri-lock-line"></i>
                                             </div>
-                                            <a href="#" class="btn mt-4" onclick="validateLogin()">Login</a>
+                                            <a href="#" class="btn mt-4" onclick="login(event)">Login</a>
                                         </div>
                                     </div>
                                 </div>
@@ -59,10 +59,20 @@
                                                 <input type="password" name="confirmPass" class="form-style" placeholder="Confirm Password" id="confirmPass" autocomplete="off">
                                                 <i class="input-icon ri-lock-line"></i>
                                             </div>
-                                            <a href="#" class="btn mt-4" onclick="validateSignup()">Sign up</a>
+                                            <!-- Vai trò của người dùng -->
+                                            <div class="form-group mt-2">
+                                                <select name="roleName" id="roleName" class="form-style">
+                                                    <option value="">Select Role</option>
+                                                    <option value="Student">Student</option>
+                                                    <option value="Mentor">Mentor</option>
+                                                    <option value="Admin">Admin</option>
+                                                </select>
+                                                <i class="input-icon ri-user-settings-line"></i>
+                                            </div>
+                                            <a href="#" class="btn mt-4" onclick="register(event)">Sign up</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                
                             </div>
                         </div>
                     </div>
@@ -82,8 +92,8 @@
         </div>
     </div>
 </div>
-
     <script src="../../js/sign-up/login.js"></script>
+    <script src="../../js/sign-up/register.js"></script>
 </body>
 </html>
 
