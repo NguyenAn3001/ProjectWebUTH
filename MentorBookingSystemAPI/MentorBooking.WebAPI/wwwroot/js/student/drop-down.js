@@ -9,4 +9,4 @@ document.addEventListener('click', (event) => {
   if (!menu.contains(event.target) && !profileButton.contains(event.target)) {
     menu.classList.remove('active');
   }
-});
+})

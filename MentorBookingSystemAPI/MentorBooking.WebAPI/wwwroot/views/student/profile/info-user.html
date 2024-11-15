@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -60,30 +60,22 @@
       </div>
   </nav>
 <div class="form-container">
-  <form class="info-form" onsubmit="saveUserInfo(event)">
+  <form class="info-form">
       <div class="form-group">
           <h2>Personal information</h2>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="firstName">First name:</label>
-        <input type="text" id="firstName" name="firstName" required>
-    </div>
-    <div class="form-group">
-      <label for="lastName">Last name:</label>
-      <input type="text" id="lastName" name="lastName" required>
-  </div>
-
+          <div class="form-group" id="profile-details">
+            <!-- Phần thông tin người dùng sẽ được hiển thị ở đây nếu có dữ liệu -->
+            <p><strong>Email:</strong> <span id="email-display"></span></p>
+            <p><strong>First Name:</strong> <span id="firstName-display"></span></p>
+            <p><strong>Last Name:</strong> <span id="lastName-display"></span></p>
+            <p><strong>Birthday:</strong> <span id="dob-display"></span></p>
+          </div>
       
-      <div class="form-group">
-          <label for="dob">Birthday:</label>
-          <input type="date" id="dob" name="dob" required>
-      </div>
-      <div class="form-group full-width">
-          <button type="submit">Update</button>
-      </div>
-  </form>
+          <!-- Nút Add Profile, hiển thị khi không có dữ liệu -->
+          <div class="add-profile" id="add-profile" style="display: none;">
+            <p>No profile data available.</p>
+            <a href="edit-info.html" class="add-profile-btn">Add Profile</a>
+          </div>
 </div>
 
 <script src="../../../js/student/drop-down.js"></script>
