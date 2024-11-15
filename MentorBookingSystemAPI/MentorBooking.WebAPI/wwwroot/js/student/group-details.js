@@ -16,6 +16,8 @@ function displayGroups() {
     // Nếu không có nhóm, không làm gì
     if (groups.length === 0) {
         groupContainer.innerHTML = '<p>No groups found. Please create a group.</p>';
+        groupContainer.style.gridTemplateColumns = 'none';
+        groupContainer.style.maxWidth = '50%';
     }
 
     // Lặp qua danh sách nhóm và hiển thị chúng

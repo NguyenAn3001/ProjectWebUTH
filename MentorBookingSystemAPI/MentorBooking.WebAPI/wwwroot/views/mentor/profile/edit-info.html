@@ -7,43 +7,39 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-  <title>Mentor Booking | Home</title>
-  <link rel="stylesheet" href="../../../css/student/drop-down.css">
+  <title>Mentor Booking | Profile</title>
   <link rel="stylesheet" href="../../../css/common/components.css">
+  <link rel="stylesheet" href="../../../css/student/drop-down.css">
   <link rel="stylesheet" href="../../../css/student/edit-info.css">
   <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+
 </head>
 <body>
   <header class="header">
     <nav>
-      <div class="nav__logo"><a href="personal-info.html">Mentor Booking</a></div>
-      <ul class="nav__links" id="nav-links">
-          <li class="link"><a href="personal-info.html">Home</a></li>
-          <li class="link"><a href="services.html">Services</a></li>
-          <li class="link"><a href="contact.html">Contact</a></li>
-          <li class="link"><a href="about.html">About</a></li>
-      </ul>
+      <div class="nav__logo-nonavlinks"><a href="personal-info.html">Mentor Booking</a></div>
+      
       <div class="nav__menu__btn" id="menu-btn">
           <span><i class="ri-menu-line"></i></span>
       </div>
       <div class="icon">
-      
-        <div class="calendarNav">
-          <div class="calendar">
-            <a href="schedule.html">
-              <i class="ri-calendar-line"></i>
-              <span class="schedule-text">Schedule</span>
-          </a>
-          </div>
+      <div class="calendarNav">
+        <div class="calendar">
+          <a href="../../../views/student/profile/schedule.html">
+            <i class="ri-calendar-line"></i>
+            <span class="schedule-text">Schedule</span>
+        </a>
+        
         </div>
-        <div class="walletNav">
-          <div class="wallet">
-            <a href="wallet.html">
-            <i class="ri-wallet-line"></i>
-            <span class="wallet-text">Wallet</span>
-          </a>
-          </div>
+      </div>
+      <div class="walletNav">
+        <div class="wallet">
+          <a href="../../../views/student/profile/wallet.html">
+          <i class="ri-wallet-line"></i>
+          <span class="wallet-text">Wallet</span>
+        </a>
         </div>
+      </div>
     </div>
       <div class="action">
         <div class="profile">
@@ -55,18 +51,18 @@
             Tran Hil<br><span>Mentor</span>
           </h3>
           <ul>
-            
-            <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="../../../views/mentor/profile/edit-info.html">My Profile</a></li>
-            <li class="support"><img src="../../../assets/svg/drop-down/help.svg" ><a href="contact.html">Help & Support</a></li>
+            <li><img src="../../../assets/svg/drop-down/home.svg"><a href="../profile/personal-info.html">Home</a></li>
+            <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="info-user.html">My Profile</a></li>
+            <li class="group"><img src="../../../assets/svg/drop-down/group.svg" ><a href="../projects/group-details.html">Group</a></li>
             <li><img src="../../../assets/svg/drop-down/log-out.svg"><a href="../../../index.html">Log Out</a></li>
           </ul>
         </div>
       </div>
   </nav>
 <div class="form-container">
-  <form class="info-form">
+  <form class="info-form" onsubmit="saveUserInfo(event)">
+    <h2>Personal information</h2>
       <div class="form-group">
-          <h2>Personal information</h3>
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required>
       </div>
@@ -89,40 +85,8 @@
       </div>
   </form>
 </div>
-<footer class="footer">
-  <div class="section__container footer__container">
-    <div class="footer__content">
-      <h4>STAY CONNECTED WITH OUR MENTOR COMMUNITY</h4>
-      <p>
-        Subscribe to receive valuable insights, tips, and the latest news on mentorship programs.
-        Enter your email to stay updated!
-      </p>
-    </div>
-    <div class="footer__form">
-      <form action="/">
-        <input type="text" placeholder="Enter your email" />
-        <button>Subscribe</button>
-      </form>
-    </div>
-  </div>
-  <div class="section__container footer__bar">
-    <div class="footer__logo">
-      <h4><a href="#">MentorHub</a></h4>
-      <p>Copyright © 2024 MentorHub</p>
-    </div>
-    <ul class="footer__nav">
-      <li class="footer__link"><a href="#">About Us</a></li>
-      <li class="footer__link"><a href="#">Become A Mentor</a></li>
-      <li class="footer__link"><a href="#">Contact Support</a></li>
-      <li class="footer__link"><a href="#">Privacy Policy</a></li>
-    </ul>
-    <ul class="footer_social">
-      <li class="footer__link"><a href="#"><i class="ri-instagram-line"></i></a></li>
-      <li class="footer__link"><a href="#"><i class="ri-facebook-fill"></i></a></li>
-      <li class="footer__link"><a href="#"><i class="ri-linkedin-fill"></i></a></li>
-    </ul>
-  </div>
-</footer>
+
 <script src="../../../js/student/drop-down.js"></script>
+<script src="../../../js/student/info.js"></script>
 </body>
 </html>
