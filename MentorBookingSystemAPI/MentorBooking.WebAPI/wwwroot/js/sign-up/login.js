@@ -87,8 +87,6 @@ document.getElementById('updateStudentForm').addEventListener('submit', function
             alert("An error occurred while updating student information.");
         });
 });
-
-// Handle mentor form submission
 document.getElementById('updateMentorForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const userId = localStorage.getItem('userId');
@@ -115,6 +113,9 @@ document.getElementById('updateMentorForm').addEventListener('submit', function(
         .then(response => response.json())
         .then(data => {
             if (data.status === "Success") {
+                localStorage.setItem("firstName", mentorData.firstName);
+                localStorage.setItem("lastName", mentorData.lastName);
+
                 document.getElementById('mentorUpdateModal').style.display = 'none';
                 window.location.href = "../../views/mentor/profile/personal-info.html";
             } else {
@@ -126,8 +127,6 @@ document.getElementById('updateMentorForm').addEventListener('submit', function(
             alert("An error occurred while updating mentor information.");
         });
 });
-
-// Close modal when clicking outside
 window.onclick = function(event) {
     if (event.target.classList.contains('modal')) {
         event.target.style.display = 'none';
