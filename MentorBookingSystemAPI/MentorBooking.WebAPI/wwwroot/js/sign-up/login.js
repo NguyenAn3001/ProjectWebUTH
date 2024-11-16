@@ -1,8 +1,17 @@
 function showUpdateModal(role) {
-    if (role === 'Student') {
-        document.getElementById('studentUpdateModal').style.display = 'block';
-    } else if (role === 'Mentor') {
-        document.getElementById('mentorUpdateModal').style.display = 'block';
+    const infoUpdated = localStorage.getItem("infoUpdated");
+    if (!infoUpdated) {
+        if (role === 'Student') {
+            document.getElementById('studentUpdateModal').style.display = 'block';
+        } else if (role === 'Mentor') {
+            document.getElementById('mentorUpdateModal').style.display = 'block';
+        }
+    } else {
+        if (role === 'Student') {
+            window.location.href = "../../views/student/profile/personal-info.html";
+        } else if (role === 'Mentor') {
+            window.location.href = "../../views/mentor/profile/personal-info.html";
+        }
     }
 }
 
@@ -75,6 +84,7 @@ document.getElementById('updateStudentForm').addEventListener('submit', function
             if (data.status === "Success") {
                 localStorage.setItem("firstName", studentData.firstName);
                 localStorage.setItem("lastName", studentData.lastName);
+                localStorage.setItem("infoUpdated", "true"); // Đánh dấu đã cập nhật
 
                 document.getElementById('studentUpdateModal').style.display = 'none';
                 window.location.href = "../../views/student/profile/personal-info.html";
@@ -115,7 +125,8 @@ document.getElementById('updateMentorForm').addEventListener('submit', function(
             if (data.status === "Success") {
                 localStorage.setItem("firstName", mentorData.firstName);
                 localStorage.setItem("lastName", mentorData.lastName);
-
+                localStorage.setItem("infoUpdated", "true"); // Đánh dấu đã cập nhật
+            
                 document.getElementById('mentorUpdateModal').style.display = 'none';
                 window.location.href = "../../views/mentor/profile/personal-info.html";
             } else {

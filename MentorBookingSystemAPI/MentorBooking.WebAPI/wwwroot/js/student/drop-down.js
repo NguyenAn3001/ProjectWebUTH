@@ -23,3 +23,8 @@ document.addEventListener("DOMContentLoaded", function() {
       `;
   }
 });
+
+function logout() {
+  localStorage.clear();
+  window.location.href = "../../views/login/login.html";
+}
