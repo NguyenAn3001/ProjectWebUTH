@@ -141,3 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
         generateTimeSlots();
     }
 });
+
+function goBack() {
+    window.history.back();
+}

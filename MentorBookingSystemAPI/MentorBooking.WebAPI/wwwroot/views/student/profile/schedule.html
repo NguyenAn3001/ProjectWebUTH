@@ -7,18 +7,19 @@
     <title>Meeting Scheduler</title>
     <link rel="stylesheet" href="../../../css/student/schedule.css">
     <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
-
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <button class="btn" onclick="goBack()">Back</button>
+
             <div class="week-navigation">
                 <button class="btn" onclick="previousWeek()">
-                    <i class="fas fa-chevron-left"></i>
+                    <i class="fas fa-chevron-left"><b><</b></i>
                 </button>
                 <h2 id="currentWeek"></h2>
                 <button class="btn" onclick="nextWeek()">
-                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-right"><b>></b></i>
                 </button>
             </div>
         </div>

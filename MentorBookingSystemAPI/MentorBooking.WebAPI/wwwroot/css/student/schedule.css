@@ -68,8 +68,9 @@ body {
     padding: 12px;
     text-align: center;
     border: 1px solid var(--grid-border);
-    width: 120px;
+    width: 100%;
     font-weight: bold;
+    min-width: 118px;
 }
 
 .schedule-cell {
@@ -81,6 +82,7 @@ body {
     transition: all 0.3s ease;
     text-align: center;
     position: relative;
+    min-width: 210px;
 }
 
 .schedule-cell.empty-slot {

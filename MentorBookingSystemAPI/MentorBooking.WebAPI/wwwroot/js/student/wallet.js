@@ -31,11 +31,12 @@ function getPoints() {
 }
 
 window.onload = getPoints;
+
 function refreshToken() {
     const refreshToken = localStorage.getItem('refreshToken');
 
     // yc post với refresh token
-    fetch('http://localhost:5076/api/Authentication/refresh', {
+    fetch('http://localhost:5076/api/Authentication/refresh-token', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -49,7 +50,7 @@ function refreshToken() {
         if (data.status === "Success") {
             const newAccessToken = data.accessToken;
             localStorage.setItem('accessToken', newAccessToken);
-            getPoints();
+            getPoints();  // Cập nhật điểm khi refresh token thành công
         } else {
             console.log("Failed to refresh token:", data.message);
         }
@@ -58,49 +59,53 @@ function refreshToken() {
 }
 
 function handleTopUp() {
-    const pointsInput = document.getElementById("points-input").value; // Lấy giá trị từ ô nhập liệu
-    const errorMessage = document.getElementById("error-message");
-    const currentPointsElement = document.getElementById("current-points");
+    const pointsInput = document.getElementById('points-input');
+    const pointsToAdd = parseInt(pointsInput.value);
+    const pointsElement = document.getElementById('points');
+    const errorMessage = document.getElementById('error-message');
 
-    // Kiểm tra giá trị nhập liệu
-    if (!pointsInput || pointsInput <= 0) {
-        errorMessage.textContent = "Please enter a valid number of points."; // Hiển thị thông báo lỗi
-        return;  // Dừng nếu không có giá trị hợp lệ
-    }
+    // Clear previous error message
+    errorMessage.textContent = '';
 
-    // Gửi yêu cầu POST để thêm điểm
-    const userId = "36567bfc-7fe6-444c-4657-08dd04e43ea1";  // Thay bằng userId thực tế
-    const accessToken = localStorage.getItem('accessToken');
-
-    fetch('http://localhost:5076/api/wallet/add-points', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify({
-            userId: userId,
-            points: parseInt(pointsInput),  // Chuyển giá trị nhập thành số nguyên
-        }),
-    })
-    .then(response => response.json())  // Chuyển về JSON
-    .then(data => {
-        if (data.status === "Success") {
-            const newPoints = data.data;  // Dữ liệu trả về là số điểm hiện tại
-            currentPointsElement.innerText = `Current Points: ${newPoints}`;
-            errorMessage.textContent = "";  // Xóa thông báo lỗi nếu có
-            alert(data.message);  // Hiển thị thông báo thành công
-        } else {
-            errorMessage.textContent = data.message;  // Hiển thị lỗi từ server
+    // Validate the input points
+    if (isNaN(pointsToAdd) || pointsToAdd <= 0) {
+        // Show error if points input is invalid
+        errorMessage.textContent = 'Please enter a valid number greater than 0.';
+    } else {
+        // Get the current user ID (for simplicity, let's assume user is logged in)
+        const userId = localStorage.getItem('userId'); // Example: unique user identifier
+        if (!userId) {
+            // If no user is logged in, show an error or ask to login
+            errorMessage.textContent = 'User is not logged in.';
+            return;
         }
-    })
-    .catch(error => {
-        errorMessage.textContent = "Error adding points."; // Hiển thị lỗi nếu có sự cố với API
-    });
+
+        // Get the current balance for this user from localStorage
+        let currentBalance = parseInt(localStorage.getItem(userId + '_balance')) || 100; // Default balance is 100
+
+        // Add points to current balance
+        currentBalance += pointsToAdd;
+
+        // Update the balance in localStorage
+        localStorage.setItem(userId + '_balance', currentBalance);
+
+        // Update balance display on page
+        pointsElement.textContent = currentBalance;
+    }
 }
 
-// Cập nhật điểm mặc định là 100 khi trang được tải
-document.addEventListener("DOMContentLoaded", () => {
-    const currentPointsElement = document.getElementById("current-points");
-    currentPointsElement.innerText = "Current Points: 100";  // Điểm mặc định là 100
-});
+// On page load, display the balance for the current user
+window.onload = function() {
+    // Simulate logging in a user (for this example, we set a userId manually)
+    // In a real-world app, the userId should come from the login process
+    let userId = localStorage.getItem('userId');
+    if (!userId) {
+        userId = 'user1'; // Default user for demo purposes
+        localStorage.setItem('userId', userId);
+    }
+
+    // Display the balance for the current user
+    const pointsElement = document.getElementById('points');
+    let currentBalance = parseInt(localStorage.getItem(userId + '_balance')) || 100; // Default balance is 100
+    pointsElement.textContent = currentBalance;
+};
