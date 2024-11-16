@@ -95,7 +95,6 @@ document.getElementById('updateStudentForm').addEventListener('submit', function
         if (data.status === "Success") {
             localStorage.setItem("firstName", studentData.firstName);
             localStorage.setItem("lastName", studentData.lastName);
-            // Đánh dấu đã hoàn thành setup lần đầu
             localStorage.setItem("hasCompletedInitialSetup", "true");
 
             document.getElementById('studentUpdateModal').style.display = 'none';

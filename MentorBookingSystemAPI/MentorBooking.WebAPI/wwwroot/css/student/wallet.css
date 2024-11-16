@@ -13,6 +13,16 @@
     --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.08);
     --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
+h3{
+    color: #fff;
+}
+#walletBalance {
+    font-size: 1.25rem;
+    color: #ff6347;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
 #points {
     color: #ff6347; /* Màu đỏ */
     font-weight: bold;

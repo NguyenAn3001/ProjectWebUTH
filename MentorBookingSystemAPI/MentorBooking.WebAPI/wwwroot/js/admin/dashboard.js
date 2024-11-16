@@ -6,3 +6,4 @@ function toggleNotifications() {
         panel.style.display = 'block';
     }
 }
+

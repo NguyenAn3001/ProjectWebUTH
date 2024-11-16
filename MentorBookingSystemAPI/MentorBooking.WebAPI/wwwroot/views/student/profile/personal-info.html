@@ -74,10 +74,11 @@
                   <button class="btn-hover btn-signup">Sign up now</button>
               </a>
           </div> -->
-          <form action="/">
-              <input type="text" placeholder="Search mentor's skills" />
-              <button><i class="ri-search-line"></i></button>
-          </form>
+          <form id="search-form" onsubmit="handleSearch(event)">
+            <input type="text" id="searchInput" placeholder="Search mentor's skills" required />
+            <button type="submit"><i class="ri-search-line"></i></button>
+        </form>
+        
           <a href="#choose"><i class="ri-arrow-down-double-line"></i></a>
       </div>
   </header>
@@ -210,5 +211,6 @@
     </footer>
     
     <script src="../../../js/student/drop-down.js"></script>
+    <script src="../../../js/student/search-btn.js"></script>
   </body>
 </html>
