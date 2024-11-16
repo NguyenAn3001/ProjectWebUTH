@@ -78,7 +78,7 @@ document.getElementById('updateStudentForm').addEventListener('submit', function
     const studentData = {
         firstName: document.getElementById('studentFirstName').value,
         lastName: document.getElementById('studentLastName').value,
-        phone: document.getElementById('studentPhone').value,
+        phone: document.getElementById('phone').value,
         createdAt: new Date().toISOString()
     };
 
