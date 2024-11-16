@@ -17,7 +17,7 @@
 <body>
   <header class="header">
     <nav>
-      <div class="nav__logo-nonavlinks"><a href="personal-info.html">Mentor Booking</a></div>
+      <div class="nav__logo-nonavlinks"><a>Mentor Booking</a></div>
       
       <div class="nav__menu__btn" id="menu-btn">
           <span><i class="ri-menu-line"></i></span>
@@ -25,7 +25,7 @@
       <div class="icon">
       <div class="calendarNav">
         <div class="calendar">
-          <a href="../../../views/student/profile/schedule.html">
+          <a href="../../../views/mentor/profile/schedule.html">
             <i class="ri-calendar-line"></i>
             <span class="schedule-text">Schedule</span>
         </a>
@@ -34,7 +34,7 @@
       </div>
       <div class="walletNav">
         <div class="wallet">
-          <a href="../../../views/student/profile/wallet.html">
+          <a href="../../../views/mentor/profile/wallet.html">
           <i class="ri-wallet-line"></i>
           <span class="wallet-text">Wallet</span>
         </a>
@@ -52,36 +52,30 @@
           </h3>
           <ul>
             <li><img src="../../../assets/svg/drop-down/home.svg"><a href="../profile/personal-info.html">Home</a></li>
-            <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="info-user.html">My Profile</a></li>
+            <li><img src="../../../assets/svg/drop-down/profile.svg"><a >My Profile</a></li>
             <li><img src="../../../assets/svg/drop-down/log-out.svg"><a href="../../../index.html">Log Out</a></li>
           </ul>
         </div>
       </div>
   </nav>
 <div class="form-container">
-  <form class="info-form" onsubmit="saveUserInfo(event)">
-    <h2>Personal information</h2>
-      <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="firstName">First name:</label>
-        <input type="text" id="firstName" name="firstName" required>
-    </div>
-    <div class="form-group">
-      <label for="lastName">Last name:</label>
-      <input type="text" id="lastName" name="lastName" required>
-  </div>
-
+  <form class="info-form">
+            <h2>Personal information</h2>
+            <div class="form-group" id="profile-details">
+                <!-- Phần thông tin người dùng sẽ được hiển thị ở đây nếu có dữ liệu -->
+                <p><strong>Email:</strong> <span id="email-display"></span></p>
+                <p><strong>First Name:</strong> <span id="firstName-display"></span></p>
+                <p><strong>Last Name:</strong> <span id="lastName-display"></span></p>
+                <p><strong>Birthday:</strong> <span id="dob-display"></span></p>
+                <a href="edit-info.html" class="btn-hover add-profile-btn">Edit profile</a>
+              </div>
+          
       
-      <div class="form-group">
-          <label for="dob">Birthday:</label>
-          <input type="date" id="dob" name="dob" required>
-      </div>
-      <div class="form-group full-width">
-          <button type="submit">Update</button>
-      </div>
+          <!-- Nút Add Profile, hiển thị khi không có dữ liệu -->
+          <div class="add-profile" id="add-profile" style="display: none;">
+            <p>No profile data available.</p>
+            <a href="edit-info.html" class="btn-hover add-profile-btn">Add Profile</a>
+          </div>
   </form>
 </div>
 

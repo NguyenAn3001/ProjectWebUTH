@@ -45,31 +45,11 @@
                     <!-- Notifications -->
                     <div class="header-icon" onclick="toggleNotifications()">
                         <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
+                        <span class="notification-badge">0</span>
                         
                         <!-- Notifications Panel -->
                         <div class="notifications-panel" id="notificationsPanel">
-                            <div class="notifications-header">
-                                New notification
-                            </div>
-                            <div class="notification-item">
-                                <div class="notification-icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                </div>
-                                <div class="notification-content">
-                                    <div class="notification-title">New student registration</div>
-                                    <div class="notification-time">5 minutes ago</div>
-                                </div>
-                            </div>
-                            <div class="notification-item">
-                                <div class="notification-icon">
-                                    <i class="fas fa-calendar-check"></i>
-                                </div>
-                                <div class="notification-content">
-                                    <div class="notification-title">New appointment</div>
-                                    <div class="notification-time">30 minutes ago</div>
-                                </div>
-                            </div>
+                            <!-- Notifications sẽ được thêm động ở đây -->
                         </div>
                     </div>
                     <div class="user-dropdown">
@@ -113,31 +93,35 @@
                 </div>
             
                 <div class="stat-card">
-                    <h3>Wallet balance used: 7,890</h3>
+                    <h3 id="walletBalance">Wallet balance used: 0</h3>
                     <div class="progress-stats">
-                        <div class="progress-item">
-                            <label>Learning</label>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 75%"></div>
-                            </div>
-                            <span>5,917</span>
+                      <!-- Progress Items -->
+                      <div class="progress-item" id="progressLearning">
+                        <label>Learning</label>
+                        <div class="progress-bar">
+                          <div class="progress" style="width: 0"></div>
                         </div>
-                        <div class="progress-item">
-                            <label>Exchange</label>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 45%"></div>
-                            </div>
-                            <span>1,184</span>
+                        <span class="progress-value">0</span>
+                      </div>
+                  
+                      <div class="progress-item" id="progressExchange">
+                        <label>Exchange</label>
+                        <div class="progress-bar">
+                          <div class="progress" style="width: 0"></div>
                         </div>
-                        <div class="progress-item">
-                            <label>Other</label>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 30%"></div>
-                            </div>
-                            <span>789</span>
+                        <span class="progress-value">0</span>
+                      </div>
+                  
+                      <div class="progress-item" id="progressOther">
+                        <label>Other</label>
+                        <div class="progress-bar">
+                          <div class="progress" style="width: 0"></div>
                         </div>
+                        <span class="progress-value">0</span>
+                      </div>
                     </div>
-                </div> 
+                  </div>
+                  
             </div>
 
             <div class="table-container">
@@ -157,24 +141,12 @@
                             <th>Wallet balance</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>001</td>
-                            <td>Trần Hil</td>
-                            <td>tdhil@email.com</td>
-                            <td>5</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>002</td>
-                            <td>Trần Hil</td>
-                            <td>tdhil@email.com</td>
-                            <td>3</td>
-                            <td>75</td>
-                        </tr>
+                    <tbody id="studentTableBody">
+                        <!-- Dữ liệu sẽ được thêm vào đây bởi JavaScript -->
                     </tbody>
                 </table>
             </div>
+            
             <div class="table-container">
                 <h2>Mentor list</h2>
                 <table>
@@ -187,24 +159,12 @@
                             <th>Rating</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>M001</td>
-                            <td>Kai Havertz</td>
-                            <td>Frontend</td>
-                            <td>15</td>
-                            <td>4.8/5</td>
-                        </tr>
-                        <tr>
-                            <td>M002</td>
-                            <td>Kai Cenat</td>
-                            <td>Backend</td>
-                            <td>12</td>
-                            <td>4.6/5</td>
-                        </tr>
+                    <tbody id="mentorTableBody">
+                        <!-- Dữ liệu sẽ được thêm vào đây bởi JavaScript -->
                     </tbody>
                 </table>
             </div>
+            
         </div>
     </div>
     <script src="../../../js/admin/dashboard.js"></script>
