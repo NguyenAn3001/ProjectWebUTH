@@ -401,23 +401,23 @@ body {
 .dot.inactive { background: #e0e0e0; }
 
 .bar-chart {
-    display: flex;
     height: 200px;
+    display: flex;
     justify-content: space-between;
     padding: 20px 0;
-    gap: 10px;
 }
 
 .bar-item {
-    position: relative;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 8px;
     justify-content: flex-end;
 }
 
 .bar {
-    width: 15px;
+    width: 40px;
     background: var(--primary);
     border-radius: 20px;
     position: relative;
@@ -432,14 +432,8 @@ body {
     position: absolute;
     top: -25px;
     left: 50%;
-    text-align: center;
-    width: 100%;
     transform: translateX(-50%);
     font-size: 0.9rem;
-}
-
-.bar-label {
-    margin-top: 5px;
 }
 
 .line-chart {
@@ -543,7 +537,7 @@ body {
     box-shadow: var(--card-shadow);
   }
   
-  .table-container h2 {
+  .table-container h2,.table-container h3{
     color: var(--secondary-color);
     margin-bottom: 20px;
     font-size: 1.5rem;
