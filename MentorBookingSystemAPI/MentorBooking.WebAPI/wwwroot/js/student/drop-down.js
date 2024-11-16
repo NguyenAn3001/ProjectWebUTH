@@ -10,3 +10,16 @@ document.addEventListener('click', (event) => {
     menu.classList.remove('active');
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const firstName = localStorage.getItem("firstName");
+  const lastName = localStorage.getItem("lastName");
+  const role = localStorage.getItem("role");
+
+  if (firstName && lastName && role) {
+      const usernameDisplay = document.getElementById("username-display");
+      usernameDisplay.innerHTML = `
+          ${lastName} ${firstName}<br><span>${role}</span>
+      `;
+  }
+});
