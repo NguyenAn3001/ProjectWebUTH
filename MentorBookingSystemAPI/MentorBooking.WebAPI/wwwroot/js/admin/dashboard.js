@@ -229,10 +229,6 @@ function updateMentorTable(data) {
   });
 }
   
-  
-
-  
-
 
 // Gọi hàm để cập nhật dữ liệu
 updateStatCard(data);
