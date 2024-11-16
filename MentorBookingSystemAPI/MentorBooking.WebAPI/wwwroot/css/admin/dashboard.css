@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Poppins",sans-serif;
 }
 
 :root {
@@ -50,6 +50,10 @@ body {
     transition: all 0.3s ease;
 }
 
+.sidebar a{
+    text-decoration: none;
+}
+
 .logo {
     font-size: 26px;
     font-weight: 700;
@@ -93,6 +97,8 @@ body {
     height: var(--header-height);
     background-color: white;
     padding: 0 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -236,6 +242,7 @@ body {
     visibility: hidden;
     transform: translateY(10px);
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 9999;      
 }
 
 .header-icon:hover .notifications-panel {
@@ -319,8 +326,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--grid-gap);
-    padding: var(--grid-gap);
-    background: var(--background);
+    margin-bottom: 30px;
 }
 
 .stat-card {
@@ -395,23 +401,23 @@ body {
 .dot.inactive { background: #e0e0e0; }
 
 .bar-chart {
-    height: 200px;
     display: flex;
-    align-items: flex-end;
+    height: 200px;
     justify-content: space-between;
     padding: 20px 0;
+    gap: 10px;
 }
 
 .bar-item {
-    flex: 1;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    justify-content: flex-end;
 }
 
 .bar {
-    width: 40px;
+    width: 15px;
     background: var(--primary);
     border-radius: 20px;
     position: relative;
@@ -426,8 +432,14 @@ body {
     position: absolute;
     top: -25px;
     left: 50%;
+    text-align: center;
+    width: 100%;
     transform: translateX(-50%);
     font-size: 0.9rem;
+}
+
+.bar-label {
+    margin-top: 5px;
 }
 
 .line-chart {
