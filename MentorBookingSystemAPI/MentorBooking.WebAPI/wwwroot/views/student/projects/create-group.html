@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../../css/common/components.css">
     <link rel="stylesheet" href="../../../css/student/drop-down.css">
     <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
-    <title>Tạo nhóm dự án</title>
+    <title>Mentor Booking | Create group - Edit group</title>
 </head>
 <body>
     <header class="header">
@@ -46,7 +46,8 @@
             <div class="menu">
               <h3 id="username-display">
                 <!-- <img src="../../assets/avt.jpg" alt="user avt"> -->
-                Tran Hil<br><span>Student</span>
+                <span id="name-user"></span>
+                <br><span>Student</span>
               </h3>
               <ul>
                 <li class="registerMentor"><img src="../../../assets/svg/drop-down/r-mentor.svg"><a href="../../../views/auth/register.html">Register as a mentor</a></li>
@@ -60,43 +61,51 @@
         </nav>
     </header> 
   <section class="section__container about__container">
-    <div class="group__contain add-edit">
-        <div class="group__form">
-            <h2 class="section__header">Create project group</h2>
-            
-            <div class="form__group">
-                <label for="groupname">Group name:</label>
-                <input type="text" placeholder="Enter group name" id="groupname">
-            </div>
-            
-            <div class="form__group">
-                <label for="project-topic">Project topic:</label>
-                <input type="text" id="project-topic" placeholder="Enter project topic">
-            </div>
-
-            <!-- Nếu đây là lần chỉnh sửa, cho phép nhập email của thành viên -->
-            <div class="form__group" id="email-group" style="display: none;">
-                <label for="email">Member email:</label>
-                <input type="email" placeholder="Enter student email" id="email">
-            </div>
-            
-            <div class="group__btn">
-                <button type="button" class="btn-hover" id="add-member-btn" onclick="addMember()" style="display: none;">Add member</button>
-                <button type="button" class="btn-hover complete" onclick="saveGroup()">Complete</button>
-            </div>
+    <div class="group__contain">
+      <div class="group__form" id = "add group" style="display: block;">
+        <h2 class="section__header">Create project group</h2>
+        
+        <div class="form__group">
+            <label for="groupname">Group name:</label>
+            <input type="text" placeholder="Enter group name" id="groupname">
         </div>
         
-        <div class="group__info">
-            <h2 class="section__header">List of members</h2>
-            <p>
-                <span id="member__List"></span>
-            </p>
+        <div class="form__group">
+            <label for="project-topic">Project topic:</label>
+            <input type="text" id="project-topic" placeholder="Enter project topic">
         </div>
+      
+        <div class="group__btn">
+            <button type="button" class="btn-hover complete" onclick="saveGroup()">Complete</button>
+        </div>
+      </div>
+
+
+      <div class="group__form" id = "edit group" style="display: none;">
+          <h2 class="section__header">Edit project group</h2>
+
+          <!-- Nếu đây là lần chỉnh sửa, cho phép nhập userid của thành viên -->
+          <div class="form__group">
+              <label for="user-id">User ID:</label>
+              <input type="text" placeholder="Enter user id" id="user-id">
+          </div>
+
+          <div class="group__btn">
+              <button type="button" class="btn-hover" id="add-member-btn" onclick="addMember()">Add member</button>
+          </div>
+      </div>
+
+      <div class="group__info">
+          <h2 class="section__header">List of members</h2>
+          <p>
+              <span id="member__List"></span>
+          </p>
+      </div>
     </div>
 </section>
 
     <script src="../../../js/student/create-group.js"></script>
     <script src="../../../js/student/drop-down.js"></script>
-    
+
 </body>
 </html>

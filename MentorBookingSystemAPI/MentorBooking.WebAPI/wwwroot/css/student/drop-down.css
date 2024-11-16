@@ -101,6 +101,11 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding : 10px 0;
 }
+
+#name-user{
+  font-size: 1.5rem;
+  color: #000;
+}
 .notiNav,
 .calendarNav,
 .walletNav

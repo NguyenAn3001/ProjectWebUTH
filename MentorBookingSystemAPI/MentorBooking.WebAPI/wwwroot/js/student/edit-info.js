@@ -31,7 +31,7 @@ document.getElementById('updateStudentForm').addEventListener('submit', function
         if (data && !data.errors) {  // Adjust condition based on how the API returns success
             localStorage.setItem("firstName", studentData.firstName);
             localStorage.setItem("lastName", studentData.lastName);
-            alert("Student information updated successfully!");
+            alert("Cập nhật thông tin thành công!");
             window.location.href = "info-user.html";
         } else {
             if (data.errors && data.errors.length > 0) {

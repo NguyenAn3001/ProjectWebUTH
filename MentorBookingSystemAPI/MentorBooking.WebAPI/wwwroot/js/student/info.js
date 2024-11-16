@@ -41,6 +41,9 @@ function fetchUserInfo() {
         document.getElementById("phone-display").textContent = user.phone;
         document.getElementById("profile-details").style.display = "grid";
         document.getElementById("add-profile").style.display = "none";
+
+        // Hiển thị studentID vào userID-Display
+        document.getElementById("userId-display").textContent = user.studentId; // Xuất studentID
       } else {
         // Không có dữ liệu hợp lệ
         console.error("Invalid API response:", data.message);
@@ -50,10 +53,9 @@ function fetchUserInfo() {
     })
     .catch((error) => {
       console.error("Error fetching user profile:", error);
-      alert(error.message);
+      console.log(error.message);
     });
 }
 
 // Gọi hàm fetchUserInfo() khi trang load
 document.addEventListener("DOMContentLoaded", fetchUserInfo);
-//
