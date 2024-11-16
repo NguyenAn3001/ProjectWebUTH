@@ -19,20 +19,34 @@ function login(event) {
     .then(data => {
         console.log("API response:", data);
         
-        if (data.status === "Success") {  // Kiểm tra status thay vì success
+        if (data.status === "Success") {  // Kiểm tra status
             alert("Login successful!");
-            if (data.role === 'Admin') {
-                window.location.href = "../../views/admin/dashboard.html";
-            } else if (data.role === 'Mentor') {
-                window.location.href = "../../views/mentor/profile/personal-info.html";
-            } else if (data.role === 'Student') {
-                window.location.href = "../../views/student/profile/personal-info.html";
+
+            // Kiểm tra xem dữ liệu có tồn tại accessToken, refreshToken, userId hay không
+            if (data.accessToken && data.refreshToken && data.userId) {
+                // Lưu accessToken, refreshToken và userId vào localStorage
+                localStorage.setItem("accessToken", data.accessToken);
+                localStorage.setItem("refreshToken", data.refreshToken);
+                localStorage.setItem("userId", data.userId);
+                localStorage.setItem("role", data.role);  // Lưu vai trò của người dùng (Student)
+
+                // Điều hướng dựa trên role
+                if (data.role === 'Admin') {
+                    window.location.href = "../../views/admin/dashboard.html";
+                } else if (data.role === 'Mentor') {
+                    window.location.href = "../../views/mentor/profile/personal-info.html";
+                } else if (data.role === 'Student') {
+                    window.location.href = "../../views/student/profile/personal-info.html";
+                } else {
+                    console.error("Unknown role:", data.role);
+                    alert("Unknown role, cannot navigate.");
+                }
             } else {
-                console.error("Unknown role:", data.role);
-                alert("Unknown role, cannot navigate.");
+                console.error("Tokens or user ID missing:", data);
+                alert("Login failed, tokens or user ID not received.");
             }
         } else {
-            alert(data.message);
+            alert(data.message);  // Hiển thị thông báo lỗi
         }
     })
     .catch(error => {
