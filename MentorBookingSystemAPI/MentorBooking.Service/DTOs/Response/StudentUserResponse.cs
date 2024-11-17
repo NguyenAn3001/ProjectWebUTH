@@ -8,9 +8,11 @@ namespace MentorBooking.Service.DTOs.Response
 {
     public class StudentUserResponse
     {
-        public Guid StudentId { get; set; }
-        public string UserName { get; set;}
-        public string Password {  get; set;}
-        public DateTime CreateAt { get; set;}
+        public Guid? StudentId { get; set; }
+        public string? UserName { get; set;}
+        public string? Email {  get; set;}
+        public int? countGroup { get; set; }
+        public int? PointBalance { get; set; }
+        public DateTime? CreateAt { get; set;}
     }
 }

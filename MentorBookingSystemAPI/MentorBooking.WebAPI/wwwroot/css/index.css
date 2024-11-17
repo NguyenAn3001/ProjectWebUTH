@@ -73,6 +73,7 @@ body {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  height:600px;
 }
 .icon a{
   /* padding: 10px 20px; */
