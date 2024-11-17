@@ -15,7 +15,7 @@ namespace MentorBooking.Service.DTOs.Response
         public string? Email { get; set; }
         public byte? ExperienceYears { get; set; }
         public string? MentorDescription { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
         public List<string>? Skills { get; set; }=new List<string>();
     }
 }

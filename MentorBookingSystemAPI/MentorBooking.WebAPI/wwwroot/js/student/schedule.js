@@ -1,7 +1,6 @@
 let currentDate = new Date();
 let bookings = new Map();
 
-// Initialize from localStorage
 function initializeBookings() {
     const savedBookings = localStorage.getItem('bookings');
     if (savedBookings) {
@@ -62,24 +61,20 @@ function generateTimeSlots() {
     timeSlots.forEach(timeSlot => {
         const row = document.createElement('tr');
         
-        // Time slot column
         const timeCell = document.createElement('td');
         timeCell.textContent = timeSlot;
         timeCell.className = 'time-slot';
         row.appendChild(timeCell);
         
-        // Create cells for each day
         for (let i = 0; i < 5; i++) {
             const cell = document.createElement('td');
             const monday = getMonday(currentDate);
             const currentDayDate = new Date(monday);
             currentDayDate.setDate(monday.getDate() + i);
             
-            // Create unique key for this time slot
             const dateStr = currentDayDate.toISOString().split('T')[0];
             const bookingKey = `${dateStr}-${timeSlot}`;
             
-            // Check if this slot is booked
             if (bookings.has(bookingKey)) {
                 cell.className = 'schedule-cell booked-slot';
                 cell.innerHTML = `<div>Booked</div>`;
@@ -144,7 +139,6 @@ function goBack() {
     window.history.back();
 }
 
-// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     initializeBookings();
     updateWeekDisplay();
