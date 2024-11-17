@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  <title>Mentor Booking | Profile</title>
+  <link rel="stylesheet" href="../../../css/common/components.css">
+  <link rel="stylesheet" href="../../../css/student/drop-down.css">
+  <link rel="stylesheet" href="../../../css/student/edit-info.css">
+  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+
+</head>
+<body>
+  <header class="header">
+    <nav>
+      <div class="nav__logo-nonavlinks"><a href="personal-info.html">Mentor Booking</a></div>
+      
+      <div class="nav__menu__btn" id="menu-btn">
+          <span><i class="ri-menu-line"></i></span>
+      </div>
+      <div class="icon">
+      <div class="calendarNav">
+        <div class="calendar">
+          <a href="../../../views/student/profile/schedule.html">
+            <i class="ri-calendar-line"></i>
+            <span class="schedule-text">Schedule</span>
+        </a>
+        
+        </div>
+      </div>
+      <div class="walletNav">
+        <div class="wallet">
+          <a href="../../../views/student/profile/wallet.html">
+          <i class="ri-wallet-line"></i>
+          <span class="wallet-text">Wallet</span>
+        </a>
+        </div>
+      </div>
+    </div>
+      <div class="action">
+        <div class="profile">
+          <img src="../../../assets/svg/drop-down/avt.jpg" alt="User Avatar">
+        </div>
+        <div class="menu">
+          <h3 id="username-display">
+            <!-- <img src="../../assets/avt.jpg" alt="user avt"> -->
+            <span id="name-user"></span>
+            <br><span>Student</span>
+          </h3>
+          <ul>
+            <li class="registerMentor"><img src="../../../assets/svg/drop-down/r-mentor.svg"><a href="../../../views/auth/register.html">Register as a mentor</a></li>
+            <li><img src="../../../assets/svg/drop-down/home.svg"><a href="../profile/personal-info.html">Home</a></li>
+            <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="info-user.html">My Profile</a></li>
+            <li class="group"><img src="../../../assets/svg/drop-down/group.svg" ><a href="../projects/group-details.html">Group</a></li>
+            <li><img src="../../../assets/svg/drop-down/log-out.svg"><a href="../../../index.html">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+  </nav>
+  <div class="form-container">
+    <form class="info-form" onsubmit="saveUserInfo(event)" id="updateStudentForm">
+      <h2>Personal information</h2>
+      <div class="form-group">
+        <label for="firstName">First name:</label>
+        <input type="text" id="studentFirstName" name="firstName" required />
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last name:</label>
+        <input type="text" id="studentLastName" name="lastName" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Number phone:</label>
+        <input type="text" id="studentPhone" name="phone" required />
+      </div>
+      <div class="form-group full-width">
+        <button type="submit">Update</button>
+      </div>
+    </form>
+  </div>
+<script src="../../../js/student/drop-down.js"></script>
+<script src="../../../js/student/edit-info.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+    <link rel="stylesheet" href="../../../css/admin/dashboard.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">ADMIN PANEL</div>
+            <a href="../reports/dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+            <a class="nav-item">
+                <i class="fas fa-user-graduate"></i>
+                Student management
+            </a>
+            <a href="mentor-list.html" class="nav-item">
+                <i class="fas fa-chalkboard-teacher"></i>
+                Mentor management
+            </a>
+            <a href="../reports/wallet-management.html" class="nav-item">
+                <i class="fas fa-coins"></i>
+                Wallet management
+            </a>
+            <a href="../reports/rating-list.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                Rating list
+            </a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+                
+                <!-- New header controls -->
+                <div class="header-controls">
+                    <!-- Notifications -->
+                    <div class="header-icon" onclick="toggleNotifications()">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                        
+                        <!-- Notifications Panel -->
+                        <div class="notifications-panel" id="notificationsPanel">
+                            <div class="notifications-header">
+                                New notification
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">New student registration</div>
+                                    <div class="notification-time">5 minutes ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">New appointment</div>
+                                    <div class="notification-time">30 minutes ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-dropdown">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-name">Admin</div>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        
+                        <div class="dropdown-content">
+                            <a href="../../../index.html" class="dropdown-item" style="color: #e74c3c;">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Log out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <h2>Student list</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Number of meetings</th>
+                            <th>Wallet balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Trần Hil</td>
+                            <td>tdhil@email.com</td>
+                            <td>5</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Trần Hil</td>
+                            <td>tdhil@email.com</td>
+                            <td>3</td>
+                            <td>75</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+    <script src="../../../js/admin/studentlist.js"></script>
+</body>
+</html>

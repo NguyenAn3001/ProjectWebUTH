@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MB - Mentor Pay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/mentor/wallet.css">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="wallet-subtitle">Your Point Wallet</div>
+            <div class="wallet-balance">
+                <span id="balanceAmount">0</span> points
+            </div>
+        </div>
+        <div class="transactions">
+            <div class="section-header">
+                <h2 class="section-title">Transaction History</h2>
+            </div>
+            <table class="transaction-list">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Points</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionList">
+                    <tr>
+                        <td class="transaction-date">15/11/2024</td>
+                        <td>Points received from Python course</td>
+                        <td class="transaction-amount positive">+500</td>
+                        <td><span class="transaction-status status-completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td class="transaction-date">10/11/2024</td>
+                        <td>Points received from assignment review</td>
+                        <td class="transaction-amount positive">+300</td>
+                        <td><span class="transaction-status status-completed">Completed</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="../../../js/mentor/wallet.js"></script>
+</body>
+</html>
