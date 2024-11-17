@@ -126,12 +126,15 @@ namespace MentorBooking.Service.Services
             var listStudentWork = new List<MentorWorkSchedule>();
             var listSession = new List<MentorSupportSession>();
             var results = new List<ApiResponse>();
-            foreach(var item in listGroup)
+            if (listGroup != null)
             {
-                var result =await  _mentorSupportSessionRepository.GetMentorSupportSessionByGroupIdAsync(item.GroupId);
-                if (result != null)
+                foreach (var item in listGroup)
                 {
-                    listSession.Add(result);
+                    var result = await _mentorSupportSessionRepository.GetMentorSupportSessionByGroupIdAsync(item.GroupId);
+                    if (result != null)
+                    {
+                        listSession.Add(result);
+                    }
                 }
             }
             foreach(var item in listSession)

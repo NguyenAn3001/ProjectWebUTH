@@ -1,11 +1,74 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="vi">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/common/components.css">
+    <link rel="stylesheet" href="../../../css/student/drop-down.css">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+    <title>Mentor Booking | Group</title>
 </head>
 <body>
+    <header class="header">
+        <nav>
+            <div class="nav__logo-nonavlinks"><a>Mentor Booking</a></div>
+            
+            <div class="nav__menu__btn" id="menu-btn">
+                <span><i class="ri-menu-line"></i></span>
+            </div>
+            <div class="icon">
+                <div class="calendarNav">
+                    <div class="calendar">
+                        <a href="../../../views/student/profile/schedule.html">
+                            <i class="ri-calendar-line"></i>
+                            <span class="schedule-text">Schedule</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="walletNav">
+                    <div class="wallet">
+                        <a href="../../../views/student/profile/wallet.html">
+                            <i class="ri-wallet-line"></i>
+                            <span class="wallet-text">Wallet</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="action">
+                <div class="profile">
+                    <img src="../../../assets/svg/drop-down/avt.jpg" alt="User Avatar">
+                </div>
+                <div class="menu">
+                    <h3 id="username-display">
+                        <!-- <img src="../../assets/avt.jpg" alt="user avt"> -->
+                        <span id="name-user"></span>
+                        <br><span>Student</span>
+                      </h3>
+                    <ul>
+                        <li class="registerMentor"><img src="../../../assets/svg/drop-down/r-mentor.svg"><a href="../../../views/auth/register.html">Register as a mentor</a></li>
+                        <li><img src="../../../assets/svg/drop-down/home.svg"><a href="../profile/personal-info.html">Home</a></li>
+                        <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="../profile/info-user.html">My Profile</a></li>
+                        <li class="group"><img src="../../../assets/svg/drop-down/group.svg" ><a >Group</a></li>
+                        <li><img src="../../../assets/svg/drop-down/log-out.svg"><a href="../../../index.html">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>  
+
+    <section class="section__container">
+        <h2 class="section__header">Group details</h2>
+        <div class="group__contain">
+            <!-- Các nhóm sẽ được thêm vào đây động -->
+            <a href="create-group.html" id="add-group-btn" class="btn-hover">Add</a>
+        </div>
+    </section>
+    
+
+    <script src="../../../js/student/group-details.js"></script>
+    <script src="../../../js/student/drop-down.js"></script>
+
 
 </body>
 </html>

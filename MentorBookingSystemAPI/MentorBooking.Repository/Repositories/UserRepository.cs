@@ -1,7 +1,7 @@
 ﻿using MentorBooking.Repository.Data;
 using MentorBooking.Repository.Entities;
 using MentorBooking.Repository.Interfaces;
-using MentorBooking.Repository.Migrations;
+//using MentorBooking.Repository.Migrations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using System;

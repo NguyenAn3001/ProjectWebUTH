@@ -13,7 +13,21 @@
     --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.08);
     --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
-
+h3{
+    color: #fff;
+}
+#walletBalance {
+    font-size: 1.25rem;
+    color: #ff6347;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+#points {
+    color: #ff6347; /* Màu đỏ */
+    font-weight: bold;
+    font-size: 20px;
+}
 /* Reset & Base Styles */
 * {
     margin: 0;
@@ -318,6 +332,22 @@ body {
     }
 }
 
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #000;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 .add-points button {
     background: var(--gradient-accent);
