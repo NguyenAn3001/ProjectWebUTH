@@ -61,19 +61,19 @@
       </div>
   </nav>
   <div class="form-container">
-    <form class="info-form" onsubmit="saveUserInfo(event)">
+    <form class="info-form" onsubmit="saveUserInfo(event)" id="updateStudentForm">
       <h2>Personal information</h2>
       <div class="form-group">
         <label for="firstName">First name:</label>
-        <input type="text" id="firstName" name="firstName" required />
+        <input type="text" id="studentFirstName" name="firstName" required />
       </div>
       <div class="form-group">
         <label for="lastName">Last name:</label>
-        <input type="text" id="lastName" name="lastName" required />
+        <input type="text" id="studentLastName" name="lastName" required />
       </div>
       <div class="form-group">
         <label for="phone">Number phone:</label>
-        <input type="text" id="phone" name="phone" required />
+        <input type="text" id="studentPhone" name="phone" required />
       </div>
       <div class="form-group full-width">
         <button type="submit">Update</button>
