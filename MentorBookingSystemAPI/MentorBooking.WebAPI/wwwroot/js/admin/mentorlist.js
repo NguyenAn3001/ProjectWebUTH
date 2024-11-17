@@ -42,9 +42,9 @@ async function fetchMentorList() {
         row.innerHTML = `
                     <td>${mentor.mentorId}</td>
                     <td>${mentor.userName || "-"}</td>
-                    <td>Not specified</td>
-                    <td>0</td>
-                    <td>0/5</td>
+                    <td>${mentor.skills}</td>
+                    <td>${mentor.countSession}</td>
+                    <td>${mentor.ratings}/5</td>
                 `;
         mentorTableBody.appendChild(row);
       }

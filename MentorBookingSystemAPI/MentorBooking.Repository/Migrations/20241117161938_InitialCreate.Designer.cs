@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentorBooking.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241117170152_InitialCreate")]
+    [Migration("20241117161938_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

@@ -121,7 +121,7 @@ function displayMentors(data) {
 async function showMentorDetails(mentorId) {
     try {
         showLoading();
-        
+
         const accessToken = localStorage.getItem('accessToken');
         const response = await fetch(`${API_BASE_URL}/UserProfiles/mentor-profiles?mentorId=${mentorId}`, {
             method: 'GET',
@@ -136,19 +136,19 @@ async function showMentorDetails(mentorId) {
         }
 
         const result = await response.json();
-        
+
         if (result.status === "Success" && result.data) {
             const mentor = result.data;
             const mentorDetails = document.getElementById('mentorDetails');
             const createdDate = new Date(mentor.createdAt).toLocaleDateString();
-            
+
             mentorDetails.innerHTML = `
                 <div class="mentor-profile">
                     <div class="mentor-profile-header">
                         <h2>${mentor.name}</h2>
                         <button onclick="closeMentorDetails()" class="close-button">×</button>
                     </div>
-                    
+
                     <div class="mentor-profile-content">
                         <div class="profile-section">
                             <h3>Contact Information</h3>
@@ -175,6 +175,10 @@ async function showMentorDetails(mentorId) {
                             <h3>About</h3>
                             <p>${mentor.mentorDescription || 'No description provided.'}</p>
                         </div>
+
+                        <div class="profile-section">
+                            <button onclick="bookMentor('${mentor.mentorId}')">Book Mentor</button>
+                        </div>
                     </div>
                 </div>
             `;
@@ -190,6 +194,46 @@ async function showMentorDetails(mentorId) {
         hideLoading();
     }
 }
+
+async function bookMentor(mentorId) {
+    const accessToken = localStorage.getItem('accessToken');
+    const userId = localStorage.getItem('userId');  // Assuming the user ID is stored in localStorage
+    const groupId = "3fa85f64-5717-4562-b3fc-2c963f66afa6";  // Example Group ID, adjust as needed
+    
+    const bookingData = {
+        mentorId: mentorId,
+        sessionCount: 0,
+        pointPerSession: 0,
+        dateBookings: [mentorId], // Assuming the booking is tied to the mentor ID
+        groupId: groupId
+    };
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/Bookings`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+            body: JSON.stringify(bookingData)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Booking failed. Status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        if (result.status === 'Success') {
+            alert('Booking successful!');
+        } else {
+            showError('Failed to book mentor. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error booking mentor:', error);
+        showError('Failed to book mentor. Please try again.');
+    }
+}
+
 
 // Modal handling
 function showModal(container) {
@@ -332,6 +376,3 @@ async function refreshAccessToken() {
         throw error;
     }
 }
-
-// Add styles to document
-// document.head.appendChild(style);

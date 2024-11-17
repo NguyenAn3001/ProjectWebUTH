@@ -319,6 +319,13 @@ body {
   border-color: var(--accent-color);
   box-shadow: 0 0 0 4px rgba(229, 177, 104, 0.1);
 }
+.chart-container {
+    margin: 2rem 0;
+    width: 80%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .stats-container {
   display: grid;
