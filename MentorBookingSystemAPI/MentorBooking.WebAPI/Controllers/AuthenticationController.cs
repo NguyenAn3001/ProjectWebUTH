@@ -142,7 +142,7 @@ namespace MentorBooking.WebAPI.Controllers
                 _ => Ok(logoutResponse)
             };
         }
-        [Authorize(Roles = "Student, Mentor, Admin")]
+        [AllowAnonymous]
         [HttpPost("refresh-token")]
         public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenModelRequest refreshTokenModelRequest)
         {
