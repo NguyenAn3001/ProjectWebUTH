@@ -59,51 +59,83 @@ async function fetchTotalMentors() {
 // Fetch danh sách student
 // Fetch danh sách student
 async function fetchStudentList() {
-    try {
-        const response = await fetch(`${API_BASE_URL}/Admin/get-all-student`, {
-            method: 'GET',
-            headers: headers
-        });
+  try {
+    const response = await fetch(`${API_BASE_URL}/Admin/get-all-student`, {
+      method: "GET",
+      headers: headers,
+    });
 
-        if (!response.ok) throw new Error('Failed to fetch student list');
-        const students = await response.json();
-        
-        // Lấy tbody của bảng student
-        const studentTableBody = document.querySelector('.table-container table tbody');
-        studentTableBody.innerHTML = ''; // Xóa dữ liệu cũ
-        
-        // Thêm dữ liệu mới
-        students.forEach(studentItem => {
-            // Kiểm tra status thành công và có data
-            if (studentItem.status === "Succes" && studentItem.data) {
-                const student = studentItem.data;
-                const createDate = new Date(student.createAt).toLocaleDateString();
-                
-                const row = document.createElement('tr');
-                row.innerHTML = `
+    if (!response.ok) throw new Error("Failed to fetch student list");
+    const students = await response.json();
+
+    const studentTableBody = document.querySelector(
+      ".table-container table tbody"
+    );
+    studentTableBody.innerHTML = ""; // Xóa dữ liệu cũ
+
+    const labels = [];
+    const data = [];
+
+    students.forEach((studentItem) => {
+      if (studentItem.status === "Succes" && studentItem.data) {
+        const student = studentItem.data;
+        const createDate = new Date(student.createAt).toLocaleDateString();
+
+        labels.push(student.userName || "Unknown");
+        data.push(student.pointBalance);
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
                     <td>${student.studentId}</td>
                     <td>${student.userName || "-"}</td>
                     <td>${student.email}</td>
                     <td>${student.countGroup}</td>
                     <td>${student.pointBalance}</td>
                 `;
-                studentTableBody.appendChild(row);
-            }
-        });
+        studentTableBody.appendChild(row);
+      }
+    });
 
-        
-    } catch (error) {
-        console.error('Error fetching student list:', error);
-        // Hiển thị thông báo lỗi cho người dùng
-        const studentTableBody = document.querySelector('.table-container table tbody');
-        studentTableBody.innerHTML = `
+    renderChart(labels, data);
+  } catch (error) {
+    console.error("Error fetching student list:", error);
+    const studentTableBody = document.querySelector(
+      ".table-container table tbody"
+    );
+    studentTableBody.innerHTML = `
             <tr>
                 <td colspan="5" class="error-message">
                     Error loading student data. Please try again later.
                 </td>
             </tr>
         `;
-    }
+  }
+}
+
+function renderChart(labels, data) {
+  const ctx = document.getElementById("studentChart").getContext("2d");
+  new Chart(ctx, {
+    type: "bar", // Loại biểu đồ
+    data: {
+      labels: labels, // Tên sinh viên
+      datasets: [
+        {
+          label: "Wallet Balance",
+          data: data, // Số dư điểm
+          backgroundColor: "#6c7b6c",
+          borderColor: "#6c7b6c",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
 }
 
 // Hàm cập nhật biểu đồ tròn
@@ -140,53 +172,87 @@ document.head.appendChild(style);
 
 // Fetch danh sách mentor
 async function fetchMentorList() {
-    try {
-        const response = await fetch(`${API_BASE_URL}/Admin/get-all-mentor`, {
-            method: 'GET',
-            headers: headers
-        });
+  try {
+    const response = await fetch(`${API_BASE_URL}/Admin/get-all-mentor`, {
+      method: "GET",
+      headers: headers,
+    });
 
-        if (!response.ok) throw new Error('Failed to fetch mentor list');
-        const mentors = await response.json();
-        
-        // Lấy tbody của bảng mentor
-        const mentorTableBody = document.querySelector('.table-container:last-child tbody');
-        mentorTableBody.innerHTML = ''; // Xóa dữ liệu cũ
-        
-        // Thêm dữ liệu mới
-        mentors.forEach(mentorItem => {
-            // Kiểm tra status thành công và có data
-            if (mentorItem.status === "Succes" && mentorItem.data) {
-                const mentor = mentorItem.data;
-                const createDate = new Date(mentor.createAt).toLocaleDateString();
-                
-                const row = document.createElement('tr');
-                row.innerHTML = `
+    if (!response.ok) throw new Error("Failed to fetch mentor list");
+    const mentors = await response.json();
+
+    const mentorTableBody = document.querySelector(
+      ".table-container:last-child tbody"
+    );
+    mentorTableBody.innerHTML = ""; // Clear old data
+
+    // Prepare data for the chart
+    const mentorNames = [];
+    const mentorRatings = [];
+
+    mentors.forEach((mentorItem) => {
+      if (mentorItem.status === "Succes" && mentorItem.data) {
+        const mentor = mentorItem.data;
+
+        // Add to chart data
+        mentorNames.push(mentor.userName || "Unknown");
+        mentorRatings.push(mentor.ratings);
+
+        // Add to table
+        const row = document.createElement("tr");
+        row.innerHTML = `
                     <td>${mentor.mentorId}</td>
-                    <td>${mentor.userName || '-'}</td>
-                    <td>Not specified</td>
-                    <td>0</td>
-                    <td>0/5</td>
+                    <td>${mentor.userName || "-"}</td>
+                    <td>${mentor.skills}</td>
+                    <td>${mentor.countSession}</td>
+                    <td>${mentor.ratings}/5</td>
                 `;
-                mentorTableBody.appendChild(row);
-            }
-        });
+        mentorTableBody.appendChild(row);
+      }
+    });
 
-        // Cập nhật biểu đồ đường cho mentor
-        updateMentorLineChart(totalMentors);
-
-    } catch (error) {
-        console.error('Error fetching mentor list:', error);
-        // Hiển thị thông báo lỗi cho người dùng
-        const mentorTableBody = document.querySelector('.table-container:last-child tbody');
-        mentorTableBody.innerHTML = `
+    // Render the chart
+    renderRatingChart(mentorNames, mentorRatings);
+  } catch (error) {
+    console.error("Error fetching mentor list:", error);
+    const mentorTableBody = document.querySelector(
+      ".table-container:last-child tbody"
+    );
+    mentorTableBody.innerHTML = `
             <tr>
                 <td colspan="5" class="error-message">
                     Error loading mentor data. Please try again later.
                 </td>
             </tr>
         `;
-    }
+  }
+}
+
+function renderRatingChart(names, ratings) {
+  const ctx = document.getElementById("mentorRatingChart").getContext("2d");
+  new Chart(ctx, {
+    type: "bar", // Use bar chart
+    data: {
+      labels: names,
+      datasets: [
+        {
+          label: "Mentor Ratings",
+          data: ratings,
+          backgroundColor: "#6c7b6c",
+          borderColor: "#6c7b6c",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 5, // Ratings are out of 5
+        },
+      },
+    },
+  });
 }
 
 // Hàm cập nhật biểu đồ đường cho mentor
@@ -264,7 +330,6 @@ function sortTable(table, column) {
 // Event listeners
 document.addEventListener("DOMContentLoaded", () => {
   initializeDashboard();
-  setupRefreshButton();
 
   // Thêm xử lý đăng xuất
   const logoutBtn = document.querySelector(".dropdown-item");
