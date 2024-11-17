@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  <title>Mentor Booking | Profile</title>
+  <link rel="stylesheet" href="../../../css/common/components.css">
+  <link rel="stylesheet" href="../../../css/student/drop-down.css">
+  <link rel="stylesheet" href="../../../css/student/edit-info.css">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+  <style>
+    .upload-container {
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          text-align: center;
+          width: 400px;
+        }
+
+        .upload-container h2 {
+          margin-bottom: 20px;
+          color: #000;
+        }
+
+        /* Upload box */
+        .upload-box {
+          border: 2px dashed #ccc;
+          border-radius: 8px;
+          padding: 20px;
+          background-color: #fafafa;
+          cursor: pointer;
+          position: relative;
+          transition: border-color 0.3s ease;
+        }
+
+        .upload-box:hover {
+          border-color: #666;
+        }
+
+        .upload-box input[type="file"] {
+          position: absolute;
+          opacity: 0;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          cursor: pointer;
+        }
+
+        .upload-label {
+          display: block;
+          font-size: 14px;
+          font-weight: bold;
+          color: #555;
+        }
+
+        .upload-box p {
+          font-size: 12px;
+          color: #888;
+        }
+
+        /* Preview image */
+        .preview {
+          margin-top: 20px;
+        }
+
+        .preview img {
+          max-width: 100%;
+          max-height: 200px;
+          border-radius: 8px;
+          display: none;
+        }
+</style>
+</head>
+<body>
+  <header class="header">
+    <nav>
+      <div class="nav__logo-nonavlinks"><a href="personal-info.html">Mentor Booking</a></div>
+      
+      <div class="nav__menu__btn" id="menu-btn">
+          <span><i class="ri-menu-line"></i></span>
+      </div>
+      <div class="icon">
+      <div class="calendarNav">
+        <div class="calendar">
+          <a href="../../../views/mentor/profile/schedule.html">
+            <i class="ri-calendar-line"></i>
+            <span class="schedule-text">Schedule</span>
+        </a>
+        
+        </div>
+      </div>
+      <div class="walletNav">
+        <div class="wallet">
+          <a href="../../../views/mentor/profile/wallet.html">
+          <i class="ri-wallet-line"></i>
+          <span class="wallet-text">Wallet</span>
+        </a>
+        </div>
+      </div>
+    </div>
+      <div class="action">
+        <div class="profile">
+          <img id="user-avatar" src="../../../assets/svg/drop-down/avt.jpg" alt="User Avatar">
+        </div>
+        <div class="menu">
+          <h3 id="username-display">
+            <!-- <img src="../../assets/avt.jpg" alt="user avt"> -->
+            <span id="name-user">Name</span><br><span>Mentor</span>
+          </h3>
+          <ul>
+            <li><img src="../../../assets/svg/drop-down/home.svg"><a href="../profile/personal-info.html">Home</a></li>
+            <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="info-user.html">My Profile</a></li>
+            <li><img src="../../../assets/svg/drop-down/log-out.svg"><a href="../../../index.html">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+  </nav>
+  <div class="form-container" style="display: grid; gap : 1rem; justify-content: center;">
+    <div class="upload-container">
+        <h2>Upload Your Image</h2>
+        <div class="upload-box">
+          <input type="file" id="fileInput" accept="image/*" />
+          <label for="fileInput" class="upload-label">Choose an image</label>
+          <p>or drag & drop your image here</p>
+        </div>
+        <div class="preview">
+          <img id="previewImage" src="" alt="Preview will appear here" />
+        </div>
+    </div>
+    <button class = "btn-hover">Add avatar</button>
+</div>
+<script src="../../../js/mentor/drop-down.js"></script>
+<script src="../../../js/mentor/info.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+     const fileInput = document.getElementById('fileInput');
+     const previewImage = document.getElementById('previewImage');
+     const uploadBox = document.querySelector('.upload-box');  // Thêm vào đây để lấy phần tử upload-box
+     const uploadButton = document.querySelector('.btn-hover');
+     const accessToken = localStorage.getItem('accessToken');
+   
+     // Hiển thị preview ảnh khi chọn file
+     fileInput.addEventListener('change', () => {
+       const file = fileInput.files[0];
+       if (file) {
+         const reader = new FileReader();
+         reader.onload = (e) => {
+           previewImage.src = e.target.result;
+           previewImage.style.display = 'block';
+         };
+         reader.readAsDataURL(file);
+   
+         // Ẩn upload-box khi chọn ảnh
+         uploadBox.style.display = 'none';  // Ẩn hộp tải lên khi ảnh được chọn
+       }
+     });
+   
+     // Xử lý sự kiện click và upload file
+     uploadButton.addEventListener('click', async () => {
+       const file = fileInput.files[0];
+       if (!file) {
+         alert('Vui lòng chọn một bức ảnh để tải lên.');
+         return;
+       }
+   
+       const formData = new FormData();
+       formData.append('image', file); // Nếu tên trường API yêu cầu là 'file'
+   
+       const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+       if (!allowedTypes.includes(file.type)) {
+         alert('Loại tệp không hợp lệ. Vui lòng tải lên ảnh có định dạng JPEG, PNG hoặc GIF.');
+         return;
+       }
+   
+       try {
+         const response = await fetch('http://localhost:5076/api/avatar/upload', {
+           method: 'POST',
+           headers: {
+             'Authorization': `Bearer ${accessToken}`, // Nếu cần
+           },
+           body: formData,
+         });
+   
+         if (!response.ok) {
+           console.error(`Lỗi HTTP! Mã trạng thái: ${response.status}`);
+           alert(`Tải ảnh lên thất bại. Máy chủ trả về mã trạng thái: ${response.status}`);
+           return;
+         }
+   
+         const contentType = response.headers.get('Content-Type');
+         if (contentType && contentType.includes('application/json')) {
+           const result = await response.json();
+           alert('Ảnh đã được tải lên thành công!');
+           window.location.href ='./info-user.html';
+           console.log(result);
+         } else {
+           alert('Tải lên thành công, nhưng phản hồi không phải là JSON.');
+         }
+       } catch (error) {
+         console.error('Lỗi khi tải ảnh lên:', error);
+         alert('Đã xảy ra lỗi khi tải ảnh lên.');
+       }
+     });
+   });
+   
+   </script>
+</body>
+</html>

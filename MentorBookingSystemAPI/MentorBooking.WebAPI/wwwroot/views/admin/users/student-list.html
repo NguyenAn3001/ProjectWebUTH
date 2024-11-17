@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
     <link rel="stylesheet" href="../../../css/admin/dashboard.css" />
 </head>
+
 <body>
     <div class="container">
         <!-- Sidebar -->
@@ -39,37 +41,17 @@
         <div class="main-content">
             <div class="header">
                 <input type="text" class="search-bar" placeholder="Tìm kiếm...">
-                
+
                 <!-- New header controls -->
                 <div class="header-controls">
                     <!-- Notifications -->
                     <div class="header-icon" onclick="toggleNotifications()">
                         <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                        
+                        <span class="notification-badge">0</span>
+
                         <!-- Notifications Panel -->
                         <div class="notifications-panel" id="notificationsPanel">
-                            <div class="notifications-header">
-                                New notification
-                            </div>
-                            <div class="notification-item">
-                                <div class="notification-icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                </div>
-                                <div class="notification-content">
-                                    <div class="notification-title">New student registration</div>
-                                    <div class="notification-time">5 minutes ago</div>
-                                </div>
-                            </div>
-                            <div class="notification-item">
-                                <div class="notification-icon">
-                                    <i class="fas fa-calendar-check"></i>
-                                </div>
-                                <div class="notification-content">
-                                    <div class="notification-title">New appointment</div>
-                                    <div class="notification-time">30 minutes ago</div>
-                                </div>
-                            </div>
+                            <!-- Notifications sẽ được thêm động ở đây -->
                         </div>
                     </div>
                     <div class="user-dropdown">
@@ -80,7 +62,7 @@
                             <div class="user-name">Admin</div>
                             <i class="fas fa-chevron-down"></i>
                         </div>
-                        
+
                         <div class="dropdown-content">
                             <a href="../../../index.html" class="dropdown-item" style="color: #e74c3c;">
                                 <i class="fas fa-sign-out-alt"></i>
@@ -103,27 +85,15 @@
                             <th>Wallet balance</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>001</td>
-                            <td>Trần Hil</td>
-                            <td>tdhil@email.com</td>
-                            <td>5</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>002</td>
-                            <td>Trần Hil</td>
-                            <td>tdhil@email.com</td>
-                            <td>3</td>
-                            <td>75</td>
-                        </tr>
+                    <tbody id="studentTableBody">
+                        <!-- Dữ liệu sẽ được thêm vào đây bởi JavaScript -->
                     </tbody>
                 </table>
             </div>
-            
+
         </div>
     </div>
     <script src="../../../js/admin/studentlist.js"></script>
 </body>
+
 </html>

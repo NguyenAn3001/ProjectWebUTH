@@ -40,11 +40,11 @@ async function fetchStudentList() {
 
         const row = document.createElement("tr");
         row.innerHTML = `
-                    <td>${student.mentorId}</td>
+                    <td>${student.studentId}</td>
                     <td>${student.userName || "-"}</td>
-                    <td>${student.userName}@email.com</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td>${student.email}</td>
+                    <td>${student.countGroup}</td>
+                    <td>${student.pointBalance}</td>
                 `;
         studentTableBody.appendChild(row);
       }
