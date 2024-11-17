@@ -8,6 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
     <link rel="stylesheet" href="../../../css/admin/dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -92,9 +93,20 @@
                     </div>
                 </div>
             </div>
+            
 
             <div class="stats-container">
                 <div class="stat-card">
+                    <div class="chart-container">
+                        <canvas id="studentChart" width="1000" height="500"></canvas>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="chart-container">
+                        <canvas id="mentorRatingChart" width="1000" height="500"></canvas>
+                    </div>
+                </div>
+                <!-- <div class="stat-card">
                     <h3>Total number of students: 1,234</h3>
                     <div class="pie-chart">
                         <div class="pie-chart-value">
@@ -199,7 +211,7 @@
                             <span>789</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="table-container">
                 <h2>Student List</h2>
@@ -232,8 +244,8 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Specialty</th>
-                            <th>Students</th>
+                            <th>Skills</th>
+                            <th>Sessions</th>
                             <th>Rating</th>
                         </tr>
                     </thead>
