@@ -1,18 +1,13 @@
 function showUpdateModal(role) {
-    // Kiểm tra xem đã từng cập nhật thông tin chưa
-    const hasCompletedInitialSetup = localStorage.getItem("hasCompletedInitialSetup");
-
-    console.log("Has completed initial setup:", hasCompletedInitialSetup); // In ra để kiểm tra
+    const hasCompletedInitialSetup = localStorage.getItem(`hasCompletedInitialSetup_${localStorage.getItem('userId')}`);
 
     if (hasCompletedInitialSetup !== "true") {
-        // Chỉ hiện modal cập nhật thông tin trong lần đầu tiên
         if (role === 'Student') {
             document.getElementById('studentUpdateModal').style.display = 'block';
         } else if (role === 'Mentor') {
             document.getElementById('mentorUpdateModal').style.display = 'block';
         }
     } else {
-        // Đã từng cập nhật thông tin rồi, chuyển thẳng đến trang profile
         redirectToProfile(role);
     }
 }
@@ -48,28 +43,40 @@ function login(event) {
         console.log("API response:", data);
 
         if (data.status === "Success") {
-            if (data.accessToken && data.refreshToken && data.userId) {
+            if (data.accessToken && data.refreshToken && data.userId && data.role) {
+                // Lưu thông tin đăng nhập vào localStorage
                 localStorage.setItem("accessToken", data.accessToken);
                 localStorage.setItem("refreshToken", data.refreshToken);
                 localStorage.setItem("userId", data.userId);
                 localStorage.setItem("role", data.role);
 
-                showUpdateModal(data.role);
+                // Kiểm tra xem người dùng đã hoàn thành cập nhật thông tin chưa
+                const hasCompletedInitialSetup = localStorage.getItem(`hasCompletedInitialSetup_${data.userId}`);
+                
+                if (!hasCompletedInitialSetup) {
+                    // Nếu là lần đăng nhập đầu tiên, hiển thị form cập nhật thông tin
+                    showUpdateModal(data.role);
+                } else {
+                    // Nếu đã hoàn thành, chuyển hướng tới trang profile
+                    redirectToProfile(data.role);
+                }
             } else {
-                console.error("Tokens or user ID missing:", data);
-                alert("Login failed, tokens or user ID not received.");
+                console.error("Thiếu token hoặc user ID:", data);
+                alert("Đăng nhập thất bại, thiếu token hoặc user ID.");
             }
         } else {
             alert(data.message);
         }
     })
     .catch(error => {
-        console.error("Error:", error);
-        alert("An error occurred during login.");
+        console.error("Lỗi:", error);
+        alert("Đã xảy ra lỗi trong quá trình đăng nhập.");
     });
 }
 
-// Handle student form submission
+
+
+// Xử lý form cập nhật thông tin sinh viên
 document.getElementById('updateStudentForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const userId = localStorage.getItem('userId');
@@ -93,23 +100,21 @@ document.getElementById('updateStudentForm').addEventListener('submit', function
     .then(response => response.json())
     .then(data => {
         if (data.status === "Success") {
-            localStorage.setItem("firstName", studentData.firstName);
-            localStorage.setItem("lastName", studentData.lastName);
-            localStorage.setItem("hasCompletedInitialSetup", "true");
-
-            document.getElementById('studentUpdateModal').style.display = 'none';
-            redirectToProfile('Student');
+            // Cập nhật giá trị trong localStorage và đánh dấu đã hoàn thành
+            localStorage.setItem(`hasCompletedInitialSetup_${userId}`, "true");
+            document.getElementById('studentUpdateModal').style.display = 'none'; // Ẩn modal
+            redirectToProfile('Student'); // Chuyển hướng đến trang profile của sinh viên
         } else {
-            alert("Failed to update student information.");
+            alert("Cập nhật thông tin sinh viên thất bại.");
         }
     })
     .catch(error => {
-        console.error("Error:", error);
-        alert("An error occurred while updating student information.");
+        console.error("Lỗi:", error);
+        alert("Đã xảy ra lỗi khi cập nhật thông tin sinh viên.");
     });
 });
 
-// Handle mentor form submission
+// Xử lý form cập nhật thông tin mentor
 document.getElementById('updateMentorForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const userId = localStorage.getItem('userId');
@@ -138,23 +143,21 @@ document.getElementById('updateMentorForm').addEventListener('submit', function(
         if (data.status === "Success") {
             localStorage.setItem("firstName", mentorData.firstName);
             localStorage.setItem("lastName", mentorData.lastName);
-            // Đánh dấu đã hoàn thành setup lần đầu
-            localStorage.setItem("hasCompletedInitialSetup", "true");
-
+            // Đánh dấu đã hoàn thành cập nhật với userId cụ thể
+            localStorage.setItem(`hasCompletedInitialSetup_${userId}`, "true");
+            
             document.getElementById('mentorUpdateModal').style.display = 'none';
             redirectToProfile('Mentor');
-        } else {
-            alert("Failed to update mentor information.");
-        }
-    })
+        }}
+    )
     .catch(error => {
-        console.error("Error:", error);
-        alert("An error occurred while updating mentor information.");
+        console.error("Lỗi:", error);
+        alert("Đã xảy ra lỗi khi cập nhật thông tin mentor.");
     });
 });
 
 window.onclick = function(event) {
     if (event.target.classList.contains('modal')) {
-        event.target.style.display = 'none';
+        event.target.style.display = 'none'; // Đóng modal khi nhấp ra ngoài
     }
-}
+};

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // URL API với userId động
     const apiUrl = `http://localhost:5076/api/wallet/check-balances?userId=${userId}`;
-    const authToken = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIwMjZmOGZjNS03YTE2LTQxZDMtYWIzZC0wOGRkMDU5ZTQxMGMiLCJ1bmlxdWVfbmFtZSI6InRkaGlsbWVudG9yMSIsImp0aSI6ImM4OWI2N2EyLTAxMmEtNDBkOC05NmU3LTA3NTc4ZjFhODliMiIsInJvbGUiOiJNZW50b3IiLCJuYmYiOjE3MzE3NTgyNzgsImV4cCI6MTczMTc2OTA3OCwiaWF0IjoxNzMxNzU4Mjc4LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTQ3IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE0NyJ9.IotmP_AjWZ1CWSMiPwXsAjw0RsCxKAY0a5vPqj6mRhw';
+    const authToken = `Bearer ${localStorage.getItem('authToken')}`;
 
     // Element để hiển thị điểm
     const balanceElement = document.getElementById("balanceAmount");
