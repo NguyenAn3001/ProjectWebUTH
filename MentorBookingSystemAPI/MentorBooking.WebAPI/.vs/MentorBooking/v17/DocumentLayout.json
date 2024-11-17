@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8B8359EC-E18D-4594-8DCF-49D1BAEC7372}|..\\MentorBooking.Service\\MentorBooking.Service.csproj|d:\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.service\\services\\workschedulesview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|d:\\projectwebuth\\mentorbookingsystemapi\\mentorbooking.webapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{94592B8A-C0F0-4CD6-BE16-000552AE33BE}|MentorBooking.WebAPI.csproj|solutionrelative:controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -69,8 +72,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WorkSchedulesView.cs",
+              "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\WorkSchedulesView.cs",
+              "RelativeDocumentMoniker": "..\\MentorBooking.Service\\Services\\WorkSchedulesView.cs",
+              "ToolTip": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\WorkSchedulesView.cs*",
+              "RelativeToolTip": "..\\MentorBooking.Service\\Services\\WorkSchedulesView.cs*",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAIwIgAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T06:36:10.834Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -93,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AuthenticationController.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\AuthenticationController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthenticationController.cs",
@@ -106,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "StudentRepository.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\StudentRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\StudentRepository.cs",
@@ -118,7 +134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UserPointRepository.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserPointRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\UserPointRepository.cs",
@@ -130,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "BookingMentorController.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\BookingMentorController.cs",
               "RelativeDocumentMoniker": "Controllers\\BookingMentorController.cs",
@@ -142,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "20241114193836_InitialCreate.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Migrations\\20241114193836_InitialCreate.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Migrations\\20241114193836_InitialCreate.cs",
@@ -154,7 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
@@ -166,7 +182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "UserTokenRepository.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserTokenRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\UserTokenRepository.cs",
@@ -178,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\UserRepository.cs",
@@ -190,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "RoleRepository.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Repositories\\RoleRepository.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Repositories\\RoleRepository.cs",
@@ -202,7 +218,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "20241114192834_AddBlogCreatedTimestamp.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Repository\\Migrations\\20241114192834_AddBlogCreatedTimestamp.cs",
               "RelativeDocumentMoniker": "..\\MentorBooking.Repository\\Migrations\\20241114192834_AddBlogCreatedTimestamp.cs",
@@ -214,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -226,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "SchedulesMentor.cs",
               "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\SchedulesMentor.cs",
               "ToolTip": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\SchedulesMentor.cs",
@@ -235,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "UserProfilesController.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\UserProfilesController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserProfilesController.cs",
@@ -247,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "SearchAndSortController.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\SearchAndSortController.cs",
               "RelativeDocumentMoniker": "Controllers\\SearchAndSortController.cs",
@@ -259,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "ScheduleViewsController.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\ScheduleViewsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ScheduleViewsController.cs",
@@ -271,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "BookingMentorService.cs",
               "DocumentMoniker": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\BookingMentorService.cs",
               "ToolTip": "E:\\ProjectWebUTH\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.Service\\Services\\BookingMentorService.cs",
@@ -281,7 +297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "MentorFeedbackController.cs",
               "DocumentMoniker": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\Controllers\\MentorFeedbackController.cs",
               "RelativeDocumentMoniker": "Controllers\\MentorFeedbackController.cs",

@@ -1,7 +1,7 @@
 let currentDate = new Date();
 let bookings = new Map();
 
-// Khởi tạo từ localStorage
+// Initialize from localStorage
 function initializeBookings() {
     const savedBookings = localStorage.getItem('bookings');
     if (savedBookings) {
@@ -48,9 +48,12 @@ function updateWeekDisplay() {
 
 function generateTimeSlots() {
     const timeSlots = [
-        "08:00", "09:00", "10:00", "11:00", "12:00",
-        "13:00", "14:00", "15:00", "16:00", "17:00",
-        "18:00", "19:00", "20:00"
+        "08:00 - 09:30",
+        "09:45 - 11:15",
+        "11:30 - 13:00",
+        "13:15 - 14:45",
+        "15:00 - 16:30",
+        "16:45 - 18:15"
     ];
     
     const tbody = document.getElementById('scheduleBody');
@@ -59,27 +62,33 @@ function generateTimeSlots() {
     timeSlots.forEach(timeSlot => {
         const row = document.createElement('tr');
         
+        // Time slot column
         const timeCell = document.createElement('td');
         timeCell.textContent = timeSlot;
         timeCell.className = 'time-slot';
         row.appendChild(timeCell);
         
+        // Create cells for each day
         for (let i = 0; i < 5; i++) {
             const cell = document.createElement('td');
-            const bookingKey = `${timeSlot}-${i}`;
+            const monday = getMonday(currentDate);
+            const currentDayDate = new Date(monday);
+            currentDayDate.setDate(monday.getDate() + i);
             
+            // Create unique key for this time slot
+            const dateStr = currentDayDate.toISOString().split('T')[0];
+            const bookingKey = `${dateStr}-${timeSlot}`;
+            
+            // Check if this slot is booked
             if (bookings.has(bookingKey)) {
-                cell.className = 'schedule-cell booked-slot fade-in';
-                cell.innerHTML = `
-                    <div>Booked</div>
-                    <button class="cancel-button" onclick="showCancelModal('${timeSlot}', ${i})">
-                        <i class="fas fa-times"></i> Cancel
-                    </button>
-                `;
+                cell.className = 'schedule-cell booked-slot';
+                cell.innerHTML = `<div>Booked</div>`;
+                cell.onclick = () => showCancelModal(timeSlot, i, bookingKey);
             } else {
                 cell.className = 'schedule-cell empty-slot';
                 cell.innerHTML = `<div>--</div>`;
             }
+            
             row.appendChild(cell);
         }
         
@@ -99,14 +108,17 @@ function nextWeek() {
     generateTimeSlots();
 }
 
-function showCancelModal(time, dayIndex) {
+function showCancelModal(timeSlot, dayIndex, bookingKey) {
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-    const bookingKey = `${time}-${dayIndex}`;
+    const monday = getMonday(currentDate);
+    const bookingDate = new Date(monday);
+    bookingDate.setDate(monday.getDate() + dayIndex);
     
     const modalText = `
         Are you sure you want to cancel this booking?<br><br>
+        <strong>Date:</strong> ${formatDate(bookingDate)}<br>
         <strong>Day:</strong> ${days[dayIndex]}<br>
-        <strong>Time:</strong> ${time}<br>
+        <strong>Time:</strong> ${timeSlot}<br>
     `;
     
     document.getElementById('cancelModalText').innerHTML = modalText;
@@ -128,20 +140,13 @@ function confirmCancel() {
     }
 }
 
+function goBack() {
+    window.history.back();
+}
+
+// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     initializeBookings();
     updateWeekDisplay();
     generateTimeSlots();
-    
-    // Thêm một số booking mẫu nếu chưa có booking nào
-    if (bookings.size === 0) {
-        bookings.set("09:00-0", { time: "09:00", day: "Monday" });
-        bookings.set("14:00-2", { time: "14:00", day: "Wednesday" });
-        saveBookings();
-        generateTimeSlots();
-    }
 });
-
-function goBack() {
-    window.history.back();
-}

@@ -53,19 +53,22 @@ input[type="text"] {
 }
 
 button {
-    padding: 1rem 2rem;
-    background: #4299e1;
+    padding: 0.6rem 1.5rem;  /* Giảm padding để button nhỏ hơn */
+    background: #4C9F70;
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.9rem;  /* Giảm font-size */
+    font-weight: 500;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background: #3182ce;
+    background: #3b7a56;
+    transform: translateY(-3px);
 }
+
 
 .filter-section {
     margin-bottom: 2rem;
@@ -84,6 +87,8 @@ select {
     font-size: 1rem;
     background: white;
     cursor: pointer;
+    position: relative;
+    z-index: 10;
 }
 
 select:focus {

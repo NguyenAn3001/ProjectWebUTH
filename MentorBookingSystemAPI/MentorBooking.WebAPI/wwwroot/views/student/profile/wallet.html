@@ -22,11 +22,15 @@
             <h3>Top up points</h3>
             <input type="number" id="points-input" placeholder="Enter the points you want to add" min="1" />
             <button>Top up points</button>
+            <div id="loading" style="display: none;">
+                <p>Loading...</p>
+                <div class="spinner"></div>
+            </div>
             <!-- Hiển thị lỗi nếu có -->
             <div id="error-message" style="color: red; margin-top: 5px;"></div>
         </div>
     </div>
-
+    
     <div class="transactions">
         <div class="section-header">
             <h2>Transaction history</h2>
