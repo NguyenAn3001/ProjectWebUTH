@@ -169,12 +169,12 @@ document.addEventListener('DOMContentLoaded', initializeSchedule);
 
 
 function goBack() {
-    window.history.back();
+    window.history.back(); // Quay lại trang trước
 }
 
-// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    initializeBookings();
-    updateWeekDisplay();
-    generateTimeSlots();
+    const backButton = document.querySelector('.btn');
+    if (backButton) {
+        backButton.addEventListener('click', goBack);
+    }
 });
