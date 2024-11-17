@@ -1,27 +1,25 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Gắn sự kiện submit cho form
-    const form = document.querySelector(".info-form");
-    if (form) {
-      form.addEventListener("submit", saveUserInfo);
-    } else {
-      console.error("Form element not found! Make sure your HTML structure is correct.");
-    }
-  });
-  
 document.getElementById('updateStudentForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    
     const userId = localStorage.getItem('userId');
     const accessToken = localStorage.getItem('accessToken');
 
     const studentData = {
         firstName: document.getElementById('studentFirstName').value,
         lastName: document.getElementById('studentLastName').value,
-        phone: document.getElementById('phone').value,
+        phone: document.getElementById('studentPhone').value,
         createdAt: new Date().toISOString()
     };
 
+    // Simple phone number validation (adjust based on your expected format)
+    const phoneRegex = /^[+]?[0-9]{10,15}$/;
+    if (!phoneRegex.test(studentData.phone)) {
+        alert("Invalid phone number format. Please enter a valid phone number.");
+        return;
+    }
+
     fetch(`http://localhost:5076/api/info/student?studentId=${userId}`, {
-        method: "POST",
+        method: "POST",  // Reverted back to POST
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${accessToken}`
@@ -30,12 +28,18 @@ document.getElementById('updateStudentForm').addEventListener('submit', function
     })
     .then(response => response.json())
     .then(data => {
-        if (data.status === "Success") {
+        if (data && !data.errors) {  // Adjust condition based on how the API returns success
             localStorage.setItem("firstName", studentData.firstName);
             localStorage.setItem("lastName", studentData.lastName);
-           
+            alert("Student information updated successfully!");
+            window.location.href = "info-user.html";
         } else {
-            alert("Failed to update student information.");
+            if (data.errors && data.errors.length > 0) {
+                // If the API returns specific error messages
+                alert(`Error: ${data.errors.join(", ")}`);
+            } else {
+                alert("Failed to update student information.");
+            }
         }
     })
     .catch(error => {
