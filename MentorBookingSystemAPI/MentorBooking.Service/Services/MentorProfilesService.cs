@@ -23,7 +23,7 @@ namespace MentorBooking.Service.Services
             _skilllRepository = skillRepository;
             _mentorskillRepository=mentorSkillRepository;
         }
-        public async Task<ApiResponse> MentorProfiles(Guid MentorId)
+        public async Task<ApiResponse?> MentorProfiles(Guid MentorId)
         {
             var userProfiles =await _userRepository.FindByIdAsync(MentorId.ToString());
             var mentorProfiles = await _mentorRepository.GetMentorByIdAsync(MentorId);
@@ -44,7 +44,26 @@ namespace MentorBooking.Service.Services
                 {
                     skillName.Add(SkillName.Name);
                 }    
-            }    
+            }
+            if (mentorProfiles == null)
+            {
+                return new ApiResponse()
+                {
+                    Status = "Success",
+                    Message = "Found",
+                    Data = new MentorProfilesResponse()
+                    {
+                        MentorId = MentorId,
+                        Name = null,
+                        Phone = null,
+                        Email = null,
+                        ExperienceYears = null,
+                        MentorDescription = null,
+                        CreatedAt = null,
+                        Skills = skillName
+                    }
+                };
+            }
                 return new ApiResponse()
             {
                 Status = "Success",

@@ -9,6 +9,6 @@ namespace MentorBooking.Service.Interfaces
 {
     public interface IStudentProfilesServices
     {
-        Task<ApiResponse> StudentProfiles(Guid StudentId);
+        Task<ApiResponse?> StudentProfiles(Guid StudentId);
     }
 }
