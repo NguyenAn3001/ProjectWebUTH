@@ -420,16 +420,6 @@ function sortTable(table, column) {
     rows.forEach(row => tbody.appendChild(row));
 }
 
-// Thêm hàm refresh data
-function setupRefreshButton() {
-  const refreshBtn = document.createElement("button");
-  refreshBtn.className = "refresh-btn";
-  refreshBtn.innerHTML = '<i class="fas fa-sync"></i> Refresh Data';
-  refreshBtn.onclick = initializeDashboard;
-
-  document.querySelector(".header-controls").prepend(refreshBtn);
-}
-
 // Event listeners
 document.addEventListener("DOMContentLoaded", () => {
   initializeDashboard();

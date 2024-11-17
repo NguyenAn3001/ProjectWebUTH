@@ -17,8 +17,9 @@ namespace MentorBooking.Service.Services
         private readonly IMentorRepository _mentorRepository;
         private readonly IStudentRepository _studentRepository;
         private readonly IMentorWorkScheduleRepository _workScheduleRepository;
+        private readonly IStudentGroupRepository _studentGroupRepository;
         public AdminService(IMentorSupportSessionRepository sessionRepository, IUserPointRepository userPointRepository, IUserRepository userRepository
-            , IMentorRepository mentorRepository, IStudentRepository studentRepository,IMentorWorkScheduleRepository mentorWorkScheduleRepository)
+            , IMentorRepository mentorRepository, IStudentRepository studentRepository,IMentorWorkScheduleRepository mentorWorkScheduleRepository,IStudentGroupRepository studentGroupRepository)
         {
             _sessionRepository = sessionRepository;
             _userPointRepository = userPointRepository;
@@ -26,6 +27,7 @@ namespace MentorBooking.Service.Services
             _mentorRepository = mentorRepository;
             _studentRepository = studentRepository;
             _workScheduleRepository = mentorWorkScheduleRepository;
+            _studentGroupRepository = studentGroupRepository;
         }
 
         public async Task<ApiResponse> DeletePointTransaction(Guid PointTransactionId)
@@ -141,16 +143,21 @@ namespace MentorBooking.Service.Services
             foreach (var item in allUsers)
             {
                 var aStudent = await _studentRepository.GetStudentByIdAsync(item.Id);
+                var aStudentPoint = await _userPointRepository.GetUserPoint(item.Id);
+                var AcountGroup = _studentGroupRepository.GetListStudentInGroup(item.Id);
                 if(aStudent != null)
                 {
                     ApiResponse response = new ApiResponse()
                     {
                         Status = "Succes",
                         Message = "Found",
-                        Data = new MentorUserResponse()
+                        Data = new StudentUserResponse()
                         {
-                            MentorId = aStudent.UserId,
+                            StudentId = aStudent.UserId,
                             UserName = item.UserName,
+                            Email = item.Email,
+                            PointBalance = aStudentPoint.PointsBalance,
+                            countGroup = AcountGroup.Count(),
                             CreateAt = aStudent.CreateAt
                         }
                     };
