@@ -4,6 +4,7 @@ using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +24,10 @@ namespace MentorBooking.Service.Services
         private readonly IMentorFeedbackRepository _feedbackRepository;
         private readonly IMentorSkillRepository _mentorSkillRepository;
         private readonly ISkillRepository _skillRepository;
+        private readonly IRoleRepository _roleRepository;
         public AdminService(IMentorSupportSessionRepository sessionRepository, IUserPointRepository userPointRepository, IUserRepository userRepository
             , IMentorRepository mentorRepository, IStudentRepository studentRepository,IMentorWorkScheduleRepository mentorWorkScheduleRepository,IStudentGroupRepository studentGroupRepository
-            ,IMentorFeedbackRepository mentorFeedbackRepository,ISkillRepository skillRepository,IMentorSkillRepository mentorSkillRepository)
+            ,IMentorFeedbackRepository mentorFeedbackRepository,ISkillRepository skillRepository,IMentorSkillRepository mentorSkillRepository,IRoleRepository roleRepository)
         {
             _sessionRepository = sessionRepository;
             _userPointRepository = userPointRepository;
@@ -37,6 +39,7 @@ namespace MentorBooking.Service.Services
             _feedbackRepository = mentorFeedbackRepository;
             _skillRepository = skillRepository;
             _mentorSkillRepository= mentorSkillRepository;
+            _roleRepository= roleRepository;
         }
 
         public async Task<List<ApiResponse>> AllFeedback()
@@ -159,7 +162,7 @@ namespace MentorBooking.Service.Services
             return listApiResponse;
         }
 
-        public List<ApiResponse> GetAllPointTransactionsDecrease()
+        public async Task<List<ApiResponse>?> GetAllPointTransactionsDecrease()
         {
             var allPointTransaction = _userPointRepository.GetAllPointTransaction();
             var listApiResponse = new List<ApiResponse>();
@@ -167,19 +170,36 @@ namespace MentorBooking.Service.Services
             {
                 if (!item.TransactionType)
                 {
-                    ApiResponse response = new ApiResponse()
+                    var aUser = await _userRepository.FindByIdAsync(item.UserId.ToString());
+                    if (aUser != null)
                     {
-                        Status = "Succes",
-                        Message = "Found",
-                        Data = item
-                    };
-                    listApiResponse.Add(response);
+                        var aRole = await _roleRepository.GetRoleOfUser(aUser);
+
+                        ApiResponse response = new ApiResponse()
+                        {
+                            Status = "Succes",
+                            Message = "Found",
+                            Data = new TransactionResponse()
+                            {
+                                TransactionId = item.TransactionId,
+                                PointsChanged = item.PointsChanged,
+                                TransactionType = item.TransactionType,
+                                Description = item.Description,
+                                CreateAt = item.CreateAt,
+                                UserId = item.UserId,
+                                Name = aUser.FirstName + " " + aUser.LastName,
+                                Email = aUser.Email,
+                                Role = aRole
+                            }
+                        };
+                        listApiResponse.Add(response);
+                    }
                 }
             }
             return listApiResponse;
         }
 
-        public List<ApiResponse> GetAllPointTransactionsIncrease()
+        public async Task<List<ApiResponse>?> GetAllPointTransactionsIncrease()
         {
             var allPointTransaction = _userPointRepository.GetAllPointTransaction();
             var listApiResponse = new List<ApiResponse>();
@@ -187,13 +207,30 @@ namespace MentorBooking.Service.Services
             {
                 if(item.TransactionType)
                 {
-                    ApiResponse response = new ApiResponse()
-                    {
-                        Status = "Succes",
-                        Message = "Found",
-                        Data = item
-                    };
-                    listApiResponse.Add(response);
+                   var aUser = await _userRepository.FindByIdAsync(item.UserId.ToString());
+                   if(aUser != null)
+                   {
+                        var aRole = await _roleRepository.GetRoleOfUser(aUser);
+                        ApiResponse response = new ApiResponse()
+                        {
+                            Status = "Succes",
+                            Message = "Found",
+                            Data = new TransactionResponse()
+                            {
+                                TransactionId = item.TransactionId,
+                                PointsChanged = item.PointsChanged,
+                                TransactionType = item.TransactionType,
+                                Description = item.Description,
+                                CreateAt = item.CreateAt,
+                                UserId = item.UserId,
+                                Name = aUser.FirstName + " " + aUser.LastName,
+                                Email = aUser.Email,
+                                Role = aRole
+
+                            }
+                        };
+                        listApiResponse.Add(response);
+                    }    
                 }    
             }
             return listApiResponse;
