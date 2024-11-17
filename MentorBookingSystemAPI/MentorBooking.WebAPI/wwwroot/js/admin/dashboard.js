@@ -162,11 +162,11 @@ async function fetchMentorList() {
                 
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${mentor.mentorId}</td>
-                    <td>${mentor.userName || '-'}</td>
-                    <td>Not specified</td>
-                    <td>0</td>
-                    <td>0/5</td>
+                    <td>${student.studentId}</td>
+                    <td>${student.userName || "-"}</td>
+                    <td>${student.email}</td>
+                    <td>${student.countGroup}</td>
+                    <td>${student.pointBalance}</td>
                 `;
                 mentorTableBody.appendChild(row);
             }

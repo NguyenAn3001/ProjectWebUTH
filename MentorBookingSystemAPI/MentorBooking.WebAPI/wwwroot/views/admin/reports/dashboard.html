@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
     <link rel="stylesheet" href="../../../css/admin/dashboard.css" />
 </head>
+
 <body>
     <div class="container">
         <!-- Sidebar -->
@@ -39,14 +41,14 @@
         <div class="main-content">
             <div class="header">
                 <input type="text" class="search-bar" placeholder="Tìm kiếm...">
-                
+
                 <!-- New header controls -->
                 <div class="header-controls">
                     <!-- Notifications -->
                     <div class="header-icon" onclick="toggleNotifications()">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge">3</span>
-                        
+
                         <!-- Notifications Panel -->
                         <div class="notifications-panel" id="notificationsPanel">
                             <div class="notifications-header">
@@ -80,7 +82,7 @@
                             <div class="user-name">Admin</div>
                             <i class="fas fa-chevron-down"></i>
                         </div>
-                        
+
                         <div class="dropdown-content">
                             <a href="../../../index.html" class="dropdown-item" style="color: #e74c3c;">
                                 <i class="fas fa-sign-out-alt"></i>
@@ -111,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="stat-card">
                     <h3>Monthly meeting: 456</h3>
                     <div class="bar-chart">
@@ -141,7 +143,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="stat-card">
                     <h3>Total number of mentors: 89</h3>
                     <div class="line-chart">
@@ -171,7 +173,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="stat-card">
                     <h3>Wallet balance used: 7,890</h3>
                     <div class="progress-stats">
@@ -200,120 +202,55 @@
                 </div>
             </div>
             <div class="table-container">
-  <h2>Student List</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Meetings</th>
-        <th>Balance</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>10243684-e691-4892-9c4e-08dcfa94d6df</td>
-        <td>usertest</td>
-        <td>usertest@email.com</td>
-        <td>5</td>
-        <td>$100</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="table-container">
-  <h2>Mentor List</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Specialty</th>
-        <th>Students</th>
-        <th>Rating</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>55ef3ded-13a4-4981-34ba-08dcfa9df99c</td>
-        <td>mentortest</td>
-        <td>Programming</td>
-        <td>10</td>
-        <td>4.5/5</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-            <!-- <div class="table-container">
-                <h2>Student list</h2>
+                <h2>Student List</h2>
                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Number of meetings</th>
-                            <th>Wallet balance</th>
+                            <th>Groups</th>
+                            <th>Balance</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>001</td>
-                            <td>Trần Hil</td>
-                            <td>tdhil@email.com</td>
+                            <td>10243684-e691-4892-9c4e-08dcfa94d6df</td>
+                            <td>usertest</td>
+                            <td>usertest@email.com</td>
                             <td>5</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>002</td>
-                            <td>Trần Hil</td>
-                            <td>tdhil@email.com</td>
-                            <td>3</td>
-                            <td>75</td>
+                            <td>$100</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
             <div class="table-container">
-                <h2>Mentor list</h2>
+                <h2>Mentor List</h2>
                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Major</th>
-                            <th>Student quantity</th>
+                            <th>Specialty</th>
+                            <th>Students</th>
                             <th>Rating</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>M001</td>
-                            <td>Kai Havertz</td>
-                            <td>Frontend</td>
-                            <td>15</td>
-                            <td>4.8/5</td>
-                        </tr>
-                        <tr>
-                            <td>M002</td>
-                            <td>Kai Cenat</td>
-                            <td>Backend</td>
-                            <td>12</td>
-                            <td>4.6/5</td>
+                            <td>55ef3ded-13a4-4981-34ba-08dcfa9df99c</td>
+                            <td>mentortest</td>
+                            <td>Programming</td>
+                            <td>10</td>
+                            <td>4.5/5</td>
                         </tr>
                     </tbody>
                 </table>
-<<<<<<< HEAD
-            </div> -->
-=======
             </div>
-            
->>>>>>> 18b0eb96eadc289111af0cff4fdaacc422aa7326
         </div>
     </div>
     <script src="../../../js/admin/dashboard.js"></script>
 </body>
+
 </html>
