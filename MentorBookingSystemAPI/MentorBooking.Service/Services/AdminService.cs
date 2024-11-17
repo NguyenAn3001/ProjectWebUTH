@@ -17,8 +17,13 @@ namespace MentorBooking.Service.Services
         private readonly IMentorRepository _mentorRepository;
         private readonly IStudentRepository _studentRepository;
         private readonly IMentorWorkScheduleRepository _workScheduleRepository;
+        private readonly IStudentGroupRepository _studentGroupRepository;
+        private readonly IMentorFeedbackRepository _feedbackRepository;
+        private readonly IMentorSkillRepository _mentorSkillRepository;
+        private readonly ISkillRepository _skillRepository;
         public AdminService(IMentorSupportSessionRepository sessionRepository, IUserPointRepository userPointRepository, IUserRepository userRepository
-            , IMentorRepository mentorRepository, IStudentRepository studentRepository,IMentorWorkScheduleRepository mentorWorkScheduleRepository)
+            , IMentorRepository mentorRepository, IStudentRepository studentRepository,IMentorWorkScheduleRepository mentorWorkScheduleRepository,IStudentGroupRepository studentGroupRepository
+            ,IMentorFeedbackRepository mentorFeedbackRepository,ISkillRepository skillRepository,IMentorSkillRepository mentorSkillRepository)
         {
             _sessionRepository = sessionRepository;
             _userPointRepository = userPointRepository;
@@ -26,6 +31,10 @@ namespace MentorBooking.Service.Services
             _mentorRepository = mentorRepository;
             _studentRepository = studentRepository;
             _workScheduleRepository = mentorWorkScheduleRepository;
+            _studentGroupRepository = studentGroupRepository;
+            _feedbackRepository = mentorFeedbackRepository;
+            _skillRepository = skillRepository;
+            _mentorSkillRepository= mentorSkillRepository;
         }
 
         public async Task<ApiResponse> DeletePointTransaction(Guid PointTransactionId)
@@ -71,6 +80,26 @@ namespace MentorBooking.Service.Services
             foreach (var item in allUsers)
             {
                 var aMentor=await _mentorRepository.GetMentorByIdAsync(item.Id);
+                var allSession = _sessionRepository.GetAllMentorSupportSessionAsync(item.Id);
+                var allFeedback= _feedbackRepository.GetAllMentorFeedbacksAsync(item.Id);
+                var allSkill = _mentorSkillRepository.GetMentorSkillByIdAsync(item.Id);
+                var allMentorSkill = new List<string>();
+                foreach(var skill in allSkill)
+                {
+                    var askill = await _skillRepository.GetSkillByIdAsync(skill.SkillId);
+                    allMentorSkill.Add(askill.Name);
+                }    
+                var rating = 0;
+                var sessionCount = 0;
+                if (allFeedback != null)
+                {
+                    foreach (var rate in allFeedback)
+                    {
+                        rating = rating + rate.Rating;
+                    }
+                    rating=rating/allFeedback.Count();
+                    sessionCount= allFeedback.Count();
+                }    
                 if(aMentor != null)
                 {
                     ApiResponse response = new ApiResponse()
@@ -81,6 +110,9 @@ namespace MentorBooking.Service.Services
                         {
                             MentorId = aMentor.UserId,
                             UserName = item.UserName,
+                            CountSession=sessionCount,
+                            Ratings = rating,
+                            Skills=allMentorSkill,
                             CreateAt = aMentor.CreateAt
                         }
                     };
@@ -141,16 +173,21 @@ namespace MentorBooking.Service.Services
             foreach (var item in allUsers)
             {
                 var aStudent = await _studentRepository.GetStudentByIdAsync(item.Id);
+                var aStudentPoint = await _userPointRepository.GetUserPoint(item.Id);
+                var AcountGroup = _studentGroupRepository.GetListStudentInGroup(item.Id);
                 if(aStudent != null)
                 {
                     ApiResponse response = new ApiResponse()
                     {
                         Status = "Succes",
                         Message = "Found",
-                        Data = new MentorUserResponse()
+                        Data = new StudentUserResponse()
                         {
-                            MentorId = aStudent.UserId,
+                            StudentId = aStudent.UserId,
                             UserName = item.UserName,
+                            Email = item.Email,
+                            PointBalance = aStudentPoint.PointsBalance,
+                            countGroup = AcountGroup.Count(),
                             CreateAt = aStudent.CreateAt
                         }
                     };

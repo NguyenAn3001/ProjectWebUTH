@@ -10,12 +10,17 @@ document.addEventListener('click', (event) => {
     menu.classList.remove('active');
   }
 })
-
 function fetchUserInfo() {
   const accessToken = localStorage.getItem('accessToken'); // Lấy token từ localStorage
   console.log("Access Token:", accessToken);
 
-  fetch("http://localhost:5076/api/UserProfiles/my-student-profiles", {
+  if (!accessToken) {
+    console.error("Access token is missing. Please log in.");
+    alert("Bạn cần đăng nhập để lấy thông tin người dùng.");
+    return;
+  }
+
+  fetch("http://localhost:5076/api/UserProfiles/my-mentor-profiles", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -44,15 +49,28 @@ function fetchUserInfo() {
         console.log("User data:", user);
 
         // Hiển thị thông tin người dùng
-        document.getElementById("name-user").textContent = user.name;
-      }
+        document.getElementById("name-user").textContent = user.name
+        document.getElementById("profile-details").style.display = "grid";
+        document.getElementById("add-profile").style.display = "none";
+        
 
+        // Hiển thị studentID vào userID-Display
+        document.getElementById("userId-display").textContent = user.mentorId; // Xuất studentID
+      } else {
+        // Không có dữ liệu hợp lệ
+        console.error("Invalid API response:", data.message);
+        document.getElementById("profile-details").style.display = "none";
+        document.getElementById("add-profile").style.display = "grid";
+      }
     })
     .catch((error) => {
       console.error("Error fetching user profile:", error);
       console.log(error.message);
     });
 }
+
+// Gọi hàm fetchUserInfo() khi trang load
+document.addEventListener("DOMContentLoaded", fetchUserInfo);
 
 // Gọi hàm fetchUserInfo() khi trang load
 document.addEventListener("DOMContentLoaded", fetchUserInfo);

@@ -12,6 +12,10 @@
   gap: 1rem;
 }
 
+#profile-details{
+  display: grid;
+}
+
  .info-form .form-group {
   gap:1rem; 
 }

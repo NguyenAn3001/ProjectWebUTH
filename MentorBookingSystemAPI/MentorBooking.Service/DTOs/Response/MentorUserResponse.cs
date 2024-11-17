@@ -10,7 +10,11 @@ namespace MentorBooking.Service.DTOs.Response
     {
         public Guid MentorId { get; set; }
         public string UserName {  get; set; }
-        public string Password { get; set; }
+        public int CountSession { get; set; }
+        public List<string>? Skills { get; set; } = new List<string>();
+        public int Ratings { get; set; }
         public DateTime CreateAt { get; set; }
+       
+
     }
 }

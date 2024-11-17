@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="../../../css/common/components.css">
   <link rel="stylesheet" href="../../../css/student/drop-down.css">
   <link rel="stylesheet" href="../../../css/student/edit-info.css">
-  <link rel="stylesheet" href="../../../css/style.css">
   <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
 
 </head>
@@ -26,7 +25,7 @@
       <div class="icon">
       <div class="calendarNav">
         <div class="calendar">
-          <a href="../../../views/student/profile/schedule.html">
+          <a href="../../../views/mentor/profile/schedule.html">
             <i class="ri-calendar-line"></i>
             <span class="schedule-text">Schedule</span>
         </a>
@@ -35,7 +34,7 @@
       </div>
       <div class="walletNav">
         <div class="wallet">
-          <a href="../../../views/student/profile/wallet.html">
+          <a href="../../../views/mentor/profile/wallet.html">
           <i class="ri-wallet-line"></i>
           <span class="wallet-text">Wallet</span>
         </a>
@@ -49,41 +48,46 @@
         <div class="menu">
           <h3 id="username-display">
             <!-- <img src="../../assets/avt.jpg" alt="user avt"> -->
-            <span id="name-user">Name</span>
-            <br><span>Student</span>
+            <span id="name-user">Name</span><br><span>Mentor</span>
           </h3>
           <ul>
-            <li class="registerMentor"><img src="../../../assets/svg/drop-down/r-mentor.svg"><a href="../../../views/auth/register.html">Register as a mentor</a></li>
             <li><img src="../../../assets/svg/drop-down/home.svg"><a href="../profile/personal-info.html">Home</a></li>
-            <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="info-user.html">My Profile</a></li>
-            <li class="group"><img src="../../../assets/svg/drop-down/group.svg" ><a href="../projects/group-details.html">Group</a></li>
+            <li><img src="../../../assets/svg/drop-down/profile.svg"><a >My Profile</a></li>
             <li><img src="../../../assets/svg/drop-down/log-out.svg"><a href="../../../index.html">Log Out</a></li>
           </ul>
         </div>
       </div>
   </nav>
   <div class="form-container">
-    <form class="info-form" onsubmit="saveUserInfo(event)" id="updateStudentForm">
-      <h2>Personal information</h2>
-      <div class="form-group">
-        <label for="firstName">First name:</label>
-        <input type="text" id="studentFirstName" name="firstName" required />
-      </div>
-      <div class="form-group">
-        <label for="lastName">Last name:</label>
-        <input type="text" id="studentLastName" name="lastName" required />
-      </div>
-      <div class="form-group">
-        <label for="phone">Number phone:</label>
-        <input type="text" id="studentPhone" name="phone" required />
-      </div>
-      <div class="form-group full-width">
-        <button type="submit">Update</button>
-      </div>
+    <form class="info-form">
+              <h2>Personal information</h2>
+              <div class="form-group" id="profile-details">
+                  <!-- Phần thông tin người dùng sẽ được hiển thị ở đây nếu có dữ liệu -->
+  
+                  <p><strong>Name:</strong> <span id="name-display"></span></p>
+                  <p><strong>Phone:</strong> <span id="phone-display"></span></p>
+                  <p><strong>Experience years:</strong> <span id="experien-display"></span></p>
+                  <p><strong>Mentor description:</strong> <span id="description-display"></span></p>
+                  <p><strong>Skills:</strong> <span id="skills-display"></span></p>
+                  <p><strong>MentorId:</strong> <span id="userId-display"></span></p>
+                  
+                  <div class="group__btn">
+                    <a href="edit-info.html" class="btn-hover add-profile-btn" style="flex:1;">Edit profile</a>
+                    <a href="add-avatar.html" class="btn-hover" style="flex:1;">Add avatar</a>
+                  </div>
+  
+                </div>
+            
+        
+            <!-- Nút Add Profile, hiển thị khi không có dữ liệu -->
+            <div class="add-profile" id="add-profile" style="display: none;">
+              <p>No profile data available.</p>
+              <a href="edit-info.html" class="btn-hover add-profile-btn">Add Profile</a>
+            </div>
     </form>
   </div>
-<script src="../../../js/student/drop-down.js"></script>
-<script src="../../../js/student/edit-info.js"></script>
-<script src="../../../js/student/info.js"></script>
+
+<script src="../../../js/mentor/drop-down.js"></script>
+<script src="../../../js/mentor/info.js"></script>
 </body>
 </html>

@@ -81,22 +81,16 @@ async function fetchStudentList() {
                 
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${student.mentorId}</td>
-                    <td>${student.userName || '-'}</td>
-                    <td>${student.userName}@email.com</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td>${student.studentId}</td>
+                    <td>${student.userName || "-"}</td>
+                    <td>${student.email}</td>
+                    <td>${student.countGroup}</td>
+                    <td>${student.pointBalance}</td>
                 `;
                 studentTableBody.appendChild(row);
             }
         });
 
-        // Cập nhật tổng số học sinh trong card thống kê
-        const totalStudents = students.filter(item => item.status === "Succes").length;
-        document.querySelector('.stat-card:first-child h3').textContent = `Total number of students: ${totalStudents}`;
-        
-        // Cập nhật biểu đồ tròn nếu cần
-        updatePieChart(totalStudents);
         
     } catch (error) {
         console.error('Error fetching student list:', error);
@@ -177,13 +171,6 @@ async function fetchMentorList() {
                 mentorTableBody.appendChild(row);
             }
         });
-
-        // Cập nhật tổng số mentor trong card thống kê
-        const totalMentors = mentors.filter(item => item.status === "Succes").length;
-        const mentorStatsCard = document.querySelector('.stat-card:nth-child(3) h3');
-        if (mentorStatsCard) {
-            mentorStatsCard.textContent = `Total number of mentors: ${totalMentors}`;
-        }
 
         // Cập nhật biểu đồ đường cho mentor
         updateMentorLineChart(totalMentors);
@@ -274,16 +261,6 @@ function sortTable(table, column) {
     rows.forEach(row => tbody.appendChild(row));
 }
 
-// Thêm hàm refresh data
-function setupRefreshButton() {
-  const refreshBtn = document.createElement("button");
-  refreshBtn.className = "refresh-btn";
-  refreshBtn.innerHTML = '<i class="fas fa-sync"></i> Refresh Data';
-  refreshBtn.onclick = initializeDashboard;
-
-  document.querySelector(".header-controls").prepend(refreshBtn);
-}
-
 // Event listeners
 document.addEventListener("DOMContentLoaded", () => {
   initializeDashboard();
@@ -308,4 +285,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
