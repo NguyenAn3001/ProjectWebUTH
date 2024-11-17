@@ -16,16 +16,10 @@ async function saveGroup() {
         return;
     }
 
-    const members = [];
-    // Chuyển các email thành viên từ danh sách thành viên vào mảng
-    memberListElement.querySelectorAll('p').forEach(member => {
-        members.push({ email: member.textContent.trim() });
-    });
-
     const requestBody = {
         groupName: groupName,
         topic: projectTopic,
-        members: members // Mảng thành viên được thêm vào
+        members: [] // Khi tạo nhóm lần đầu không có thành viên
     };
 
     const token = localStorage.getItem('accessToken');
@@ -70,11 +64,7 @@ async function editGroup(groupId) {
             const groupData = await response.json();
             groupNameInput.value = groupData.groupName;
             projectTopicInput.value = groupData.topic;
-
-            // Hiển thị danh sách thành viên
-            memberListElement.innerHTML = groupData.members.map(member => {
-                return `<p>${member.email}</p>`;  // Chuyển thành phần danh sách thành viên vào <p> element
-            }).join('');
+            memberListElement.innerHTML = groupData.members.map(member => `${member.name} (${member.email})`).join(', ');
 
             // Hiển thị email và nút Add member nếu đang ở chế độ chỉnh sửa
             emailGroupDiv.style.display = 'block';
@@ -91,74 +81,3 @@ async function editGroup(groupId) {
         alert('Error connecting to the server.');
     }
 }
-
-// Kiểm tra nhóm đã tồn tại và hiển thị form thêm thành viên
-async function checkIfGroupExists() {
-    const groupId = localStorage.getItem('editGroupId');
-    if (!groupId) {
-        emailGroupDiv.style.display = 'none';  // Ẩn form thêm thành viên nếu chưa có nhóm
-        addMemberBtn.style.display = 'none';  // Ẩn nút Add member
-        return;
-    }
-
-    const token = localStorage.getItem('accessToken');
-
-    try {
-        const response = await fetch(`http://localhost:5076/api/group/${groupId}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-
-        if (response.ok) {
-            const groupData = await response.json();
-
-            if (groupData.members.length > 0) {
-                memberListElement.innerHTML = groupData.members.map(member => `<p>${member.email}</p>`).join('');
-            }
-
-            // Hiển thị form và nút "Thêm thành viên" nếu nhóm tồn tại
-            emailGroupDiv.style.display = 'block';
-            addMemberBtn.style.display = 'inline-block';
-        } else {
-            const errorData = await response.json();
-            alert(`Error: ${errorData.message || 'Unable to fetch group data!'}`);
-        }
-    } catch (error) {
-        console.error(error);
-        alert('Error connecting to the server.');
-    }
-}
-
-// Thêm thành viên vào nhóm
-function addMember() {
-    const email = emailInput.value.trim();
-
-    if (!email) {
-        alert('Please enter a member email!');
-        return;
-    }
-
-    // Hiển thị thành viên đã thêm vào danh sách
-    const newMember = document.createElement('p');
-    newMember.textContent = email;
-    memberListElement.appendChild(newMember);
-
-    // Làm trống trường nhập email sau khi thêm
-    emailInput.value = '';
-}
-
-// Khi trang được tải, kiểm tra xem nhóm có tồn tại không
-window.onload = function() {
-    checkIfGroupExists();  // Kiểm tra xem nhóm đã tồn tại hay chưa
-    
-    const editGroupId = localStorage.getItem('editGroupId');
-    if (editGroupId) {
-        editGroup(editGroupId);  // Nếu có groupId, chế độ chỉnh sửa
-    } else {
-        emailGroupDiv.style.display = 'none';  // Chỉ ẩn email khi tạo nhóm lần đầu
-        addMemberBtn.style.display = 'none';  // Ẩn nút thêm thành viên
-    }
-};
