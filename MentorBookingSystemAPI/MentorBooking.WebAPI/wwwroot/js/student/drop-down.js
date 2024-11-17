@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.error(`Lỗi HTTP! Mã trạng thái: ${response.status}`);
       const errorData = await response.json();
       console.error(errorData); // Log detailed error message from server
-      alert('Không thể tải ảnh đại diện từ máy chủ.');
+      console.log('Không thể tải ảnh đại diện từ máy chủ.');
       return;
     }
 
@@ -96,10 +96,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       avatarImage.src = data.imageUrl; // Update avatar image if successful
       console.log('Ảnh đại diện đã được cập nhật thành công!');
     } else {
-      alert('Không thể lấy ảnh đại diện. Lỗi từ máy chủ.');
+      console.log('Không thể lấy ảnh đại diện. Lỗi từ máy chủ.');
     }
   } catch (error) {
     console.error('Lỗi khi tải ảnh đại diện:', error);
-    alert('Đã xảy ra lỗi khi tải ảnh đại diện.');
+    console.log('Đã xảy ra lỗi khi tải ảnh đại diện.');
   }
 });

@@ -39,11 +39,15 @@ function fetchUserInfo() {
           // Hiển thị thông tin người dùng
           document.getElementById("name-display").textContent = user.name;
           document.getElementById("phone-display").textContent = user.phone;
+          document.getElementById("experien-display").textContent = user.experienceYears;
+          document.getElementById("description-display").textContent = user.mentorDescription;
+          document.getElementById("skills-display").textContent = user.skills;
           document.getElementById("profile-details").style.display = "grid";
           document.getElementById("add-profile").style.display = "none";
+          
   
           // Hiển thị studentID vào userID-Display
-          document.getElementById("userId-display").textContent = user.studentId; // Xuất studentID
+          document.getElementById("userId-display").textContent = user.mentorId; // Xuất studentID
         } else {
           // Không có dữ liệu hợp lệ
           console.error("Invalid API response:", data.message);

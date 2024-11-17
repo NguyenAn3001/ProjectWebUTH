@@ -117,7 +117,7 @@
           <ul>
             <li class="registerMentor"><img src="../../../assets/svg/drop-down/r-mentor.svg"><a href="../../../views/auth/register.html">Register as a mentor</a></li>
             <li><img src="../../../assets/svg/drop-down/home.svg"><a href="../profile/personal-info.html">Home</a></li>
-            <li><img src="../../../assets/svg/drop-down/profile.svg"><a >My Profile</a></li>
+            <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="info-user.html">My Profile</a></li>
             <li class="group"><img src="../../../assets/svg/drop-down/group.svg" ><a href="../projects/group-details.html">Group</a></li>
             <li><img src="../../../assets/svg/drop-down/log-out.svg"><a href="../../../index.html">Log Out</a></li>
           </ul>
@@ -201,7 +201,7 @@
       if (contentType && contentType.includes('application/json')) {
         const result = await response.json();
         alert('Ảnh đã được tải lên thành công!');
-        window.location.href = "info-user.html";
+        window.location.href = "./info-user.html";
         console.log(result);
       } else {
         alert('Tải lên thành công, nhưng phản hồi không phải là JSON.');
