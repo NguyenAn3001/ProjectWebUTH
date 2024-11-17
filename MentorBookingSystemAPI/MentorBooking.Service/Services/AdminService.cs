@@ -1,4 +1,5 @@
-﻿using MentorBooking.Repository.Interfaces;
+﻿using MentorBooking.Repository.Entities;
+using MentorBooking.Repository.Interfaces;
 using MentorBooking.Service.DTOs.Response;
 using MentorBooking.Service.Interfaces;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MentorBooking.Service.Services
 {
@@ -35,6 +37,41 @@ namespace MentorBooking.Service.Services
             _feedbackRepository = mentorFeedbackRepository;
             _skillRepository = skillRepository;
             _mentorSkillRepository= mentorSkillRepository;
+        }
+
+        public async Task<List<ApiResponse>> AllFeedback()
+        {
+            var allUsers = _userRepository.GetAllUser();
+            var listApiResponse = new List<ApiResponse>();
+            foreach(var item in allUsers)
+            {
+                var aMentorFeedback = _feedbackRepository.GetAllMentorFeedbacksAsync(item.Id);
+                if(aMentorFeedback != null)
+                {
+                    foreach(var feedback in  aMentorFeedback)
+                    {
+                        var aStudent = await _userRepository.FindByIdAsync(feedback.StudentId.ToString());
+                        ApiResponse response = new ApiResponse()
+                        {
+                            Status = "Success",
+                            Message="Found",
+                            Data=new StudentCommentResponse()
+                            {
+                                MentorId=item.Id,
+                                FeedbackId=feedback.FeedbackId,
+                                SessionId=feedback.SessionId,
+                                StudentId=feedback.StudentId,
+                                StudentName=aStudent.FirstName +" "+ aStudent.LastName,
+                                Comment=feedback.Comment,
+                                Rating=feedback.Rating,
+                                CreateAt=feedback.CreateAt,
+                            }
+                        };
+                        listApiResponse.Add(response);
+                    }    
+                }    
+            } 
+            return listApiResponse;
         }
 
         public async Task<ApiResponse> DeletePointTransaction(Guid PointTransactionId)
@@ -122,19 +159,42 @@ namespace MentorBooking.Service.Services
             return listApiResponse;
         }
 
-        public List<ApiResponse> GetAllPointTransactions()
+        public List<ApiResponse> GetAllPointTransactionsDecrease()
         {
             var allPointTransaction = _userPointRepository.GetAllPointTransaction();
             var listApiResponse = new List<ApiResponse>();
             foreach (var item in allPointTransaction)
             {
-                ApiResponse response = new ApiResponse()
+                if (!item.TransactionType)
                 {
-                    Status = "Succes",
-                    Message = "Found",
-                    Data = item
-                };
-                listApiResponse.Add(response);
+                    ApiResponse response = new ApiResponse()
+                    {
+                        Status = "Succes",
+                        Message = "Found",
+                        Data = item
+                    };
+                    listApiResponse.Add(response);
+                }
+            }
+            return listApiResponse;
+        }
+
+        public List<ApiResponse> GetAllPointTransactionsIncrease()
+        {
+            var allPointTransaction = _userPointRepository.GetAllPointTransaction();
+            var listApiResponse = new List<ApiResponse>();
+            foreach (var item in allPointTransaction)
+            {
+                if(item.TransactionType)
+                {
+                    ApiResponse response = new ApiResponse()
+                    {
+                        Status = "Succes",
+                        Message = "Found",
+                        Data = item
+                    };
+                    listApiResponse.Add(response);
+                }    
             }
             return listApiResponse;
         }
