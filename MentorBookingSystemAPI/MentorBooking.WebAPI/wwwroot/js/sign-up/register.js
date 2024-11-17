@@ -74,7 +74,6 @@ function register(event) {
         }
     })
     .finally(() => {
-        // Re-enable submit button
         submitButton.disabled = false;
     });
 }

@@ -12,20 +12,24 @@
     <div class="container">
         <div class="header">
             <!-- Tiêu đề cho số dư ví -->
-            <div class="wallet-subtitle">Available balance</div>
-            <div id="points"></div><!-- Cập nhật id để dễ dàng thao tác -->
+            <div class="wallet-info">
+                <h3>Your Wallet</h3>
+                <p id="walletBalance">Loading...</p>  <!-- Sẽ thay đổi khi có dữ liệu -->
+            </div>
         </div>
         <div class="add-points">
             <!-- Tiêu đề cho phần nạp điểm -->
             <h3>Top up points</h3>
             <input type="number" id="points-input" placeholder="Enter the points you want to add" min="1" />
-            <button onclick="handleTopUp()">Top up points</button>
+            <button>Top up points</button>
+            <div id="loading" style="display: none;">
+                <p>Loading...</p>
+                <div class="spinner"></div>
+            </div>
             <!-- Hiển thị lỗi nếu có -->
             <div id="error-message" style="color: red; margin-top: 5px;"></div>
         </div>
     </div>
-    
-
     
     <div class="transactions">
         <div class="section-header">
