@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
-    <link rel="stylesheet" href="../../css/sign-up/login.css" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="../../assets/svg/mb-favicon.svg">
+    <link rel="stylesheet" href="../../css/sign-up/login.css">
 </head>
 <body>
     <div class="section">
@@ -34,7 +34,7 @@
                                                 <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpassLogin" autocomplete="off">
                                                 <i class="input-icon ri-lock-line"></i>
                                             </div>
-                                            <a href="#" class="btn mt-4" onclick="validateLogin()">Login</a>
+                                            <a href="#" class="btn mt-4" onclick="login(event)">Login</a>
                                         </div>
                                     </div>
                                 </div>
@@ -59,10 +59,20 @@
                                                 <input type="password" name="confirmPass" class="form-style" placeholder="Confirm Password" id="confirmPass" autocomplete="off">
                                                 <i class="input-icon ri-lock-line"></i>
                                             </div>
-                                            <a href="#" class="btn mt-4" onclick="validateSignup()">Sign up</a>
+                                            <!-- Vai trò của người dùng -->
+                                            <div class="form-group mt-2">
+                                                <select name="roleName" id="roleName" class="form-style">
+                                                    <option value="">Select Role</option>
+                                                    <option value="Student">Student</option>
+                                                    <option value="Mentor">Mentor</option>
+                                                    <option value="Admin">Admin</option>
+                                                </select>
+                                                <i class="input-icon ri-user-settings-line"></i>
+                                            </div>
+                                            <a href="#" class="btn mt-4" onclick="register(event)">Sign up</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                
                             </div>
                         </div>
                     </div>
@@ -70,6 +80,68 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Student -->
+<div id="studentUpdateModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000;">
+    <div class="center-wrap" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 500px;">
+        <div class="section" style="background-color: white; padding: 2rem; border-radius: 10px;">
+            <h4 class="mb-4 pb-3">Update Student Information</h4>
+            <form id="updateStudentForm">
+                <div class="form-group">
+                    <input type="text" class="form-style" placeholder="Your First Name" id="studentFirstName" required>
+                    <i class="input-icon ri-user-line"></i>
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" class="form-style" placeholder="Your Last Name" id="studentLastName" required>
+                    <i class="input-icon ri-user-line"></i>
+                </div>
+                <div class="form-group mt-2">
+                    <input type="tel" class="form-style" placeholder="Your Phone Number" id="studentPhone" required>
+                    <i class="input-icon ri-phone-line"></i>
+                </div>
+                <button type="submit" class="btn mt-4">Update Information</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Mentor -->
+<div id="mentorUpdateModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000;">
+    <div class="center-wrap" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 500px;">
+        <div class="section" style="background-color: white; padding: 2rem; border-radius: 10px;">
+            <h4 class="mb-4 pb-3">Update Mentor Information</h4>
+            <form id="updateMentorForm">
+                <div class="form-group">
+                    <input type="text" class="form-style" placeholder="Your First Name" id="mentorFirstName" required>
+                    <i class="input-icon ri-user-line"></i>
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" class="form-style" placeholder="Your Last Name" id="mentorLastName" required>
+                    <i class="input-icon ri-user-line"></i>
+                </div>
+                <div class="form-group mt-2">
+                    <input type="tel" class="form-style" placeholder="Your Phone Number" id="mentorPhone" required>
+                    <i class="input-icon ri-phone-line"></i>
+                </div>
+                <div class="form-group mt-2">
+                    <input type="number" class="form-style" placeholder="Years of Experience" id="experienceYears" required>
+                    <i class="input-icon ri-briefcase-line"></i>
+                </div>
+                <div class="form-group mt-2">
+                    <textarea class="form-style" placeholder="Brief Description About Yourself" id="mentorDescription" required></textarea>
+                    <i class="input-icon ri-file-list-line"></i>
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" class="form-style" placeholder="Skills (comma-separated)" id="skills" required>
+                    <i class="input-icon ri-tools-line"></i>
+                </div>
+                <button type="submit" class="btn mt-4">Update Information</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 
     <!-- Mentor Modal -->
 <div id="mentorModal" class="modal">
@@ -82,8 +154,8 @@
         </div>
     </div>
 </div>
-
     <script src="../../js/sign-up/login.js"></script>
+    <script src="../../js/sign-up/register.js"></script>
 </body>
 </html>
 

@@ -2,6 +2,7 @@
 using MentorBooking.Repository.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using MentorBooking.Repository.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace MentorBooking.Repository.Repositories
 {
@@ -51,6 +52,13 @@ namespace MentorBooking.Repository.Repositories
         public async Task<IList<string>> GetRolesByUserAsync(Users users)
         {
             return await _userManager.GetRolesAsync(users);
+        }
+
+        public async Task<string> GetRoleOfUser(Users users)
+        {
+            var userRole = _dbContext.UserRoles.SingleOrDefault(x => x.UserId == users.Id)!;
+            var roleName = await _dbContext.Roles.SingleOrDefaultAsync(x => x.Id == userRole.RoleId);
+            return roleName?.Name!;
         }
 
         public async Task<bool> RoleExistsAsync(string roleName)

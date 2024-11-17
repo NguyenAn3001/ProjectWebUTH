@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Search </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/student/search-and-filter.css">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+
+</head>
+<body>
+    <button id="backButton" onclick="goBack()">Back</button>
+
+    <h1>Search Mentors</h1>
+
+    <div>
+        <!-- Input for search keyword -->
+        <input id="searchTextInput" type="text" placeholder="Enter keyword or name" />
+        <!-- Button to trigger search -->
+        <button onclick="handleSearch()">Search</button>
+    </div>
+
+    <div>
+        <h3>Filter by Skills</h3>
+        <select id="skillsFilter">
+            <option value="">All Skills</option>
+            <option value="C#">C#</option>
+            <option value="C++">C++</option>
+            <option value="PHP">PHP</option>
+            <option value="Python">Python</option>
+            <option value="C">C</option>    
+            <option value="JS">Javascript</option>
+            <option value="Java">Java</option>  
+            <option value="Html/css">Html/Css</option>
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+            <option value="fullstack">Fullstack</option>
+            <!-- Add more skills as options here -->
+        </select>
+    </div>
+
+    <div id="mentorList">
+        <!-- Mentor results will be displayed here -->
+    </div>
+
+    <div id="pagination">
+        <!-- Pagination controls will be displayed here -->
+    </div>
+    <div id="mentorList"></div>
+<div id="mentorDetails" style="display:none;"></div>
+
+    
+
+    <script src="../../../js/student/search-and-filter.js"></script>
+</body>
+</html>

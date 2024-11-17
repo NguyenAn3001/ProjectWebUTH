@@ -19,7 +19,7 @@ public class InformationUserController : ControllerBase
     {
         _updateInformationService = updateInformationService;
     }
-    [Authorize(Roles = "Admin, Mentor")]
+    [AllowAnonymous]
     [HttpPost("mentor")]
     public async Task<IActionResult> MentorInformationUpdate(Guid mentorId, [FromBody] MentorInformationModelRequest mentorInformationModel)
     {
@@ -39,7 +39,7 @@ public class InformationUserController : ControllerBase
             _ => Ok(updateInfoResponse)
         };
     }
-    [Authorize(Roles = "Admin, Student")]
+    [AllowAnonymous]
     [HttpPost("student")]
     public async Task<IActionResult> StudentInformationUpdate(Guid studentId, [FromBody] StudentInformationModelRequest studentInformationModel)
     {

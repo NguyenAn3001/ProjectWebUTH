@@ -11,7 +11,8 @@
     <link rel="stylesheet"  href="../../../css/index.css" />
     <link rel="icon" href="../../assets/favicon-32x32.png" type="image/x-icon">
     <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
-    <title>Mentor Booking | System</title>
+    <link rel="stylesheet" href="../../../css/mentor/personal-info.css">
+    <title>MB | Mentor Booking</title>
   </head>
   <body>
     <header class="header">
@@ -64,151 +65,138 @@
           </div>
       </nav>
       <div class="section__container header__container" id="home">
-          <h1>Book a mentor,<br> unlock your potential</h1>
-          <p>
-              Connect with experienced mentors to unlock your potential, boost personal growth, and enhance teamwork skills.
-          </p>
-          <!-- Nút Sign up now -->
-          <!-- <div class="sign">
-              <a href="../page/signup.html">
-                  <button class="btn-hover btn-signup">Sign up now</button>
-              </a>
-          </div> -->
-          <form action="/">
-              <input type="text" placeholder="Search mentor's skills" />
-              <button><i class="ri-search-line"></i></button>
-          </form>
-          <a href="#choose"><i class="ri-arrow-down-double-line"></i></a>
-      </div>
-  </header>
-    <section class="section__container choose__container" id="choose">
-      <img class="choose__bg" src="../../../assets/images/dot-bg.png" alt="bg" />
-      <div class="choose__content">
-        <h2 class="section__header">How Effective Are We?</h2>
-        <p class="section__subheader">
-          Mentor Booking connects you with top experts, helping you unlock potential and 
-          reach your goals more effectively and efficiently
+        <h1>Share your expertise,<br> impact lives</h1>
+        <p>
+            Help shape the next generation of professionals by sharing your knowledge and experience through meaningful mentorship.
         </p>
-        <div class="choose__grid">
-          <div class="choose__card">
-            <span><i class="ri-presentation-line"></i></span>
-            <h4>200+ mentors</h4>
-            <p>
-              in diverse fields
-            </p>
+        <div class="mentor-stats">
+          <div class="stat-item">
+            <h3>24</h3>
+            <p>Active Students</p>
           </div>
-          <div class="choose__card">
-            <span><i class="ri-time-line"></i></span>
-            <h4>24-hours mentor matching</h4>
-            <p>
-              find your mentor quickly! 
-            </p>
+          <div class="stat-item">
+            <h3>156</h3>
+            <p>Hours Mentored</p>
           </div>
-          <div class="choose__card">
-            <span><i class="ri-customer-service-2-line"></i></span>
-            <h4>24/7 Support</h4>
-            <p>
-              Experience peace of mind knowing that our dedicated team is
-              available round the clock
-            </p>
-          </div>
-          <div class="choose__card">
-            <span><i class="ri-line-chart-line"></i></span>
-            <h4>85%</h4>
-            <p>
-              improved skills and reached goals in 3 months.            
-            </p>
+          <div class="stat-item">
+            <h3>4.9</h3>
+            <p>Rating</p>
           </div>
         </div>
-      </div>
-      <div class="choose__image">
-        <img src="../../../assets/images/p1.jpg" alt="choose" />
-      </div>
-    </section>
-    
-    <div id="card-area">
-        <div class="titleMentor">
-          <h2>Most Sought-After Mentors</h2>
-        </div>
-        <div class="wrapper">
-          <div class="box-area">
-            <div class="box">
-              
-              <img alt="" src="../../../assets/images/mentor1.jpg">
-              <div class="overlay">
-                <h3>Dong Hil</h3>
-                <p>Skill</p>
-                <ul>
-                  <li>Software Development</li>
-                  <li>Project Management</li>
-                  <li>Programming Languages: Python, Java, JavaScript</li>
-                </ul>
-                <a href="../wwwroot/views/auth/login.html">Book Now</a>
-              </div>
+        <a href="#dashboard"><i class="ri-arrow-down-double-line"></i></a>
+    </div>
+  </header>
+
+  <!-- <section class="section__container dashboard__container" id="dashboard">
+    <div class="dashboard__content">
+      <h2 class="section__header">Your Mentor Dashboard</h2>
+      <div class="dashboard__grid">
+        <div class="dashboard__card upcoming">
+          <h3>Upcoming Sessions</h3>
+          <div class="session-list">
+            <div class="session-item">
+              <div class="time">10:00 AM - Today</div>
+              <div class="student">Sarah Johnson</div>
+              <div class="topic">Web Development Basics</div>
             </div>
-            <div class="box">
-              <img alt="" src="../../../assets/images/mentor2.jpg">
-              <div class="overlay">
-                <h3>Dong Hil</h3>
-                <p>Skill</p>
-                <ul>
-                  <li>Software Development</li>
-                  <li>Project Management</li>
-                  <li>Programming Languages: Python, Java, JavaScript</li>
-                </ul>
-                <a href="../wwwroot/views/auth/login.html">Book Now</a>
-              </div>
+            <div class="session-item">
+              <div class="time">2:30 PM - Today</div>
+              <div class="student">Mike Chen</div>
+              <div class="topic">JavaScript Advanced Concepts</div>
             </div>
-            <div class="box">
-              <img alt="" src="../../../assets/images/mentor3.jpg">
-              <div class="overlay">
-                <h3>Dong Hil</h3>
-                <p>Skill:</p>
-                <ul>
-                  <li>Software Development</li>
-                  <li>Project Management</li>
-                  <li>Programming Languages: Python, Java, JavaScript</li>
-                </ul>
-                <a href="../../../views/auth/login.html">Book Now</a>
-              </div>
+            <div class="session-item">
+              <div class="time">11:00 AM - Tomorrow</div>
+              <div class="student">Emily Davis</div>
+              <div class="topic">Career Guidance</div>
             </div>
           </div>
         </div>
-      </div>
-    <footer class="footer">
-      <div class="section__container footer__container">
-        <div class="footer__content">
-          <h4>STAY CONNECTED WITH OUR MENTOR COMMUNITY</h4>
-          <p>
-            Subscribe to receive valuable insights, tips, and the latest news on mentorship programs.
-            Enter your email to stay updated!
-          </p>
-        </div>
-        <div class="footer__form">
-          <form action="/">
-            <input type="text" placeholder="Enter your email" />
-            <button>Subscribe</button>
-          </form>
+        <div class="dashboard__card earnings">
+          <h3>Monthly Earnings</h3>
+          <div class="earnings-stats">
+            <div class="amount">$2,450</div>
+            <div class="growth">↑ 15% from last month</div>
+          </div>
+          <div class="hours-completed">
+            <p>48 hours completed this month</p>
+          </div>
         </div>
       </div>
-      <div class="section__container footer__bar">
-        <div class="footer__logo">
-          <h4><a href="#">MentorHub</a></h4>
-          <p>Copyright © 2024 MentorHub</p>
+    </div>
+  </section> -->
+
+  <section class="section__container reviews__container">
+    <h2 class="section__header">Recent Student Reviews</h2>
+    <div class="reviews__grid">
+      <div class="review__card">
+        <div class="student-info">
+          <img src="../../../assets/images/student1.jpg" alt="Student" />
+          <div class="info">
+            <h4>Alex Thompson</h4>
+            <div class="rating">★★★★★</div>
+          </div>
         </div>
-        <ul class="footer__nav">
-          <li class="footer__link"><a href="#">About Us</a></li>
-          <li class="footer__link"><a href="#">Become A Mentor</a></li>
-          <li class="footer__link"><a href="#">Contact Support</a></li>
-          <li class="footer__link"><a href="#">Privacy Policy</a></li>
-        </ul>
-        <ul class="footer_social">
-          <li class="footer__link"><a href="#"><i class="ri-instagram-line"></i></a></li>
-          <li class="footer__link"><a href="#"><i class="ri-facebook-fill"></i></a></li>
-          <li class="footer__link"><a href="#"><i class="ri-linkedin-fill"></i></a></li>
-        </ul>
+        <p>"Outstanding mentor! Their expertise in web development helped me land my dream job. The practical exercises and real-world examples were invaluable."</p>
       </div>
-    </footer>
+      <div class="review__card">
+        <div class="student-info">
+          <img src="../../../assets/images/student2.jpg" alt="Student" />
+          <div class="info">
+            <h4>Maria Garcia</h4>
+            <div class="rating">★★★★★</div>
+          </div>
+        </div>
+        <p>"Patient, knowledgeable, and always prepared. The mentoring sessions were perfectly structured and helped me understand complex concepts easily."</p>
+      </div>
+      <div class="review__card">
+        <div class="student-info">
+          <img src="../../../assets/images/student3.jpg" alt="Student" />
+          <div class="info">
+            <h4>David Kim</h4>
+            <div class="rating">★★★★☆</div>
+          </div>
+        </div>
+        <p>"Great at explaining difficult concepts in simple terms. Their industry insights were particularly helpful for my career transition."</p>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <footer class="footer">
+    <div class="section__container footer__container">
+      <div class="footer__content">
+        <h4>STRENGTHEN OUR MENTOR COMMUNITY</h4>
+        <p>
+          Stay updated with the latest teaching resources, mentoring best practices, and community news.
+          Subscribe to our mentor newsletter!
+        </p>
+      </div>
+      <div class="footer__form">
+        <form action="/">
+          <input type="text" placeholder="Enter your email" />
+          <button>Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="section__container footer__bar">
+      <div class="footer__logo">
+        <h4><a href="#">MentorHub</a></h4>
+        <p>Copyright © 2024 MentorHub</p>
+      </div>
+      <ul class="footer__nav">
+        <li class="footer__link"><a href="#">About Us</a></li>
+        <li class="footer__link"><a href="#">Mentor Guidelines</a></li>
+        <li class="footer__link"><a href="#">Contact Support</a></li>
+        <li class="footer__link"><a href="#">Privacy Policy</a></li>
+      </ul>
+      <ul class="footer_social">
+        <li class="footer__link"><a href="#"><i class="ri-instagram-line"></i></a></li>
+        <li class="footer__link"><a href="#"><i class="ri-facebook-fill"></i></a></li>
+        <li class="footer__link"><a href="#"><i class="ri-linkedin-fill"></i></a></li>
+      </ul>
+    </div>
+  </footer>
     <script src="../../../js/student/drop-down.js"></script>
   </body>
 </html>

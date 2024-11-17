@@ -170,7 +170,8 @@ namespace MentorBooking.Service.Services
                     Status = "Success",
                     Message = "Login successfully.",
                     AccessToken = accessToken,
-                    RefreshToken = refreshToken
+                    RefreshToken = refreshToken,
+                    Role = await _roleRepository.GetRoleOfUser(user)
                 };
             }
             catch (Exception ex)

@@ -1,21 +1,314 @@
-﻿<div class="reports-dashboard">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Thống kê buổi gặp</h5>
-                    <canvas id="meetingsChart"></canvas>
-                </div>
-            </div>
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+    <link rel="stylesheet" href="../../../css/admin/dashboard.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">ADMIN PANEL</div>
+            <a class="nav-item">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+            <a href="../users/student-list.html" class="nav-item">
+                <i class="fas fa-user-graduate"></i>
+                Student management
+            </a>
+            <a href="../users/mentor-list.html" class="nav-item">
+                <i class="fas fa-chalkboard-teacher"></i>
+                Mentor management
+            </a>
+            <a href="wallet-management.html" class="nav-item">
+                <i class="fas fa-coins"></i>
+                Wallet management
+            </a>
+            <a href="rating-list.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                Rating list
+            </a>
         </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Sử dụng điểm ví</h5>
-                    <canvas id="walletUsageChart"></canvas>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+                
+                <!-- New header controls -->
+                <div class="header-controls">
+                    <!-- Notifications -->
+                    <div class="header-icon" onclick="toggleNotifications()">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                        
+                        <!-- Notifications Panel -->
+                        <div class="notifications-panel" id="notificationsPanel">
+                            <div class="notifications-header">
+                                New notification
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">New student registration</div>
+                                    <div class="notification-time">5 minutes ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">New appointment</div>
+                                    <div class="notification-time">30 minutes ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-dropdown">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-name">Admin</div>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        
+                        <div class="dropdown-content">
+                            <a href="../../../index.html" class="dropdown-item" style="color: #e74c3c;">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Log out
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total number of students: 1,234</h3>
+                    <div class="pie-chart">
+                        <div class="pie-chart-value">
+                            <span>75%</span>
+                            <small>Active</small>
+                        </div>
+                    </div>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <span class="dot active"></span>
+                            <span>Studying (75%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="dot inactive"></span>
+                            <span>Suspended (25%)</span>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="stat-card">
+                    <h3>Monthly meeting: 456</h3>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar" style="height: 60%">
+                                <span class="bar-value">120</span>
+                            </div>
+                            <span class="bar-label">T1</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 75%">
+                                <span class="bar-value">150</span>
+                            </div>
+                            <span class="bar-label">T2</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 45%">
+                                <span class="bar-value">90</span>
+                            </div>
+                            <span class="bar-label">T3</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 48%">
+                                <span class="bar-value">96</span>
+                            </div>
+                            <span class="bar-label">T4</span>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="stat-card">
+                    <h3>Total number of mentors: 89</h3>
+                    <div class="line-chart">
+                        <div class="chart-lines">
+                            <div class="line-point" style="--x: 0%; --y: 20%">
+                                <span class="tooltip">15</span>
+                            </div>
+                            <div class="line-point" style="--x: 25%; --y: 40%">
+                                <span class="tooltip">30</span>
+                            </div>
+                            <div class="line-point" style="--x: 50%; --y: 60%">
+                                <span class="tooltip">45</span>
+                            </div>
+                            <div class="line-point" style="--x: 75%; --y: 80%">
+                                <span class="tooltip">60</span>
+                            </div>
+                            <div class="line-point" style="--x: 100%; --y: 100%">
+                                <span class="tooltip">89</span>
+                            </div>
+                        </div>
+                        <div class="chart-labels">
+                            <span>T1</span>
+                            <span>T2</span>
+                            <span>T3</span>
+                            <span>T4</span>
+                            <span>T5</span>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="stat-card">
+                    <h3>Wallet balance used: 7,890</h3>
+                    <div class="progress-stats">
+                        <div class="progress-item">
+                            <label>Learning</label>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                            <span>5,917</span>
+                        </div>
+                        <div class="progress-item">
+                            <label>Exchange</label>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 45%"></div>
+                            </div>
+                            <span>1,184</span>
+                        </div>
+                        <div class="progress-item">
+                            <label>Other</label>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 30%"></div>
+                            </div>
+                            <span>789</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+  <h2>Student List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Meetings</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>10243684-e691-4892-9c4e-08dcfa94d6df</td>
+        <td>usertest</td>
+        <td>usertest@email.com</td>
+        <td>5</td>
+        <td>$100</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-container">
+  <h2>Mentor List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Specialty</th>
+        <th>Students</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>55ef3ded-13a4-4981-34ba-08dcfa9df99c</td>
+        <td>mentortest</td>
+        <td>Programming</td>
+        <td>10</td>
+        <td>4.5/5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+            <!-- <div class="table-container">
+                <h2>Student list</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Number of meetings</th>
+                            <th>Wallet balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Trần Hil</td>
+                            <td>tdhil@email.com</td>
+                            <td>5</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Trần Hil</td>
+                            <td>tdhil@email.com</td>
+                            <td>3</td>
+                            <td>75</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-container">
+                <h2>Mentor list</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Major</th>
+                            <th>Student quantity</th>
+                            <th>Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>M001</td>
+                            <td>Kai Havertz</td>
+                            <td>Frontend</td>
+                            <td>15</td>
+                            <td>4.8/5</td>
+                        </tr>
+                        <tr>
+                            <td>M002</td>
+                            <td>Kai Cenat</td>
+                            <td>Backend</td>
+                            <td>12</td>
+                            <td>4.6/5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> -->
         </div>
     </div>
-    <!-- More report sections -->
-</div>
+    <script src="../../../js/admin/dashboard.js"></script>
+</body>
+</html>

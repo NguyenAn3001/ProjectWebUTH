@@ -1,26 +1,75 @@
-function addPoints() {
-    const input = document.getElementById("points-input");
-    const pointsToAdd = parseInt(input.value, 10);
-    const balanceElement = document.querySelector(".wallet-balance");
-    const errorMessage = document.getElementById("error-message");
-    let currentBalance = parseInt(balanceElement.textContent.split(" ")[0], 10);
+document.addEventListener("DOMContentLoaded", function () {
+    const userId = localStorage.getItem("userId");
+    const accessToken = localStorage.getItem("accessToken");
 
-    errorMessage.textContent = "";
-    if (!isNaN(pointsToAdd) && pointsToAdd > 0) {
-        currentBalance += pointsToAdd;
-        balanceElement.textContent = currentBalance + " points";
-        localStorage.setItem("currentBalance", currentBalance); 
-        input.value = ""; 
-    } else {
-        errorMessage.textContent="Please enter a valid points";
+    if (!accessToken) {
+        alert("Access token not found. Please log in again.");
+        window.location.href = "../../login.html";
+        return;
     }
-}
 
-document.addEventListener("DOMContentLoaded", function() {
-    const balanceElement = document.querySelector(".wallet-balance");
-    const savedBalance = localStorage.getItem("currentBalance");
-
-    if (savedBalance) {
-        balanceElement.textContent = savedBalance + " points";
+    function fetchBalance() {
+        fetch(`http://localhost:5076/api/wallet/check-balances?userId=${userId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Accept': '*/*'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "Success") {
+                    document.getElementById('walletBalance').innerText = `${data.data.points} points`;
+                } else {
+                    alert("Failed to fetch balance.");
+                }
+            })
+            .catch(error => {
+                alert("An error occurred while fetching balance.");
+            });
     }
+
+    fetchBalance();
+
+    document.querySelector("button").addEventListener('click', function (e) {
+        e.preventDefault();
+        const pointsToAdd = document.getElementById('points-input').value;
+
+        if (!pointsToAdd || pointsToAdd <= 0) {
+            document.getElementById('error-message').innerText = "Please enter a valid number of points.";
+            return;
+        }
+
+        const loadingIndicator = document.getElementById('loading');
+        loadingIndicator.style.display = 'block';
+
+        const topUpData = {
+            userId: userId,
+            points: pointsToAdd
+        };
+
+        fetch("http://localhost:5076/api/wallet/add-point", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+            body: JSON.stringify(topUpData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "Success") {
+                    fetchBalance();
+                    document.getElementById('error-message').innerText = "";
+                } else {
+                    document.getElementById('error-message').innerText = "Failed to top up points.";
+                }
+            })
+            .catch(error => {
+                document.getElementById('error-message').innerText = "An error occurred while topping up points.";
+            })
+            .finally(() => {
+                loadingIndicator.style.display = 'none';
+            });
+    });
 });

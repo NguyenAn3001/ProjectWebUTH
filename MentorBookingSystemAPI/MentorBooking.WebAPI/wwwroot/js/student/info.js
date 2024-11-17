@@ -1,19 +1,12 @@
-const profileButton = document.querySelector('.action .profile');
-const menu = document.querySelector('.action .menu');
-
-profileButton.addEventListener('click', (event) => {
-  event.stopPropagation(); 
-  menu.classList.toggle('active');
-});
-document.addEventListener('click', (event) => {
-  if (!menu.contains(event.target) && !profileButton.contains(event.target)) {
-    menu.classList.remove('active');
-  }
-})
-
 function fetchUserInfo() {
   const accessToken = localStorage.getItem('accessToken'); // Lấy token từ localStorage
   console.log("Access Token:", accessToken);
+
+  if (!accessToken) {
+    console.error("Access token is missing. Please log in.");
+    alert("Bạn cần đăng nhập để lấy thông tin người dùng.");
+    return;
+  }
 
   fetch("http://localhost:5076/api/UserProfiles/my-student-profiles", {
     method: "GET",
@@ -44,9 +37,19 @@ function fetchUserInfo() {
         console.log("User data:", user);
 
         // Hiển thị thông tin người dùng
-        document.getElementById("name-user").textContent = user.name;
-      }
+        document.getElementById("name-display").textContent = user.name;
+        document.getElementById("phone-display").textContent = user.phone;
+        document.getElementById("profile-details").style.display = "grid";
+        document.getElementById("add-profile").style.display = "none";
 
+        // Hiển thị studentID vào userID-Display
+        document.getElementById("userId-display").textContent = user.studentId; // Xuất studentID
+      } else {
+        // Không có dữ liệu hợp lệ
+        console.error("Invalid API response:", data.message);
+        document.getElementById("profile-details").style.display = "none";
+        document.getElementById("add-profile").style.display = "grid";
+      }
     })
     .catch((error) => {
       console.error("Error fetching user profile:", error);
