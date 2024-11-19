@@ -147,7 +147,7 @@
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "D:\\ProjectWebUTH\\MentorBookingSystemAPI\\MentorBooking.WebAPI\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-11-14T19:25:27.65Z",
               "EditorCaption": ""
@@ -162,8 +162,7 @@
               "RelativeToolTip": "..\\MentorBooking.Repository\\Migrations\\20241117161938_InitialCreate.Designer.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAD4vw4AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T01:58:08.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T01:58:08.425Z"
             },
             {
               "$type": "Document",

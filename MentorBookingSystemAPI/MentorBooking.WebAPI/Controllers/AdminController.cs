@@ -37,17 +37,29 @@ namespace MentorBooking.WebAPI.Controllers
             var allMentor=await _adminService.GetAllMentor();
             return Ok(allMentor);
         }
-        [HttpGet("get-all-point-trans")]
-        public async Task<IActionResult> GetAllPointTransaction()
+        [HttpGet("get-all-point-trans-increase")]
+        public async Task<IActionResult> GetAllPointTransactionIncrease()
         {
-            var allPointTrans = _adminService.GetAllPointTransactions();
+            var allPointTrans =await _adminService.GetAllPointTransactionsIncrease();
+            return Ok(allPointTrans);
+        }
+        [HttpGet("get-all-point-trans-decrease")]
+        public async Task<IActionResult> GetAllPointTransactionDecrease()
+        {
+            var allPointTrans =await _adminService.GetAllPointTransactionsDecrease();
             return Ok(allPointTrans);
         }
         [HttpGet("get-all-session")]
         public async Task<IActionResult> GetAllSession()
         {
-            var allSession = _adminService.GetAllSessions();
+            var allSession =_adminService.GetAllSessions();
             return Ok(allSession);
+        }
+        [HttpGet("get-all-rating")]
+        public async Task<IActionResult> AllFeedBack()
+        {
+            var allFeedback =await _adminService.AllFeedback();
+            return Ok(allFeedback);
         }
         [HttpDelete("delete-session")]
         public async Task<IActionResult> DeleteSession(Guid SessionId)

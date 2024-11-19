@@ -10,10 +10,12 @@ namespace MentorBooking.Service.Interfaces
     public interface IAdminService
     {
         List<ApiResponse> GetAllSessions();
-        List<ApiResponse> GetAllPointTransactions();
+        Task<List<ApiResponse>?> GetAllPointTransactionsIncrease();
+        Task<List<ApiResponse>?> GetAllPointTransactionsDecrease();
         Task<List<ApiResponse>> GetAllMentor();
         Task<List<ApiResponse>> GetAllStudent();
         Task<ApiResponse> DeletePointTransaction(Guid PointTransactionId);
         Task<ApiResponse> DeleteSession(Guid sessionId);
+        Task<List<ApiResponse>> AllFeedback();
     }
 }
