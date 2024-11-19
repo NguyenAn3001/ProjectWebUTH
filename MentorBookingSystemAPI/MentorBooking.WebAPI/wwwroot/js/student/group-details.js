@@ -115,34 +115,63 @@ function saveGroupToLocal(groupId, isEditing) {
 // Hàm xóa nhóm
 async function deleteGroup(groupId) {
     try {
-        const apiUrl = `http://localhost:5076/api/group/your-groups/${groupId}`;
-        const token = localStorage.getItem('accessToken'); // Lấy token từ localStorage
-
-        if (!token) {
-            console.error('Không tìm thấy access token');
-            return;
-        }
-
-        // Gửi yêu cầu xóa nhóm
-        const response = await fetch(apiUrl, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            }
+        // Hiển thị câu hỏi xác nhận với SweetAlert2
+        const result = await Swal.fire({
+            title: 'Bạn có chắc muốn xóa nhóm này?',
+            text: 'Hành động này không thể hoàn tác!',
+            icon: 'warning',
+            showCancelButton: true, // Hiển thị nút hủy
+            confirmButtonText: 'Có, xóa nhóm!',
+            cancelButtonText: 'Không, hủy bỏ!',
         });
 
-        // Kiểm tra nếu xóa không thành công
-        if (!response.ok) {
-            throw new Error(`Không thể xóa nhóm: ${response.statusText}`);
-        }
+        // Nếu người dùng nhấn 'Có, xóa nhóm!'
+        if (result.isConfirmed) {
+            const apiUrl = `http://localhost:5076/api/group/your-groups/${groupId}`;
+            const token = localStorage.getItem('accessToken'); // Lấy token từ localStorage
 
-        alert('Xóa nhóm thành công!');
-        window.location.reload(); // Tải lại trang
+            if (!token) {
+                console.error('Không tìm thấy access token');
+                return;
+            }
+
+            // Gửi yêu cầu xóa nhóm
+            const response = await fetch(apiUrl, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                }
+            });
+
+            // Kiểm tra nếu xóa không thành công
+            if (!response.ok) {
+                throw new Error(`Không thể xóa nhóm: ${response.statusText}`);
+            }
+
+            // Thông báo thành công với SweetAlert2
+            Swal.fire({
+                icon: 'success',
+                title: 'Xóa nhóm thành công!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+            window.location.reload(); // Tải lại trang
+        } else {
+            // Nếu người dùng nhấn 'Không, hủy bỏ!'
+            console.log('Hành động xóa nhóm đã bị hủy bỏ.');
+        }
     } catch (error) {
-        console.error('Lỗi khi xóa nhóm:', error);
+        // Thông báo lỗi với SweetAlert2
+        Swal.fire({
+            icon: 'error',
+            title: 'Lỗi khi xóa nhóm',
+            text: error.message,
+        });
     }
 }
+
 
 // Xử lý khi trang tải xong
 window.onload = function () {

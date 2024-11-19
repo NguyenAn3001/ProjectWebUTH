@@ -32,7 +32,7 @@ document.getElementById('updateStudentForm').addEventListener('submit', function
             localStorage.setItem("firstName", studentData.firstName);
             localStorage.setItem("lastName", studentData.lastName);
             alert("Cập nhật thông tin thành công!");
-            window.location.href = "student/profile/info-user.html";
+            window.location.href = "personal-info.html";
         } else {
             if (data.errors && data.errors.length > 0) {
                 // If the API returns specific error messages

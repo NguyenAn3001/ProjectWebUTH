@@ -48,6 +48,30 @@ body {
     gap: 20px;
 }
 
+
+.btn-back{
+    background-color: #000001; 
+    border: none;
+    border-radius: 50%;
+    padding: 10px; 
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px; 
+    height: 30px; 
+    color: white; 
+}
+
+.btn-back:hover {
+    color: #ffffff;
+}
+
+.fas.fa-arrow-left {
+    font-size: 15px;
+}
+
 .btn {
     padding: 8px 16px;
     border: none;

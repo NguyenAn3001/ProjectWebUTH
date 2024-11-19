@@ -1,10 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
     const userId = localStorage.getItem("userId");
     const accessToken = localStorage.getItem("accessToken");
-
+    const loadingWithdraw = document.getElementById('loading-withdraw');
+    const loadingTopUp = document.getElementById('loading-topup');
     if (!accessToken) {
-        alert("Access token not found. Please log in again.");
-        window.location.href = "../../login.html";
+        Swal.fire({
+            icon: 'error',
+            title: 'Authentication Error',
+            text: 'Access token not found. Please log in again.'
+        }).then(() => {
+            window.location.href = "../../login.html";
+        });
         return;
     }
 
@@ -26,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => {
                 alert("An error occurred while fetching balance.");
+            })
+            .finally(() => {
+                loadingTopUp.style.display = 'none'; 
             });
     }
 
@@ -40,8 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const loadingIndicator = document.getElementById('loading');
-        loadingIndicator.style.display = 'block';
+        loadingTopUp.style.display = 'block';
 
         const topUpData = {
             userId: userId,
@@ -60,16 +68,82 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 if (data.status === "Success") {
                     fetchBalance();
-                    document.getElementById('error-message').innerText = "";
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Points topped up successfully!'
+                    });
                 } else {
-                    document.getElementById('error-message').innerText = "Failed to top up points.";
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Top Up Failed',
+                        text: 'Failed to top up points.'
+                    });
                 }
             })
-            .catch(error => {
-                document.getElementById('error-message').innerText = "An error occurred while topping up points.";
+            .catch(() => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Network Error',
+                    text: 'An error occurred while topping up points.'
+                });
             })
             .finally(() => {
-                loadingIndicator.style.display = 'none';
+                loadingTopUp.style.display = 'none';
+            });
+    });
+
+    document.getElementById("withdrawButton").addEventListener('click', function (e) {
+        e.preventDefault();
+        const pointsToWithdraw = document.getElementById('pointsInput').value;
+        const paypalAddress = document.getElementById('paypalInput').value;
+
+        if (!pointsToWithdraw || pointsToWithdraw <= 0 || !paypalAddress) {
+            alert("Please enter a valid number of points and a PayPal address.");
+            return;
+        }
+
+        loadingWithdraw.style.display = 'block';
+
+        const withdrawData = {
+            points: pointsToWithdraw,
+            paypalAddress: paypalAddress
+        };
+
+        fetch("http://localhost:5076/api/wallet/cash-point", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+            body: JSON.stringify(withdrawData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "Success") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: data.message
+                    });
+                    fetchBalance();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Withdrawal Failed',
+                        text: 'Failed to withdraw points.'
+                    });
+                }
+            })
+            .catch(() => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Network Error',
+                    text: 'An error occurred while withdrawing points.'
+                });
+            })
+            .finally(() => {
+                loadingWithdraw.style.display = 'none';
             });
     });
 });

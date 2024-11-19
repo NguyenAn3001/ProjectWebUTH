@@ -1,101 +1,224 @@
-// Lấy tham chiếu đến các phần tử HTML
-const groupNameInput = document.getElementById('groupname');
-const projectTopicInput = document.getElementById('project-topic');
-const memberListElement = document.getElementById('member__List');
-const userIDInput = document.getElementById('user-id');
-const check = localStorage.getItem('isEditing') === 'true'; // Lấy trạng thái "isEditing"
 
-// Mảng lưu thành viên
-let members = [];
+// Lấy tham chiếu đến các phần tử HTML 
+const groupNameInput = document.getElementById('groupname'); 
+const projectTopicInput = document.getElementById('project-topic'); 
+const memberListElement = document.getElementById('member__List'); 
+const userIDInput = document.getElementById('user-id'); 
+const check = localStorage.getItem('isEditing') === 'true';
 
-// Kiểm tra trạng thái và hiển thị giao diện tương ứng
-document.getElementById('add group').style.display = check ? 'none' : 'block';
-document.getElementById('edit group').style.display = check ? 'block' : 'none';
+// Mảng lưu thành viên 
+let members = []; 
 
-// Lưu nhóm mới hoặc chỉnh sửa nhóm
-async function saveGroup() {
-    const groupName = groupNameInput.value.trim();
-    const projectTopic = projectTopicInput.value.trim();
+// Custom class cho các loại thông báo
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+});
 
-    if (!groupName || !projectTopic) {
-        alert('Vui lòng nhập đầy đủ thông tin!');
+// Hàm hiển thị thông báo thành công dạng toast
+function showSuccessToast(message) {
+    Toast.fire({
+        icon: 'success',
+        title: message
+    });
+}
+
+// Hàm hiển thị thông báo lỗi dạng toast
+function showErrorToast(message) {
+    Toast.fire({
+        icon: 'error',
+        title: message
+    });
+}
+
+// Hàm hiển thị thông báo xác nhận
+async function showConfirmDialog(title, text) {
+    return await Swal.fire({
+        title: title,
+        text: text,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Đồng ý',
+        cancelButtonText: 'Hủy',
+        heightAuto: false,
+        customClass: {
+            container: 'my-swal'
+        }
+    });
+}
+
+// Hàm hiển thị loading
+function showLoading(message = 'Đang xử lý...') {
+    Swal.fire({
+        title: message,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+}
+
+// Kiểm tra trạng thái và hiển thị giao diện tương ứng 
+document.getElementById('add group').style.display = check ? 'none' : 'block'; 
+document.getElementById('edit group').style.display = check ? 'block' : 'none'; 
+
+// Lưu nhóm mới hoặc chỉnh sửa nhóm 
+async function saveGroup() { 
+    const groupName = groupNameInput.value.trim(); 
+    const projectTopic = projectTopicInput.value.trim(); 
+
+    if (!groupName || !projectTopic) { 
+        showErrorToast('Please enter the complete information!');
+        return; 
+    } 
+
+    // Hiển thị dialog xác nhận
+    const result = await showConfirmDialog(
+        'Confirm',
+        check ? 'Are you sure you want to update the group information?' : 'Are you sure you want to create a new group?'
+    );
+    
+    if (!result.isConfirmed) {
         return;
     }
 
-    const requestBody = {
-        groupName: groupName,
-        topic: projectTopic,
-        members: check ? members : [] // Nếu đang chỉnh sửa, thêm danh sách thành viên
-    };
+    const requestBody = { 
+        groupName: groupName, 
+        topic: projectTopic, 
+        members: check ? members : []
+    }; 
 
+    const token = localStorage.getItem('accessToken'); 
+    const apiUrl = check 
+        ? `http://localhost:5076/api/group/edit-group`
+        : `http://localhost:5076/api/group/new-group`; 
+
+    try { 
+        showLoading();
+
+        const response = await fetch(apiUrl, { 
+            method: 'POST', 
+            headers: { 
+                'Content-Type': 'application/json', 
+                'Authorization': `Bearer ${token}` 
+            }, 
+            body: JSON.stringify(requestBody) 
+        }); 
+
+        Swal.close(); // Đóng loading
+
+        if (response.ok) { 
+            await Swal.fire({
+                icon: 'success',
+                title: check ? 'Edit successful!' : 'Group created successfully!',
+                text: 'You will be redirected to the group details page..',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            window.location.href = 'group-details.html';
+        } else { 
+            const errorData = await response.json(); 
+            Swal.fire({
+                icon: 'error',
+                title: 'An error occurred!',
+                text: errorData.message || 'Unable to perform the action!'
+            });
+        } 
+    } catch (error) { 
+        console.error(error); 
+        Swal.fire({
+            icon: 'error',
+            title: 'Connection error.',
+            text: 'Cannot connect to the server!'
+        });
+    } 
+} 
+
+// Hàm thêm thành viên vào nhóm 
+async function addMember() { 
+    const userId = userIDInput.value.trim();
     const token = localStorage.getItem('accessToken');
-    const apiUrl = check
-        ? `http://localhost:5076/api/group/edit-group` // API khi chỉnh sửa nhóm
-        : `http://localhost:5076/api/group/new-group`; // API khi tạo nhóm
+    const groupId = localStorage.getItem('selectedGroupId');
 
-    try {
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(requestBody)
-        });
+    if (!userId) { 
+        showErrorToast('Please enter the userID you want to add to the group!');
+        return; 
+    } 
 
-        if (response.ok) {
-            alert(check ? 'Nhóm đã được chỉnh sửa!' : 'Tạo nhóm thành công!');
-            window.location.href = 'group-details.html';
-        } else {
-            const errorData = await response.json();
-            alert(`Error: ${errorData.message || 'Tạo group thất bại!'}`);
-        }
-    } catch (error) {
-        console.error(error);
-        alert('Error connecting to the server.');
-    }
-}
+    // Hiển thị dialog xác nhận
+    const result = await showConfirmDialog(
+        'Add member.',
+        `Are you sure you want to add the member with ID: ${userId} to the group?`
+    );
 
-// Hàm thêm thành viên vào nhóm
-async function addMember() {
-    const userId = userIDInput.value.trim(); // Lấy giá trị từ input
-    const token = localStorage.getItem('accessToken'); // Lấy token từ localStorage
-    const groupId = localStorage.getItem('selectedGroupId'); // Lấy groupId từ localStorage
-
-    if (!userId) {
-        alert('Vui lòng nhập userID muốn thêm vào nhóm!');
+    if (!result.isConfirmed) {
         return;
     }
 
-    const apiUrl = `http://localhost:5076/api/group/add-member/${groupId}`; // Định nghĩa apiUrl
+    const apiUrl = `http://localhost:5076/api/group/add-member/${groupId}`;
 
-    try {
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify([{ studentId: userId }]) // Đảm bảo key là `studentId`
-        });
+    try { 
+        showLoading('Adding member...');
 
-        if (response.ok) {
+        const response = await fetch(apiUrl, { 
+            method: 'POST', 
+            headers: { 
+                'Content-Type': 'application/json', 
+                'Authorization': `Bearer ${token}` 
+            }, 
+            body: JSON.stringify([{ studentId: userId }])
+        }); 
+
+        Swal.close(); // Đóng loading
+
+        if (response.ok) { 
+            userIDInput.value = '';
+            await Swal.fire({
+                icon: 'success',
+                title: 'Member added successfully!',
+                text: 'The page will reload to update the information.',
+                timer: 2000,
+                showConfirmButton: false
+            });
             window.location.href = 'group-details.html';
-            userIDInput.value = ''; // Xóa input sau khi thêm
-            alert('Thêm thành viên thành công!');
-        } else {
-            const errorData = await response.json();
-            console.error('Error:', errorData); // Log lỗi chi tiết
-            alert(`Error: ${errorData.message || 'Unable to add member!'}`);
-        }
-    } catch (error) {
-        console.error('Error adding member:', error);
-        alert('Error connecting to the server.');
+        } else { 
+            const errorData = await response.json(); 
+            console.error('Error:', errorData);
+            Swal.fire({
+                icon: 'error',
+                title: 'Không thể thêm thành viên',
+                text: errorData.message || 'Có lỗi xảy ra khi thêm thành viên!'
+            });
+        } 
+    } catch (error) { 
+        console.error('Error adding member:', error); 
+        Swal.fire({
+            icon: 'error',
+            title: 'Lỗi kết nối',
+            text: 'Không thể kết nối đến máy chủ!'
+        });
+    } 
+} 
+
+// CSS để custom SweetAlert2 container
+const style = document.createElement('style');
+style.textContent = `
+    .my-swal {
+        z-index: 1400 !important;
     }
-}
+`;
+document.head.appendChild(style);
 
-
-// Nếu đang chỉnh sửa, tự động điền thông tin nhóm
-if (check) {
-    populateEditForm();
+// Nếu đang chỉnh sửa, tự động điền thông tin nhóm 
+if (check) { 
+    populateEditForm(); 
 }
