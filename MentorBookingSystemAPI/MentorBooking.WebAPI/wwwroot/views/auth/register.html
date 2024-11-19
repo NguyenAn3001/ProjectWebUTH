@@ -3,61 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reister to be mentor</title>
+    <title>Register to be a Mentor</title>
     <link rel="stylesheet" href="../../css/sign-up/register.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
     <div class="modal">
-    <div class="mentor-form">
-        <a href="../../index.html"><i class="ri-arrow-left-line back-btn" onclick="backToMain()"></i></a>
-        <div class="center-wrap">
-            <div class="section text-center">
-                <h4 class="mb-4 pb-3">Register to be mentor</h4>
-                <div class="form-group">
-                    <!-- <input type="text" class="form-style" placeholder="Your major" id="specialty" autocomplete="off"> -->
-                     <select name="major" id="major">
-                        <option value="C#">C#</option>
-                        <option value="C++">C++</option>
-                        <option value="PHP">PHP</option>
-                        <option value="Python">Python</option>
-                        <option value="C">C</option>    
-                        <option value="JS">Javascript</option>
-                        <option value="Java">Java</option>  
-                        <option value="Html/css">Html/Css</option>
-                        <option value="frontend">Frontend</option>
-                        <option value="backend">Backend</option>
-                        <option value="fullstack">Fullstack</option>
-                        <!-- 
-                            C# 
-                            C++
-                            PHP
-                            Python
-                            C
-                            JS
-                            Java
-                            Html/css
-                            frontend
-                            backend
-                            fullstack
-                     -->
-                     </select>
+        <div class="mentor-form">
+            <a href="../../views/student/profile/personal-info.html">
+                <i class="ri-arrow-left-line back-btn" onclick="backToMain()"></i>
+            </a>
+            <div class="center-wrap">
+                <div class="section text-center">
+                    <h4 class="mb-4 pb-3">Register to be a Mentor</h4>
+                    <form id="mentor-form" onsubmit="submitMentorForm(event)">
+                        <div class="form-group">
+                            <select name="major" id="major" class="form-style">
+                                <option value="C#">C#</option>
+                                <option value="C++">C++</option>
+                                <option value="PHP">PHP</option>
+                                <option value="Python">Python</option>
+                                <option value="C">C</option>    
+                                <option value="JS">Javascript</option>
+                                <option value="Java">Java</option>  
+                                <option value="Html/css">Html/Css</option>
+                                <option value="frontend">Frontend</option>
+                                <option value="backend">Backend</option>
+                                <option value="fullstack">Fullstack</option>
+                            </select>
+                        </div>
+                        <div class="form-group mt-2">
+                            <!-- Change to input for experience -->
+                            <input type="number" name="experience" id="experience" class="form-style" placeholder="Enter years of experience" min="1" required />
+                        </div>
+                        <div class="form-group mt-2">
+                            <textarea class="form-style" placeholder="Your description" id="cvLink" autocomplete="off"></textarea>
+                        </div>
+                        <button type="submit" class="btn mt-4">Đăng ký</button>
+                    </form>
                 </div>
-                <div class="form-group mt-2">
-                    <!-- <input type="number" class="form-style" placeholder="Your experience" id="experience" autocomplete="off"> -->
-                     <select name="experience" id="experience">
-                     <option value="1">1 year</option>
-                     <option value="2">2 - 3 years</option>
-                     <option value="3">> 3 years</option>
-                    </select>
-                </div>
-                <div class="form-group mt-2">
-                    <textarea type="text" class="form-style" placeholder="Your description" id="cvLink" autocomplete="off">
-                </div>
-                <a href="../../views/mentor/profile/personal-info.html" class="btn mt-4" onclick="submitMentorForm()">Đăng ký</a>
             </div>
         </div>
     </div>
-</div>
+
+    <script>
+        // Handle form submission and send data to API
+       // Xử lý sự kiện đăng ký làm Mentor
+function submitMentorForm(event) {
+    event.preventDefault();
+
+    // Lấy các thông tin nhập vào từ form
+    const major = document.getElementById('major').value;
+    const experience = document.getElementById('experience').value;
+    const cvLink = document.getElementById('cvLink').value;
+
+    // Lưu thông tin tạm thời vào localStorage (hoặc có thể gửi lên API)
+    localStorage.setItem('major', major);
+    localStorage.setItem('experience', experience);
+    localStorage.setItem('cvLink', cvLink);
+
+    // Chuyển hướng người dùng về trang login để đăng nhập lại
+    window.location.href = "../auth/login.htmllogin.html"; // Chuyển hướng đến trang login
+}
+
+// Xử lý đăng nhập và cập nhật vai trò
+function login(event) {
+    event.preventDefault();
+    const userName = document.getElementById("logusernameLogin").value;
+    const password = document.getElementById("logpassLogin").value;
+
+    const data = {
+        userName: userName,
+        password: password
+    };
+
+    fetch("http://localhost:5076/api/auth/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "Success") {
+            localStorage.setItem("accessToken", data.accessToken);
+            localStorage.setItem("refreshToken", data.refreshToken);
+            localStorage.setItem("userId", data.userId);
+            localStorage.setItem("role", "Mentor"); // Cập nhật vai trò thành Mentor
+
+            const major = localStorage.getItem('major');
+            const experience = localStorage.getItem('experience');
+            const cvLink = localStorage.getItem('cvLink');
+
+            const mentorData = {
+                major: major,
+                experience: experience,
+                cvLink: cvLink
+            };
+
+            fetch(`http://localhost:5076/api/info/mentor?mentorId=${data.userId}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${data.accessToken}`
+                },
+                body: JSON.stringify(mentorData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "Success") {
+                    alert("Đăng ký thành công làm Mentor!");
+                    window.location.href = "../../views/mentor/profile/personal-info.html"; // Chuyển hướng đến trang hồ sơ của Mentor
+                } else {
+                    alert("Cập nhật thông tin Mentor thất bại.");
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi:", error);
+                alert("Đã xảy ra lỗi khi đăng ký làm Mentor.");
+            });
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error("Lỗi:", error);
+        alert("Đã xảy ra lỗi trong quá trình đăng nhập.");
+    });
+}
+
+    </script>
 </body>
 </html>

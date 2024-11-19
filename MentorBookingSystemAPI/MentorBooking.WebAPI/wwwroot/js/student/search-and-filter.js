@@ -209,7 +209,7 @@ async function bookMentor(mentorId) {
     };
 
     try {
-        const response = await fetch(`${API_BASE_URL}/Bookings`, {
+        const response = await fetch(`${API_BASE_URL}/BookingMentor/booking-mentor`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
