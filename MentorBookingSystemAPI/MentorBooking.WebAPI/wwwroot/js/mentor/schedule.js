@@ -1,186 +1,223 @@
-let currentDate = new Date();
-let selectedTimeSlots = new Map(); // Store selected time slots with their dates
+document.addEventListener("DOMContentLoaded", function () {
+    const accessToken = localStorage.getItem("accessToken");
+    const loadingElement = document.getElementById('loading');
+    const scheduleList = document.getElementById('scheduleList');
+    const freeDayInput = document.getElementById('freeDay');
+    const startTimeInput = document.getElementById('startTime');
+    const endTimeInput = document.getElementById('endTime');
+    const addScheduleButton = document.getElementById('addSchedule');
+    const viewSchedulesButton = document.getElementById('viewSchedules');
+    const userId = localStorage.getItem("userId"); 
 
-// Initialize the schedule
-function initializeSchedule() {
-    updateWeekDisplay();
-    generateTimeSlots();
-    loadSelectedTimeSlots();
-}
+    const backButton = document.getElementById('backButton');
 
-// Cập nhật thời gian hiển thị tuần
-function updateWeekDisplay() {
-    const startDate = getWeekStartDate(currentDate);
-    const endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() + 4);
+    document.addEventListener("DOMContentLoaded", function () {
+        const backButton = document.getElementById('backButton');
     
-    const startDateStr = startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    const endDateStr = endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        // Thêm sự kiện cho nút Back
+        backButton.addEventListener('click', function () {
+            // Quay lại trang trước đó
+            window.history.back();
+        });
     
-    document.getElementById('currentWeek').textContent = `${startDateStr} - ${endDateStr}`;
-}
-
-// Hàm lấy ngày thứ Hai của tuần hiện tại
-function getWeekStartDate(date) {
-    const mondayDate = new Date(date);
-    const day = mondayDate.getDay();
-    const diff = mondayDate.getDate() - day + (day === 0 ? -6 : 1);
-    mondayDate.setDate(diff);
-    return mondayDate;
-}
-
-// Lấy các thời gian đã chọn
-function getSelectedTimeSlots() {
-    return Array.from(selectedTimeSlots.keys());
-}
-
-// Gửi các thời gian đã chọn tới API
-function sendSelectedTimeSlots() {
-    const selectedSlots = getSelectedTimeSlots();
+        // Các phần khác của mã...
+    })
     
-    const requestBody = {
-        timeSlots: selectedSlots // Đây là mảng chứa các thời gian đã chọn
+    if (!accessToken) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Authentication Error',
+            text: 'Access token not found. Please log in again.'
+        }).then(() => {
+            window.location.href = "../../login.html";
+        });
+        return;
+    }
+
+    const apiHeaders = {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        'Accept': '*/*'
     };
 
-    fetch('http://localhost:5076/api/schedules/add', { // URL cần thay đổi theo API thực tế
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Request thành công:', data);
-        // Xử lý sau khi gửi thành công, ví dụ ẩn modal hoặc thông báo thành công
-        alert('Time slots saved successfully');
-    })
-    .catch((error) => {
-        console.error('Lỗi:', error);
-        alert('There was an error while saving time slots');
-    });
-}
+    // Add a new schedule
+    addScheduleButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        const freeDay = freeDayInput.value;
+        const startTime = startTimeInput.value;
+        const endTime = endTimeInput.value;
 
-// Hàm khởi tạo lịch (ví dụ với các khoảng thời gian cố định)
-function generateTimeSlots() {
-    const timeSlots = [
-        "08:00 - 09:30", "09:45 - 11:15", "11:30 - 13:00",
-        "13:15 - 14:45", "15:00 - 16:30", "16:45 - 18:15"
-    ];
-
-    const scheduleBody = document.getElementById('scheduleBody');
-    scheduleBody.innerHTML = ''; // Reset lịch
-
-    timeSlots.forEach(timeSlot => {
-        const row = document.createElement('tr');
-        const timeCell = document.createElement('td');
-        timeCell.textContent = timeSlot;
-        timeCell.className = 'time-header';
-        row.appendChild(timeCell);
-
-        // Vòng lặp để tạo các ô cho từng ngày trong tuần
-        for (let i = 0; i < 5; i++) {
-            const cell = document.createElement('td');
-            const cellDate = new Date(getWeekStartDate(currentDate));
-            cellDate.setDate(cellDate.getDate() + i);
-
-            const dateTimeKey = `${cellDate.toISOString().split('T')[0]}-${timeSlot}`;
-            cell.className = 'time-slot';
-            if (selectedTimeSlots.has(dateTimeKey)) {
-                cell.classList.add('selected');
-            } else {
-                cell.classList.add('available');
-            }
-
-            cell.dataset.datetime = dateTimeKey;
-            cell.onclick = () => handleTimeSlotClick(cell, dateTimeKey);
-            row.appendChild(cell);
+        if (!freeDay || !startTime || !endTime) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Error',
+                text: 'Please fill in all fields.'
+            });
+            return;
         }
 
-        scheduleBody.appendChild(row);
-    });
-}
+        const scheduleData = [
+            {
+                freeDay: freeDay,
+                startTime: `${startTime}:00`,
+                endTime: `${endTime}:00`
+            }
+        ];
 
-// Xử lý khi người dùng nhấn vào thời gian
-function handleTimeSlotClick(cell, dateTimeKey) {
-    const isSelected = cell.classList.contains('selected');
-    const [dateStr, timeSlot] = dateTimeKey.split('-');
-    const date = new Date(dateStr);
-    const dateDisplay = date.toLocaleDateString('en-US', { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+        loadingElement.style.display = 'block';
+        console.log("Sending schedule data:", scheduleData);
+        fetch("http://localhost:5076/api/schedules/add", {
+            method: 'POST',
+            headers: apiHeaders,
+            body: JSON.stringify(scheduleData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("API Response:", data);
+                if (data.status === "Success") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: data.message
+                    });
+                    displaySchedule(data.data);  // Hiển thị lịch mới sau khi thêm
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Failed to add schedule.'
+                    });
+                }
+            })
+            .catch(() => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Network Error',
+                    text: 'An error occurred while adding the schedule.'
+                });
+            })
+            .finally(() => {
+                loadingElement.style.display = 'none';
+            });
     });
 
-    const modalTitle = document.getElementById('modalTitle');
-    const modalText = document.getElementById('modalText');
+    function displaySchedule(schedules) {
+        scheduleList.innerHTML = ''; // Clear the current list
+        if (schedules.length === 0) {
+            Swal.fire({
+                icon: 'info',
+                title: 'No Schedules Found',
+                text: 'There are no schedules to display.'
+            });
+        } else {
+            schedules.forEach(schedule => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Date: ${schedule.freeDay}, Time: ${schedule.startTime} - ${schedule.endTime}`;
+                listItem.dataset.scheduleId = schedule.scheduleAvailableId;
+                listItem.setAttribute('data-schedule-id', schedule.scheduleAvailableId); // Set data attribute for identification
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function () {
+                    deleteSchedule(schedule.scheduleAvailableId); // Call the function to delete schedule
+                };
+                listItem.appendChild(deleteButton);
+                scheduleList.appendChild(listItem);
+            });
+        }
+    }
+
+    // Function to delete a schedule
+    function deleteSchedule(scheduleAvailableId) {
+        loadingElement.style.display = 'block';
+
+        fetch(`http://localhost:5076/api/schedules?scheduleAvailableId=${scheduleAvailableId}`, {
+            method: 'DELETE',
+            headers: apiHeaders
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "Success") {
+                displaySchedule(data.data);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: data.message
+                });
+                // Cập nhật lại giao diện sau khi xóa
+                removeScheduleFromList(scheduleAvailableId);
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to delete schedule.'
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Network Error:", error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'An error occurred while deleting schedule.'
+            });
+        })
+        .finally(() => {
+            loadingElement.style.display = 'none';
+        });
+    }
+
+    // Cập nhật lại giao diện sau khi xóa lịch
+    function removeScheduleFromList(scheduleAvailableId) {
+        const scheduleListItems = document.querySelectorAll('#scheduleList li');
+        scheduleListItems.forEach(item => {
+            if (item.dataset.scheduleId === scheduleAvailableId.toString()) {
+                item.remove();  // Xóa item khỏi list
+            }
+        });
+    }
+
+    // View schedules button logic
+    // View schedules button logic
+    viewSchedulesButton.addEventListener('click', function () {
+        loadingElement.style.display = 'block';
     
-    if (isSelected) {
-        modalTitle.textContent = 'Remove Availability';
-        modalText.textContent = `Are you sure you want to remove your availability for ${timeSlot} on ${dateDisplay}?`;
-    } else {
-        modalTitle.textContent = 'Add Availability';
-        modalText.textContent = `Would you like to mark yourself as available for ${timeSlot} on ${dateDisplay}?`;
-    }
-
-    window.currentAction = {
-        cell: cell,
-        dateTimeKey: dateTimeKey,
-        isSelected: isSelected
-    };
-
-    showModal();
-}
-
-// Hiển thị modal
-function showModal() {
-    document.getElementById('actionModal').style.display = 'block';
-}
-
-// Ẩn modal
-function hideModal() {
-    document.getElementById('actionModal').style.display = 'none';
-}
-
-// Cập nhật lịch đã chọn vào LocalStorage
-function saveSelectedTimeSlots() {
-    localStorage.setItem('mentorSelectedTimeSlots', JSON.stringify(Array.from(selectedTimeSlots)));
-}
-
-// Load các thời gian đã chọn từ LocalStorage
-function loadSelectedTimeSlots() {
-    const saved = localStorage.getItem('mentorSelectedTimeSlots');
-    if (saved) {
-        selectedTimeSlots = new Map(JSON.parse(saved));
-        generateTimeSlots(); 
-    }
-}
-
-// Gọi hàm khởi tạo khi trang được tải
-document.addEventListener('DOMContentLoaded', initializeSchedule);
-// Xử lý khi người dùng nhấn vào nút xác nhận trong modal
-function confirmAction() {
-    const { cell, dateTimeKey, isSelected } = window.currentAction;
-
-    if (isSelected) {
-        // Nếu thời gian đã được chọn, bỏ chọn nó (remove)
-        selectedTimeSlots.delete(dateTimeKey);
-        cell.classList.remove('selected');
-        cell.classList.add('available');
-    } else {
-        // Nếu thời gian chưa được chọn, thêm chọn nó (add)
-        selectedTimeSlots.set(dateTimeKey, true);
-        cell.classList.add('selected');
-        cell.classList.remove('available');
-    }
-
-    // Cập nhật lại LocalStorage sau khi thay đổi
-    saveSelectedTimeSlots();
-
-    // Đóng modal sau khi thực hiện hành động
-    hideModal();
-
-    // Gửi các thời gian đã chọn đến server
-    sendSelectedTimeSlots();
-}
+        fetch(`http://localhost:5076/api/schedules/schedules-mentor?mentorId=${userId}`, {
+            method: 'GET',
+            headers: apiHeaders
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Schedules retrieved:", data);
+    
+            if (data.status === "Success") {
+                // Lưu các scheduleAvailableId vào localStorage
+                const scheduleIds = data.data.map(schedule => schedule.scheduleAvailableId);
+                localStorage.setItem('scheduleIds', JSON.stringify(scheduleIds));
+    
+                console.log("Schedule IDs saved to localStorage:", scheduleIds);
+                displaySchedule(data.data); // Hiển thị lịch trên giao diện
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to retrieve schedules.'
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Network Error:", error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Network Error',
+                text: 'An error occurred while retrieving schedules.'
+            });
+        })
+        .finally(() => {
+            loadingElement.style.display = 'none';
+        });
+    });
+    
+    // Lấy lại các scheduleAvailableId từ localStorage khi cần
+    const storedScheduleIds = JSON.parse(localStorage.getItem('scheduleIds')) || [];
+    console.log("Retrieved Schedule IDs from localStorage:", storedScheduleIds);
+});

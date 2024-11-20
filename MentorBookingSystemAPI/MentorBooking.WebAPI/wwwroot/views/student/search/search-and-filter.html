@@ -7,22 +7,24 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/student/search-and-filter.css">
     <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
 
 </head>
 <body>
     <button class="btn-back" onclick="goBack()">
         <i class="fas fa-arrow-left"></i>
     </button>
-
+    
     <h1>Search Mentors</h1>
-
+    
     <div>
         <!-- Input for search keyword -->
         <input id="searchTextInput" type="text" placeholder="Enter keyword or name" />
         <!-- Button to trigger search -->
         <button onclick="handleSearch()">Search</button>
     </div>
-
+    
     <div>
         <h3>Filter by Skills</h3>
         <select id="skillsFilter">
@@ -38,21 +40,42 @@
             <option value="frontend">Frontend</option>
             <option value="backend">Backend</option>
             <option value="fullstack">Fullstack</option>
-            <!-- Add more skills as options here -->
         </select>
     </div>
-
-    <div id="mentorList">
-        <!-- Mentor results will be displayed here -->
-    </div>
-
-    <div id="pagination">
-        <!-- Pagination controls will be displayed here -->
-    </div>
+    
+    <!-- Loading spinner element -->
+    <div id="loading" style="display: none;">Loading...</div>
+    
     <div id="mentorList"></div>
+    
     <div id="mentorDetails" style="display: none; border: 1px solid #ddd; padding: 20px; margin-top: 10px;">
-        <!-- Mentor details will be displayed here -->
+        <h2>Mentor Details</h2>
+        <p id="mentorName">Mentor Name</p>
+        <p id="mentorBio">Mentor Bio</p>
+        <select id="groupSelect">
+            <option value="">Select Group</option>
+        </select>
+        
+        <select id="scheduleSelect">
+            <option value="">Select Available Schedule</option>
+        </select>
+        <!-- Nút Book Mentor nằm trong đây -->
+        <button onclick="showBookingForm('${mentor.mentorId}')">Book Mentor</button>
     </div>
+    
+    <div id="pagination" class="pagination-controls"></div>
+    
+
+   
+    <!-- <div class="profile-section">
+        <button class="book-mentor-btn" onclick="showBookingForm('${mentor.mentorId}')">Book Mentor</button>
+    </div> -->
+
+    
+
+    
+      
     <script src="../../../js/student/search-and-filter.js"></script>
+    <!-- <script src="../../../js/student//book-mentor.js"></script> -->
 </body>
 </html>

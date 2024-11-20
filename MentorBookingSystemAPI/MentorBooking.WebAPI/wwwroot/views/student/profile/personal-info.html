@@ -58,7 +58,10 @@
                 <li class="registerMentor"><img src="../../../assets/svg/drop-down/r-mentor.svg"><a href="../../auth/register.html">Register as a mentor</a></li>
                 <li><img src="../../../assets/svg/drop-down/profile.svg"><a href="info-user.html">My Profile</a></li>
                 <li class="group"><img src="../../../assets/svg/drop-down/group.svg" ><a href="../projects/group-details.html">Group</a></li>
-                <li><img src="../../../assets/svg/drop-down/log-out.svg"><a href="../../../index.html">Log Out</a></li>
+                <li class="logout-item" onclick="handleLogout()">
+    <img src="../../../assets/svg/drop-down/log-out.svg" alt="Logout icon">
+    <a href="javascript:void(0)">Log Out</a>
+</li>
               </ul>
             </div>
           </div>
@@ -164,7 +167,7 @@
         </ul>
       </div>
     </footer>
-
+    <script src="../../../js/sign-up/log-out.js"></script>
     <script src="../../../js/student/drop-down.js"></script>
     <script src="../../../js/student/search-btn.js"></script>
   </body>

@@ -1,126 +1,53 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Mentor Schedule</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        h2 {
-            text-align: center;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input, button {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+  <title>Mentor Schedule Management</title>
+<link rel="stylesheet" href="../../../css/mentor/schedule.css">
 </head>
 <body>
-
     <div class="container">
-        <h2>Add Schedule for Mentor</h2>
-        <form id="scheduleForm">
-            <label for="freeDay">Free Day:</label>
-            <input type="date" id="freeDay" required>
-
-            <label for="startTime">Start Time (hh:mm:ss):</label>
-            <input type="text" id="startTime" placeholder="hh:mm:ss" required>
-
-            <label for="endTime">End Time (hh:mm:ss):</label>
-            <input type="text" id="endTime" placeholder="hh:mm:ss" required>
-
-            <button type="submit">Add Schedule</button>
-        </form>
-    </div>
-
-    <script>
-        document.getElementById('scheduleForm').addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent form from submitting normally
-
-            // Get the token from localStorage (or sessionStorage if you're using that)
-            const token = localStorage.getItem('authToken');
-            if (!token) {
-                alert('No token found. Please log in first.');
-                return;
-            }
-
-            // Get the schedule details from the form
-            const freeDay = document.getElementById('freeDay').value;
-            const startTime = document.getElementById('startTime').value;
-            const endTime = document.getElementById('endTime').value;
-
-            // Validate time format (hh:mm:ss)
-            const timePattern = /^([01]?[0-9]|2[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$/;
-
-            if (!freeDay || !startTime || !endTime) {
-                alert('Please fill in all the fields');
-                return;
-            }
-
-            if (!timePattern.test(startTime) || !timePattern.test(endTime)) {
-                alert('Please enter valid time in hh:mm:ss format');
-                return;
-            }
-
-            // Create the schedule object to be sent to the API
-            const schedule = {
-                freeDay: freeDay,
-                startTime: startTime,
-                endTime: endTime
-            };
-
-            // Send the data to the API
-            fetch('http://localhost:5076/api/schedules/add', {
-                method: 'POST',
-                headers: {
-                    'Accept': '*/*',
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify([schedule])
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'Success') {
-                    alert('Schedule added successfully!');
-                    // Optionally, clear the form after successful submission
-                    document.getElementById('scheduleForm').reset();
-                } else {
-                    alert('Error adding schedule: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error with the API request:', error);
-                alert('There was an error adding the schedule.');
-            });
-        });
-    </script>
-
+        <div class="back-button-container">
+            <button type="button" id="backButton">Back</button>
+        </div>
+        <h1>Mentor Schedule Management</h1>
+        
+        <div id="loading" style="display: none;">
+          Loading...
+        </div>
+    
+        <div class="card">
+          <form>
+            <div class="form-group">
+              <label for="freeDay">Free Day</label>
+              <input type="date" id="freeDay" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="startTime">Start Time</label>
+              <input type="time" id="startTime" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="endTime">End Time</label>
+              <input type="time" id="endTime" required>
+            </div>
+    
+            <div class="button-group">
+              <button type="submit" id="addSchedule">Add Schedule</button>
+            </div>
+          </form>
+        </div>
+    
+        <button id="viewSchedules">View Mentor's Schedules</button>
+        <ul id="scheduleList"></ul>
+    
+        <div id="loading" style="display:none;">Loading...</div>
+    </div>    
+  <script src="../../../js/mentor/schedule.js"></script>
 </body>
 </html>

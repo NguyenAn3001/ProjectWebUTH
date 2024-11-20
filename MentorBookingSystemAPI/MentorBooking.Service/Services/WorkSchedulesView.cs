@@ -85,21 +85,24 @@ namespace MentorBooking.Service.Services
             List<WorkScheulesViewResponse> ScheduleViews = new List<WorkScheulesViewResponse>();
             var existMentorSchedules = _schedulesAvailableRepository.GetAllSchedulesAvailable(MentorId);
             List<ApiResponse>? results = new List<ApiResponse>();
-            foreach (var item in existMentorSchedules)
+            if(existMentorSchedules.Count()>0)
             {
-                var existWorkSchedule = _mentorWorkScheduleRepository.GetMentorWorkSchedulesView(item.ScheduleAvailableId);
-                if (existWorkSchedule==null)
+                foreach (var item in existMentorSchedules)
                 {
-                    var schdedule = new WorkScheulesViewResponse()
+                    var existWorkSchedule = _mentorWorkScheduleRepository.GetMentorWorkSchedulesView(item.ScheduleAvailableId);
+                    if (existWorkSchedule == null)
                     {
-                        UnAvailableScheduleId = item.ScheduleAvailableId,
-                        Date = item.FreeDay,
-                        StartTime = item.StartTime,
-                        EndTime = item.EndTime,
-                    };
-                    ScheduleViews.Add(schdedule);
-                }    
-            }
+                        var schdedule = new WorkScheulesViewResponse()
+                        {
+                            UnAvailableScheduleId = item.ScheduleAvailableId,
+                            Date = item.FreeDay,
+                            StartTime = item.StartTime,
+                            EndTime = item.EndTime,
+                        };
+                        ScheduleViews.Add(schdedule);
+                    }
+                }
+            }    
             foreach (var item in ScheduleViews)
             {
                 var result = new ApiResponse()
