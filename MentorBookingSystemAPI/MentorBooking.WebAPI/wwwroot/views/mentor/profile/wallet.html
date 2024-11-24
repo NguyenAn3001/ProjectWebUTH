@@ -7,19 +7,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/mentor/wallet.css">
     <link rel="icon" type="image/svg+xml" href="../../../assets/svg/mb-favicon.svg">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="wallet-subtitle">Your Point Wallet</div>
+          <button class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+            Back
+          </button>
+          <div class="wallet-info">
+            <div class="wallet-subtitle"><b>Your Point Wallet</b></div>
             <div class="wallet-balance">
-                <span id="balanceAmount">0</span> points
+              <span id="balanceAmount">50</span> points
             </div>
+          </div>
+        </div>
+
+        <div class="withdraw-section">
+            <h2 class="section-title">Withdraw Points</h2>
+            <label for="pointsInput">Enter Points to Withdraw:</label>
+            <input type="number" id="pointsInput" placeholder="Enter points" min="1" class="input-field">
+        
+            <label for="paypalInput">PayPal Address:</label>
+            <input type="email" id="paypalInput" placeholder="Enter your PayPal address" class="input-field">
+        
+            <button id="withdrawButton" class="withdraw-button">Withdraw</button>
+    
+            <div id="loading-withdraw" style="display: none;">
+                <p>Loading...</p>
+                <div class="spinner"></div>
+            </div>
+    
         </div>
         
-    </div>
-
-
+        <!-- <div class="transactions">
+          <!-- Transaction content goes here 
+        </div> -->
+        <script>
+            document.querySelector('.back-button').addEventListener('click', () => {
+    window.history.back(); // Quay lại trang trước đó
+});
+        </script>
     <script src="../../../js/mentor/wallet.js"></script>
 </body>
 </html>

@@ -100,13 +100,23 @@ document.getElementById('updateStudentForm').addEventListener('submit', function
     .then(response => response.json())
     .then(data => {
         if (data.status === "Success") {
-            // Cập nhật giá trị trong localStorage và đánh dấu đã hoàn thành
             localStorage.setItem(`hasCompletedInitialSetup_${userId}`, "true");
-            document.getElementById('studentUpdateModal').style.display = 'none'; // Ẩn modal
-            redirectToProfile('Student'); // Chuyển hướng đến trang profile của sinh viên
+            document.getElementById('studentUpdateModal').style.display = 'none';
+            Swal.fire({
+                icon: 'success',
+                title: 'Cập nhật thành công',
+                text: 'Thông tin của bạn đã được lưu.',
+            }).then(() => {
+                redirectToProfile('Student');
+            });
         } else {
-            alert("Cập nhật thông tin sinh viên thất bại.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Cập nhật thất bại',
+                text: 'Cập nhật thông tin sinh viên thất bại. Vui lòng thử lại!',
+            });
         }
+        
     })
     .catch(error => {
         console.error("Lỗi:", error);
@@ -115,21 +125,39 @@ document.getElementById('updateStudentForm').addEventListener('submit', function
 });
 
 // Xử lý form cập nhật thông tin mentor
-document.getElementById('updateMentorForm').addEventListener('submit', function(e) {
+document.getElementById('updateMentorForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    const userId = localStorage.getItem('userId');
-    const accessToken = localStorage.getItem('accessToken');
 
+    const userId = localStorage.getItem('userId'); // Lấy userId từ localStorage
+    const accessToken = localStorage.getItem('accessToken'); // Lấy accessToken từ localStorage
+
+    // Kiểm tra nếu thiếu userId hoặc accessToken
+    if (!userId || !accessToken) {
+        alert("Lỗi xác thực: Thiếu thông tin userId hoặc accessToken.");
+        return;
+    }
+
+    // Lấy dữ liệu từ form
     const mentorData = {
-        firstName: document.getElementById('mentorFirstName').value,
-        lastName: document.getElementById('mentorLastName').value,
-        phone: document.getElementById('mentorPhone').value,
+        firstName: document.getElementById('mentorFirstName').value.trim(),
+        lastName: document.getElementById('mentorLastName').value.trim(),
+        phone: document.getElementById('mentorPhone').value.trim(),
         experienceYears: parseInt(document.getElementById('experienceYears').value, 10),
-        mentorDescription: document.getElementById('mentorDescription').value,
-        skills: document.getElementById('skills').value.split(',').map(skill => skill.trim()),
+        mentorDescription: document.getElementById('mentorDescription').value.trim(),
+        skills: document.getElementById('skills').value
+            .split(',')
+            .map(skill => skill.trim())
+            .filter(skill => skill.length > 0), // Loại bỏ các phần tử rỗng
         createdAt: new Date().toISOString()
     };
 
+    // Kiểm tra các trường bắt buộc
+    if (!mentorData.firstName || !mentorData.lastName || !mentorData.phone || isNaN(mentorData.experienceYears) || mentorData.skills.length === 0) {
+        alert("Vui lòng điền đầy đủ thông tin hợp lệ trước khi gửi.");
+        return;
+    }
+
+    // Gửi yêu cầu đến API
     fetch(`http://localhost:5076/api/info/mentor?mentorId=${userId}`, {
         method: "POST",
         headers: {
@@ -138,26 +166,41 @@ document.getElementById('updateMentorForm').addEventListener('submit', function(
         },
         body: JSON.stringify(mentorData)
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === "Success") {
-            localStorage.setItem("firstName", mentorData.firstName);
-            localStorage.setItem("lastName", mentorData.lastName);
-            // Đánh dấu đã hoàn thành cập nhật với userId cụ thể
-            localStorage.setItem(`hasCompletedInitialSetup_${userId}`, "true");
-            
-            document.getElementById('mentorUpdateModal').style.display = 'none';
-            redirectToProfile('Mentor');
-        }}
-    )
-    .catch(error => {
-        console.error("Lỗi:", error);
-        alert("Đã xảy ra lỗi khi cập nhật thông tin mentor.");
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log("API Response:", data);
+
+            if (data.status === "Success") {
+                if (data.status === "Success") {
+                    localStorage.setItem(`hasCompletedInitialSetup_${userId}`, "true");
+                    document.getElementById('mentorUpdateModal').style.display = 'none';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Cập nhật thành công',
+                        text: 'Thông tin của bạn đã được lưu.',
+                    }).then(() => {
+                        redirectToProfile('Mentor');
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Cập nhật thất bại',
+                        text: 'Cập nhật thông tin mentor thất bại: ' + data.message,
+                    });
+                }
+                
+            }
+        })
+        .catch(error => {
+            console.error("Lỗi khi gọi API:", error);
+            alert("Đã xảy ra lỗi trong quá trình cập nhật thông tin mentor.");
+        });
 });
 
-window.onclick = function(event) {
+// Đóng modal khi nhấp ra ngoài
+window.onclick = function (event) {
     if (event.target.classList.contains('modal')) {
-        event.target.style.display = 'none'; // Đóng modal khi nhấp ra ngoài
+        event.target.style.display = 'none';
     }
 };
+

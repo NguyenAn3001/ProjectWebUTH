@@ -1,0 +1,132 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    line-height: 1.6;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.session {
+    border: 2px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.session-info {
+    flex-grow: 1;
+}
+
+.session-info h2 {
+    margin: 0 0 10px 0;
+    color: #34495e;
+    font-size: 1.3em;
+}
+
+.session-info p {
+    margin: 5px 0;
+    color: #7f8c8d;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.back-button {
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+}
+
+.back-button::before {
+    content: '◀';  /* Unicode của mũi tên quay lại */
+    font-size: 1.5em;
+}
+
+.back-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+.btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.accept {
+    background-color: #2ecc71;
+    color: white;
+    box-shadow: 0 3px 6px rgba(46, 204, 113, 0.3);
+}
+
+.reject {
+    background-color: #e74c3c;
+    color: white;
+    box-shadow: 0 3px 6px rgba(231, 76, 60, 0.3);
+}
+
+@media (max-width: 600px) {
+    .session {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .buttons {
+        margin-top: 15px;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

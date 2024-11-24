@@ -6,7 +6,29 @@ const ITEMS_PER_PAGE = 10;
 let currentPage = 1;
 let currentSearchText = '';
 let currentSkillsFilter = '';
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchText = urlParams.get('searchText');
 
+    if (searchText) {
+        // Điền text vào ô input (nếu có)
+        document.getElementById('searchTextInput').value = searchText;
+        
+        // Gọi hàm tìm kiếm 
+        handleSearch();
+    }
+};
+
+async function handleSearch() {
+    const searchText = document.getElementById('searchTextInput').value;
+    const skillsFilter = document.getElementById('skillsFilter').value;
+
+    currentSearchText = searchText;
+    currentSkillsFilter = skillsFilter;
+    currentPage = 1;
+
+    await fetchAndDisplayMentors();
+}
 // Back button function
 function goBack() {
     window.history.back();
@@ -178,7 +200,7 @@ async function showMentorDetails(mentorId) {
                         </div>
 
                         <div class="profile-section">
-                            <button onclick="showBookingForm('${mentor.mentorId}')">Book Mentor</button>
+                            <button onclick="hideMentorDetailsAndShowBookingForm('${mentor.mentorId}')">Book Mentor</button>
                         </div>
                     </div>
                 </div>
@@ -203,18 +225,11 @@ function getMentorIdFromStorage() {
 
 // Function to show the booking form inside a modal
 function showBookingForm(mentorId) {
-    const mentorDetails = document.getElementById('mentorDetails');
-
-    // Ẩn các thông tin mentor hiện tại trước khi hiển thị form
-    mentorDetails.innerHTML = '';
-
-    // Tạo modal container
+    // Create modal container only when the button is clicked
     const modalContainer = document.createElement('div');
     modalContainer.id = 'bookingModalContainer';
     modalContainer.className = 'modal-container';
-
-    // Tạo form đặt mentor
-    const bookingForm = `
+    modalContainer.innerHTML = `
         <div class="modal booking-modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -254,29 +269,30 @@ function showBookingForm(mentorId) {
         </div>
     `;
 
-    // Thêm form vào modal container
-    modalContainer.innerHTML = bookingForm;
-
-    // Thêm modal vào body
+    // Add modal to body only when function is called
     document.body.appendChild(modalContainer);
 
-    // Cuộn trang đến modal để người dùng thấy form
+    // Scroll to modal
     modalContainer.scrollIntoView({ behavior: 'smooth' });
 
-    // Lắng nghe sự kiện submit của form
+    // Form submit event listener
     const bookingFormElement = document.getElementById('bookingForm');
     bookingFormElement.onsubmit = async (event) => {
         event.preventDefault();
-        await bookMentor(mentorId);  // Gọi hàm đặt mentor khi form được submit
-        closeBookingModal();         // Đóng modal sau khi submit
+        await bookMentor(mentorId);
+        closeBookingModal();
     };
 
-    // Fetch dữ liệu cho dropdowns (nhóm và lịch trình)
+    // Fetch dropdown data
     fetchStudentGroups();
     fetchAvailableSchedules();
 }
 
-// Hàm đóng modal khi không muốn hiển thị form nữa
+function hideMentorDetailsAndShowBookingForm(mentorId) {
+    const mentorDetails = document.getElementById('mentorDetails');
+    mentorDetails.style.display = 'none'; // Hide mentor details
+    showBookingForm(mentorId);
+}
 function closeBookingModal() {
     const modalContainer = document.getElementById('bookingModalContainer');
     if (modalContainer) {
@@ -465,7 +481,7 @@ const currentMentorId = localStorage.getItem('currentMentorId');
 //available schedule
 async function fetchAvailableSchedules() {
     const token = localStorage.getItem('accessToken');
-    const mentorId = localStorage.getItem('currentMentorId');  // Lấy currentMentorId từ localStorage
+    const mentorId = localStorage.getItem('currentMentorId');
     const url = `http://localhost:5076/api/ScheduleViews/available-schedules?MentorId=${mentorId}`;
 
     try {
@@ -478,10 +494,11 @@ async function fetchAvailableSchedules() {
         });
 
         if (response.ok) {
-            const data = await response.json();
-            const schedules = data.map(schedule => schedule.data);
+            const responseData = await response.json();
+            const schedules = responseData.map(item => item.data);
 
             const scheduleSelect = document.getElementById('scheduleSelect');
+            scheduleSelect.innerHTML = ''; // Clear previous options
 
             if (schedules.length === 0) {
                 const option = document.createElement('option');
@@ -489,18 +506,28 @@ async function fetchAvailableSchedules() {
                 scheduleSelect.appendChild(option);
             } else {
                 schedules.forEach(schedule => {
+                    // Use unAvailableScheduleId instead of scheduleId
                     const option = document.createElement('option');
-                    option.value = schedule.scheduleId;
+                    option.value = schedule.unAvailableScheduleId;
                     option.textContent = `${schedule.date} - ${schedule.startTime} to ${schedule.endTime}`;
                     scheduleSelect.appendChild(option);
                 });
             }
         } else {
             console.error('Failed to fetch available schedules:', response.status, response.statusText);
-            // Show a user-friendly message or handle error properly
+            Swal.fire({
+                icon: 'error',
+                title: 'Fetch Error',
+                text: 'Unable to retrieve mentor schedules.'
+            });
         }
     } catch (error) {
         console.error('Error fetching available schedules:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Network Error',
+            text: 'An error occurred while fetching schedules.'
+        });
     }
 }
 
@@ -572,7 +599,7 @@ function bookMentor() {
 
     // Lấy scheduleAvailableId từ giá trị được chọn trong scheduleSelect
     const selectedScheduleId = scheduleSelect.value;
-
+    console.log("Selected Schedule ID:", selectedScheduleId);
     if (!selectedScheduleId) {
         Swal.fire({
             icon: 'error',
@@ -584,11 +611,11 @@ function bookMentor() {
 
     // Tạo dữ liệu đặt lịch
     const bookingData = {
-        mentorId: currentMentorId,  // Đảm bảo đây là ID hợp lệ
-        sessionCount: parseInt(sessionCount.value, 10),  // Chuyển đổi thành số nguyên
-        pointPerSession: parseInt(pointPerSession.value, 10),  // Chuyển đổi thành số nguyên
-        dateBookings: [selectedScheduleId],  // Sử dụng scheduleAvailableId thay vì ngày
-        groupId: groupSelect.value  // Đảm bảo là chuỗi hoặc số hợp lệ
+        mentorId: currentMentorId,
+        sessionCount: parseInt(sessionCount.value, 10),
+        pointPerSession: parseInt(pointPerSession.value, 10),
+        dateBookings: [selectedScheduleId],  // Now using unAvailableScheduleId
+        groupId: groupSelect.value
     };
 
     console.log("Booking Data:", bookingData);  // Kiểm tra dữ liệu
@@ -605,6 +632,8 @@ function bookMentor() {
     .then(response => response.json())
     .then(data => {
         if (data.status === "Success") {
+            console.log("Session ID:", data.data.sessionId); 
+            localStorage.setItem("sessionId", data.data.sessionId);
             Swal.fire({
                 icon: 'success',
                 title: 'Success',

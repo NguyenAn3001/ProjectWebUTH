@@ -284,7 +284,7 @@ namespace MentorBooking.Service.Services
                             UserName = item.UserName,
                             Email = item.Email,
                             PointBalance = aStudentPoint.PointsBalance,
-                            countGroup = AcountGroup.Count(),
+                            countGroup = AcountGroup != null ? AcountGroup.Count() : 0,
                             CreateAt = aStudent.CreateAt
                         }
                     };

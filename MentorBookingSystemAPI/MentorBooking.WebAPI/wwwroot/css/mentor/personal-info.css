@@ -1,4 +1,8 @@
 
+.ri-calendar-check-line {
+  font-size: 21px; /* Thiết lập kích thước của icon */
+  color: #fff; /* Thiết lập màu sắc của icon */
+}
   .header__container h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;

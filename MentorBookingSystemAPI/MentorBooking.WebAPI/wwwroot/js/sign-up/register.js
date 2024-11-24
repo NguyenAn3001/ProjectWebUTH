@@ -58,7 +58,11 @@ function register(event) {
     })
     .then(data => {
         if (data.status === "Success") {
-            alert("Registration successful! Please log in.");
+            Swal.fire({
+                icon: 'success',
+                title: 'Hoàn tất!',
+                text: 'Dữ liệu của bạn đã được lưu thành công.',
+            });
             window.location.href = "../../views/auth/login.html";
         } else {
             throw new Error(data.message || "Registration failed");

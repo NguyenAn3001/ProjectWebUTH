@@ -156,7 +156,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();
 void AddSwaggerOAuth2Configuration(SwaggerGenOptions swaggerGenOptions) 
 {
